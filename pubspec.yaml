@@ -1,0 +1,52 @@
+name: remedios_naturales_app
+description: "Remedios Naturales - Tu guía de bienestar"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  
+  # Persistencia local
+  shared_preferences: ^2.3.4
+  
+  # Navegación
+  go_router: ^14.8.1
+  
+  # Estado
+  provider: ^6.1.2
+  
+  # UI
+  flutter_staggered_animations: ^1.1.1
+  
+  # Íconos
+  tabler_icons: ^2.5.0+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/data/digestivo.json
+    - assets/data/nervioso.json
+    - assets/data/respiratorio.json
+    - assets/data/inmunitario.json
+    - assets/data/cardiovascular.json
+    - assets/data/hormonal.json
+    - assets/data/musculoesqueletico.json
+    - assets/data/urinario.json
+    - assets/data/dermico.json
+    - assets/data/sensorial.json
+    - assets/data/condiciones_index.json
+    - assets/data/sintomas_cruzados.json
+    - assets/data/todas_las_recetas.json
+    - assets/images/recetas/
+    - assets/images/sistemas/

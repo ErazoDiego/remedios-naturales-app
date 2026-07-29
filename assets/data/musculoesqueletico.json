@@ -1,0 +1,497 @@
+{
+  "sistema": "Sistema Músculo-Esquelético",
+  "emoji": "💪",
+  "id": "musculoesqueletico",
+  "totalRecetas": 16,
+  "recetas": [
+    {
+      "id": "musculoesqueletico_01",
+      "nombre": "Bálsamo que ayuda a aliviar golpes",
+      "descripcion": "Bálsamo calmante que ayuda a aliviar golpes, tensión muscular y molestias en articulaciones. El árnica reduce la inflamación y el romero activa la circulación local, creando un alivio progresivo.",
+      "idealPara": [
+        "golpes leves",
+        "tensión muscular",
+        "dolores después de ejercicio"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "bálsamo",
+      "cuandoUsar": "dos veces al día.",
+      "precaucion": "no aplicar sobre heridas abiertas ni piel irritada.",
+      "ingredientes": [
+        "2 cucharadas de aceite de árnica",
+        "1 cucharada de cera de abeja",
+        "4 gotas de aceite esencial de romero"
+      ],
+      "preparacion": [
+        "Derrite el aceite y la cera a baño maría. ",
+        "Retira del fuego y añade el romero. ",
+        "Mezcla, vierte en un frasco y deja solidificar. "
+      ],
+      "dosis": "aplicar una capa fina sobre la zona tensa con masaje suave.",
+      "almacenamiento": "guardar en lugar fresco hasta 2 meses.",
+      "evidencia": "",
+      "categoria": "musculoesqueletico",
+      "imagen": "assets/images/recetas/musculoesqueletico_01.webp",
+      "imagenPlaceholder": "assets/images/recetas/musculoesqueletico_01_placeholder.webp"
+    },
+    {
+      "id": "musculoesqueletico_02",
+      "nombre": "Compresa cálida que ayuda a relajar músculos tensos y mej...",
+      "descripcion": "Compresa cálida que ayuda a relajar músculos tensos y mejorar la circulación local. El jengibre calienta la zona y reduce la sensación de rigidez después de esfuerzos o posturas prolongadas.",
+      "idealPara": [
+        "dolor muscular",
+        "rigidez",
+        "tensión en hombros o espalda"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "compresa",
+      "cuandoUsar": "tarde o noche.",
+      "precaucion": "probar la temperatura antes de aplicar para evitar quemaduras.",
+      "ingredientes": [
+        "1 litro de agua",
+        "1 trozo grande de jengibre en rodajas",
+        "Toalla pequeña o paño grueso"
+      ],
+      "preparacion": [
+        "Hierve el agua y añade el jengibre. ",
+        "Cocina 10 minutos. ",
+        "Sumerge la toalla en el agua, escurre y aplica tibia sobre la zona. "
+      ],
+      "dosis": "mantener 1015 minutos, renovando la toalla si se enfría.",
+      "almacenamiento": "usar al momento.",
+      "evidencia": "",
+      "categoria": "musculoesqueletico",
+      "imagen": "assets/images/recetas/musculoesqueletico_02.webp",
+      "imagenPlaceholder": "assets/images/recetas/musculoesqueletico_02_placeholder.webp"
+    },
+    {
+      "id": "musculoesqueletico_03",
+      "nombre": "Tintura concentrada que ayuda a reducir la inflamación le...",
+      "descripcion": "Tintura concentrada que ayuda a reducir la inflamación leve y aliviar molestias articulares. La cúrcuma actúa de forma suave y sostenida, ideal para usar en periodos de tensión o dolor recurrente.",
+      "idealPara": [
+        "dolor articular leve",
+        "rigidez",
+        "inflamación suave"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tintura",
+      "cuandoUsar": "mañana o mediodía.",
+      "precaucion": "evitar si se toman anticoagulantes o hay problemas de vesícula.",
+      "ingredientes": [
+        "2 cucharadas de cúrcuma en polvo",
+        "200 ml de alcohol de cereal o vodka suave",
+        "1 pizca de pimienta negra",
+        "Frasco de vidrio oscuro"
+      ],
+      "preparacion": [
+        "Coloca la cúrcuma y la pimienta en el frasco. ",
+        "Cubre con el alcohol y cierra bien. ",
+        "Deja macerar 10 días, agitando a diario. ",
+        "Cuela y guarda en frasco con gotero. "
+      ],
+      "dosis": "1015 gotas en agua, una vez al día.",
+      "almacenamiento": "conservar en lugar fresco y oscuro hasta 3 meses.",
+      "evidencia": "",
+      "categoria": "musculoesqueletico",
+      "imagen": "assets/images/recetas/musculoesqueletico_03.webp",
+      "imagenPlaceholder": "assets/images/recetas/musculoesqueletico_03_placeholder.webp"
+    },
+    {
+      "id": "musculoesqueletico_04",
+      "nombre": "Baño tibio que ayuda a relajar músculos cansados y reduci...",
+      "descripcion": "Baño tibio que ayuda a relajar músculos cansados y reducir la tensión acumulada. El magnesio calma la rigidez y favorece el descanso profundo en días de exceso físico o estrés.",
+      "idealPara": [
+        "tensión muscular",
+        "cansancio físico",
+        "rigidez general"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "baño",
+      "cuandoUsar": "noche, antes de dormir.",
+      "precaucion": "evitar si hay problemas graves de piel o heridas abiertas.",
+      "ingredientes": [
+        "1 taza de sales de magnesio (sales de Epsom)",
+        "3 gotas de aceite esencial de lavanda (opcional)"
+      ],
+      "preparacion": [
+        "Llena la bañera con agua caliente. ",
+        "Añade las sales y mezcla hasta disolver. ",
+        "Agrega la lavanda si deseas mayor relajación. "
+      ],
+      "dosis": "sumergirse 1520 minutos y descansar después.",
+      "almacenamiento": "guardar las sales en frasco seco y cerrado.",
+      "evidencia": "",
+      "categoria": "musculoesqueletico",
+      "imagen": "assets/images/recetas/musculoesqueletico_04.webp",
+      "imagenPlaceholder": "assets/images/recetas/musculoesqueletico_04_placeholder.webp"
+    },
+    {
+      "id": "musculoesqueletico_05",
+      "nombre": "Crema cálida que ayuda a aliviar la rigidez articular y m...",
+      "descripcion": "Crema cálida que ayuda a aliviar la rigidez articular y mejorar la circulación en zonas doloridas. La cayena produce un calor suave que reduce la sensación de tensión y favorece la movilidad.",
+      "idealPara": [
+        "rigidez articular",
+        "molestias por frío",
+        "tensión localizada"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "crema",
+      "cuandoUsar": "tarde o noche.",
+      "precaucion": "evitar en piel sensible, heridas o cerca de los ojos.",
+      "ingredientes": [
+        "2 cucharadas de aceite de oliva",
+        "1 cucharada de cera de abeja",
+        "½ cucharadita de cayena en polvo",
+        "2 gotas de aceite esencial de romero (opcional)"
+      ],
+      "preparacion": [
+        "Calienta el aceite y la cera a baño maría. ",
+        "Añade la cayena, mezcla y retira del fuego. ",
+        "Deja entibiar y agrega el romero si lo deseas. ",
+        "Vierte en un frasco y deja solidificar. "
+      ],
+      "dosis": "aplicar una pequeña cantidad en la articulación y masajear.",
+      "almacenamiento": "conservar en lugar fresco hasta 2 meses.",
+      "evidencia": "",
+      "categoria": "musculoesqueletico",
+      "imagen": "assets/images/recetas/musculoesqueletico_05.webp",
+      "imagenPlaceholder": "assets/images/recetas/musculoesqueletico_05_placeholder.webp"
+    },
+    {
+      "id": "musculoesqueletico_06",
+      "nombre": "Ungüento que ayuda a aliviar músculos cansados después de...",
+      "descripcion": "Ungüento calmante que ayuda a aliviar músculos cansados después del ejercicio. El romero activa la circulación y la menta aporta frescor, creando un efecto relajante inmediato.",
+      "idealPara": [
+        "fatiga muscular",
+        "tensión tras entrenamiento",
+        "sobrecarga leve"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "ungüento",
+      "cuandoUsar": "justo después del ejercicio o al final del día.",
+      "precaucion": "no usar en piel irritada ni en niños pequeños.",
+      "ingredientes": [
+        "2 cucharadas de aceite de almendra",
+        "1 cucharada de cera de abeja",
+        "3 gotas de aceite esencial de romero",
+        "2 gotas de aceite esencial de menta"
+      ],
+      "preparacion": [
+        "Derrite el aceite y la cera a baño maría. ",
+        "Retira del fuego y añade los aceites esenciales. ",
+        "Mezcla bien y pasa a un frasco. ",
+        "Deja enfriar hasta que solidifique. "
+      ],
+      "dosis": "masajear músculos cansados durante 12 minutos.",
+      "almacenamiento": "guardar en lugar fresco hasta 3 meses.",
+      "evidencia": "",
+      "categoria": "musculoesqueletico",
+      "imagen": "assets/images/recetas/musculoesqueletico_06.webp",
+      "imagenPlaceholder": "assets/images/recetas/musculoesqueletico_06_placeholder.webp"
+    },
+    {
+      "id": "musculoesqueletico_07",
+      "nombre": "Infusión que ayuda a fortalecer tejidos y apoyar la recup...",
+      "descripcion": "Infusión remineralizante que ayuda a fortalecer tejidos y apoyar la recuperación de músculos y articulaciones. La cola de caballo aporta sílice natural, útil en procesos de desgaste o cansancio físico.",
+      "idealPara": [
+        "debilidad articular",
+        "recuperación lenta",
+        "retención leve"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "mañana o tarde.",
+      "precaucion": "evitar en embarazo o problemas renales.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de cola de caballo seca",
+        "½ cucharadita de miel o limón (opcional)"
+      ],
+      "preparacion": [
+        "Calienta el agua hasta hervir. ",
+        "Añade la cola de caballo, tapa y deja reposar 10 minutos. ",
+        "Cuela y bebe tibia. "
+      ],
+      "dosis": "1 taza al día durante 57 días.",
+      "almacenamiento": "preparar fresca cada vez.",
+      "evidencia": "",
+      "categoria": "musculoesqueletico",
+      "imagen": "assets/images/recetas/musculoesqueletico_07.webp",
+      "imagenPlaceholder": "assets/images/recetas/musculoesqueletico_07_placeholder.webp"
+    },
+    {
+      "id": "musculoesqueletico_08",
+      "nombre": "Cataplasma frío que ayuda a reducir la inflamación y aliv...",
+      "descripcion": "Cataplasma frío que ayuda a reducir la inflamación y aliviar la molestia en esguinces suaves. La mezcla de arcilla y árnica actúa como calmante local y favorece la recuperación inicial.",
+      "idealPara": [
+        "esguinces \tleves",
+        "golpes \trecientes",
+        "inflamación suave"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "cataplasma",
+      "cuandoUsar": "primeras 2448 horas tras la molestia.",
+      "precaucion": "no aplicar calor en inflamación aguda.",
+      "ingredientes": [
+        "2 cucharadas de arcilla verde",
+        "1 cucharada de infusión de árnica fría",
+        "Gasa o paño fino"
+      ],
+      "preparacion": [
+        "Mezcla la arcilla con la infusión hasta formar una pasta espesa. ",
+        "Aplica sobre la zona y cubre con la gasa. ",
+        "Deja actuar 1520 minutos. "
+      ],
+      "dosis": "repetir 12 veces al día durante 2 días.",
+      "almacenamiento": "preparar al momento; no reutilizar.",
+      "evidencia": "",
+      "categoria": "musculoesqueletico",
+      "imagen": "assets/images/recetas/musculoesqueletico_08.webp",
+      "imagenPlaceholder": "assets/images/recetas/musculoesqueletico_08_placeholder.webp"
+    },
+    {
+      "id": "musculoesqueletico_09",
+      "nombre": "Tónico fresco que ayuda a activar la circulación y a redu...",
+      "descripcion": "Tónico fresco que ayuda a activar la circulación y a reducir la pesadez corporal en días de cansancio. El romero estimula suavemente y el limón aporta ligereza y claridad.",
+      "idealPara": [
+        "fatiga física",
+        "circulación lenta",
+        "días pesados"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tónico",
+      "cuandoUsar": "mañana o media tarde.",
+      "precaucion": "evitar si hay hipertensión marcada o gastritis.",
+      "ingredientes": [
+        "1 taza de agua caliente",
+        "1 cucharadita de romero seco",
+        "Jugo de ¼ de limón",
+        "½ cucharadita de miel (opcional)"
+      ],
+      "preparacion": [
+        "Añade el romero al agua caliente y tapa. ",
+        "Deja reposar 10 minutos. ",
+        "Cuela y mezcla con el limón y la miel. "
+      ],
+      "dosis": "1 taza al día.",
+      "almacenamiento": "preparar fresca cada vez.",
+      "evidencia": "",
+      "categoria": "musculoesqueletico",
+      "imagen": "assets/images/recetas/musculoesqueletico_09.webp",
+      "imagenPlaceholder": "assets/images/recetas/musculoesqueletico_09_placeholder.webp"
+    },
+    {
+      "id": "musculoesqueletico_10",
+      "nombre": "Aceite que ayuda a relajar músculos tensos y aporta calor...",
+      "descripcion": "Aceite suave que ayuda a relajar músculos tensos y aporta calor local. La mezcla tibia mejora la circulación y reduce la sensación de rigidez después de esfuerzo físico.",
+      "idealPara": [
+        "tensión muscular",
+        "rigidez",
+        "fatiga después de ejercicio"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "aceite de masaje",
+      "cuandoUsar": "tarde o noche.",
+      "precaucion": "evitar en piel irritada.",
+      "ingredientes": [
+        "30 ml de aceite de oliva o almendra",
+        "3 gotas de aceite esencial de romero",
+        "2 gotas de aceite esencial de lavanda"
+      ],
+      "preparacion": [
+        "Mezcla los aceites en un frasco. ",
+        "Antes de usar, calienta un poco el frasco entre tus manos o a baño maría muy suave. "
+      ],
+      "dosis": "masajear la zona tensa durante 35 minutos.",
+      "almacenamiento": "conservar en frasco oscuro hasta 3 meses.",
+      "evidencia": "",
+      "categoria": "musculoesqueletico",
+      "imagen": "assets/images/recetas/musculoesqueletico_10.webp",
+      "imagenPlaceholder": "assets/images/recetas/musculoesqueletico_10_placeholder.webp"
+    },
+    {
+      "id": "musculoesqueletico_11",
+      "nombre": "Infusión nutritiva que aporta minerales esenciales como c...",
+      "descripcion": "Infusión nutritiva que aporta minerales esenciales como calcio y magnesio, útiles para fortalecer huesos y tejidos. La ortiga ofrece un apoyo suave y continuo, ideal en días de desgaste físico o fatiga.",
+      "idealPara": [
+        "debilidad ósea",
+        "desgaste articular",
+        "cansancio prolongado"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "mañana o tarde.",
+      "precaucion": "evitar si hay problemas renales.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de ortiga seca",
+        "½ cucharadita de miel o limón (opcional)"
+      ],
+      "preparacion": [
+        "Hierve el agua. ",
+        "Añade la ortiga, tapa y deja reposar 10 minutos. ",
+        "Cuela y bebe tibia. "
+      ],
+      "dosis": "1 taza al día durante 1 o 2 semanas.",
+      "almacenamiento": "preparar fresca cada vez.",
+      "evidencia": "",
+      "categoria": "musculoesqueletico",
+      "imagen": "assets/images/recetas/musculoesqueletico_11.webp",
+      "imagenPlaceholder": "assets/images/recetas/musculoesqueletico_11_placeholder.webp"
+    },
+    {
+      "id": "musculoesqueletico_12",
+      "nombre": "Jarabe espeso que ayuda a calmar inflamaciones leves y al...",
+      "descripcion": "Jarabe espeso que ayuda a calmar inflamaciones leves y aliviar molestias musculares o articulares. La mezcla de jengibre y miel actúa de forma suave y progresiva.",
+      "idealPara": [
+        "inflamación leve",
+        "dolor muscular",
+        "rigidez matinal"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "jarabe",
+      "cuandoUsar": "mañana o tarde.",
+      "precaucion": "evitar en gastritis o úlceras activas.",
+      "ingredientes": [
+        "½ taza de miel pura",
+        "2 cucharadas de jugo de jengibre fresco  \t1 cucharada de jugo de limón",
+        "1 pizca de cúrcuma en polvo (opcional)"
+      ],
+      "preparacion": [
+        "Mezcla la miel con el jengibre y el limón. ",
+        "Añade la cúrcuma si quieres un efecto más completo. ",
+        "Remueve bien y guarda en frasco pequeño. "
+      ],
+      "dosis": "1 cucharadita al día; en momentos de dolor, hasta 2.",
+      "almacenamiento": "refrigerar hasta 1 semana.",
+      "evidencia": "",
+      "categoria": "musculoesqueletico",
+      "imagen": "assets/images/recetas/musculoesqueletico_12.webp",
+      "imagenPlaceholder": "assets/images/recetas/musculoesqueletico_12_placeholder.webp"
+    },
+    {
+      "id": "musculoesqueletico_13",
+      "nombre": "Roll-on que ayuda a relajar la tensión en cuello y hombros.",
+      "descripcion": "Roll-on aromático que ayuda a relajar la tensión en cuello y hombros. La mezcla de menta y romero refresca, activa la circulación y reduce la sensación de rigidez después de un día cargado.",
+      "idealPara": [
+        "tensión cervical",
+        "rigidez por mala postura",
+        "estrés acumulado"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "roll-on",
+      "cuandoUsar": "tarde o noche, o cuando la tensión aparezca.",
+      "precaucion": "no aplicar cerca de los ojos ni en piel irritada.",
+      "ingredientes": [
+        "10 ml de aceite de jojoba o almendra",
+        "3 gotas de aceite esencial de menta",
+        "2 gotas de aceite esencial de romero",
+        "Frasco roll-on"
+      ],
+      "preparacion": [
+        "Llena el frasco con el aceite base. ",
+        "Añade los aceites esenciales. ",
+        "Cierra y agita suavemente. "
+      ],
+      "dosis": "aplicar en nuca y hombros con movimientos lentos.",
+      "almacenamiento": "guardar en lugar fresco hasta 3 meses.",
+      "evidencia": "",
+      "categoria": "musculoesqueletico",
+      "imagen": "assets/images/recetas/musculoesqueletico_13.webp",
+      "imagenPlaceholder": "assets/images/recetas/musculoesqueletico_13_placeholder.webp"
+    },
+    {
+      "id": "musculoesqueletico_14",
+      "nombre": "Bálsamo tibio que ayuda a relajar la espalda cargada y lo...",
+      "descripcion": "Bálsamo tibio que ayuda a relajar la espalda cargada y los músculos tensos. El jengibre aporta calor suave y el romero activa la circulación local, creando un alivio gradual.",
+      "idealPara": [
+        "tensión lumbar",
+        "rigidez dorsal",
+        "cansancio físico"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "bálsamo",
+      "cuandoUsar": "noche o después de actividad física.",
+      "precaucion": "no aplicar en piel sensible o con irritación.",
+      "ingredientes": [
+        "2 cucharadas de aceite de oliva o coco",
+        "1 cucharada de cera de abeja",
+        "½ cucharadita de jengibre en polvo",
+        "3 gotas de aceite esencial de romero"
+      ],
+      "preparacion": [
+        "Derrite el aceite y la cera a baño maría. ",
+        "Añade el jengibre y mezcla bien. ",
+        "Retira del fuego y agrega el romero. ",
+        "Vierte en un frasco y deja solidificar. "
+      ],
+      "dosis": "aplicar una capa fina en la espalda y masajear suavemente.",
+      "almacenamiento": "conservar en lugar fresco hasta 2 meses.",
+      "evidencia": "",
+      "categoria": "musculoesqueletico",
+      "imagen": "assets/images/recetas/musculoesqueletico_14.webp",
+      "imagenPlaceholder": "assets/images/recetas/musculoesqueletico_14_placeholder.webp"
+    },
+    {
+      "id": "musculoesqueletico_15",
+      "nombre": "Mezcla de sales y hierbas que ayuda a relajar músculos te...",
+      "descripcion": "Mezcla de sales y hierbas que ayuda a relajar músculos tensos y a bajar la carga del día. El magnesio suaviza la rigidez y las hierbas aromáticas aportan calma y ligereza.",
+      "idealPara": [
+        "tensión muscular",
+        "cansancio físico",
+        "rigidez general"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "baño",
+      "cuandoUsar": "noche, antes de dormir.",
+      "precaucion": "evitar si hay irritaciones fuertes en la piel.",
+      "ingredientes": [
+        "1 taza de sales de Epsom",
+        "1 cucharada de romero seco",
+        "1 cucharada de lavanda seca",
+        "3 gotas de aceite esencial de lavanda (opcional)"
+      ],
+      "preparacion": [
+        "Mezcla las sales con las hierbas en un bol. ",
+        "Añade el aceite esencial si lo deseas y combina bien. ",
+        "Guarda en un frasco seco y cerrado. "
+      ],
+      "dosis": "añadir ½ taza de la mezcla al agua caliente del baño.",
+      "almacenamiento": "conservar en frasco hermético hasta 1 mes.",
+      "evidencia": "",
+      "categoria": "musculoesqueletico",
+      "imagen": "assets/images/recetas/musculoesqueletico_15.webp",
+      "imagenPlaceholder": "assets/images/recetas/musculoesqueletico_15_placeholder.webp"
+    },
+    {
+      "id": "musculoesqueletico_16",
+      "nombre": "Infusión tibia que ayuda a aliviar la tensión muscular ge...",
+      "descripcion": "Infusión tibia que ayuda a aliviar la tensión muscular general y reduce la rigidez después de un día exigente. El laurel aporta un calor suave que favorece la relajación y mejora la movilidad.",
+      "idealPara": [
+        "rigidez muscular",
+        "cansancio físico",
+        "tensión por esfuerzo"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "tarde o noche.",
+      "precaucion": "evitar en embarazo o si hay problemas digestivos fuertes.",
+      "ingredientes": [
+        "1 taza de agua",
+        "2 hojas de laurel secas",
+        "½ cucharadita de miel o limón (opcional)"
+      ],
+      "preparacion": [
+        "Calienta el agua hasta hervir. ",
+        "Añade las hojas de laurel, tapa y deja reposar 8 10 minutos. ",
+        "Cuela y bebe tibia. "
+      ],
+      "dosis": "1 taza al final del día.",
+      "almacenamiento": "preparar fresca cada vez.",
+      "evidencia": "",
+      "categoria": "musculoesqueletico",
+      "imagen": "assets/images/recetas/musculoesqueletico_16.webp",
+      "imagenPlaceholder": "assets/images/recetas/musculoesqueletico_16_placeholder.webp"
+    }
+  ]
+}

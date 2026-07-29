@@ -1,0 +1,388 @@
+{
+  "sistema": "Sistema Respiratorio",
+  "emoji": "🌬️",
+  "id": "respiratorio",
+  "totalRecetas": 12,
+  "recetas": [
+    {
+      "id": "respiratorio_01",
+      "nombre": "Remedio que alivia la tos",
+      "descripcion": "Remedio clásico que alivia la tos, calma la garganta irritada y favorece la expulsión de mucosidad. El tomillo tiene propiedades antisépticas y expectorantes, mientras que la miel suaviza y protege las vías respiratorias.",
+      "idealPara": [
+        "tos seca o productiva",
+        "garganta irritada",
+        "resfriados leves"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "jarabe",
+      "cuandoUsar": "2 o 3 veces al día, preferiblemente tibio.",
+      "precaucion": "no dar miel a niños menores de un año.",
+      "ingredientes": [
+        "1 taza de agua",
+        "2 cucharadas de hojas de tomillo seco",
+        "½ cucharadita de jengibre rallado (opcional)",
+        "½ taza de miel pura"
+      ],
+      "preparacion": [
+        "Hierve el agua y añade el tomillo y el jengibre. ",
+        "Cocina a fuego bajo 10 minutos, tapa y deja reposar otros 10. ",
+        "Cuela y, cuando el líquido esté tibio, añade la miel y mezcla bien. ",
+        "Guarda el jarabe en un frasco de vidrio con tapa. "
+      ],
+      "dosis": "1 cucharadita cada 4 horas, o según necesidad para calmar la tos.",
+      "almacenamiento": "conservar en refrigeración hasta 2 semanas.",
+      "evidencia": "",
+      "categoria": "respiratorio",
+      "imagen": "assets/images/recetas/respiratorio_01.webp",
+      "imagenPlaceholder": "assets/images/recetas/respiratorio_01_placeholder.webp"
+    },
+    {
+      "id": "respiratorio_02",
+      "nombre": "Remedio que ayuda a despejar las vías respiratorias",
+      "descripcion": "Remedio tradicional que ayuda a despejar las vías respiratorias, aliviar la congestión y facilitar la expulsión de mucosidad. El vapor caliente combinado con el eucalipto abre los conductos nasales y reduce la sensación de presión en la cabeza y el pecho.",
+      "idealPara": [
+        "congestión nasal",
+        "resfriados",
+        "tos productiva. Tipo: externo (inhalación de vapor)"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "inhalación de vapor",
+      "cuandoUsar": "en momentos de congestión o antes de dormir.",
+      "precaucion": "no usar en niños pequeños ni acercar demasiado el rostro al vapor para evitar quemaduras.",
+      "ingredientes": [
+        "1 litro de agua",
+        "1 cucharada de hojas de eucalipto secas",
+        "1 cucharadita de menta seca (opcional)"
+      ],
+      "preparacion": [
+        "Lleva el agua a ebullición y añade el eucalipto y la menta. ",
+        "Apaga el fuego y coloca el recipiente sobre una superficie estable. ",
+        "Acerca el rostro al vapor a una distancia segura y cúbrete la cabeza con una toalla. ",
+        "Respira profundamente durante 5 a 10 minutos. "
+      ],
+      "dosis": "1 sesión al día, o dos si la congestión es intensa.",
+      "almacenamiento": "usar la preparación de inmediato; no guardar.",
+      "evidencia": "",
+      "categoria": "respiratorio",
+      "imagen": "assets/images/recetas/respiratorio_02.webp",
+      "imagenPlaceholder": "assets/images/recetas/respiratorio_02_placeholder.webp"
+    },
+    {
+      "id": "respiratorio_03",
+      "nombre": "Infusión y eficaz para calmar la irritación de las vías r...",
+      "descripcion": "Infusión suave y eficaz para calmar la irritación de las vías respiratorias y aliviar la tos. El gordolobo suaviza la garganta, reduce la inflamación y ayuda a expulsar mucosidad atrapada en bronquios y pulmones. Es una de las plantas más tradicionales para episodios de congestión respiratoria.",
+      "idealPara": [
+        "tos productiva",
+        "congestión pulmonar",
+        "irritación de garganta"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "mañana y noche, durante resfriados o congestión.",
+      "precaucion": "colar muy bien para evitar que los pelillos de la flor irriten la garganta.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharada de flores de gordolobo seco",
+        "½ cucharadita de miel pura (opcional)"
+      ],
+      "preparacion": [
+        "Calienta el agua hasta hervir y apaga el fuego. ",
+        "Añade el gordolobo, tapa y deja reposar 10 minutos. ",
+        "Cuela con un colador muy fino o una tela. ",
+        "Endulza con miel si lo deseas. "
+      ],
+      "dosis": "1 taza tibia, una o dos veces al día, durante 3 a 5 días.",
+      "almacenamiento": "preparar fresca cada vez; conservar las flores secas en frasco cerrado.",
+      "evidencia": "",
+      "categoria": "respiratorio",
+      "imagen": "assets/images/recetas/respiratorio_03.webp",
+      "imagenPlaceholder": "assets/images/recetas/respiratorio_03_placeholder.webp"
+    },
+    {
+      "id": "respiratorio_04",
+      "nombre": "Ungüento que ayuda a despejar el pecho",
+      "descripcion": "Ungüento casero que ayuda a despejar el pecho, aliviar la tos y mejorar la respiración. La menta refresca y abre las vías respiratorias, mientras que el romero calienta suavemente y favorece la circulación en la zona del pecho.",
+      "idealPara": [
+        "congestión torácica",
+        "tos persistente",
+        "resfriados"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "bálsamo",
+      "cuandoUsar": "antes de dormir o al sentir opresión en el pecho.",
+      "precaucion": "no aplicar en bebés ni en piel irritada; evitar el uso durante el embarazo.",
+      "ingredientes": [
+        "3 cucharadas de aceite de coco o aceite de almendra",
+        "1 cucharada de cera de abeja",
+        "6 gotas de aceite esencial de menta",
+        "4 gotas de aceite esencial de romero"
+      ],
+      "preparacion": [
+        "Derrite el aceite y la cera de abeja a baño maría. ",
+        "Retira del fuego y deja entibiar unos segundos. ",
+        "Agrega los aceites esenciales y mezcla bien. ",
+        "Vierte en un frasco pequeño y deja solidificar. "
+      ],
+      "dosis": "aplica una pequeña cantidad en el pecho y masajea suavemente hasta absorber.",
+      "almacenamiento": "conservar en lugar fresco y oscuro hasta 3 meses.",
+      "evidencia": "",
+      "categoria": "respiratorio",
+      "imagen": "assets/images/recetas/respiratorio_04.webp",
+      "imagenPlaceholder": "assets/images/recetas/respiratorio_04_placeholder.webp"
+    },
+    {
+      "id": "respiratorio_05",
+      "nombre": "Remedio sencillo que calma la irritación de la garganta y...",
+      "descripcion": "Remedio sencillo que calma la irritación de la garganta y reduce la inflamación. La salvia actúa como antiséptico natural, ayudando a limpiar la zona y aliviar la sensación de ardor o picor típica de resfriados o uso excesivo de la voz.",
+      "idealPara": [
+        "garganta irritada",
+        "inflamación leve",
+        "afonía"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "gárgaras",
+      "cuandoUsar": "mañana y noche, o cuando haya molestia.",
+      "precaucion": "no tragar la preparación; evitar su uso en embarazo.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharada de hojas de salvia seca",
+        "½ cucharadita de miel (opcional)"
+      ],
+      "preparacion": [
+        "Hierve el agua y añade la salvia. ",
+        "Tapa y deja reposar 10 minutos. ",
+        "Cuela muy bien y deja enfriar hasta que esté tibia. ",
+        "Añade miel si deseas un toque suave. "
+      ],
+      "dosis": "hacer gárgaras durante 2030 segundos, sin tragar, hasta 3 veces al día.",
+      "almacenamiento": "preparar fresca cada vez; no guardar la mezcla.",
+      "evidencia": "",
+      "categoria": "respiratorio",
+      "imagen": "assets/images/recetas/respiratorio_05.webp",
+      "imagenPlaceholder": "assets/images/recetas/respiratorio_05_placeholder.webp"
+    },
+    {
+      "id": "respiratorio_06",
+      "nombre": "Inhalación aromática que despeja las vías respiratorias y...",
+      "descripcion": "Inhalación aromática que despeja las vías respiratorias y refresca la sensación de congestión. El aceite de pino abre los conductos nasales, reduce la mucosidad y aporta un aroma limpio que facilita la respiración en momentos de resfriado o congestión fuerte.",
+      "idealPara": [
+        "congestión nasal",
+        "sinusitis leve",
+        "resfriados"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "inhalación aromática",
+      "cuandoUsar": "al despertar, antes de dormir o cuando la nariz esté muy tapada.",
+      "precaucion": "evitar en niños pequeños y no acercar demasiado la cara al vapor para prevenir quemaduras.",
+      "ingredientes": [
+        "1 litro de agua",
+        "3 a 4 gotas de aceite esencial de pino",
+        "Toalla de algodón"
+      ],
+      "preparacion": [
+        "Lleva el agua a ebullición y viértela en un recipiente resistente. ",
+        "Añade las gotas de aceite esencial de pino. ",
+        "Acerca el rostro al vapor a una distancia segura y cúbrete la cabeza con la toalla. ",
+        "Respira de forma lenta y profunda durante 5 a 10 minutos. "
+      ],
+      "dosis": "una sesión al día, o dos si la congestión es intensa.",
+      "almacenamiento": "usar inmediatamente; no guardar la preparación.",
+      "evidencia": "",
+      "categoria": "respiratorio",
+      "imagen": "assets/images/recetas/respiratorio_06.webp",
+      "imagenPlaceholder": "assets/images/recetas/respiratorio_06_placeholder.webp"
+    },
+    {
+      "id": "respiratorio_07",
+      "nombre": "Infusión que ayuda a aflojar la mucosidad y calmar la irr...",
+      "descripcion": "Infusión suave que ayuda a aflojar la mucosidad y calmar la irritación de la garganta. El regaliz suaviza y desinflama, mientras que la malva hidrata las mucosas y favorece la expulsión natural del moco atrapado en bronquios y pulmones.",
+      "idealPara": [
+        "tos productiva",
+        "mucosidad espesa",
+        "irritación de garganta"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "mañana y tarde, durante episodios de congestión.",
+      "precaucion": "evitar en hipertensión o retención de líquidos; no usar durante el embarazo.",
+      "ingredientes": [
+        "1 taza de agua",
+        "½ cucharadita de raíz de regaliz",
+        "1 cucharada de flores de malva",
+        "1 cucharadita de miel (opcional)"
+      ],
+      "preparacion": [
+        "Hierve el agua y añade la raíz de regaliz. ",
+        "Cocina a fuego bajo 3 minutos. ",
+        "Agrega la malva, tapa y deja reposar 10 minutos. ",
+        "Cuela bien y endulza con miel si lo deseas. "
+      ],
+      "dosis": "1 taza tibia, una o dos veces al día, durante 3 a 5 días.",
+      "almacenamiento": "preparar fresca cada vez; conservar las hierbas secas en frasco hermético.",
+      "evidencia": "",
+      "categoria": "respiratorio",
+      "imagen": "assets/images/recetas/respiratorio_07.webp",
+      "imagenPlaceholder": "assets/images/recetas/respiratorio_07_placeholder.webp"
+    },
+    {
+      "id": "respiratorio_08",
+      "nombre": "Solución que ayuda a desinflamar las fosas nasales",
+      "descripcion": "Solución suave que ayuda a desinflamar las fosas nasales, aliviar la sequedad y reducir la congestión. La manzanilla calma la irritación, mientras que el agua salina limpia y hidrata, facilitando una respiración más libre.",
+      "idealPara": [
+        "congestión leve",
+        "resequedad nasal",
+        "irritación por resfriados o alergias"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "spray nasal",
+      "cuandoUsar": "varias veces al día, según necesidad.",
+      "precaucion": "usar siempre con agua hervida o destilada; no compartir el frasco.",
+      "ingredientes": [
+        "½ taza de agua destilada o previamente hervida",
+        "½ cucharadita de sal marina fina (sin yodo)",
+        "1 cucharada de flores de manzanilla",
+        "Frasco con pulverizador nasal"
+      ],
+      "preparacion": [
+        "Hierve el agua y añade la manzanilla. ",
+        "Tapa y deja reposar 10 minutos. ",
+        "Cuela muy bien y agrega la sal mientras el líquido aún está tibio, mezclando hasta disolver. ",
+        "Deja enfriar por completo y vierte en el frasco pulverizador. "
+      ],
+      "dosis": "aplicar 1 o 2 pulverizaciones en cada fosa nasal, varias veces al día.",
+      "almacenamiento": "conservar en refrigeración hasta 48 horas; preparar una nueva mezcla frecuentemente.",
+      "evidencia": "",
+      "categoria": "respiratorio",
+      "imagen": "assets/images/recetas/respiratorio_08.webp",
+      "imagenPlaceholder": "assets/images/recetas/respiratorio_08_placeholder.webp"
+    },
+    {
+      "id": "respiratorio_09",
+      "nombre": "Remedio de cocina que ayuda a calmar la tos",
+      "descripcion": "Remedio clásico de cocina que ayuda a calmar la tos, suavizar la garganta irritada y favorecer la expulsión de mucosidad. La cebolla libera compuestos que actúan como expectorantes suaves, mientras que la miel protege y alivia la irritación.",
+      "idealPara": [
+        "tos seca o productiva",
+        "garganta irritada",
+        "primeros signos de resfriado"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "jarabe",
+      "cuandoUsar": "varias veces al día, especialmente por la noche.",
+      "precaucion": "no usar miel en niños menores de un año.",
+      "ingredientes": [
+        "1 cebolla mediana",
+        "4 cucharadas de miel pura",
+        "1 frasco pequeño de vidrio"
+      ],
+      "preparacion": [
+        "Pela la cebolla y córtala en rodajas finas. ",
+        "Coloca una capa de cebolla en el frasco y cúbrela con miel. ",
+        "Repite hasta llenar el frasco. ",
+        "Tapa y deja reposar de 6 a 12 horas. ",
+        "La miel se convertirá en un jarabe líquido, listo para usar. "
+      ],
+      "dosis": "1 cucharadita cada 34 horas; en adultos puede tomarse un poco más según necesidad.",
+      "almacenamiento": "conservar en refrigeración hasta 3 días; preparar en pequeñas cantidades.",
+      "evidencia": "",
+      "categoria": "respiratorio",
+      "imagen": "assets/images/recetas/respiratorio_09.webp",
+      "imagenPlaceholder": "assets/images/recetas/respiratorio_09_placeholder.webp"
+    },
+    {
+      "id": "respiratorio_10",
+      "nombre": "Pequeñas pastillas que suavizan la garganta y ayudan a ca...",
+      "descripcion": "Pequeñas pastillas que suavizan la garganta y ayudan a calmar la tos. El limón aporta frescura y vitamina C, y el jengibre reduce la inflamación y da un alivio rápido en molestias respiratorias leves.",
+      "idealPara": [
+        "garganta irritada",
+        "tos leve",
+        "sequedad en la garganta"
+      ],
+      "tipo": "no especificado",
+      "tipoPreparacion": "",
+      "cuandoUsar": "",
+      "precaucion": "no dar a niños pequeños por riesgo de atragantamiento.",
+      "ingredientes": [
+        "½ taza de miel pura",
+        "1 cucharada de jugo de limón",
+        "½ cucharadita de jengibre fresco rallado",
+        "1 pizca de cúrcuma (opcional)"
+      ],
+      "preparacion": [
+        "Coloca la miel, el limón y el jengibre en una olla pequeña. ",
+        "Cocina a fuego muy bajo durante 1012 minutos, removiendo con frecuencia, hasta que la mezcla espese ligeramente. ",
+        "Retira el jengibre rallado si quedara en trocitos. ",
+        "Con una cuchara, forma pequeñas gotas sobre papel para horno o una bandeja engrasada. ",
+        "Deja enfriar hasta que endurezcan. "
+      ],
+      "dosis": "disolver una pastilla lentamente en la boca, hasta 4 veces al día.",
+      "almacenamiento": "guardar en frasco hermético en lugar fresco hasta 1 semana.",
+      "evidencia": "",
+      "categoria": "respiratorio",
+      "imagen": "assets/images/recetas/respiratorio_10.webp",
+      "imagenPlaceholder": "assets/images/recetas/respiratorio_10_placeholder.webp"
+    },
+    {
+      "id": "respiratorio_11",
+      "nombre": "Infusión que ayuda a bajar la congestión y favorece la su...",
+      "descripcion": "Infusión suave que ayuda a bajar la congestión y favorece la sudoración ligera durante los resfriados. Las flores de saúco calman la irritación de las vías respiratorias y facilitan la expulsión de mucosidad.",
+      "idealPara": [
+        "resfriados leves",
+        "congestión nasal",
+        "malestar general"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "en los primeros días del resfriado, mañana y noche.",
+      "precaucion": "evitar en embarazo o en caso de alergia a esta planta.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharada de flores de saúco secas",
+        "1 cucharadita de miel (opcional)"
+      ],
+      "preparacion": [
+        "Hierve el agua y añade las flores. ",
+        "Tapa y deja reposar 10 minutos. ",
+        "Cuela bien y endulza con miel si lo deseas. "
+      ],
+      "dosis": "1 taza tibia, una o dos veces al día.",
+      "almacenamiento": "preparar fresca cada vez; conservar las flores secas en frasco cerrado.",
+      "evidencia": "",
+      "categoria": "respiratorio",
+      "imagen": "assets/images/recetas/respiratorio_11.webp",
+      "imagenPlaceholder": "assets/images/recetas/respiratorio_11_placeholder.webp"
+    },
+    {
+      "id": "respiratorio_12",
+      "nombre": "Mezcla aromática que ayuda a despejar la nariz",
+      "descripcion": "Mezcla aromática que ayuda a despejar la nariz, aliviar la congestión y relajar la tensión en la cabeza durante un resfriado. Los aceites de eucalipto y menta abren las vías respiratorias y aportan una sensación de frescura inmediata.",
+      "idealPara": [
+        "congestión nasal",
+        "resfriados",
+        "pesadez en la cabeza"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "aromaterapia en roll-on",
+      "cuandoUsar": "durante el día, cuando la nariz se tapa o haya malestar.",
+      "precaucion": "no usar en niños pequeños ni aplicar cerca de los ojos.",
+      "ingredientes": [
+        "10 ml de aceite base (jojoba o almendra)",
+        "3 gotas de aceite esencial de eucalipto",
+        "2 gotas de aceite esencial de menta",
+        "1 gota de aceite esencial de romero",
+        "Frasco roll-on de vidrio"
+      ],
+      "preparacion": [
+        "Vierte el aceite base en el frasco roll-on. ",
+        "Añade los aceites esenciales. ",
+        "Cierra y agita suavemente para mezclar. ",
+        "Aplica en sienes, cuello o pecho según necesidad. "
+      ],
+      "dosis": "uso puntual, hasta 3 veces al día.",
+      "almacenamiento": "conservar en lugar fresco y oscuro hasta 6 meses.",
+      "evidencia": "",
+      "categoria": "respiratorio",
+      "imagen": "assets/images/recetas/respiratorio_12.webp",
+      "imagenPlaceholder": "assets/images/recetas/respiratorio_12_placeholder.webp"
+    }
+  ]
+}

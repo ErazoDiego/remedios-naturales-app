@@ -1,0 +1,378 @@
+{
+  "sistema": "Sistema Cardiovascular y Metabólico",
+  "emoji": "❤️",
+  "id": "cardiovascular",
+  "totalRecetas": 12,
+  "recetas": [
+    {
+      "id": "cardiovascular_01",
+      "nombre": "Infusión que ayuda a relajar el corazón y favorecer una c...",
+      "descripcion": "Infusión suave que ayuda a relajar el corazón y favorecer una circulación más estable. El espino blanco es tradicionalmente usado para apoyar el ritmo cardíaco y reducir la tensión emocional que muchas veces afecta al sistema cardiovascular.",
+      "idealPara": [
+        "tensión nerviosa",
+        "palpitaciones leves",
+        "apoyo al corazón"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "mañana o tarde.",
+      "precaucion": "evitar si se toman medicamentos para el corazón sin supervisión médica.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de flores u hojas de espino blanco",
+        "½ cucharadita de miel (opcional)"
+      ],
+      "preparacion": [
+        "Calienta el agua hasta hervir. ",
+        "Añade el espino blanco, tapa y deja reposar 10 minutos. ",
+        "Cuela y endulza ligeramente si lo deseas. "
+      ],
+      "dosis": "1 taza al día, durante periodos de tensión emocional.",
+      "almacenamiento": "preparar fresca cada vez.",
+      "evidencia": "",
+      "categoria": "cardiovascular",
+      "imagen": "assets/images/recetas/cardiovascular_01.webp",
+      "imagenPlaceholder": "assets/images/recetas/cardiovascular_01_placeholder.webp"
+    },
+    {
+      "id": "cardiovascular_02",
+      "nombre": "Bebida tibia que ayuda a equilibrar la glucosa de forma n...",
+      "descripcion": "Bebida tibia que ayuda a equilibrar la glucosa de forma natural y a mejorar la energía después de las comidas. La canela favorece un metabolismo más estable y reduce los altibajos de azúcar.",
+      "idealPara": [
+        "picos de glucosa",
+        "cansancio después de comer",
+        "metabolismo lento"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "agua medicinal",
+      "cuandoUsar": "en ayunas o entre comidas.",
+      "precaucion": "evitar en embarazo o si se toman anticoagulantes.",
+      "ingredientes": [
+        "1 vaso de agua caliente",
+        "1 trozo pequeño de canela en rama",
+        "1 chorrito de limón (opcional)"
+      ],
+      "preparacion": [
+        "Coloca la canela en el agua caliente. ",
+        "Deja reposar 10 minutos. ",
+        "Retira la canela y añade limón si quieres un sabor más fresco. "
+      ],
+      "dosis": "1 vaso al día, de forma constante.",
+      "almacenamiento": "preparar fresca cada vez.",
+      "evidencia": "",
+      "categoria": "cardiovascular",
+      "imagen": "assets/images/recetas/cardiovascular_02.webp",
+      "imagenPlaceholder": "assets/images/recetas/cardiovascular_02_placeholder.webp"
+    },
+    {
+      "id": "cardiovascular_03",
+      "nombre": "Tónico que ayuda a apoyar la circulación y aporta un pequ...",
+      "descripcion": "Tónico simple que ayuda a apoyar la circulación y aporta un pequeño impulso de energía. El ajo mejora el flujo sanguíneo y el limón refresca y aporta antioxidantes, útil en días de cansancio o pesadez.",
+      "idealPara": [
+        "circulación lenta",
+        "cansancio",
+        "época fría"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tónico",
+      "cuandoUsar": "mañana o tarde.",
+      "precaucion": "evitar en estómagos sensibles o si se toman anticoagulantes.",
+      "ingredientes": [
+        "Jugo de ½ limón",
+        "1 diente de ajo machacado",
+        "½ vaso de agua tibia",
+        "1 cucharadita de miel (opcional)"
+      ],
+      "preparacion": [
+        "Mezcla el ajo con el agua tibia. ",
+        "Añade el limón y la miel. ",
+        "Remueve bien y cuela si no quieres trocitos. "
+      ],
+      "dosis": "1 vaso pequeño al día, durante 3 a 5 días.",
+      "almacenamiento": "preparar justo antes de tomar.",
+      "evidencia": "",
+      "categoria": "cardiovascular",
+      "imagen": "assets/images/recetas/cardiovascular_03.webp",
+      "imagenPlaceholder": "assets/images/recetas/cardiovascular_03_placeholder.webp"
+    },
+    {
+      "id": "cardiovascular_04",
+      "nombre": "Infusión fresca y ligeramente ácida que ayuda a mantener ...",
+      "descripcion": "Infusión fresca y ligeramente ácida que ayuda a mantener una presión equilibrada y mejora la circulación. El hibisco es conocido por su efecto suave sobre la presión arterial, y el jengibre aporta calor y dinamismo.",
+      "idealPara": [
+        "presión ligeramente elevada",
+        "circulación lenta",
+        "retención leve"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "a media mañana o por la tarde.",
+      "precaucion": "evitar si la presión es muy baja.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de flores de hibisco",
+        "2 rodajas finas de jengibre",
+        "1 cucharadita de miel (opcional)"
+      ],
+      "preparacion": [
+        "Hierve el agua y añade el jengibre. ",
+        "Cocina 2 minutos. ",
+        "Añade el hibisco, apaga el fuego y deja reposar 8 minutos. ",
+        "Cuela y endulza si lo deseas. "
+      ],
+      "dosis": "1 taza al día.",
+      "almacenamiento": "preparar fresca cada vez.",
+      "evidencia": "",
+      "categoria": "cardiovascular",
+      "imagen": "assets/images/recetas/cardiovascular_04.webp",
+      "imagenPlaceholder": "assets/images/recetas/cardiovascular_04_placeholder.webp"
+    },
+    {
+      "id": "cardiovascular_05",
+      "nombre": "Preparado concentrado que ayuda a reducir la inflamación ...",
+      "descripcion": "Preparado concentrado que ayuda a reducir la inflamación y apoyar un metabolismo más estable. La cúrcuma aporta antioxidantes naturales que protegen el sistema cardiovascular sin estimular en exceso.",
+      "idealPara": [
+        "inflamación leve",
+        "metabolismo lento",
+        "cansancio"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "extracto líquido",
+      "cuandoUsar": "mañana o tarde.",
+      "precaucion": "evitar si hay problemas de vesícula o si se toman anticoagulantes.",
+      "ingredientes": [
+        "1 cucharadita de cúrcuma en polvo",
+        "½ vaso de agua tibia",
+        "1 cucharadita de miel o limón (opcional)",
+        "1 pizca de pimienta negra"
+      ],
+      "preparacion": [
+        "Mezcla la cúrcuma con el agua tibia. ",
+        "Añade la pimienta y la miel o el limón si deseas un sabor más suave. ",
+        "Remueve bien hasta integrar. "
+      ],
+      "dosis": "1 vasito al día durante una o dos semanas.",
+      "almacenamiento": "preparar fresco cada vez.",
+      "evidencia": "",
+      "categoria": "cardiovascular",
+      "imagen": "assets/images/recetas/cardiovascular_05.webp",
+      "imagenPlaceholder": "assets/images/recetas/cardiovascular_05_placeholder.webp"
+    },
+    {
+      "id": "cardiovascular_06",
+      "nombre": "Infusión que ayuda a mantener la presión arterial en nive...",
+      "descripcion": "Infusión suave que ayuda a mantener la presión arterial en niveles equilibrados y favorece la circulación. Las hojas de olivo tienen compuestos naturales que apoyan el corazón de forma ligera y constante.",
+      "idealPara": [
+        "presión ligeramente alta",
+        "circulación lenta",
+        "días de estrés"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "mañana o tarde.",
+      "precaucion": "evitar si la presión es muy baja o si se toman medicamentos antihipertensivos sin supervisión.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de hojas de olivo secas",
+        "½ cucharadita de limón o miel (opcional)"
+      ],
+      "preparacion": [
+        "Calienta el agua hasta hervir. ",
+        "Añade las hojas, tapa y deja reposar 10 minutos. ",
+        "Cuela y añade limón o miel si quieres un sabor más suave. "
+      ],
+      "dosis": "1 taza al día.",
+      "almacenamiento": "preparar fresca cada vez; guardar las hojas secas en frasco cerrado.",
+      "evidencia": "",
+      "categoria": "cardiovascular",
+      "imagen": "assets/images/recetas/cardiovascular_06.webp",
+      "imagenPlaceholder": "assets/images/recetas/cardiovascular_06_placeholder.webp"
+    },
+    {
+      "id": "cardiovascular_07",
+      "nombre": "Combinación simple de semillas que aporta energía estable...",
+      "descripcion": "Combinación simple de semillas que aporta energía estable y apoya un metabolismo más activo. Las semillas de chía, lino y sésamo entregan fibra, grasas saludables y minerales que ayudan a mantener el ritmo diario sin altibajos.",
+      "idealPara": [
+        "bajones de energía",
+        "cansancio matinal",
+        "digestión lenta"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "mezcla seca",
+      "cuandoUsar": "mañana o tarde, añadida a comidas o bebidas.",
+      "precaucion": "beber \tsuficiente \tagua \tpara \tevitar estreñimiento. Ingredientes:",
+      "ingredientes": [
+        "1 cucharada de semillas de chía",
+        "1 cucharada de semillas de lino molidas",
+        "1 cucharada de semillas de sésamo",
+        "1 pizca de canela (opcional)"
+      ],
+      "preparacion": [
+        "Mezcla todas las semillas en un frasco seco. ",
+        "Añade la canela si deseas un aroma más cálido. ",
+        "Guarda bien cerrado. "
+      ],
+      "dosis": "1 cucharada al día mezclada en yogur, avena o batidos.",
+      "almacenamiento": "conservar en frasco hermético hasta 2 semanas.",
+      "evidencia": "",
+      "categoria": "cardiovascular",
+      "imagen": "assets/images/recetas/cardiovascular_07.webp",
+      "imagenPlaceholder": "assets/images/recetas/cardiovascular_07_placeholder.webp"
+    },
+    {
+      "id": "cardiovascular_08",
+      "nombre": "Bebida fresca que ayuda a mejorar la energía y apoyar el ...",
+      "descripcion": "Bebida fresca que ayuda a mejorar la energía y apoyar el metabolismo. Las hojas verdes limpian y nutren, mientras que el limón y el jengibre dan un impulso suave, ideal para empezar el día con ligereza.",
+      "idealPara": [
+        "fatiga",
+        "metabolismo lento",
+        "sensación de pesadez"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "batido",
+      "cuandoUsar": "en ayunas o como merienda.",
+      "precaucion": "evitar si hay sensibilidad al jengibre.",
+      "ingredientes": [
+        "1 taza de agua o bebida vegetal",
+        "1 puñado pequeño de espinaca o kale",
+        "½ manzana verde en trozos",
+        "1 trocito de jengibre fresco",
+        "Jugo de ½ limón"
+      ],
+      "preparacion": [
+        "Coloca todos los ingredientes en la licuadora. ",
+        "Mezcla hasta obtener una textura homogénea. ",
+        "Bebe de inmediato. "
+      ],
+      "dosis": "1 vaso al día durante periodos de cansancio o pesadez.",
+      "almacenamiento": "no guardar una vez licuado.",
+      "evidencia": "",
+      "categoria": "cardiovascular",
+      "imagen": "assets/images/recetas/cardiovascular_08.webp",
+      "imagenPlaceholder": "assets/images/recetas/cardiovascular_08_placeholder.webp"
+    },
+    {
+      "id": "cardiovascular_09",
+      "nombre": "Preparado suave que ayuda a mejorar la circulación y apoy...",
+      "descripcion": "Preparado suave que ayuda a mejorar la circulación y apoyar el corazón sin el sabor fuerte del ajo común. El ajo negro es más dulce, fácil de tomar y conserva compuestos que favorecen un metabolismo estable.",
+      "idealPara": [
+        "circulación lenta",
+        "energía baja",
+        "apoyo cardiovascular"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tintura",
+      "cuandoUsar": "mañana o tarde.",
+      "precaucion": "evitar si se toman anticoagulantes o hay presión muy baja.",
+      "ingredientes": [
+        "2 dientes de ajo negro machacados",
+        "200 ml de alcohol de cereal o vodka suave",
+        "Frasco de vidrio oscuro"
+      ],
+      "preparacion": [
+        "Coloca el ajo negro en el frasco. ",
+        "Cubre con el alcohol y cierra bien. ",
+        "Deja macerar 10 días en un lugar fresco, agitando a diario. ",
+        "Cuela y guarda en un frasco con gotero. "
+      ],
+      "dosis": "15 a 20 gotas en medio vaso de agua, una vez al día.",
+      "almacenamiento": "conservar en lugar fresco y oscuro hasta 3 meses.",
+      "evidencia": "",
+      "categoria": "cardiovascular",
+      "imagen": "assets/images/recetas/cardiovascular_09.webp",
+      "imagenPlaceholder": "assets/images/recetas/cardiovascular_09_placeholder.webp"
+    },
+    {
+      "id": "cardiovascular_10",
+      "nombre": "Aceite tibio que ayuda a activar la circulación y aliviar...",
+      "descripcion": "Aceite tibio que ayuda a activar la circulación y aliviar la sensación de piernas pesadas. El romero y el jengibre calientan y estimulan, mientras que el aceite base permite un masaje fluido y relajante.",
+      "idealPara": [
+        "piernas cansadas",
+        "circulación lenta",
+        "sensación de frío en extremidades"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "aceite de masaje",
+      "cuandoUsar": "tarde o noche.",
+      "precaucion": "no aplicar en piel irritada ni durante el embarazo.",
+      "ingredientes": [
+        "50 ml de aceite de almendra o aceite de oliva suave",
+        "5 gotas de aceite esencial de romero",
+        "3 gotas de aceite esencial de jengibre",
+        "2 gotas de aceite esencial de ciprés (opcional)"
+      ],
+      "preparacion": [
+        "Mezcla todos los ingredientes en un frasco oscuro. ",
+        "Agita suavemente para integrar. ",
+        "Calienta unas gotas entre las manos antes de usar. "
+      ],
+      "dosis": "masajear piernas y pies con movimientos ascendentes durante 5 minutos.",
+      "almacenamiento": "guardar en lugar fresco y oscuro hasta 3 meses.",
+      "evidencia": "",
+      "categoria": "cardiovascular",
+      "imagen": "assets/images/recetas/cardiovascular_10.webp",
+      "imagenPlaceholder": "assets/images/recetas/cardiovascular_10_placeholder.webp"
+    },
+    {
+      "id": "cardiovascular_11",
+      "nombre": "Infusión aromática que ayuda a despejar la mente y apoyar...",
+      "descripcion": "Infusión aromática que ayuda a despejar la mente y apoyar la circulación. El romero activa suavemente el metabolismo y favorece una sensación de ligereza, ideal en días de pesadez o cansancio.",
+      "idealPara": [
+        "metabolismo lento",
+        "retención ligera",
+        "cansancio mental"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "mañana o media tarde.",
+      "precaucion": "evitar en embarazo o si hay hipertensión marcada.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de hojas de romero secas",
+        "½ cucharadita de miel o limón (opcional)"
+      ],
+      "preparacion": [
+        "Calienta el agua hasta hervir. ",
+        "Añade el romero, tapa y deja reposar 810 minutos. ",
+        "Cuela y endulza ligeramente si lo deseas. "
+      ],
+      "dosis": "1 taza al día.",
+      "almacenamiento": "preparar fresca cada vez.",
+      "evidencia": "",
+      "categoria": "cardiovascular",
+      "imagen": "assets/images/recetas/cardiovascular_11.webp",
+      "imagenPlaceholder": "assets/images/recetas/cardiovascular_11_placeholder.webp"
+    },
+    {
+      "id": "cardiovascular_12",
+      "nombre": "Tónico matutino que ayuda a activar el metabolismo desde ...",
+      "descripcion": "Tónico matutino que ayuda a activar el metabolismo desde temprano. La mezcla de miel y vinagre de manzana aporta energía suave, favorece la digestión y mantiene el ritmo metabólico más estable durante el día.",
+      "idealPara": [
+        "baja energía al despertar",
+        "digestión lenta",
+        "días pesados"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "jarabe",
+      "cuandoUsar": "en ayunas.",
+      "precaucion": "evitar si hay gastritis o sensibilidad al vinagre.",
+      "ingredientes": [
+        "1 cucharada de miel pura",
+        "1 cucharada de vinagre de manzana",
+        "½ vaso de agua tibia",
+        "Unas gotas de limón (opcional)"
+      ],
+      "preparacion": [
+        "Mezcla el agua tibia con la miel hasta disolver. ",
+        "Añade el vinagre y el limón. ",
+        "Remueve bien. "
+      ],
+      "dosis": "1 vaso pequeño en ayunas, una vez al día.",
+      "almacenamiento": "preparar justo antes de tomar.",
+      "evidencia": "",
+      "categoria": "cardiovascular",
+      "imagen": "assets/images/recetas/cardiovascular_12.webp",
+      "imagenPlaceholder": "assets/images/recetas/cardiovascular_12_placeholder.webp"
+    }
+  ]
+}

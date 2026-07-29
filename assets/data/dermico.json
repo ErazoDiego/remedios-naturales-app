@@ -1,0 +1,436 @@
+{
+  "sistema": "Sistema Dérmico (Piel y Cabello)",
+  "emoji": "🧴",
+  "id": "dermico",
+  "totalRecetas": 14,
+  "recetas": [
+    {
+      "id": "dermico_01",
+      "nombre": "Loción que ayuda a tonificar la piel",
+      "descripcion": "Loción refrescante que ayuda a tonificar la piel, reducir rojeces y aportar una hidratación ligera. El hamamelis calma y la rosa mosqueta nutre suavemente, ideal para piel sensible o cansada.",
+      "idealPara": [
+        "piel sensible",
+        "rojeces",
+        "falta de luminosidad"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "loción",
+      "cuandoUsar": "mañana y noche, después de limpiar la piel.",
+      "precaucion": "evitar en piel muy irritada o con heridas abiertas.",
+      "ingredientes": [
+        "3 cucharadas de agua de hamamelis",
+        "1 cucharada de aceite de rosa mosqueta",
+        "2 gotas de aceite esencial de geranio (opcional)"
+      ],
+      "preparacion": [
+        "Mezcla el hamamelis con la rosa mosqueta en un frasco pequeño. ",
+        "Añade el geranio si lo deseas. ",
+        "Agita antes de usar. "
+      ],
+      "dosis": "aplicar con algodón sobre rostro y cuello.",
+      "almacenamiento": "conservar en lugar fresco hasta 2 semanas.",
+      "evidencia": "",
+      "categoria": "dermico",
+      "imagen": "assets/images/recetas/dermico_01.webp",
+      "imagenPlaceholder": "assets/images/recetas/dermico_01_placeholder.webp"
+    },
+    {
+      "id": "dermico_02",
+      "nombre": "Mascarilla suave que ayuda a limpiar la piel sin resecarla.",
+      "descripcion": "Mascarilla suave que ayuda a limpiar la piel sin resecarla. La arcilla absorbe impurezas y la avena calma, dejando una sensación de frescor y equilibrio.",
+      "idealPara": [
+        "piel mixta o grasa",
+        "poros sucios",
+        "días de estrés"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "mascarilla",
+      "cuandoUsar": "una vez a la semana.",
+      "precaucion": "evitar en piel muy seca o irritada.",
+      "ingredientes": [
+        "1 cucharada de arcilla blanca o verde",
+        "1 cucharada de avena molida fina",
+        "12 cucharadas de agua tibia",
+        "½ cucharadita de miel (opcional)"
+      ],
+      "preparacion": [
+        "Mezcla la arcilla con la avena. ",
+        "Añade el agua poco a poco hasta obtener una pasta suave. ",
+        "Agrega la miel si deseas mayor suavidad. "
+      ],
+      "dosis": "aplicar en rostro evitando ojos y labios.",
+      "almacenamiento": "preparar al momento.",
+      "evidencia": "",
+      "categoria": "dermico",
+      "imagen": "assets/images/recetas/dermico_02.webp",
+      "imagenPlaceholder": "assets/images/recetas/dermico_02_placeholder.webp"
+    },
+    {
+      "id": "dermico_03",
+      "nombre": "Gel fresco que ayuda a calmar la piel irritada y a reduci...",
+      "descripcion": "Gel fresco que ayuda a calmar la piel irritada y a reducir el enrojecimiento. El aloe hidrata y regenera, mientras que la menta aporta una sensación ligera de alivio inmediato.",
+      "idealPara": [
+        "irritaciones leves",
+        "quemaduras solares suaves",
+        "picazón"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "gel",
+      "cuandoUsar": "mañana y noche, o cuando la piel lo pida.",
+      "precaucion": "evitar en piel muy sensible a los aceites esenciales.",
+      "ingredientes": [
+        "2 cucharadas de gel de aloe vera puro",
+        "1 gota de aceite esencial de menta",
+        "1 cucharadita de agua de rosas (opcional)"
+      ],
+      "preparacion": [
+        "Coloca el aloe en un frasco pequeño. ",
+        "Añade la menta y el agua de rosas. ",
+        "Mezcla bien hasta integrar. "
+      ],
+      "dosis": "aplicar una capa fina sobre la zona irritada.",
+      "almacenamiento": "refrigerar hasta 1 semana.",
+      "evidencia": "",
+      "categoria": "dermico",
+      "imagen": "assets/images/recetas/dermico_03.webp",
+      "imagenPlaceholder": "assets/images/recetas/dermico_03_placeholder.webp"
+    },
+    {
+      "id": "dermico_04",
+      "nombre": "Sérum nutritivo que ayuda a suavizar líneas finas y aport...",
+      "descripcion": "Sérum nutritivo que ayuda a suavizar líneas finas y aportar luminosidad. Los aceites de rosa mosqueta y jojoba hidratan profundamente y dejan la piel con textura más uniforme.",
+      "idealPara": [
+        "piel seca",
+        "líneas suaves",
+        "falta de brillo"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "sérum",
+      "cuandoUsar": "noche, después de limpiar el rostro.",
+      "precaucion": "evitar en piel muy grasa o con brotes activos.",
+      "ingredientes": [
+        "1 cucharada de aceite de rosa mosqueta",
+        "1 cucharada de aceite de jojoba",
+        "2 gotas de aceite esencial de incienso (opcional)"
+      ],
+      "preparacion": [
+        "Mezcla los aceites en un frasco pequeño. ",
+        "Agita suavemente para integrar. "
+      ],
+      "dosis": "aplicar 23 gotas en rostro y cuello con masajes lentos.",
+      "almacenamiento": "guardar en frasco oscuro hasta 2 meses.",
+      "evidencia": "",
+      "categoria": "dermico",
+      "imagen": "assets/images/recetas/dermico_04.webp",
+      "imagenPlaceholder": "assets/images/recetas/dermico_04_placeholder.webp"
+    },
+    {
+      "id": "dermico_05",
+      "nombre": "Ungüento que ayuda a calmar irritaciones causadas por hon...",
+      "descripcion": "Ungüento suave que ayuda a calmar irritaciones causadas por hongos comunes en la piel. El aceite de árbol de té actúa como purificante y el coco hidrata sin dejar sensación pesada.",
+      "idealPara": [
+        "pie de atleta leve",
+        "irritación entre pliegues",
+        "enrojecimiento por humedad"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "ungüento",
+      "cuandoUsar": "mañana y noche.",
+      "precaucion": "evitar en piel muy sensible al árbol de té.",
+      "ingredientes": [
+        "2 cucharadas de aceite de coco",
+        "1 cucharada de cera de abeja",
+        "3 gotas de aceite esencial de árbol de té",
+        "1 gota de aceite esencial de lavanda (opcional)"
+      ],
+      "preparacion": [
+        "Derrite el aceite de coco y la cera a baño maría. ",
+        "Retira del fuego y añade los aceites esenciales. ",
+        "Mezcla bien y vierte en un frasco limpio. ",
+        "Deja solidificar. "
+      ],
+      "dosis": "aplicar una capa fina sobre la zona limpia y seca.",
+      "almacenamiento": "mantener en lugar fresco hasta 2 meses.",
+      "evidencia": "",
+      "categoria": "dermico",
+      "imagen": "assets/images/recetas/dermico_05.webp",
+      "imagenPlaceholder": "assets/images/recetas/dermico_05_placeholder.webp"
+    },
+    {
+      "id": "dermico_06",
+      "nombre": "Spray que ayuda a bajar la irritación y el calor después ...",
+      "descripcion": "Spray refrescante que ayuda a bajar la irritación y el calor después de la exposición al sol. El aloe hidrata, la manzanilla calma y la menta aporta un alivio inmediato.",
+      "idealPara": [
+        "enrojecimiento por sol",
+        "piel caliente",
+        "sequedad ligera"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "spray",
+      "cuandoUsar": "después de la ducha o cuando la piel esté caliente.",
+      "precaucion": "evitar el contacto con los ojos.",
+      "ingredientes": [
+        "3 cucharadas de gel de aloe vera líquido",
+        "2 cucharadas de infusión de manzanilla fría",
+        "1 gota de aceite esencial de menta",
+        "Frasco con atomizador"
+      ],
+      "preparacion": [
+        "Mezcla el aloe con la infusión de manzanilla. ",
+        "Añade la menta y agita suavemente. ",
+        "Pasa la mezcla al frasco atomizador. "
+      ],
+      "dosis": "rociar sobre la piel limpia y dejar secar al aire.",
+      "almacenamiento": "refrigerar hasta 1 semana.",
+      "evidencia": "",
+      "categoria": "dermico",
+      "imagen": "assets/images/recetas/dermico_06.webp",
+      "imagenPlaceholder": "assets/images/recetas/dermico_06_placeholder.webp"
+    },
+    {
+      "id": "dermico_07",
+      "nombre": "Bálsamo nutritivo que ayuda a reparar labios secos y prot...",
+      "descripcion": "Bálsamo nutritivo que ayuda a reparar labios secos y protegerlos del clima. La cera crea una capa suave y el aceite de caléndula calma e hidrata sin dejar sensación pesada.",
+      "idealPara": [
+        "labios secos",
+        "grietas leves",
+        "clima frío o seco"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "bálsamo",
+      "cuandoUsar": "varias veces al día según necesidad.",
+      "precaucion": "evitar en alergia a productos de la colmena.",
+      "ingredientes": [
+        "1 cucharada de aceite de caléndula",
+        "1 cucharada de aceite de coco",
+        "½ cucharada de cera de abeja",
+        "1 gota de aceite esencial de lavanda (opcional)"
+      ],
+      "preparacion": [
+        "Derrite los aceites y la cera a baño maría. ",
+        "Retira del fuego y añade la lavanda.  \tVierte en un pequeño frasco o tubo. ",
+        "Deja solidificar. "
+      ],
+      "dosis": "aplicar una capa fina sobre los labios.",
+      "almacenamiento": "conservar en lugar fresco hasta 2 meses.",
+      "evidencia": "",
+      "categoria": "dermico",
+      "imagen": "assets/images/recetas/dermico_07.webp",
+      "imagenPlaceholder": "assets/images/recetas/dermico_07_placeholder.webp"
+    },
+    {
+      "id": "dermico_08",
+      "nombre": "Aceite que ayuda a hidratar la piel y mejorar su elastici...",
+      "descripcion": "Aceite suave que ayuda a hidratar la piel y mejorar su elasticidad. El aceite de almendra nutre en profundidad y la rosa mosqueta aporta un toque reparador para piel cansada o apagada.",
+      "idealPara": [
+        "piel seca",
+        "falta de elasticidad",
+        "marcas leves"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "aceite corporal",
+      "cuandoUsar": "después de la ducha, con la piel aún tibia.",
+      "precaucion": "evitar en zonas muy irritadas. Ingredientes:",
+      "ingredientes": [
+        "2 cucharadas de aceite de almendra",
+        "1 cucharada de aceite de rosa mosqueta",
+        "2 gotas de aceite esencial de lavanda o geranio"
+      ],
+      "preparacion": [
+        "Combina los aceites en un frasco. ",
+        "Agita suavemente para integrar. "
+      ],
+      "dosis": "masajear sobre brazos, piernas y torso hasta absorber.",
+      "almacenamiento": "guardar en frasco oscuro hasta 2 meses.",
+      "evidencia": "",
+      "categoria": "dermico",
+      "imagen": "assets/images/recetas/dermico_08.webp",
+      "imagenPlaceholder": "assets/images/recetas/dermico_08_placeholder.webp"
+    },
+    {
+      "id": "dermico_09",
+      "nombre": "Champú que ayuda a fortalecer el cabello y a estimular el...",
+      "descripcion": "Champú suave que ayuda a fortalecer el cabello y a estimular el cuero cabelludo. El romero activa la circulación y la ortiga aporta minerales que mejoran la vitalidad y el brillo.",
+      "idealPara": [
+        "cabello débil",
+        "caída ligera",
+        "falta de brillo"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "champú",
+      "cuandoUsar": "23 veces por semana.",
+      "precaucion": "evitar si hay irritaciones fuertes en el cuero cabelludo.",
+      "ingredientes": [
+        "½ taza de jabón líquido neutro",
+        "½ taza de infusión fuerte de romero y ortiga",
+        "1 cucharadita de aceite de oliva",
+        "3 gotas de aceite esencial de romero (opcional)"
+      ],
+      "preparacion": [
+        "Prepara una infusión fuerte con romero y ortiga y deja enfriar. ",
+        "Mezcla el jabón líquido con la infusión. ",
+        "Añade el aceite de oliva y el romero esencial. ",
+        "Agita bien antes de usar. "
+      ],
+      "dosis": "aplicar sobre el cuero cabelludo, masajear y enjuagar.",
+      "almacenamiento": "refrigerar hasta 2 semanas.",
+      "evidencia": "",
+      "categoria": "dermico",
+      "imagen": "assets/images/recetas/dermico_09.webp",
+      "imagenPlaceholder": "assets/images/recetas/dermico_09_placeholder.webp"
+    },
+    {
+      "id": "dermico_10",
+      "nombre": "Acondicionador ligero que ayuda a suavizar el cabello y a...",
+      "descripcion": "Acondicionador ligero que ayuda a suavizar el cabello y a equilibrar el pH del cuero cabelludo. El vinagre deja el pelo brillante y fácil de peinar sin apelmazarlo.",
+      "idealPara": [
+        "cabello apagado",
+        "cuero cabelludo pesado",
+        "falta de suavidad"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "acondicionador líquido",
+      "cuandoUsar": "después del champú.",
+      "precaucion": "evitar contacto con los ojos.",
+      "ingredientes": [
+        "1 taza de agua tibia",
+        "2 cucharadas de vinagre de manzana",
+        "3 gotas de aceite esencial de lavanda o romero"
+      ],
+      "preparacion": [
+        "Mezcla el agua con el vinagre. ",
+        "Añade el aceite esencial si quieres un aroma suave. ",
+        "Pasar la mezcla a un frasco aplicador. "
+      ],
+      "dosis": "aplicar después del lavado, dejar 1 minuto y enjuagar.",
+      "almacenamiento": "conservar en lugar fresco hasta 1 semana.",
+      "evidencia": "",
+      "categoria": "dermico",
+      "imagen": "assets/images/recetas/dermico_10.webp",
+      "imagenPlaceholder": "assets/images/recetas/dermico_10_placeholder.webp"
+    },
+    {
+      "id": "dermico_11",
+      "nombre": "Cataplasma fresco que ayuda a calmar la piel irritada y a...",
+      "descripcion": "Cataplasma fresco que ayuda a calmar la piel irritada y a reducir la inflamación ligera. El pepino refresca y la miel suaviza, dejando una sensación de alivio inmediato.",
+      "idealPara": [
+        "irritaciones \tleves",
+        "piel \tcaliente",
+        "enrojecimiento"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "cataplasma",
+      "cuandoUsar": "mañana o tarde.",
+      "precaucion": "evitar en alergia a la miel.",
+      "ingredientes": [
+        "¼ de pepino pelado",
+        "1 cucharadita de miel",
+        "Gasa o paño fino"
+      ],
+      "preparacion": [
+        "Tritura el pepino hasta obtener una pasta. ",
+        "Mezcla con la miel. ",
+        "Extiende la pasta sobre la gasa y aplica en la zona. "
+      ],
+      "dosis": "mantener 1015 minutos y retirar con agua tibia.",
+      "almacenamiento": "preparar al momento.",
+      "evidencia": "",
+      "categoria": "dermico",
+      "imagen": "assets/images/recetas/dermico_11.webp",
+      "imagenPlaceholder": "assets/images/recetas/dermico_11_placeholder.webp"
+    },
+    {
+      "id": "dermico_12",
+      "nombre": "Crema que ayuda a hidratar y calmar la piel seca o sensible.",
+      "descripcion": "Crema suave que ayuda a hidratar y calmar la piel seca o sensible. La caléndula aporta un efecto reparador y el aceite base deja una textura ligera y cómoda.",
+      "idealPara": [
+        "piel seca",
+        "rojeces",
+        "zonas ásperas"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "crema",
+      "cuandoUsar": "mañana y noche.",
+      "precaucion": "evitar si hay alergia a plantas de la familia de las margaritas.",
+      "ingredientes": [
+        "2 cucharadas de aceite de caléndula",
+        "1 cucharada de manteca de karité",
+        "1 cucharada de cera de abeja",
+        "2 gotas de aceite esencial de lavanda (opcional)"
+      ],
+      "preparacion": [
+        "Derrite el aceite, la manteca y la cera a baño maría. ",
+        "Retira del fuego y añade la lavanda si lo deseas. ",
+        "Mezcla bien y vierte en un frasco.  \tDeja enfriar hasta que solidifique. "
+      ],
+      "dosis": "aplicar una pequeña cantidad sobre la piel limpia.",
+      "almacenamiento": "guardar en lugar fresco hasta 2 meses.",
+      "evidencia": "",
+      "categoria": "dermico",
+      "imagen": "assets/images/recetas/dermico_12.webp",
+      "imagenPlaceholder": "assets/images/recetas/dermico_12_placeholder.webp"
+    },
+    {
+      "id": "dermico_13",
+      "nombre": "Aceite nutritivo que ayuda a fortalecer las uñas y a suav...",
+      "descripcion": "Aceite nutritivo que ayuda a fortalecer las uñas y a suavizar las cutículas secas. La mezcla de almendra y vitamina E hidrata en profundidad y mejora el aspecto general de la zona.",
+      "idealPara": [
+        "uñas frágiles",
+        "cutículas secas",
+        "manos expuestas al frío o al agua"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "aceite",
+      "cuandoUsar": "noche, antes de dormir.",
+      "precaucion": "evitar si hay heridas abiertas en la zona.",
+      "ingredientes": [
+        "1 cucharada de aceite de almendra",
+        "1 cucharadita de aceite de jojoba",
+        "3 gotas de vitamina E líquida",
+        "1 gota de aceite esencial de limón (opcional)"
+      ],
+      "preparacion": [
+        "Mezcla todos los aceites en un frasco pequeño. ",
+        "Agita suavemente para integrar. "
+      ],
+      "dosis": "aplicar una pequeña cantidad sobre uñas y cutículas y masajear hasta absorber.",
+      "almacenamiento": "guardar en frasco oscuro hasta 2 meses.",
+      "evidencia": "",
+      "categoria": "dermico",
+      "imagen": "assets/images/recetas/dermico_13.webp",
+      "imagenPlaceholder": "assets/images/recetas/dermico_13_placeholder.webp"
+    },
+    {
+      "id": "dermico_14",
+      "nombre": "Tónico ligero que ayuda a revitalizar el cuero cabelludo ...",
+      "descripcion": "Tónico ligero que ayuda a revitalizar el cuero cabelludo y a mejorar la sensación de frescor en días de calor o fatiga. El té verde aporta antioxidantes y la menta activa la circulación suave de la zona.",
+      "idealPara": [
+        "cuero cabelludo pesado",
+        "falta de frescura",
+        "cabello apagado"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "tónico líquido",
+      "cuandoUsar": "mañana o antes del lavado.",
+      "precaucion": "evitar en cuero cabelludo muy sensible a aceites esenciales.",
+      "ingredientes": [
+        "½ taza de infusión fuerte de té verde (fría)",
+        "3 hojas de menta fresca o 1 cucharadita seca",
+        "2 gotas de aceite esencial de menta (opcional)",
+        "Frasco con atomizador"
+      ],
+      "preparacion": [
+        "Prepara un té verde fuerte y deja enfriar. ",
+        "Añade la menta fresca o seca y deja reposar 10 minutos. ",
+        "Cuela y pasa el líquido al frasco atomizador. ",
+        "Si deseas más frescor, añade el aceite esencial de menta. "
+      ],
+      "dosis": "rociar sobre el cuero cabelludo y masajear 1 minuto.",
+      "almacenamiento": "refrigerar hasta 3 días.",
+      "evidencia": "",
+      "categoria": "dermico",
+      "imagen": "assets/images/recetas/dermico_14.webp",
+      "imagenPlaceholder": "assets/images/recetas/dermico_14_placeholder.webp"
+    }
+  ]
+}

@@ -1,0 +1,381 @@
+{
+  "sistema": "Sistema Urinario y Renal",
+  "emoji": "💧",
+  "id": "urinario",
+  "totalRecetas": 12,
+  "recetas": [
+    {
+      "id": "urinario_01",
+      "nombre": "Infusión ligera que ayuda a eliminar líquidos retenidos y...",
+      "descripcion": "Infusión ligera que ayuda a eliminar líquidos retenidos y a apoyar la depuración natural del organismo. La ortiga aporta minerales y favorece un equilibrio más estable durante el día.",
+      "idealPara": [
+        "retención ligera",
+        "hinchazón",
+        "sensación de pesadez"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "mañana o mediodía.",
+      "precaucion": "evitar si hay problemas renales o tensión baja.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de ortiga seca",
+        "½ cucharadita de limón (opcional)"
+      ],
+      "preparacion": [
+        "Hierve el agua. ",
+        "Añade la ortiga, tapa y deja reposar 810 minutos. ",
+        "Cuela y bebe tibia. "
+      ],
+      "dosis": "1 taza al día durante 3 días.",
+      "almacenamiento": "preparar fresca cada vez.",
+      "evidencia": "",
+      "categoria": "urinario",
+      "imagen": "assets/images/recetas/urinario_01.webp",
+      "imagenPlaceholder": "assets/images/recetas/urinario_01_placeholder.webp"
+    },
+    {
+      "id": "urinario_02",
+      "nombre": "Tónico fresco que ayuda a depurar suavemente y a reducir ...",
+      "descripcion": "Tónico fresco que ayuda a depurar suavemente y a reducir la sensación de hinchazón. El perejil estimula el filtrado natural y el limón aporta ligereza y claridad.",
+      "idealPara": [
+        "retención leve",
+        "abdomen pesado",
+        "días de exceso"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tónico",
+      "cuandoUsar": "en ayunas o antes del almuerzo.",
+      "precaucion": "evitar en embarazo o en problemas renales severos.",
+      "ingredientes": [
+        "½ taza de agua tibia",
+        "1 cucharada de perejil fresco picado",
+        "Jugo de ¼ de limón",
+        "1 cucharadita de miel (opcional)"
+      ],
+      "preparacion": [
+        "Mezcla el agua con el perejil. ",
+        "Añade el limón y la miel. ",
+        "Cuela si deseas un sabor más suave. "
+      ],
+      "dosis": "1 vasito pequeño, una vez al día durante 2 días.",
+      "almacenamiento": "preparar al momento.",
+      "evidencia": "",
+      "categoria": "urinario",
+      "imagen": "assets/images/recetas/urinario_02.webp",
+      "imagenPlaceholder": "assets/images/recetas/urinario_02_placeholder.webp"
+    },
+    {
+      "id": "urinario_03",
+      "nombre": "Bebida que ayuda a calmar el sistema urinario y a reducir...",
+      "descripcion": "Bebida suave que ayuda a calmar el sistema urinario y a reducir la irritación. La cebada hidrata y depura, mientras que la caléndula aporta un efecto calmante ideal en días de molestias leves.",
+      "idealPara": [
+        "irritación urinaria suave",
+        "depuración ligera",
+        "días de pesadez"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "agua medicinal",
+      "cuandoUsar": "mañana y tarde.",
+      "precaucion": "evitar si hay celiaquía.",
+      "ingredientes": [
+        "2 cucharadas de cebada perlada",
+        "1 litro de agua",
+        "1 cucharada de caléndula seca"
+      ],
+      "preparacion": [
+        "Lava la cebada y colócala en una olla con el litro de agua. ",
+        "Cocina a fuego lento 30 minutos. ",
+        "Añade la caléndula y deja reposar 10 minutos. ",
+        "Cuela y guarda el líquido. "
+      ],
+      "dosis": "1 vaso dos veces al día.",
+      "almacenamiento": "refrigerar hasta 24 horas.",
+      "evidencia": "",
+      "categoria": "urinario",
+      "imagen": "assets/images/recetas/urinario_03.webp",
+      "imagenPlaceholder": "assets/images/recetas/urinario_03_placeholder.webp"
+    },
+    {
+      "id": "urinario_04",
+      "nombre": "Infusión depurativa que ayuda a aliviar la hinchazón y a ...",
+      "descripcion": "Infusión depurativa que ayuda a aliviar la hinchazón y a estimular el funcionamiento natural de los riñones. El hinojo reduce gases y el diente de león favorece la eliminación de líquidos.",
+      "idealPara": [
+        "retención \tligera",
+        "digestión \tpesada",
+        "depuración general"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "mañana o mediodía.",
+      "precaucion": "evitar si hay problemas biliares o úlceras.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de semillas de hinojo",
+        "1 cucharadita de diente de león (hoja o raíz)"
+      ],
+      "preparacion": [
+        "Hierve el agua. ",
+        "Añade el hinojo y el diente de león. ",
+        "Tapa y deja reposar 810 minutos. ",
+        "Cuela y bebe tibia. "
+      ],
+      "dosis": "1 taza al día durante 3 días seguidos.",
+      "almacenamiento": "preparar fresca cada vez.",
+      "evidencia": "",
+      "categoria": "urinario",
+      "imagen": "assets/images/recetas/urinario_04.webp",
+      "imagenPlaceholder": "assets/images/recetas/urinario_04_placeholder.webp"
+    },
+    {
+      "id": "urinario_05",
+      "nombre": "Cataplasma tibia que ayuda a relajar la zona lumbar y a d...",
+      "descripcion": "Cataplasma tibia que ayuda a relajar la zona lumbar y a disminuir la tensión generada por los cólicos renales suaves. El calor combinado con la manzanilla aporta un alivio progresivo.",
+      "idealPara": [
+        "molestias lumbares leves",
+        "tensión en la zona renal",
+        "cólicos suaves"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "cataplasma",
+      "cuandoUsar": "tarde o noche.",
+      "precaucion": "no usar si hay fiebre o dolor intenso que requiera atención médica.",
+      "ingredientes": [
+        "2 cucharadas de flores de manzanilla",
+        "1 taza de agua caliente",
+        "Toalla o paño grueso"
+      ],
+      "preparacion": [
+        "Prepara una infusión fuerte con la manzanilla usando el agua caliente. ",
+        "Sumerge el paño en la infusión, escurre y aplica tibio sobre la zona lumbar. ",
+        "Mantén 1015 minutos. "
+      ],
+      "dosis": "repetir 12 veces al día según necesidad.",
+      "almacenamiento": "preparar al momento.",
+      "evidencia": "",
+      "categoria": "urinario",
+      "imagen": "assets/images/recetas/urinario_05.webp",
+      "imagenPlaceholder": "assets/images/recetas/urinario_05_placeholder.webp"
+    },
+    {
+      "id": "urinario_06",
+      "nombre": "Tónico ligero que ayuda a apoyar el sistema linfático",
+      "descripcion": "Tónico ligero que ayuda a apoyar el sistema linfático, favoreciendo la depuración y la eliminación de líquidos. La combinación de ortiga y limón aporta claridad y sensación de ligereza.",
+      "idealPara": [
+        "retención ligera",
+        "hinchazón",
+        "días de pesadez"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tónico",
+      "cuandoUsar": "en ayunas o a media mañana.",
+      "precaucion": "evitar si hay problemas renales o tensión muy baja.",
+      "ingredientes": [
+        "½ taza de agua tibia",
+        "1 cucharadita de hojas de ortiga",
+        "Jugo de ¼ de limón",
+        "1 cucharadita de miel (opcional)"
+      ],
+      "preparacion": [
+        "Prepara una infusión breve con la ortiga usando el agua tibia. ",
+        "Cuela y mezcla con el limón y la miel. ",
+        "Bebe tibio. "
+      ],
+      "dosis": "1 vasito al día durante 23 días.",
+      "almacenamiento": "preparar fresco cada vez.",
+      "evidencia": "",
+      "categoria": "urinario",
+      "imagen": "assets/images/recetas/urinario_06.webp",
+      "imagenPlaceholder": "assets/images/recetas/urinario_06_placeholder.webp"
+    },
+    {
+      "id": "urinario_07",
+      "nombre": "Jarabe ligero que ayuda a reducir la retención y a refres...",
+      "descripcion": "Jarabe ligero que ayuda a reducir la retención y a refrescar el sistema urinario. El apio favorece la eliminación de líquidos y la menta aporta un efecto calmante y digestivo.",
+      "idealPara": [
+        "hinchazón leve",
+        "retención",
+        "sensación de pesadez"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "jarabe suave",
+      "cuandoUsar": "mañana o tarde.",
+      "precaucion": "evitar en embarazo o si hay problemas renales fuertes.",
+      "ingredientes": [
+        "½ taza de agua",
+        "1 tallo pequeño de apio picado",
+        "1 cucharada de hojas de menta",
+        "2 cucharadas de miel"
+      ],
+      "preparacion": [
+        "Cocina el apio en el agua durante 10 minutos a fuego bajo. ",
+        "Añade la menta y tapa 5 minutos. ",
+        "Cuela y mezcla el líquido caliente con la miel. ",
+        "Guarda en frasco pequeño. "
+      ],
+      "dosis": "1 cucharadita dos veces al día.",
+      "almacenamiento": "refrigerar hasta 3 días.",
+      "evidencia": "",
+      "categoria": "urinario",
+      "imagen": "assets/images/recetas/urinario_07.webp",
+      "imagenPlaceholder": "assets/images/recetas/urinario_07_placeholder.webp"
+    },
+    {
+      "id": "urinario_08",
+      "nombre": "Infusión que ayuda a calmar la irritación y aporta alivio...",
+      "descripcion": "Infusión suave que ayuda a calmar la irritación y aporta alivio progresivo en días de molestias urinarias ligeras. La manzanilla relaja y el malvavisco suaviza los tejidos.",
+      "idealPara": [
+        "irritación urinaria leve",
+        "ardor suave",
+        "días de sensibilidad"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "mañana y noche.",
+      "precaucion": "buscar atención médica si el malestar persiste o es intenso.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de manzanilla",
+        "1 cucharadita de raíz de malvavisco o flor de malva"
+      ],
+      "preparacion": [
+        "Calienta el agua hasta hervir. ",
+        "Añade las hierbas, tapa y deja reposar 10 minutos. ",
+        "Cuela y bebe tibia. "
+      ],
+      "dosis": "1 taza dos veces al día.",
+      "almacenamiento": "preparar fresca cada vez.",
+      "evidencia": "",
+      "categoria": "urinario",
+      "imagen": "assets/images/recetas/urinario_08.webp",
+      "imagenPlaceholder": "assets/images/recetas/urinario_08_placeholder.webp"
+    },
+    {
+      "id": "urinario_09",
+      "nombre": "Tónico tibio que ayuda a relajar el cuerpo y a apoyar la ...",
+      "descripcion": "Tónico tibio que ayuda a relajar el cuerpo y a apoyar la depuración durante la noche. El limón aclara, la manzanilla calma y el toque de miel suaviza el sistema urinario en días de pesadez.",
+      "idealPara": [
+        "retención ligera",
+        "sensación de hinchazón al final del día",
+        "descanso pesado"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tónico",
+      "cuandoUsar": "de noche, 1 hora antes de dormir.",
+      "precaucion": "evitar si hay gastritis o si el limón irrita.",
+      "ingredientes": [
+        "½ taza de agua tibia",
+        "1 cucharadita de manzanilla",
+        "Jugo de ? de limón",
+        "1 cucharadita de miel"
+      ],
+      "preparacion": [
+        "Prepara una infusión breve con la manzanilla. ",
+        "Cuela y mezcla con el limón y la miel. ",
+        "Bebe tibio. "
+      ],
+      "dosis": "1 vasito por la noche durante 2 días.",
+      "almacenamiento": "preparar al momento.",
+      "evidencia": "",
+      "categoria": "urinario",
+      "imagen": "assets/images/recetas/urinario_09.webp",
+      "imagenPlaceholder": "assets/images/recetas/urinario_09_placeholder.webp"
+    },
+    {
+      "id": "urinario_10",
+      "nombre": "Infusión dirigida a apoyar el sistema urinario cuando hay...",
+      "descripcion": "Infusión dirigida a apoyar el sistema urinario cuando hay molestias suaves. La gayuba tiene un efecto calmante y la cola de caballo ayuda a depurar y tonificar los tejidos.",
+      "idealPara": [
+        "irritación urinaria ligera",
+        "sensación de peso",
+        "días de incomodidad"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "mañana o tarde.",
+      "precaucion": "usar solo por periodos cortos; evitar en embarazo o problemas renales.",
+      "ingredientes": [
+        "1 taza de agua",
+        "½ cucharadita de hojas de gayuba",
+        "1 cucharadita de cola de caballo"
+      ],
+      "preparacion": [
+        "Calienta el agua hasta hervir. ",
+        "Añade la gayuba y la cola de caballo. ",
+        "Tapa y deja reposar 810 minutos. ",
+        "Cuela y bebe tibia. "
+      ],
+      "dosis": "1 taza al día durante un máximo de 3 días.",
+      "almacenamiento": "preparar fresca cada vez.",
+      "evidencia": "",
+      "categoria": "urinario",
+      "imagen": "assets/images/recetas/urinario_10.webp",
+      "imagenPlaceholder": "assets/images/recetas/urinario_10_placeholder.webp"
+    },
+    {
+      "id": "urinario_11",
+      "nombre": "Tintura que ayuda a apoyar el trabajo de los riñones y a ...",
+      "descripcion": "Tintura suave que ayuda a apoyar el trabajo de los riñones y a reducir la sensación de pesadez por retención ligera. La combinación de cola de caballo y diente de león ofrece un apoyo depurativo sin forzar el sistema.",
+      "idealPara": [
+        "retención leve",
+        "hinchazón",
+        "días de acumulación o cansancio"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tintura",
+      "cuandoUsar": "mañana o mediodía.",
+      "precaucion": "evitar en embarazo, problemas renales o si se toman diuréticos.",
+      "ingredientes": [
+        "1 cucharada de cola de caballo seca",
+        "1 cucharada de raíz de diente de león",
+        "200 ml de alcohol de cereal o vodka suave",
+        "Frasco de vidrio oscuro"
+      ],
+      "preparacion": [
+        "Coloca las hierbas en el frasco. ",
+        "Cubre con el alcohol y cierra bien. ",
+        "Deja macerar 2 semanas en un lugar fresco, agitando cada día. ",
+        "Cuela y pasa a un frasco con gotero. "
+      ],
+      "dosis": "1015 gotas en medio vaso de agua, una vez al día durante 3 días.",
+      "almacenamiento": "conservar en lugar fresco y oscuro hasta 3 meses.",
+      "evidencia": "",
+      "categoria": "urinario",
+      "imagen": "assets/images/recetas/urinario_11.webp",
+      "imagenPlaceholder": "assets/images/recetas/urinario_11_placeholder.webp"
+    },
+    {
+      "id": "urinario_12",
+      "nombre": "Bebida que ayuda a calmar la irritación del sistema urina...",
+      "descripcion": "Bebida suave que ayuda a calmar la irritación del sistema urinario y favorece una depuración ligera. El pepino hidrata profundamente y la manzanilla relaja los tejidos, creando un alivio progresivo en días de sensibilidad.",
+      "idealPara": [
+        "irritación urinaria leve",
+        "sensación de ardor suave",
+        "días de pesadez"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "agua medicinal",
+      "cuandoUsar": "mañana o tarde.",
+      "precaucion": "evitar si hay gastritis fuerte o alergia a la manzanilla.",
+      "ingredientes": [
+        "1 taza de agua tibia",
+        "3 rodajas finas de pepino fresco",
+        "1 cucharadita de manzanilla seca",
+        "½ cucharadita de miel (opcional)"
+      ],
+      "preparacion": [
+        "Calienta el agua sin que hierva. ",
+        "Añade la manzanilla y deja reposar 5 minutos. ",
+        "Cuela y agrega el pepino. ",
+        "Deja reposar 2 minutos más para suavizar el sabor. ",
+        "Endulza si lo deseas. "
+      ],
+      "dosis": "1 taza al día durante 2 días.",
+      "almacenamiento": "preparar fresca cada vez; no guardar.",
+      "evidencia": "",
+      "categoria": "urinario",
+      "imagen": "assets/images/recetas/urinario_12.webp",
+      "imagenPlaceholder": "assets/images/recetas/urinario_12_placeholder.webp"
+    }
+  ]
+}

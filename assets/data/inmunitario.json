@@ -1,0 +1,422 @@
+{
+  "sistema": "Sistema Inmunitario",
+  "emoji": "🛡️",
+  "id": "inmunitario",
+  "totalRecetas": 13,
+  "recetas": [
+    {
+      "id": "inmunitario_01",
+      "nombre": "Infusión cálida que apoya las defensas en los primeros dí...",
+      "descripcion": "Infusión cálida que apoya las defensas en los primeros días de malestar. La equinácea estimula la respuesta inmunitaria de forma suave, mientras que las flores de saúco ayudan a bajar la congestión y acompañan el proceso de recuperación.",
+      "idealPara": [
+        "primeros signos de resfriado",
+        "cambios de estación",
+        "defensas bajas"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "dos veces al día, durante 3 a 5 días.",
+      "precaucion": "evitar su uso prolongado y no tomar en enfermedades autoinmunes.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de raíz de equinácea o flores secas",
+        "1 cucharadita de flores de saúco",
+        "1 cucharadita de miel (opcional)"
+      ],
+      "preparacion": [
+        "Calienta el agua hasta hervir. ",
+        "Añade la equinácea y deja hervir 2 minutos si es raíz; si es flor, solo apaga el fuego. ",
+        "Agrega el saúco, tapa y deja reposar 10 minutos. ",
+        "Cuela y endulza con miel si lo deseas. "
+      ],
+      "dosis": "1 taza tibia, una o dos veces al día.",
+      "almacenamiento": "preparar fresca cada vez; conservar las hierbas secas en frascos herméticos.",
+      "evidencia": "",
+      "categoria": "inmunitario",
+      "imagen": "assets/images/recetas/inmunitario_01.webp",
+      "imagenPlaceholder": "assets/images/recetas/inmunitario_01_placeholder.webp"
+    },
+    {
+      "id": "inmunitario_02",
+      "nombre": "Bebida tibia y reconfortante que ayuda a reducir la infla...",
+      "descripcion": "Bebida tibia y reconfortante que ayuda a reducir la inflamación, fortalecer suavemente las defensas y apoyar la recuperación en días fríos. La cúrcuma aporta antioxidantes y la pimienta mejora su absorción, creando un tónico suave y equilibrante.",
+      "idealPara": [
+        "inflamación leve",
+        "defensas bajas",
+        "cansancio por cambio de clima"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "bebida caliente",
+      "cuandoUsar": "de noche o al final del día.",
+      "precaucion": "evitar en problemas de vesícula o si se usan anticoagulantes.",
+      "ingredientes": [
+        "1 taza de leche o bebida vegetal",
+        "½ cucharadita de cúrcuma en polvo",
+        "1 pizca de pimienta negra",
+        "½ cucharadita de jengibre en polvo (opcional)",
+        "1 cucharadita de miel o sirope (opcional)"
+      ],
+      "preparacion": [
+        "Calienta la leche sin dejar que hierva. ",
+        "Añade la cúrcuma, la pimienta y el jengibre. ",
+        "Remueve bien y deja reposar 2 minutos. ",
+        "Endulza con miel si lo deseas. "
+      ],
+      "dosis": "1 taza tibia al día, durante periodos fríos o de cansancio.",
+      "almacenamiento": "preparar fresca cada vez; conservar los polvos en frascos cerrados.",
+      "evidencia": "",
+      "categoria": "inmunitario",
+      "imagen": "assets/images/recetas/inmunitario_02.webp",
+      "imagenPlaceholder": "assets/images/recetas/inmunitario_02_placeholder.webp"
+    },
+    {
+      "id": "inmunitario_03",
+      "nombre": "Tónico que ayuda a activar las defensas y dar un impulso ...",
+      "descripcion": "Tónico concentrado que ayuda a activar las defensas y dar un impulso rápido de energía en días fríos o de malestar inicial. El jengibre calienta y estimula, mientras que la miel suaviza la garganta y aporta un toque nutritivo.",
+      "idealPara": [
+        "primeros signos de resfriado",
+        "bajón de energía",
+        "defensas bajas"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "shot",
+      "cuandoUsar": "en ayunas o a media mañana.",
+      "precaucion": "evitar en gastritis, úlcera o si hay sensibilidad al jengibre.",
+      "ingredientes": [
+        "1 cucharada de jugo de jengibre fresco",
+        "1 cucharada de miel pura",
+        "1 cucharada de jugo de limón",
+        "2 cucharadas de agua tibia"
+      ],
+      "preparacion": [
+        "Mezcla el jengibre, la miel y el limón en un vasito pequeño. ",
+        "Añade el agua tibia y remueve hasta integrar todo. ",
+        "Bebe de inmediato. "
+      ],
+      "dosis": "1 shot al día durante 3 a 5 días.",
+      "almacenamiento": "preparar y tomar al momento; no guardar. Jarabe espeso y rico en antioxidantes que ayuda a fortalecer las defensas y reducir la inflamación. Las bayas aportan energía suave y apoyo natural en días fríos o de cansancio.",
+      "evidencia": "",
+      "categoria": "inmunitario",
+      "imagen": "assets/images/recetas/inmunitario_03.webp",
+      "imagenPlaceholder": "assets/images/recetas/inmunitario_03_placeholder.webp"
+    },
+    {
+      "id": "inmunitario_04",
+      "nombre": "Jarabe espeso y rico en antioxidantes que ayuda a fortale...",
+      "descripcion": "Jarabe espeso y rico en antioxidantes que ayuda a fortalecer las defensas y reducir la inflamación. Las bayas aportan energía suave y apoyo natural en días fríos o de cansancio.",
+      "idealPara": [
+        "defensas bajas",
+        "recuperación tras resfriados",
+        "cansancio estacional"
+      ],
+      "tipo": "no especificado",
+      "tipoPreparacion": "",
+      "cuandoUsar": "por la mañana o a media tarde.",
+      "precaucion": "evitar si hay alergia a frutos rojos o exceso de azúcar.",
+      "ingredientes": [
+        "1 taza de bayas mixtas (arándanos, frambuesas o moras) frescas o congeladas",
+        "½ taza de agua",
+        "½ taza de miel pura",
+        "1 trocito pequeño de jengibre (opcional)"
+      ],
+      "preparacion": [
+        "Coloca las bayas y el agua en una olla pequeña. ",
+        "Cocina a fuego bajo 10 minutos, aplastando suavemente las frutas. ",
+        "Apaga el fuego, deja entibiar y cuela para obtener el jugo. ",
+        "Mezcla ese jugo tibio con la miel hasta integrar bien. ",
+        "Guarda el jarabe en un frasco de vidrio. "
+      ],
+      "dosis": "1 cucharadita al día; en adultos puede aumentarse a 2 si se necesita.",
+      "almacenamiento": "conservar en refrigeración hasta 1 semana.",
+      "evidencia": "",
+      "categoria": "inmunitario",
+      "imagen": "assets/images/recetas/inmunitario_04.webp",
+      "imagenPlaceholder": "assets/images/recetas/inmunitario_04_placeholder.webp"
+    },
+    {
+      "id": "inmunitario_05",
+      "nombre": "Bebida que ayuda a equilibrar el sistema inmunitario y me...",
+      "descripcion": "Bebida suave que ayuda a equilibrar el sistema inmunitario y mejorar la resistencia del cuerpo frente al cansancio y los cambios de clima. El reishi es un hongo tradicionalmente usado para fortalecer sin estimular en exceso, ideal para temporadas de desgaste.",
+      "idealPara": [
+        "defensas \tbajas",
+        "estrés \tprolongado",
+        "recuperación lenta"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tónico caliente",
+      "cuandoUsar": "una vez al día, preferiblemente por la mañana.",
+      "precaucion": "evitar si se toman anticoagulantes o en trastornos de presión baja.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de polvo de reishi o 1 trocito seco",
+        "½ cucharadita de miel o sirope (opcional)"
+      ],
+      "preparacion": [
+        "Calienta el agua hasta hervir. ",
+        "Añade el reishi y cocina a fuego bajo de 10 a 15 minutos. ",
+        "Cuela si usaste el trozo seco. ",
+        "Endulza ligeramente si lo deseas. "
+      ],
+      "dosis": "1 taza al día durante 2 a 3 semanas.",
+      "almacenamiento": "preparar fresca cada vez; conservar el polvo en frasco hermético.",
+      "evidencia": "",
+      "categoria": "inmunitario",
+      "imagen": "assets/images/recetas/inmunitario_05.webp",
+      "imagenPlaceholder": "assets/images/recetas/inmunitario_05_placeholder.webp"
+    },
+    {
+      "id": "inmunitario_06",
+      "nombre": "Caldo tibio y reconfortante que ayuda a fortalecer el sis...",
+      "descripcion": "Caldo tibio y reconfortante que ayuda a fortalecer el sistema inmunitario y acelerar la recuperación en días de resfriado o debilidad. El ajo y la cebolla aportan compuestos naturales que apoyan las defensas y mejoran la circulación.",
+      "idealPara": [
+        "resfriados leves",
+        "debilidad",
+        "recuperación lenta"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "caldo",
+      "cuandoUsar": "durante el día, especialmente en épocas frías.",
+      "precaucion": "evitar en estómagos muy sensibles o si hay gastritis activa.",
+      "ingredientes": [
+        "1 litro de agua",
+        "1 cebolla mediana en cuartos",
+        "3 dientes de ajo aplastados",
+        "1 trocito de jengibre (opcional)",
+        "Sal fina al gusto"
+      ],
+      "preparacion": [
+        "Coloca todos los ingredientes en una olla. ",
+        "Cocina a fuego bajo 2025 minutos. ",
+        "Cuela el caldo y sirve tibio. "
+      ],
+      "dosis": "1 taza, una o dos veces al día.",
+      "almacenamiento": "conservar en refrigeración hasta 48 horas.",
+      "evidencia": "",
+      "categoria": "inmunitario",
+      "imagen": "assets/images/recetas/inmunitario_06.webp",
+      "imagenPlaceholder": "assets/images/recetas/inmunitario_06_placeholder.webp"
+    },
+    {
+      "id": "inmunitario_07",
+      "nombre": "Infusión ligera que apoya la depuración del organismo y f...",
+      "descripcion": "Infusión ligera que apoya la depuración del organismo y fortalece suavemente las defensas. La ortiga aporta minerales y la raíz de diente de león ayuda al hígado a trabajar con más eficiencia, útil en cambios de estación o cansancio acumulado.",
+      "idealPara": [
+        "depuración suave",
+        "defensas bajas",
+        "retención ligera"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "por la mañana o media tarde.",
+      "precaucion": "evitar si se toman diuréticos o hay problemas renales.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de hojas de ortiga seca",
+        "½ cucharadita de raíz de diente de león",
+        "½ cucharadita de miel (opcional)"
+      ],
+      "preparacion": [
+        "Lleva el agua a ebullición. ",
+        "Añade la ortiga y el diente de león; tapa y deja reposar 10 minutos. ",
+        "Cuela y endulza si deseas un sabor más suave. "
+      ],
+      "dosis": "1 taza al día, durante 3 a 5 días seguidos.",
+      "almacenamiento": "preparar fresca cada vez; conservar las hierbas secas en frasco cerrado.",
+      "evidencia": "",
+      "categoria": "inmunitario",
+      "imagen": "assets/images/recetas/inmunitario_07.webp",
+      "imagenPlaceholder": "assets/images/recetas/inmunitario_07_placeholder.webp"
+    },
+    {
+      "id": "inmunitario_08",
+      "nombre": "Infusión cálida que ayuda a preparar el cuerpo para el fr...",
+      "descripcion": "Infusión cálida que ayuda a preparar el cuerpo para el frío y reforzar las defensas antes de los meses más exigentes. Combina plantas aromáticas y ligeramente picantes que activan la circulación y mantienen el sistema inmunitario alerta sin sobrecargarlo.",
+      "idealPara": [
+        "prevención en otoño e invierno",
+        "defensas bajas",
+        "cansancio estacional"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "una vez al día durante una o dos semanas.",
+      "precaucion": "evitar si hay gastritis o sensibilidad al jengibre.",
+      "ingredientes": [
+        "1 taza de agua",
+        "½ cucharadita de jengibre fresco rallado",
+        "1 cucharadita de flores de saúco o manzanilla",
+        "1 trocito pequeño de canela",
+        "1 cucharadita de miel o limón (opcional)"
+      ],
+      "preparacion": [
+        "Hierve el agua y añade el jengibre y la canela. ",
+        "Cocina 2 minutos y apaga el fuego. ",
+        "Agrega el saúco o la manzanilla, tapa y deja reposar 810 minutos. ",
+        "Cuela y endulza con miel o añade limón. "
+      ],
+      "dosis": "1 taza al día en periodos fríos o al sentir debilidad.",
+      "almacenamiento": "preparar fresca; guardar las hierbas secas en frasco hermético.",
+      "evidencia": "",
+      "categoria": "inmunitario",
+      "imagen": "assets/images/recetas/inmunitario_08.webp",
+      "imagenPlaceholder": "assets/images/recetas/inmunitario_08_placeholder.webp"
+    },
+    {
+      "id": "inmunitario_09",
+      "nombre": "Preparado líquido suave que ayuda al cuerpo a responder m...",
+      "descripcion": "Preparado líquido suave que ayuda al cuerpo a responder mejor frente a virus comunes. La combinación de ajo macerado y limón crea un tónico ligero que apoya las defensas en los primeros días de malestar o durante cambios de clima.",
+      "idealPara": [
+        "primeros signos de resfriado",
+        "prevención en épocas frías"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "gotas",
+      "cuandoUsar": "mañana y noche durante 3 a 5 días.",
+      "precaucion": "evitar en estómagos sensibles o si se toma anticoagulantes.",
+      "ingredientes": [
+        "2 dientes de ajo picados",
+        "Jugo de 1 limón",
+        "2 cucharadas de miel",
+        "2 cucharadas de agua tibia"
+      ],
+      "preparacion": [
+        "Mezcla el agua tibia, el ajo, el limón y la miel. ",
+        "Deja reposar 30 minutos. ",
+        "Cuela para obtener un líquido claro. ",
+        "Guarda en frasco pequeño de vidrio. "
+      ],
+      "dosis": "10 a 15 gotas en medio vaso de agua, dos veces al día.",
+      "almacenamiento": "refrigerar y usar dentro de 48 horas.",
+      "evidencia": "",
+      "categoria": "inmunitario",
+      "imagen": "assets/images/recetas/inmunitario_09.webp",
+      "imagenPlaceholder": "assets/images/recetas/inmunitario_09_placeholder.webp"
+    },
+    {
+      "id": "inmunitario_10",
+      "nombre": "Tónico caliente que ayuda a activar la digestión y fortal...",
+      "descripcion": "Tónico caliente que ayuda a activar la digestión y fortalecer suavemente las defensas. La cúrcuma aporta antioxidantes y el vinagre de manzana apoya el equilibrio interno, ideal para temporadas frías o momentos de baja energía.",
+      "idealPara": [
+        "defensas bajas",
+        "inflamación leve",
+        "cansancio"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tónico",
+      "cuandoUsar": "por la mañana, en ayunas si sienta bien.",
+      "precaucion": "evitar en problemas de estómago o si se usan anticoagulantes.",
+      "ingredientes": [
+        "1 taza de agua tibia",
+        "½ cucharadita de cúrcuma en polvo",
+        "1 cucharada de vinagre de manzana",
+        "1 cucharadita de miel o sirope (opcional)",
+        "1 pizca de pimienta negra"
+      ],
+      "preparacion": [
+        "Mezcla el agua tibia con la cúrcuma y la pimienta. ",
+        "Añade el vinagre y la miel. ",
+        "Remueve bien y bebe lento. "
+      ],
+      "dosis": "1 taza al día durante 5 a 7 días.",
+      "almacenamiento": "preparar fresco cada vez; no guardar.",
+      "evidencia": "",
+      "categoria": "inmunitario",
+      "imagen": "assets/images/recetas/inmunitario_10.webp",
+      "imagenPlaceholder": "assets/images/recetas/inmunitario_10_placeholder.webp"
+    },
+    {
+      "id": "inmunitario_11",
+      "nombre": "Ungüento que ayuda a proteger en épocas frías y a mantene...",
+      "descripcion": "Ungüento aromático que ayuda a proteger en épocas frías y a mantener despejadas las vías respiratorias. Sus aceites esenciales crean una barrera suave en el ambiente cercano y aportan sensación de calor y claridad.",
+      "idealPara": [
+        "prevención en invierno",
+        "primeros signos de resfriado",
+        "ambientes cargados"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "bálsamo",
+      "cuandoUsar": "mañana y noche, o antes de salir de casa.",
+      "precaucion": "no aplicar en bebés ni cerca de los ojos; evitar durante el embarazo.",
+      "ingredientes": [
+        "2 cucharadas de aceite de coco",
+        "1 cucharada de cera de abeja",
+        "3 gotas de aceite esencial de eucalipto",
+        "2 gotas de aceite esencial de árbol de té",
+        "2 gotas de aceite esencial de limón"
+      ],
+      "preparacion": [
+        "Derrite el aceite de coco y la cera a baño maría. ",
+        "Retira del fuego y deja entibiar. ",
+        "Añade los aceites esenciales y mezcla bien. ",
+        "Vierte en un frasco pequeño y deja solidificar. "
+      ],
+      "dosis": "aplicar una pequeña cantidad en pecho, cuello o muñecas.",
+      "almacenamiento": "conservar en lugar fresco hasta 3 meses.",
+      "evidencia": "",
+      "categoria": "inmunitario",
+      "imagen": "assets/images/recetas/inmunitario_11.webp",
+      "imagenPlaceholder": "assets/images/recetas/inmunitario_11_placeholder.webp"
+    },
+    {
+      "id": "inmunitario_12",
+      "nombre": "Infusión que apoya el sistema inmunitario y ayuda a mante...",
+      "descripcion": "Infusión suave que apoya el sistema inmunitario y ayuda a mantener la energía estable a lo largo del día. El astrágalo es una raíz tradicionalmente usada para fortalecer sin estimular, ideal en épocas frías o de cansancio prolongado.",
+      "idealPara": [
+        "defensas bajas",
+        "fatiga suave",
+        "recuperación lenta"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "mañana o mediodía.",
+      "precaucion": "evitar en enfermedades autoinmunes o fiebre activa.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de raíz de astrágalo en tiras",
+        "½ cucharadita de miel (opcional)"
+      ],
+      "preparacion": [
+        "Hierve el agua y añade el astrágalo. ",
+        "Cocina a fuego bajo 10 minutos. ",
+        "Tapa y deja reposar 5 minutos más. ",
+        "Cuela y endulza si lo deseas. "
+      ],
+      "dosis": "1 taza al día durante 1 a 2 semanas.",
+      "almacenamiento": "preparar fresca cada vez; guardar la raíz seca en frasco cerrado.",
+      "evidencia": "",
+      "categoria": "inmunitario",
+      "imagen": "assets/images/recetas/inmunitario_12.webp",
+      "imagenPlaceholder": "assets/images/recetas/inmunitario_12_placeholder.webp"
+    },
+    {
+      "id": "inmunitario_13",
+      "nombre": "Preparado concentrado que ayuda a reforzar las defensas y...",
+      "descripcion": "Preparado concentrado que ayuda a reforzar las defensas y proteger en épocas frías. El propóleo actúa como soporte natural frente a microbios comunes, mientras que la miel suaviza y complementa su efecto.",
+      "idealPara": [
+        "prevención en invierno",
+        "primeros signos de resfriado",
+        "defensas bajas"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tintura",
+      "cuandoUsar": "por la mañana o a media tarde.",
+      "precaucion": "evitar en personas alérgicas a productos de abeja.",
+      "ingredientes": [
+        "1 cucharada de propóleo en gotas o extracto",
+        "2 cucharadas de miel pura",
+        "2 cucharadas de agua tibia",
+        "Frasco pequeño con gotero (opcional)"
+      ],
+      "preparacion": [
+        "Mezcla la miel con el agua tibia hasta integrar. ",
+        "Añade el propóleo y remueve bien. ",
+        "Si quieres, vierte la mezcla en un frasco con gotero para un uso más cómodo. "
+      ],
+      "dosis": "10 a 15 gotas en medio vaso de agua, una o dos veces al día.",
+      "almacenamiento": "conservar en lugar fresco y oscuro hasta 2 semanas.",
+      "evidencia": "",
+      "categoria": "inmunitario",
+      "imagen": "assets/images/recetas/inmunitario_13.webp",
+      "imagenPlaceholder": "assets/images/recetas/inmunitario_13_placeholder.webp"
+    }
+  ]
+}

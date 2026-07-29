@@ -1,0 +1,310 @@
+{
+  "sistema": "Sistema Sensorial y Bucal",
+  "emoji": "👁️",
+  "id": "sensorial",
+  "totalRecetas": 10,
+  "recetas": [
+    {
+      "id": "sensorial_01",
+      "nombre": "Limpieza ocular suave que ayuda a aliviar irritación leve...",
+      "descripcion": "Limpieza ocular suave que ayuda a aliviar irritación leve y sensación de arenilla. La eufrasia es una planta tradicionalmente usada para calmar los ojos cansados.",
+      "idealPara": [
+        "ojos irritados",
+        "sequedad leve",
+        "cansancio visual"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "lavado, no gotas internas",
+      "cuandoUsar": "mañana o tarde.",
+      "precaucion": "no introducir dentro del globo ocular; solo uso externo. Preparar siempre fresco.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de eufrasia seca",
+        "Gasa estéril o gotero para aplicar externamente"
+      ],
+      "preparacion": [
+        "Hierve el agua. ",
+        "Añade la eufrasia y deja reposar 10 minutos. ",
+        "Cuela con una gasa estéril para evitar partículas. ",
+        "Deja enfriar completamente. "
+      ],
+      "dosis": "aplicar como lavado externo o dejando caer unas gotas sobre el párpado cerrado.",
+      "almacenamiento": "usar en el día; descartar el sobrante. Compresa suave que ayuda a bajar la hinchazón y refrescar los ojos cansados. La manzanilla calma y el pepino reduce la sensación de pesadez.",
+      "evidencia": "",
+      "categoria": "sensorial",
+      "imagen": "assets/images/recetas/sensorial_01.webp",
+      "imagenPlaceholder": "assets/images/recetas/sensorial_01_placeholder.webp"
+    },
+    {
+      "id": "sensorial_02",
+      "nombre": "Compresa que ayuda a bajar la hinchazón y refrescar los o...",
+      "descripcion": "Compresa suave que ayuda a bajar la hinchazón y refrescar los ojos cansados. La manzanilla calma y el pepino reduce la sensación de pesadez.",
+      "idealPara": [
+        "hinchazón",
+        "ojos rojos",
+        "cansancio por pantallas"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "compresa",
+      "cuandoUsar": "tarde o noche.",
+      "precaucion": "evitar si hay infección ocular.",
+      "ingredientes": [
+        "½ taza de infusión de manzanilla fría",
+        "2 rodajas delgadas de pepino",
+        "Algodones o gasas"
+      ],
+      "preparacion": [
+        "Humedece los algodones en la infusión fría. ",
+        "Coloca una rodaja de pepino sobre cada algodón. ",
+        "Aplica sobre los ojos cerrados. "
+      ],
+      "dosis": "mantener 10 minutos recostado.",
+      "almacenamiento": "preparar al momento.",
+      "evidencia": "",
+      "categoria": "sensorial",
+      "imagen": "assets/images/recetas/sensorial_02.webp",
+      "imagenPlaceholder": "assets/images/recetas/sensorial_02_placeholder.webp"
+    },
+    {
+      "id": "sensorial_03",
+      "nombre": "Enjuague que ayuda a refrescar la boca y a reducir la sen...",
+      "descripcion": "Enjuague suave que ayuda a refrescar la boca y a reducir la sensación de inflamación en encías. La salvia aporta limpieza natural y el clavo deja una sensación cálida y aromática.",
+      "idealPara": [
+        "encías sensibles",
+        "mal aliento leve",
+        "higiene diaria"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "enjuague",
+      "cuandoUsar": "mañana y noche.",
+      "precaucion": "no ingerir.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de salvia seca",
+        "2 clavos de olor"
+      ],
+      "preparacion": [
+        "Hierve el agua. ",
+        "Añade la salvia y los clavos. ",
+        "Tapa y deja reposar 10 minutos. ",
+        "Cuela y deja enfriar. "
+      ],
+      "dosis": "enjuagar durante 2030 segundos y escupir.",
+      "almacenamiento": "refrigerar hasta 24 horas.",
+      "evidencia": "",
+      "categoria": "sensorial",
+      "imagen": "assets/images/recetas/sensorial_03.webp",
+      "imagenPlaceholder": "assets/images/recetas/sensorial_03_placeholder.webp"
+    },
+    {
+      "id": "sensorial_04",
+      "nombre": "Pasta que ayuda a limpiar los dientes sin agentes agresivos.",
+      "descripcion": "Pasta simple que ayuda a limpiar los dientes sin agentes agresivos. El bicarbonato aporta una limpieza suave y la arcilla blanca ayuda a pulir con delicadeza.",
+      "idealPara": [
+        "limpieza diaria suave",
+        "encías sensibles",
+        "boca seca"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "pasta",
+      "cuandoUsar": "mañana y noche.",
+      "precaucion": "no usar si hay lesiones abiertas en encías.",
+      "ingredientes": [
+        "1 cucharada de arcilla blanca comestible",
+        "1 cucharadita de bicarbonato",
+        "1 cucharadita de aceite de coco",
+        "1 gota de aceite esencial de menta (opcional)"
+      ],
+      "preparacion": [
+        "Mezcla la arcilla con el bicarbonato. ",
+        "Añade el aceite de coco hasta formar una pasta suave. ",
+        "Agrega la menta si deseas frescor. "
+      ],
+      "dosis": "tomar una pequeña cantidad con el cepillo y lavar de forma normal.",
+      "almacenamiento": "guardar en frasco cerrado hasta 1 semana.",
+      "evidencia": "",
+      "categoria": "sensorial",
+      "imagen": "assets/images/recetas/sensorial_04.webp",
+      "imagenPlaceholder": "assets/images/recetas/sensorial_04_placeholder.webp"
+    },
+    {
+      "id": "sensorial_05",
+      "nombre": "Técnica que ayuda a limpiar la boca de forma suave y a de...",
+      "descripcion": "Técnica tradicional que ayuda a limpiar la boca de forma suave y a dejar una sensación de frescor duradero. El aceite actúa como base purificante y ayuda a mover impurezas sin irritar.",
+      "idealPara": [
+        "boca seca",
+        "halitosis leve",
+        "sensación de pesadez bucal"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "enjuague con aceite",
+      "cuandoUsar": "mañana, antes del desayuno.",
+      "precaucion": "no tragar el aceite.",
+      "ingredientes": [
+        "1 cucharada de aceite de coco o sésamo",
+        "1 gota de aceite esencial de menta (opcional)"
+      ],
+      "preparacion": [
+        "Coloca el aceite en la boca. ",
+        "Si deseas, añade la menta para un frescor suave. "
+      ],
+      "dosis": "mover el aceite en la boca durante 510 minutos y escupir. Enjuagar después con agua tibia.",
+      "almacenamiento": "mantener el aceite en frasco cerrado a temperatura ambiente.",
+      "evidencia": "",
+      "categoria": "sensorial",
+      "imagen": "assets/images/recetas/sensorial_05.webp",
+      "imagenPlaceholder": "assets/images/recetas/sensorial_05_placeholder.webp"
+    },
+    {
+      "id": "sensorial_06",
+      "nombre": "Preparación que ayuda a calmar molestias externas en el o...",
+      "descripcion": "Preparación suave que ayuda a calmar molestias externas en el oído y a suavizar la sensación de presión leve. El ajo aporta un toque purificante y el aceite tibio relaja la zona.",
+      "idealPara": [
+        "oído irritado por frío o viento",
+        "sensación de molestia suave"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "gotas",
+      "cuandoUsar": "noche.",
+      "precaucion": "no usar si hay dolor fuerte, fiebre, supuración o perforación del tímpano. Ingredientes:",
+      "ingredientes": [
+        "1 cucharada de aceite de oliva",
+        "½ diente de ajo machacado",
+        "Gasa limpia"
+      ],
+      "preparacion": [
+        "Calienta el aceite a baño maría muy suave. ",
+        "Añade el ajo y deja reposar 10 minutos fuera del fuego. ",
+        "Cuela con gasa para retirar cualquier partícula. "
+      ],
+      "dosis": "aplicar 12 gotas tibias en el oído afectado y recostarse unos minutos.",
+      "almacenamiento": "desechar después de 48 horas.",
+      "evidencia": "",
+      "categoria": "sensorial",
+      "imagen": "assets/images/recetas/sensorial_06.webp",
+      "imagenPlaceholder": "assets/images/recetas/sensorial_06_placeholder.webp"
+    },
+    {
+      "id": "sensorial_07",
+      "nombre": "Roll-on que ayuda a despejar la mente y a reducir la sens...",
+      "descripcion": "Roll-on aromático que ayuda a despejar la mente y a reducir la sensación de mareo leve. La menta refresca y el jengibre aporta un apoyo suave en momentos de inestabilidad.",
+      "idealPara": [
+        "mareo ligero",
+        "náuseas suaves",
+        "vértigo ocasional"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "roll-on",
+      "cuandoUsar": "al primer signo de mareo.",
+      "precaucion": "no aplicar cerca de los ojos ni en piel irritada.",
+      "ingredientes": [
+        "10 ml de aceite de jojoba",
+        "3 gotas de aceite esencial de menta",
+        "1 gota de aceite esencial de jengibre",
+        "Frasco roll-on"
+      ],
+      "preparacion": [
+        "Llena el frasco con el aceite base. ",
+        "Añade los aceites esenciales. ",
+        "Agita suavemente. "
+      ],
+      "dosis": "aplicar en sienes, nuca y muñecas; inhalar el aroma unos segundos.",
+      "almacenamiento": "guardar en lugar fresco hasta 3 meses.",
+      "evidencia": "",
+      "categoria": "sensorial",
+      "imagen": "assets/images/recetas/sensorial_07.webp",
+      "imagenPlaceholder": "assets/images/recetas/sensorial_07_placeholder.webp"
+    },
+    {
+      "id": "sensorial_08",
+      "nombre": "Spray fresco que ayuda a mantener la higiene bucal y a re...",
+      "descripcion": "Spray fresco que ayuda a mantener la higiene bucal y a reducir la sensación de mal aliento. La mezcla de menta y tomillo aporta limpieza suave y un aroma herbal agradable.",
+      "idealPara": [
+        "halitosis leve",
+        "sensación de boca pesada",
+        "higiene diaria"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "spray",
+      "cuandoUsar": "después de las comidas o cuando se necesite frescor.",
+      "precaucion": "no tragar; evitar si hay irritaciones fuertes en la boca.",
+      "ingredientes": [
+        "2 cucharadas de agua filtrada",
+        "1 cucharada de infusión fuerte de tomillo (fría)",
+        "2 gotas de aceite esencial de menta",
+        "Frasco con atomizador pequeño"
+      ],
+      "preparacion": [
+        "Mezcla el agua con la infusión de tomillo. ",
+        "Añade la menta y agita bien. ",
+        "Vierte en el frasco atomizador. "
+      ],
+      "dosis": "rociar 1 o 2 veces en la boca y escupir el exceso.",
+      "almacenamiento": "refrigerar hasta 3 días.",
+      "evidencia": "",
+      "categoria": "sensorial",
+      "imagen": "assets/images/recetas/sensorial_08.webp",
+      "imagenPlaceholder": "assets/images/recetas/sensorial_08_placeholder.webp"
+    },
+    {
+      "id": "sensorial_09",
+      "nombre": "Bálsamo ligero que ayuda a hidratar los labios y a suaviz...",
+      "descripcion": "Bálsamo ligero que ayuda a hidratar los labios y a suavizar la tirantez causada por el clima o la deshidratación. La menta refresca y el aloe aporta una hidratación rápida sin dejar sensación grasa.",
+      "idealPara": [
+        "labios secos",
+        "tirantes",
+        "falta de suavidad"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "bálsamo",
+      "cuandoUsar": "varias veces al día.",
+      "precaucion": "evitar en piel muy sensible a aceites esenciales.",
+      "ingredientes": [
+        "1 cucharada de gel de aloe vera",
+        "1 cucharadita de aceite de coco",
+        "1 gota de aceite esencial de menta",
+        "½ cucharadita de miel (opcional)"
+      ],
+      "preparacion": [
+        "Mezcla el aloe con el aceite de coco. ",
+        "Añade la menta y la miel si deseas mayor suavidad. ",
+        "Remueve hasta integrar y guarda en un frasco pequeño. "
+      ],
+      "dosis": "aplicar una capa fina sobre los labios limpios.",
+      "almacenamiento": "refrigerar hasta 1 semana.",
+      "evidencia": "",
+      "categoria": "sensorial",
+      "imagen": "assets/images/recetas/sensorial_09.webp",
+      "imagenPlaceholder": "assets/images/recetas/sensorial_09_placeholder.webp"
+    },
+    {
+      "id": "sensorial_10",
+      "nombre": "Tónico frío que ayuda a refrescar los ojos cansados y a r...",
+      "descripcion": "Tónico frío que ayuda a refrescar los ojos cansados y a reducir la sensación de pesadez. La manzanilla calma y el té verde aporta un toque antioxidante suave.",
+      "idealPara": [
+        "ojos pesados",
+        "irritación ligera",
+        "fatiga visual"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "compresas o lavado superficial",
+      "cuandoUsar": "tarde o noche.",
+      "precaucion": "no aplicar dentro del globo ocular; evitar si hay infección. Ingredientes:",
+      "ingredientes": [
+        "½ taza de infusión de manzanilla fría",
+        "½ taza de infusión de té verde fría",
+        "Algodones o gasas estériles"
+      ],
+      "preparacion": [
+        "Mezcla ambas infusiones en un recipiente limpio. ",
+        "Humedece los algodones con la mezcla. "
+      ],
+      "dosis": "colocar los algodones sobre los párpados cerrados durante 10 minutos.",
+      "almacenamiento": "refrigerar hasta 24 horas.",
+      "evidencia": "",
+      "categoria": "sensorial",
+      "imagen": "assets/images/recetas/sensorial_10.webp",
+      "imagenPlaceholder": "assets/images/recetas/sensorial_10_placeholder.webp"
+    }
+  ]
+}

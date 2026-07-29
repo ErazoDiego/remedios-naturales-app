@@ -1,0 +1,443 @@
+{
+  "sistema": "Sistema Nervioso y Mental",
+  "emoji": "🧠",
+  "id": "nervioso",
+  "totalRecetas": 14,
+  "recetas": [
+    {
+      "id": "nervioso_01",
+      "nombre": "Infusión delicada y aromática que calma los nervios",
+      "descripcion": "Infusión delicada y aromática que calma los nervios, reduce la tensión y favorece el descanso. La melisa relaja el sistema nervioso y la lavanda equilibra el ánimo, ayudando a desconectar después de un día agitado.",
+      "idealPara": [
+        "estrés",
+        "ansiedad leve",
+        "insomnio ocasional"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "al final del día o antes de dormir.",
+      "precaucion": "no combinar con sedantes o ansiolíticos farmacéuticos.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de hojas de melisa seca",
+        "½ cucharadita de flores de lavanda seca",
+        "1 cucharadita de miel pura (opcional)"
+      ],
+      "preparacion": [
+        "Hierve el agua, apaga el fuego y añade las hierbas. ",
+        "Cubre y deja reposar de 8 a 10 minutos. ",
+        "Cuela y endulza con miel si lo deseas. "
+      ],
+      "dosis": "1 taza tibia antes de dormir o en momentos de tensión.",
+      "almacenamiento": "preparar fresca cada vez; conservar las hierbas secas hasta 6 meses en frasco hermético.",
+      "evidencia": "",
+      "categoria": "nervioso",
+      "imagen": "assets/images/recetas/nervioso_01.webp",
+      "imagenPlaceholder": "assets/images/recetas/nervioso_01_placeholder.webp"
+    },
+    {
+      "id": "nervioso_02",
+      "nombre": "Preparado natural que ayuda a reducir la tensión nerviosa...",
+      "descripcion": "Preparado natural que ayuda a reducir la tensión nerviosa y mejorar la calidad del descanso. La pasiflora calma la mente sin causar somnolencia excesiva y ayuda a equilibrar el sistema nervioso en momentos de sobrecarga emocional.",
+      "idealPara": [
+        "ansiedad leve",
+        "estrés cotidiano",
+        "insomnio por nervios"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tintura",
+      "cuandoUsar": "en la tarde o antes de dormir.",
+      "precaucion": "no combinar con ansiolíticos o somníferos farmacéuticos.",
+      "ingredientes": [
+        "2 cucharadas de flores y hojas secas de pasiflora",
+        "250 ml de alcohol de cereal o vodka (mínimo",
+        "Frasco de vidrio oscuro con tapa"
+      ],
+      "preparacion": [
+        "Coloca la pasiflora en el frasco y cúbrela completamente con el alcohol. ",
+        "Cierra bien y deja macerar durante 15 días en lugar fresco y oscuro, agitando cada día. ",
+        "Cuela y guarda en un frasco con gotero. "
+      ],
+      "dosis": "20 a 30 gotas diluidas en medio vaso de agua, una o dos veces al día.",
+      "almacenamiento": "conservar en lugar fresco y oscuro hasta por 12 meses.",
+      "evidencia": "",
+      "categoria": "nervioso",
+      "imagen": "assets/images/recetas/nervioso_02.webp",
+      "imagenPlaceholder": "assets/images/recetas/nervioso_02_placeholder.webp"
+    },
+    {
+      "id": "nervioso_03",
+      "nombre": "Preparado suave y reconfortante que ayuda a relajar el cu...",
+      "descripcion": "Preparado suave y reconfortante que ayuda a relajar el cuerpo antes de dormir. La combinación de miel con hierbas calmantes como la lavanda y la melisa favorece un sueño profundo y natural, sin causar somnolencia al despertar.",
+      "idealPara": [
+        "insomnio leve",
+        "tensión nerviosa",
+        "dificultad para conciliar el sueño"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "mezcla dulce",
+      "cuandoUsar": "30 minutos antes de acostarse.",
+      "precaucion": "no usar en niños menores de un año ni en personas con alergia a productos de abeja.",
+      "ingredientes": [
+        "½ taza de miel pura",
+        "1 cucharadita de flores de lavanda seca",
+        "1 cucharadita de hojas de melisa seca",
+        "½ cucharadita de flores de manzanilla seca"
+      ],
+      "preparacion": [
+        "Calienta la miel a baño maría hasta que esté tibia, sin hervir. ",
+        "Añade las hierbas y mezcla suavemente. ",
+        "Deja reposar tapado durante 24 horas. ",
+        "Cuela y guarda en un frasco de vidrio oscuro. "
+      ],
+      "dosis": "1 cucharadita disuelta en agua tibia o en una infusión, antes de dormir.",
+      "almacenamiento": "conservar en lugar fresco y oscuro hasta por 2 meses.",
+      "evidencia": "",
+      "categoria": "nervioso",
+      "imagen": "assets/images/recetas/nervioso_03.webp",
+      "imagenPlaceholder": "assets/images/recetas/nervioso_03_placeholder.webp"
+    },
+    {
+      "id": "nervioso_04",
+      "nombre": "Infusión nutritiva que calma la mente sin adormecerla y f...",
+      "descripcion": "Infusión nutritiva que calma la mente sin adormecerla y favorece la claridad mental. La avena verde fortalece el sistema nervioso, mejora la concentración y ayuda a reducir el cansancio mental causado por el estrés o el exceso de trabajo.",
+      "idealPara": [
+        "falta de enfoque",
+        "agotamiento mental",
+        "irritabilidad"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "por la mañana o a media tarde.",
+      "precaucion": "evitar su uso si hay alergia a los cereales.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharada de avena verde seca (o copos de avena integral sin azúcar)",
+        "½ cucharadita de hojas de romero o melisa"
+      ],
+      "preparacion": [
+        "Hierve el agua, apaga el fuego y añade la avena y las hierbas. ",
+        "Cubre y deja reposar de 10 a 12 minutos. ",
+        "Cuela y bebe tibia. "
+      ],
+      "dosis": "1 taza por la mañana o antes de una jornada de estudio o trabajo.",
+      "almacenamiento": "preparar fresca cada vez; conservar las hierbas secas hasta 6 meses en frasco hermético.",
+      "evidencia": "",
+      "categoria": "nervioso",
+      "imagen": "assets/images/recetas/nervioso_04.webp",
+      "imagenPlaceholder": "assets/images/recetas/nervioso_04_placeholder.webp"
+    },
+    {
+      "id": "nervioso_05",
+      "nombre": "Remedio que ayuda a liberar la tensión acumulada y relaja...",
+      "descripcion": "Remedio tradicional que ayuda a liberar la tensión acumulada y relajar el cuerpo después de un día de nervios o preocupaciones. El contacto de las hierbas con el agua caliente estimula la relajación muscular y calma la mente, creando una sensación de bienestar profundo.",
+      "idealPara": [
+        "ansiedad leve",
+        "tensión nerviosa",
+        "insomnio"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "baño herbal",
+      "cuandoUsar": "por la noche, antes de acostarse o en momentos de estrés.",
+      "precaucion": "no usar en agua demasiado caliente ni en personas con presión baja.",
+      "ingredientes": [
+        "2 cucharadas de flores de lavanda seca",
+        "2 cucharadas de hojas de melisa o toronjil",
+        "1 cucharada de flores de manzanilla",
+        "1 litro de agua"
+      ],
+      "preparacion": [
+        "Hierve el agua y añade las hierbas. ",
+        "Tapa y deja reposar 15 minutos. ",
+        "Cuela y vierte la infusión en el agua de la bañera o en un recipiente para baño de pies. "
+      ],
+      "dosis": "baño de 15 a 20 minutos, una o dos veces por semana.",
+      "almacenamiento": "usar inmediatamente; no guardar la infusión preparada.",
+      "evidencia": "",
+      "categoria": "nervioso",
+      "imagen": "assets/images/recetas/nervioso_05.webp",
+      "imagenPlaceholder": "assets/images/recetas/nervioso_05_placeholder.webp"
+    },
+    {
+      "id": "nervioso_06",
+      "nombre": "Preparación aromática estimulante y equilibrante que ayud...",
+      "descripcion": "Preparación aromática estimulante y equilibrante que ayuda a despejar la mente, reducir la tensión y recuperar la energía mental. El romero mejora la concentración y la bergamota eleva el ánimo, creando un efecto calmante y revitalizante a la vez.",
+      "idealPara": [
+        "estrés mental",
+        "falta de enfoque",
+        "cansancio emocional"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "aplicación aromática",
+      "cuandoUsar": "durante el día, antes de trabajar o en momentos de tensión.",
+      "precaucion": "no aplicar sobre piel irritada ni exponer al sol tras su uso.",
+      "ingredientes": [
+        "10 ml de aceite base (jojoba o almendra dulce)",
+        "3 gotas de aceite esencial de romero",
+        "2 gotas de aceite esencial de bergamota",
+        "Frasco roll-on de vidrio oscuro"
+      ],
+      "preparacion": [
+        "Mezcla los aceites en el frasco roll-on. ",
+        "Cierra bien y agita suavemente para integrar. ",
+        "Aplica en las sienes, muñecas o cuello cuando necesites concentración o alivio rápido. "
+      ],
+      "dosis": "uso puntual durante el día, hasta tres veces diarias.",
+      "almacenamiento": "conservar en lugar fresco y oscuro hasta por 6 meses.",
+      "evidencia": "",
+      "categoria": "nervioso",
+      "imagen": "assets/images/recetas/nervioso_06.webp",
+      "imagenPlaceholder": "assets/images/recetas/nervioso_06_placeholder.webp"
+    },
+    {
+      "id": "nervioso_07",
+      "nombre": "Infusión que ayuda a relajar el sistema nervioso y favore...",
+      "descripcion": "Infusión calmante que ayuda a relajar el sistema nervioso y favorecer el descanso sin causar somnolencia excesiva. La valeriana actúa como relajante suave, mientras que la manzanilla y la melisa equilibran su efecto para lograr una sensación de calma profunda y estable.",
+      "idealPara": [
+        "ansiedad leve",
+        "insomnio ocasional",
+        "tensión nerviosa"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "una hora antes de dormir o en momentos de estrés.",
+      "precaucion": "no combinar con medicamentos sedantes ni con alcohol.",
+      "ingredientes": [
+        "1 taza de agua",
+        "½ cucharadita de raíz de valeriana seca",
+        "1 cucharadita de flores de manzanilla  ½ cucharadita de hojas de melisa",
+        "1 cucharadita de miel pura (opcional)"
+      ],
+      "preparacion": [
+        "Coloca la valeriana en el agua fría, lleva a ebullición y deja hervir 2 minutos. ",
+        "Apaga el fuego, añade la manzanilla y la melisa, tapa y deja reposar 10 minutos. ",
+        "Cuela y endulza con miel si lo deseas. "
+      ],
+      "dosis": "1 taza tibia por la noche, preferiblemente antes de acostarte.",
+      "almacenamiento": "preparar fresca cada vez; conservar las hierbas secas en frasco cerrado hasta 6 meses.",
+      "evidencia": "",
+      "categoria": "nervioso",
+      "imagen": "assets/images/recetas/nervioso_07.webp",
+      "imagenPlaceholder": "assets/images/recetas/nervioso_07_placeholder.webp"
+    },
+    {
+      "id": "nervioso_08",
+      "nombre": "Preparado dulce y calmante que ayuda a relajar el cuerpo ...",
+      "descripcion": "Preparado dulce y calmante que ayuda a relajar el cuerpo y facilitar el sueño natural. El tilo reduce la tensión nerviosa y la miel suaviza la garganta, creando una sensación de tranquilidad ideal antes de dormir.",
+      "idealPara": [
+        "insomnio leve",
+        "estrés",
+        "agitación nocturna"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "jarabe",
+      "cuandoUsar": "30 minutos antes de acostarse.",
+      "precaucion": "no usar en niños menores de un año ni si se consumen sedantes.",
+      "ingredientes": [
+        "1 taza de flores de tilo secas",
+        "500 ml de agua",
+        "250 g de miel pura"
+      ],
+      "preparacion": [
+        "Hierve el agua, añade el tilo y deja hervir 5 minutos a fuego bajo. ",
+        "Cuela y deja enfriar un poco. ",
+        "Agrega la miel y mezcla bien hasta disolver. ",
+        "Guarda el jarabe en un frasco de vidrio con tapa. "
+      ],
+      "dosis": "1 cucharadita antes de dormir; en adultos puede repetirse si es necesario.",
+      "almacenamiento": "conservar en refrigeración hasta 2 semanas.",
+      "evidencia": "",
+      "categoria": "nervioso",
+      "imagen": "assets/images/recetas/nervioso_08.webp",
+      "imagenPlaceholder": "assets/images/recetas/nervioso_08_placeholder.webp"
+    },
+    {
+      "id": "nervioso_09",
+      "nombre": "Bebida fortalecedora que ayuda al cuerpo a adaptarse al e...",
+      "descripcion": "Bebida fortalecedora que ayuda al cuerpo a adaptarse al estrés y recuperar energía sin causar excitación. La ashwagandha equilibra el sistema nervioso, mejora la resistencia física y mental y promueve un descanso reparador.",
+      "idealPara": [
+        "estrés prolongado",
+        "agotamiento",
+        "falta de energía"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tónico",
+      "cuandoUsar": "por la mañana o al final del día, de forma regular.",
+      "precaucion": "no usar durante el embarazo ni junto con medicación tiroidea.",
+      "ingredientes": [
+        "1 taza de leche o bebida vegetal",
+        "½ cucharadita de polvo de raíz de ashwagandha",
+        "½ cucharadita de miel o sirope natural",
+        "Una pizca de canela (opcional)"
+      ],
+      "preparacion": [
+        "Calienta la leche sin hervir y añade la ashwagandha y la canela. ",
+        "Remueve bien y deja reposar 5 minutos. ",
+        "Endulza con miel antes de beber. "
+      ],
+      "dosis": "1 taza al día durante periodos de estrés o cansancio, por un máximo de 30 días.",
+      "almacenamiento": "preparar fresca cada vez; conservar el polvo en frasco seco y cerrado hasta 6 meses.",
+      "evidencia": "",
+      "categoria": "nervioso",
+      "imagen": "assets/images/recetas/nervioso_09.webp",
+      "imagenPlaceholder": "assets/images/recetas/nervioso_09_placeholder.webp"
+    },
+    {
+      "id": "nervioso_10",
+      "nombre": "Remedio simple y efectivo para aliviar dolores de cabeza ...",
+      "descripcion": "Remedio externo simple y efectivo para aliviar dolores de cabeza causados por tensión o cansancio. La menta refresca, mejora la circulación y relaja los músculos del cuello y la frente, proporcionando una sensación de alivio inmediato.",
+      "idealPara": [
+        "cefaleas por tensión",
+        "fatiga mental",
+        "calor excesivo"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "compresa",
+      "cuandoUsar": "al inicio del dolor o en momentos de estrés.",
+      "precaucion": "no aplicar en niños pequeños ni cerca de los ojos.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharada de hojas de menta fresca o seca",
+        "1 paño limpio de algodón"
+      ],
+      "preparacion": [
+        "Hierve el agua, apaga el fuego y añade la menta. ",
+        "Cubre y deja reposar 10 minutos. ",
+        "Cuela, empapa el paño en la infusión tibia y escúrrelo ligeramente. ",
+        "Aplica sobre la frente, sienes o nuca durante 10 a 15 minutos. "
+      ],
+      "dosis": "aplicar una o dos veces al día según necesidad.",
+      "almacenamiento": "usar inmediatamente; no guardar la infusión preparada.",
+      "evidencia": "",
+      "categoria": "nervioso",
+      "imagen": "assets/images/recetas/nervioso_10.webp",
+      "imagenPlaceholder": "assets/images/recetas/nervioso_10_placeholder.webp"
+    },
+    {
+      "id": "nervioso_11",
+      "nombre": "Rocío aromático relajante que ayuda a crear un ambiente t...",
+      "descripcion": "Rocío aromático relajante que ayuda a crear un ambiente tranquilo antes de dormir. La mezcla de lavanda, bergamota y manzanilla favorece la relajación profunda, calma la mente y prepara al cuerpo para el descanso.",
+      "idealPara": [
+        "insomnio leve",
+        "tensión acumulada",
+        "dificultad para dormir"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "aromaterapia en spray",
+      "cuandoUsar": "antes de dormir, sobre la almohada o en el ambiente del dormitorio.",
+      "precaucion": "no aplicar directamente sobre la piel ni en superficies delicadas.",
+      "ingredientes": [
+        "100 ml de agua destilada o filtrada",
+        "1 cucharadita de alcohol o hamamelis (conservante natural)",
+        "6 gotas de aceite esencial de lavanda",
+        "3 gotas de aceite esencial de bergamota",
+        "2 gotas de aceite esencial de manzanilla romana"
+      ],
+      "preparacion": [
+        "Mezcla el agua con el alcohol o hamamelis en un frasco pulverizador de vidrio. ",
+        "Añade los aceites esenciales y agita suavemente para integrar. ",
+        "Pulveriza una o dos veces sobre la almohada o en el aire de la habitación antes de dormir. "
+      ],
+      "dosis": "uso nocturno; agitar antes de cada aplicación.",
+      "almacenamiento": "conservar en lugar fresco, protegido de la luz, hasta 3 meses.",
+      "evidencia": "",
+      "categoria": "nervioso",
+      "imagen": "assets/images/recetas/nervioso_11.webp",
+      "imagenPlaceholder": "assets/images/recetas/nervioso_11_placeholder.webp"
+    },
+    {
+      "id": "nervioso_12",
+      "nombre": "Bebida estimulante y nutritiva que mejora la concentració...",
+      "descripcion": "Bebida estimulante y nutritiva que mejora la concentración, la memoria y el estado de ánimo. El cacao activa la circulación cerebral y aporta energía suave, mientras que la maca ayuda al equilibrio hormonal y reduce el cansancio mental.",
+      "idealPara": [
+        "fatiga \tmental",
+        "baja \tconcentración",
+        "desánimo"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "por la mañana o a media tarde.",
+      "precaucion": "evitar en casos de insomnio o hipertensión.",
+      "ingredientes": [
+        "1 taza de bebida vegetal o agua caliente",
+        "1 cucharadita de cacao puro sin azúcar",
+        "½ cucharadita de polvo de maca",
+        "½ cucharadita de miel o sirope natural"
+      ],
+      "preparacion": [
+        "Calienta la bebida vegetal sin hervir. ",
+        "Añade el cacao y la maca, mezcla bien hasta disolver. ",
+        "Endulza si lo deseas y bebe lentamente. ",
+        " "
+      ],
+      "dosis": "1 taza al día en periodos de esfuerzo mental o fatiga.",
+      "almacenamiento": "preparar fresca cada vez; conservar los polvos secos en frascos herméticos.",
+      "evidencia": "",
+      "categoria": "nervioso",
+      "imagen": "assets/images/recetas/nervioso_12.webp",
+      "imagenPlaceholder": "assets/images/recetas/nervioso_12_placeholder.webp"
+    },
+    {
+      "id": "nervioso_13",
+      "nombre": "Preparado herbal de acción suave que ayuda a calmar la an...",
+      "descripcion": "Preparado herbal de acción suave que ayuda a calmar la ansiedad, estabilizar el ánimo y aliviar la tensión emocional acumulada. Su mezcla equilibrada de pasiflora, avena y lavanda apoya el sistema nervioso sin provocar somnolencia.",
+      "idealPara": [
+        "estrés",
+        "irritabilidad",
+        "ansiedad leve"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tintura combinada",
+      "cuandoUsar": "en momentos de tensión o a lo largo del día para mantener la calma.",
+      "precaucion": "no combinar con ansiolíticos ni con alcohol.",
+      "ingredientes": [
+        "1 cucharada de flores de pasiflora seca",
+        "1 cucharada de avena verde seca",
+        "½ cucharada de flores de lavanda",
+        "250 ml de alcohol de cereal o vodka (mínimo"
+      ],
+      "preparacion": [
+        "Coloca las hierbas en un frasco de vidrio oscuro y cúbrelas con el alcohol. ",
+        "Cierra bien y deja macerar durante 15 días en un lugar fresco y oscuro, agitándolo a diario. ",
+        "Cuela y guarda el líquido resultante en un frasco con gotero. "
+      ],
+      "dosis": "15 a 20 gotas diluidas en medio vaso de agua, dos veces al día, según necesidad.",
+      "almacenamiento": "conservar en lugar fresco y oscuro hasta 12 meses.",
+      "evidencia": "",
+      "categoria": "nervioso",
+      "imagen": "assets/images/recetas/nervioso_13.webp",
+      "imagenPlaceholder": "assets/images/recetas/nervioso_13_placeholder.webp"
+    },
+    {
+      "id": "nervioso_14",
+      "nombre": "Preparado suave que ayuda a recuperar la serenidad en mom...",
+      "descripcion": "Preparado suave que ayuda a recuperar la serenidad en momentos de sobrecarga emocional o cansancio mental. Las flores aportan equilibrio y bienestar, mientras que la miel y el agua de azahar actúan como vehículos naturales para calmar el sistema nervioso.",
+      "idealPara": [
+        "tensión \temocional",
+        "tristeza \tleve",
+        "irritabilidad"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "elixir líquido",
+      "cuandoUsar": "en la mañana y antes de dormir, o en momentos de desequilibrio emocional.",
+      "precaucion": "no usar en niños menores de 12 años ni en personas alérgicas al polen o a productos de abeja.",
+      "ingredientes": [
+        "100 ml de agua mineral o destilada",
+        "1 cucharadita de miel pura",
+        "3 gotas de agua de azahar",
+        "2 gotas de extracto de flores de bach (rescate o lavanda, opcional)"
+      ],
+      "preparacion": [
+        "Mezcla todos los ingredientes en un frasco de vidrio con tapa. ",
+        "Agita suavemente antes de cada uso. ",
+        "Guarda en refrigeración si el clima es cálido. "
+      ],
+      "dosis": "1 cucharadita bajo la lengua o disuelta en medio vaso de agua, una o dos veces al día.",
+      "almacenamiento": "conservar en lugar fresco y oscuro hasta 10 días.",
+      "evidencia": "",
+      "categoria": "nervioso",
+      "imagen": "assets/images/recetas/nervioso_14.webp",
+      "imagenPlaceholder": "assets/images/recetas/nervioso_14_placeholder.webp"
+    }
+  ]
+}

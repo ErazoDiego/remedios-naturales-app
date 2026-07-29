@@ -1,0 +1,441 @@
+{
+  "sistema": "Sistema Hormonal y Reproductivo",
+  "emoji": "♀️",
+  "id": "hormonal",
+  "totalRecetas": 14,
+  "recetas": [
+    {
+      "id": "hormonal_01",
+      "nombre": "Infusión que apoya el equilibrio hormonal y ayuda a alivi...",
+      "descripcion": "Infusión suave que apoya el equilibrio hormonal y ayuda a aliviar la tensión emocional en días de desequilibrio. La salvia acompaña los ciclos femeninos y la melisa calma la mente y reduce la irritabilidad.",
+      "idealPara": [
+        "ciclos irregulares",
+        "tensión premenstrual",
+        "cambios hormonales suaves"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "tarde o noche.",
+      "precaucion": "evitar en embarazo o lactancia.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de hojas de salvia",
+        "1 cucharadita de melisa",
+        "1 cucharadita de miel (opcional)"
+      ],
+      "preparacion": [
+        "Hierve el agua. ",
+        "Añade la salvia y la melisa, tapa y deja reposar 10 minutos. ",
+        "Cuela y endulza si lo deseas. "
+      ],
+      "dosis": "1 taza diaria durante 5 a 7 días del mes.",
+      "almacenamiento": "preparar fresca cada vez.",
+      "evidencia": "",
+      "categoria": "hormonal",
+      "imagen": "assets/images/recetas/hormonal_01.webp",
+      "imagenPlaceholder": "assets/images/recetas/hormonal_01_placeholder.webp"
+    },
+    {
+      "id": "hormonal_02",
+      "nombre": "Tintura clásica para apoyar la regulación natural del cic...",
+      "descripcion": "Tintura clásica para apoyar la regulación natural del ciclo femenino. El vitex actúa lentamente, ayudando al cuerpo a encontrar su propio ritmo hormonal con el tiempo.",
+      "idealPara": [
+        "ciclos irregulares",
+        "síntomas premenstruales",
+        "cambios hormonales"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tintura",
+      "cuandoUsar": "por la mañana, de forma constante.",
+      "precaucion": "no usar durante el embarazo ni junto con anticonceptivos hormonales.",
+      "ingredientes": [
+        "2 cucharadas de bayas de vitex",
+        "250 ml de alcohol de cereal o vodka suave",
+        "Frasco de vidrio oscuro"
+      ],
+      "preparacion": [
+        "Coloca las bayas en el frasco y cúbrelas con el alcohol. ",
+        "Cierra bien y deja macerar 3 semanas en un lugar fresco, agitando a diario. ",
+        "Cuela y guarda en un frasco con gotero. "
+      ],
+      "dosis": "20 gotas por la mañana, a diario, durante 2 a 3 meses.",
+      "almacenamiento": "conservar en lugar fresco y oscuro hasta 6 meses.",
+      "evidencia": "",
+      "categoria": "hormonal",
+      "imagen": "assets/images/recetas/hormonal_02.webp",
+      "imagenPlaceholder": "assets/images/recetas/hormonal_02_placeholder.webp"
+    },
+    {
+      "id": "hormonal_03",
+      "nombre": "Baño tibio que ayuda a relajar la tensión del bajo vientr...",
+      "descripcion": "Baño tibio que ayuda a relajar la tensión del bajo vientre y suavizar los cólicos menstruales. La combinación de manzanilla y lavanda calma el cuerpo y afloja los músculos, creando una sensación de alivio progresivo.",
+      "idealPara": [
+        "cólicos",
+        "tensión pélvica",
+        "irritabilidad menstrual"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "baño",
+      "cuandoUsar": "al inicio del malestar o antes de dormir.",
+      "precaucion": "evitar si hay fiebre o infección activa.",
+      "ingredientes": [
+        "2 cucharadas de flores de manzanilla",
+        "1 cucharada de lavanda seca",
+        "Agua caliente para el baño"
+      ],
+      "preparacion": [
+        "Coloca las hierbas en un bol y cúbrelas con agua caliente. ",
+        "Deja reposar 10 minutos. ",
+        "Cuela y vierte la infusión en el agua del baño. "
+      ],
+      "dosis": "sumergirse 1520 minutos y descansar después.",
+      "almacenamiento": "preparar al momento.",
+      "evidencia": "",
+      "categoria": "hormonal",
+      "imagen": "assets/images/recetas/hormonal_03.webp",
+      "imagenPlaceholder": "assets/images/recetas/hormonal_03_placeholder.webp"
+    },
+    {
+      "id": "hormonal_04",
+      "nombre": "Aceite para masajes que ayuda a liberar tensión en el abd...",
+      "descripcion": "Aceite suave para masajes que ayuda a liberar tensión en el abdomen bajo y a calmar los cambios emocionales del ciclo. La lavanda relaja y el aceite tibio mejora la circulación local.",
+      "idealPara": [
+        "cólicos",
+        "hinchazón ligera",
+        "irritabilidad hormonal"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "aceite de masaje",
+      "cuandoUsar": "mañana o noche, según necesidad.",
+      "precaucion": "no usar durante el embarazo.",
+      "ingredientes": [
+        "30 ml de aceite de almendra o jojoba",
+        "4 gotas de aceite esencial de lavanda",
+        "1 gota de aceite esencial de salvia (opcional)"
+      ],
+      "preparacion": [
+        "Mezcla los aceites en un frasco oscuro. ",
+        "Agita suavemente. ",
+        "Calienta unas gotas entre las manos antes de usar. "
+      ],
+      "dosis": "masajear el abdomen bajo con movimientos lentos durante 35 minutos.",
+      "almacenamiento": "conservar en lugar fresco hasta 3 meses.",
+      "evidencia": "",
+      "categoria": "hormonal",
+      "imagen": "assets/images/recetas/hormonal_04.webp",
+      "imagenPlaceholder": "assets/images/recetas/hormonal_04_placeholder.webp"
+    },
+    {
+      "id": "hormonal_05",
+      "nombre": "Infusión ligera que ayuda a suavizar los sofocos y los ca...",
+      "descripcion": "Infusión ligera que ayuda a suavizar los sofocos y los cambios térmicos propios de la menopausia. El trébol rojo aporta fitoestrógenos suaves que apoyan el equilibrio hormonal sin forzar al organismo.",
+      "idealPara": [
+        "sofocos",
+        "sudoraciones nocturnas",
+        "cambios hormonales"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "tarde o noche.",
+      "precaucion": "evitar en embarazo o en casos de historial de cáncer hormonodependiente.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de flores de trébol rojo",
+        "1 cucharadita de melisa o manzanilla (opcional)"
+      ],
+      "preparacion": [
+        "Calienta el agua hasta hervir. ",
+        "Añade el trébol rojo y tapa. ",
+        "Deja reposar 10 minutos. ",
+        "Cuela y bebe tibia. "
+      ],
+      "dosis": "1 taza al día durante 1 a 2 semanas.",
+      "almacenamiento": "preparar fresca cada vez.",
+      "evidencia": "",
+      "categoria": "hormonal",
+      "imagen": "assets/images/recetas/hormonal_05.webp",
+      "imagenPlaceholder": "assets/images/recetas/hormonal_05_placeholder.webp"
+    },
+    {
+      "id": "hormonal_06",
+      "nombre": "Bebida densa y reconfortante que ayuda a mejorar la energ...",
+      "descripcion": "Bebida densa y reconfortante que ayuda a mejorar la energía, el ánimo y la vitalidad hormonal. La maca apoya el equilibrio femenino y el cacao aporta minerales que levantan el ánimo de forma natural.",
+      "idealPara": [
+        "baja energía",
+        "cambios hormonales",
+        "días de decaimiento"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "bebida",
+      "cuandoUsar": "mañana o tarde.",
+      "precaucion": "evitar en casos de hipertensión severa o si hay sensibilidad al cacao.",
+      "ingredientes": [
+        "1 taza de leche o bebida vegetal",
+        "1 cucharadita de maca en polvo",
+        "1 cucharadita de cacao puro",
+        "1 cucharadita de miel o sirope (opcional)"
+      ],
+      "preparacion": [
+        "Calienta la leche sin hervir. ",
+        "Añade la maca y el cacao. ",
+        "Remueve hasta integrar bien. ",
+        "Endulza ligeramente si lo deseas. "
+      ],
+      "dosis": "1 taza al día en días de baja energía.",
+      "almacenamiento": "preparar al momento.",
+      "evidencia": "",
+      "categoria": "hormonal",
+      "imagen": "assets/images/recetas/hormonal_06.webp",
+      "imagenPlaceholder": "assets/images/recetas/hormonal_06_placeholder.webp"
+    },
+    {
+      "id": "hormonal_07",
+      "nombre": "Infusión ligera que ayuda al hígado a trabajar con más fl...",
+      "descripcion": "Infusión ligera que ayuda al hígado a trabajar con más fluidez y favorece un equilibrio hormonal más estable. El diente de león depura y reduce la sensación de hinchazón en días de cambios hormonales.",
+      "idealPara": [
+        "hinchazón premenstrual",
+        "retención ligera",
+        "sensación de pesadez"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "mañana o mediodía.",
+      "precaucion": "evitar si hay problemas biliares o úlceras activas.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de raíz o hojas de diente de león",
+        "½ cucharadita de miel o limón (opcional)"
+      ],
+      "preparacion": [
+        "Hierve el agua. ",
+        "Añade el diente de león y tapa. ",
+        "Deja reposar 810 minutos. ",
+        "Cuela y bebe tibia. "
+      ],
+      "dosis": "1 taza al día durante 3 a 5 días.",
+      "almacenamiento": "preparar fresca cada vez.",
+      "evidencia": "",
+      "categoria": "hormonal",
+      "imagen": "assets/images/recetas/hormonal_07.webp",
+      "imagenPlaceholder": "assets/images/recetas/hormonal_07_placeholder.webp"
+    },
+    {
+      "id": "hormonal_08",
+      "nombre": "Batido suave que ayuda a levantar la energía hormonal y e...",
+      "descripcion": "Batido suave que ayuda a levantar la energía hormonal y estabilizar el ánimo. La avena nutre, la banana aporta energía rápida y la canela equilibra el metabolismo, ideal para días de agotamiento o ciclo irregular.",
+      "idealPara": [
+        "baja energía",
+        "irritabilidad hormonal",
+        "cansancio matinal"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "batido",
+      "cuandoUsar": "desayuno o merienda.",
+      "precaucion": "evitar si hay intolerancia a la avena.",
+      "ingredientes": [
+        "1 taza de bebida vegetal o agua",
+        "2 cucharadas de avena",
+        "½ banana madura",
+        "1 pizca de canela",
+        "1 cucharadita de miel (opcional)"
+      ],
+      "preparacion": [
+        "Coloca todos los ingredientes en la licuadora. ",
+        "Mezcla hasta obtener un batido cremoso. ",
+        "Bebe de inmediato. "
+      ],
+      "dosis": "1 vaso al día, según necesidad.",
+      "almacenamiento": "no guardar una vez preparado.",
+      "evidencia": "",
+      "categoria": "hormonal",
+      "imagen": "assets/images/recetas/hormonal_08.webp",
+      "imagenPlaceholder": "assets/images/recetas/hormonal_08_placeholder.webp"
+    },
+    {
+      "id": "hormonal_09",
+      "nombre": "Mezcla que ayuda a estimular la vitalidad y mejorar el án...",
+      "descripcion": "Mezcla suave que ayuda a estimular la vitalidad y mejorar el ánimo en días de baja energía. El jengibre activa la circulación y la maca apoya el equilibrio hormonal, creando un efecto cálido y sostenido.",
+      "idealPara": [
+        "baja libido",
+        "cansancio",
+        "ánimo bajo"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tónico",
+      "cuandoUsar": "mañana o antes de una comida ligera.",
+      "precaucion": "evitar si hay hipertensión o sensibilidad al jengibre.",
+      "ingredientes": [
+        "½ taza de agua tibia",
+        "1 cucharadita de maca en polvo",
+        "½ cucharadita de jengibre rallado",
+        "1 cucharadita de miel"
+      ],
+      "preparacion": [
+        "Mezcla la maca con el agua tibia. ",
+        "Añade el jengibre y la miel. ",
+        "Remueve bien hasta integrar. "
+      ],
+      "dosis": "1 vasito al día durante 1 o 2 semanas. Almacenamiento: preparar fresco cada vez.",
+      "almacenamiento": "preparar fresco cada vez.",
+      "evidencia": "",
+      "categoria": "hormonal",
+      "imagen": "assets/images/recetas/hormonal_09.webp",
+      "imagenPlaceholder": "assets/images/recetas/hormonal_09_placeholder.webp"
+    },
+    {
+      "id": "hormonal_10",
+      "nombre": "Infusión tibia que ayuda a levantar el ánimo y mejorar la...",
+      "descripcion": "Infusión tibia que ayuda a levantar el ánimo y mejorar la energía en días pesados. La canela activa el metabolismo y la miel aporta un toque nutritivo que sostiene la vitalidad.",
+      "idealPara": [
+        "cansancio matinal",
+        "bajones de ánimo",
+        "días fríos"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "mañana o media tarde.",
+      "precaucion": "evitar en casos de gastritis o embarazo.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 trozo pequeño de canela en rama",
+        "1 cucharadita de miel"
+      ],
+      "preparacion": [
+        "Calienta el agua hasta hervir. ",
+        "Añade la canela y deja reposar 8 minutos. ",
+        "Cuela y mezcla con miel. "
+      ],
+      "dosis": "1 taza al día.",
+      "almacenamiento": "preparar fresca cada vez.",
+      "evidencia": "",
+      "categoria": "hormonal",
+      "imagen": "assets/images/recetas/hormonal_10.webp",
+      "imagenPlaceholder": "assets/images/recetas/hormonal_10_placeholder.webp"
+    },
+    {
+      "id": "hormonal_11",
+      "nombre": "Ungüento que ayuda a calmar la piel sensible después del ...",
+      "descripcion": "Ungüento suave que ayuda a calmar la piel sensible después del parto. La caléndula repara, reduce irritaciones y apoya la recuperación natural de la zona íntima sin causar ardor.",
+      "idealPara": [
+        "molestias postparto",
+        "piel irritada",
+        "pequeñas grietas"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "ungüento",
+      "cuandoUsar": "mañana y noche, según necesidad.",
+      "precaucion": "no aplicar sobre heridas profundas o infecciones activas.",
+      "ingredientes": [
+        "2 cucharadas de aceite de caléndula",
+        "1 cucharada de cera de abeja",
+        "2 gotas de aceite esencial de lavanda (opcional)"
+      ],
+      "preparacion": [
+        "Derrite el aceite y la cera a baño maría. ",
+        "Retira del fuego y añade la lavanda si lo deseas. ",
+        "Mezcla, vierte en un frasco y deja solidificar. "
+      ],
+      "dosis": "aplicar una capa fina sobre la zona externa limpia.",
+      "almacenamiento": "guardar en lugar fresco hasta 2 meses.",
+      "evidencia": "",
+      "categoria": "hormonal",
+      "imagen": "assets/images/recetas/hormonal_11.webp",
+      "imagenPlaceholder": "assets/images/recetas/hormonal_11_placeholder.webp"
+    },
+    {
+      "id": "hormonal_12",
+      "nombre": "Infusión equilibrante que ayuda a suavizar irregularidade...",
+      "descripcion": "Infusión equilibrante que ayuda a suavizar irregularidades del ciclo y reducir la tensión premenstrual. La combinación de angélica y manzanilla crea un efecto relajante y armónico.",
+      "idealPara": [
+        "ciclos irregulares",
+        "tensión pélvica",
+        "cambios hormonales"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "tarde o noche.",
+      "precaucion": "evitar en embarazo o si se toman anticoagulantes.",
+      "ingredientes": [
+        "1 taza de agua",
+        "½ cucharadita de raíz de angélica",
+        "1 cucharadita de manzanilla"
+      ],
+      "preparacion": [
+        "Hierve el agua. ",
+        "Añade la angélica y cocina 2 minutos. ",
+        "Apaga el fuego, añade la manzanilla y tapa. ",
+        "Deja reposar 8 minutos y cuela. "
+      ],
+      "dosis": "1 taza al día durante 57 días del mes.",
+      "almacenamiento": "preparar fresca cada vez.",
+      "evidencia": "",
+      "categoria": "hormonal",
+      "imagen": "assets/images/recetas/hormonal_12.webp",
+      "imagenPlaceholder": "assets/images/recetas/hormonal_12_placeholder.webp"
+    },
+    {
+      "id": "hormonal_13",
+      "nombre": "Tintura que ayuda a equilibrar el sistema hormonal y a me...",
+      "descripcion": "Tintura suave que ayuda a equilibrar el sistema hormonal y a mejorar la energía en días de agotamiento. El regaliz aporta estabilidad y la ortiga nutre con minerales que apoyan el bienestar general.",
+      "idealPara": [
+        "cansancio hormonal",
+        "ciclos irregulares suaves",
+        "días de baja energía"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tintura",
+      "cuandoUsar": "mañana o mediodía.",
+      "precaucion": "evitar en hipertensión o en uso prolongado del regaliz.",
+      "ingredientes": [
+        "1 cucharada de raíz de regaliz seca",
+        "1 cucharada de hojas de ortiga",
+        "200 ml de alcohol de cereal o vodka suave",
+        "Frasco de vidrio oscuro"
+      ],
+      "preparacion": [
+        "Coloca el regaliz y la ortiga en el frasco. ",
+        "Cubre con el alcohol y cierra bien. ",
+        "Deja macerar 2 semanas en un lugar fresco, agitando cada día. ",
+        "Cuela y guarda en un frasco con gotero. "
+      ],
+      "dosis": "1520 gotas en medio vaso de agua, una vez al día.",
+      "almacenamiento": "conservar en lugar fresco y oscuro hasta 4 meses.",
+      "evidencia": "",
+      "categoria": "hormonal",
+      "imagen": "assets/images/recetas/hormonal_13.webp",
+      "imagenPlaceholder": "assets/images/recetas/hormonal_13_placeholder.webp"
+    },
+    {
+      "id": "hormonal_14",
+      "nombre": "Infusión que ayuda a aliviar la tensión del ciclo y a rel...",
+      "descripcion": "Infusión suave que ayuda a aliviar la tensión del ciclo y a relajar el abdomen sin causar pesadez. El hinojo reduce la hinchazón y la rosa aporta calma emocional, creando un efecto equilibrante ideal en días sensibles.",
+      "idealPara": [
+        "hinchazón premenstrual",
+        "irritabilidad",
+        "tensión pélvica suave"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "tarde o noche.",
+      "precaucion": "evitar en embarazo.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de semillas de hinojo",
+        "1 cucharadita de pétalos de rosa secos",
+        "½ cucharadita de miel (opcional)"
+      ],
+      "preparacion": [
+        "Calienta el agua hasta hervir. ",
+        "Añade el hinojo, tapa y deja reposar 5 minutos. ",
+        "Agrega los pétalos de rosa y deja 5 minutos más. ",
+        "Cuela y endulza si lo deseas. "
+      ],
+      "dosis": "1 taza al día durante los días de mayor tensión.",
+      "almacenamiento": "preparar fresca cada vez.",
+      "evidencia": "",
+      "categoria": "hormonal",
+      "imagen": "assets/images/recetas/hormonal_14.webp",
+      "imagenPlaceholder": "assets/images/recetas/hormonal_14_placeholder.webp"
+    }
+  ]
+}

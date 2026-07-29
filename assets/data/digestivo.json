@@ -1,0 +1,501 @@
+{
+  "sistema": "Sistema Digestivo",
+  "emoji": "🫁",
+  "id": "digestivo",
+  "totalRecetas": 16,
+  "recetas": [
+    {
+      "id": "digestivo_01",
+      "nombre": "Infusión que estimula la digestión y alivia la sensación ...",
+      "descripcion": "Infusión suave que estimula la digestión y alivia la sensación de pesadez después de comer. Ideal para comidas copiosas o digestiones lentas.",
+      "idealPara": [
+        "pesadez",
+        "gases leves"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "después de las comidas principales.",
+      "precaucion": "evita su uso en casos de gastritis o úlceras activas.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de jengibre fresco rallado",
+        "1 cucharadita de flores de manzanilla seca",
+        "½ cucharadita de hojas de menta seca",
+        "1 cucharadita de miel pura (opcional)"
+      ],
+      "preparacion": [
+        "Hierve el agua, apaga el fuego y agrega las hierbas. ",
+        "Cubre y deja reposar de 7 a 10 minutos. ",
+        "Cuela y endulza con miel si lo deseas. "
+      ],
+      "dosis": "1 taza tibia después de las comidas, hasta dos veces al día.",
+      "almacenamiento": "preparar fresca cada vez; conservar las hierbas secas en frasco cerrado hasta 6 meses.",
+      "evidencia": "",
+      "categoria": "digestivo",
+      "imagen": "assets/images/recetas/digestivo_01.webp",
+      "imagenPlaceholder": "assets/images/recetas/digestivo_01_placeholder.webp"
+    },
+    {
+      "id": "digestivo_02",
+      "nombre": "Tónico suave que ayuda al cuerpo a procesar comidas abund...",
+      "descripcion": "Tónico digestivo suave que ayuda al cuerpo a procesar comidas abundantes y reduce la sensación de llenura o ardor leve. Ideal para después del almuerzo o la cena.",
+      "idealPara": [
+        "digestión pesada",
+        "malestar estomacal leve"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tónico",
+      "cuandoUsar": "después de comidas copiosas o grasientas.",
+      "precaucion": "no recomendado para personas con reflujo severo o cálculos biliares.",
+      "ingredientes": [
+        "1 cucharadita de melisa seca",
+        "1 cucharadita de menta seca",
+        "½ cucharadita de raíz de regaliz",
+        "½ cucharadita de raíz de angélica seca",
+        "1 cucharadita de vinagre de sidra de manzana",
+        "1 taza de agua tibia"
+      ],
+      "preparacion": [
+        "Deja reposar las hierbas en agua caliente durante 10 minutos. ",
+        "Cuela y añade el vinagre de sidra de manzana. ",
+        "Bebe lentamente mientras esté tibio. "
+      ],
+      "dosis": "1 taza después de las comidas, según sea necesario, hasta dos veces al día.",
+      "almacenamiento": "preparar fresco cada vez; conservar las hierbas secas en recipiente sellado hasta 6 meses.",
+      "evidencia": "",
+      "categoria": "digestivo",
+      "imagen": "assets/images/recetas/digestivo_02.webp",
+      "imagenPlaceholder": "assets/images/recetas/digestivo_02_placeholder.webp"
+    },
+    {
+      "id": "digestivo_03",
+      "nombre": "Infusión que ayuda a aliviar el ardor estomacal y la sens...",
+      "descripcion": "Infusión suave que ayuda a aliviar el ardor estomacal y la sensación de acidez. Su mezcla equilibra los jugos gástricos sin irritar el estómago. Ideal después de comidas pesadas o en momentos de tensión.",
+      "idealPara": [
+        "acidez",
+        "reflujo leve",
+        "malestar estomacal"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "entre comidas o al final del día.",
+      "precaucion": "evita su uso si tomas antiácidos farmacéuticos de forma continua.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de manzanilla seca",
+        "1 cucharadita de hojas de melisa seca",
+        "½ cucharadita de flores de caléndula",
+        "½ cucharadita de raíz de regaliz",
+        "1 cucharadita de miel pura (opcional)"
+      ],
+      "preparacion": [
+        "Hierve el agua y apaga el fuego. ",
+        "Añade todas las hierbas y deja reposar 10 minutos. ",
+        "Cuela y endulza con miel si lo deseas. "
+      ],
+      "dosis": "1 taza tibia, una o dos veces al día, entre comidas.",
+      "almacenamiento": "preparar fresca; conservar las hierbas secas hasta 6 meses en recipiente hermético.",
+      "evidencia": "",
+      "categoria": "digestivo",
+      "imagen": "assets/images/recetas/digestivo_03.webp",
+      "imagenPlaceholder": "assets/images/recetas/digestivo_03_placeholder.webp"
+    },
+    {
+      "id": "digestivo_04",
+      "nombre": "Remedio que alivia la pesadez",
+      "descripcion": "Remedio externo que alivia la pesadez, los cólicos y la sensación de frío en el estómago. El jengibre estimula la circulación, reduce la inflamación y favorece la digestión. Ideal para usar cuando hay malestar abdominal leve o sensación de hinchazón.",
+      "idealPara": [
+        "cólicos",
+        "gases",
+        "digestión lenta"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "compresa",
+      "cuandoUsar": "después de comer o ante molestias abdominales.",
+      "precaucion": "no aplicar sobre la piel irritada o con heridas.",
+      "ingredientes": [
+        "2 cucharadas de jengibre fresco rallado",
+        "500 ml de agua",
+        "1 paño de algodón limpio o gasa gruesa"
+      ],
+      "preparacion": [
+        "Hierve el agua y añade el jengibre rallado. ",
+        "Cocina 5 minutos a fuego bajo, apaga y deja reposar 2 minutos. ",
+        "Sumerge el paño, escúrrelo con cuidado y colócalo tibio sobre el abdomen. ",
+        "Mantén la compresa de 10 a 15 minutos, renovándola si se enfría. "
+      ],
+      "dosis": "aplicar una o dos veces al día, según necesidad.",
+      "almacenamiento": "usar de inmediato; no guardar el líquido preparado.",
+      "evidencia": "",
+      "categoria": "digestivo",
+      "imagen": "assets/images/recetas/digestivo_04.webp",
+      "imagenPlaceholder": "assets/images/recetas/digestivo_04_placeholder.webp"
+    },
+    {
+      "id": "digestivo_05",
+      "nombre": "Preparación dulce y suave que favorece la digestión y ali...",
+      "descripcion": "Preparación dulce y suave que favorece la digestión y alivia la sensación de pesadez o ardor después de las comidas. La miel protege el estómago, mientras que el limón y el jengibre estimulan los jugos digestivos de manera natural.",
+      "idealPara": [
+        "digestión lenta",
+        "acidez leve",
+        "malestar estomacal"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "jarabe",
+      "cuandoUsar": "después de las comidas principales o ante sensación de llenura.",
+      "precaucion": "evitar su uso en casos de úlcera activa o gastritis aguda.",
+      "ingredientes": [
+        "3 cucharadas de miel pura",
+        "1 cucharadita de jugo de limón fresco",
+        "½ cucharadita de jengibre rallado",
+        "1 pizca de canela en polvo (opcional)"
+      ],
+      "preparacion": [
+        "Mezcla todos los ingredientes hasta obtener una textura homogénea. ",
+        "Guarda en un frasco pequeño de vidrio con tapa. ",
+        "Consume una cucharadita lentamente después de comer. "
+      ],
+      "dosis": "1 cucharadita después de cada comida, hasta tres veces al día.",
+      "almacenamiento": "conservar en refrigeración hasta por 7 días.",
+      "evidencia": "",
+      "categoria": "digestivo",
+      "imagen": "assets/images/recetas/digestivo_05.webp",
+      "imagenPlaceholder": "assets/images/recetas/digestivo_05_placeholder.webp"
+    },
+    {
+      "id": "digestivo_06",
+      "nombre": "Tónico concentrado que estimula el apetito",
+      "descripcion": "Tónico digestivo concentrado que estimula el apetito, reduce gases y mejora la digestión en casos de pesadez o abdomen inflamado. El hinojo calma los espasmos intestinales y la angélica activa la función hepática.",
+      "idealPara": [
+        "digestión lenta",
+        "gases",
+        "falta de apetito"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tintura",
+      "cuandoUsar": "antes o después de comidas copiosas.",
+      "precaucion": "no usar durante el embarazo ni junto con medicamentos anticoagulantes.",
+      "ingredientes": [
+        "1 cucharada de semillas de hinojo",
+        "1 cucharada de raíz seca de angélica troceada",
+        "250 ml de alcohol de cereal o vodka (mínimo"
+      ],
+      "preparacion": [
+        "Coloca las hierbas en un frasco de vidrio oscuro y cúbrelas con el alcohol. ",
+        "Cierra bien y deja macerar 15 días en lugar fresco, agitando una vez al día. ",
+        "Cuela y guarda la tintura en un frasco con gotero. "
+      ],
+      "dosis": "diluye 20 gotas en medio vaso de agua y bebe antes o después de las comidas, una o dos veces al día.",
+      "almacenamiento": "conservar en lugar fresco y oscuro hasta por 12 meses.",
+      "evidencia": "",
+      "categoria": "digestivo",
+      "imagen": "assets/images/recetas/digestivo_06.webp",
+      "imagenPlaceholder": "assets/images/recetas/digestivo_06_placeholder.webp"
+    },
+    {
+      "id": "digestivo_07",
+      "nombre": "Bebida ligera y mineralizante que ayuda a limpiar el orga...",
+      "descripcion": "Bebida ligera y mineralizante que ayuda a limpiar el organismo y favorecer la eliminación de líquidos. La ortiga estimula la función renal y depura el hígado, lo que la convierte en una aliada para equilibrar el sistema digestivo y mejorar la vitalidad.",
+      "idealPara": [
+        "digestiones lentas",
+        "retención de líquidos",
+        "sensación de pesadez"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "por la mañana o media tarde, durante periodos de depuración.",
+      "precaucion": "evita su uso si tomas diuréticos o padeces insuficiencia renal.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de hojas de ortiga seca",
+        "½ cucharadita de hojas de diente de león",
+        "Jugo de medio limón (opcional)"
+      ],
+      "preparacion": [
+        "Hierve el agua, apaga el fuego y añade las hojas de ortiga y diente de león. ",
+        "Tapa y deja reposar 10 minutos. ",
+        "Cuela y agrega el jugo de limón justo antes de beber. "
+      ],
+      "dosis": "1 taza tibia, una o dos veces al día, durante un máximo de 7 días consecutivos.",
+      "almacenamiento": "preparar fresca cada vez; no guardar más de 12 horas.",
+      "evidencia": "",
+      "categoria": "digestivo",
+      "imagen": "assets/images/recetas/digestivo_07.webp",
+      "imagenPlaceholder": "assets/images/recetas/digestivo_07_placeholder.webp"
+    },
+    {
+      "id": "digestivo_08",
+      "nombre": "Bebida y refrescante que favorece el tránsito intestinal ...",
+      "descripcion": "Bebida suave y refrescante que favorece el tránsito intestinal y calma la acidez leve. La papaya aporta enzimas digestivas naturales, mientras que la linaza actúa como fibra soluble, ayudando a limpiar el sistema digestivo de forma suave y efectiva.",
+      "idealPara": [
+        "estreñimiento leve",
+        "digestión pesada",
+        "acidez ocasional"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "batido",
+      "cuandoUsar": "en ayunas o como merienda ligera.",
+      "precaucion": "no usar en casos de diarrea o colon irritable activo.",
+      "ingredientes": [
+        "½ taza de papaya madura en trozos",
+        "1 vaso de agua o bebida vegetal",
+        "1 cucharadita de semillas de lino molidas",
+        "1 cucharadita de miel pura o zumo de limón"
+      ],
+      "preparacion": [
+        "Coloca todos los ingredientes en la licuadora y mezcla hasta obtener una textura homogénea. ",
+        "Bebe de inmediato, sin colar, para conservar la fibra. "
+      ],
+      "dosis": "1 vaso al día, preferiblemente por la mañana, durante 3 a 5 días.",
+      "almacenamiento": "preparar justo antes de consumir; no guardar una vez licuado.",
+      "evidencia": "",
+      "categoria": "digestivo",
+      "imagen": "assets/images/recetas/digestivo_08.webp",
+      "imagenPlaceholder": "assets/images/recetas/digestivo_08_placeholder.webp"
+    },
+    {
+      "id": "digestivo_09",
+      "nombre": "Tónico tradicional que estimula el apetito",
+      "descripcion": "Tónico digestivo tradicional que estimula el apetito, reduce la sensación de plenitud y favorece una digestión más ligera. La manzanilla amarga activa los jugos gástricos y calma el malestar abdominal causado por comidas pesadas.",
+      "idealPara": [
+        "pérdida de apetito",
+        "digestión lenta",
+        "gases"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tónico",
+      "cuandoUsar": "antes de las comidas principales.",
+      "precaucion": "no recomendado para personas con úlceras o gastritis activa.",
+      "ingredientes": [
+        "2 cucharadas de flores de manzanilla amarga seca",
+        "250 ml de vino blanco seco o vinagre de sidra",
+        "1 cucharada de miel pura (opcional)"
+      ],
+      "preparacion": [
+        "Coloca las flores en un frasco de vidrio y cúbrelas con el vino o el vinagre. ",
+        "Tapa y deja reposar en lugar fresco y oscuro durante 7 días, agitándolo a diario. ",
+        "Cuela y guarda en botella de vidrio oscuro. "
+      ],
+      "dosis": "1 cucharadita diluida en medio vaso de agua, antes de cada comida.",
+      "almacenamiento": "conservar en lugar fresco y oscuro hasta por 3 meses.",
+      "evidencia": "",
+      "categoria": "digestivo",
+      "imagen": "assets/images/recetas/digestivo_09.webp",
+      "imagenPlaceholder": "assets/images/recetas/digestivo_09_placeholder.webp"
+    },
+    {
+      "id": "digestivo_10",
+      "nombre": "Remedio sencillo que ayuda a aliviar la hinchazón abdomin...",
+      "descripcion": "Remedio externo sencillo que ayuda a aliviar la hinchazón abdominal y los gases atrapados. La menta refresca, relaja los músculos del abdomen y favorece la expulsión natural del aire, reduciendo la incomodidad.",
+      "idealPara": [
+        "gases",
+        "distensión abdominal",
+        "sensación de presión"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "cataplasma",
+      "cuandoUsar": "cuando haya malestar o después de una comida copiosa.",
+      "precaucion": "no aplicar sobre la piel irritada ni en niños pequeños.",
+      "ingredientes": [
+        "2 cucharadas de hojas de menta fresca o 1 cucharada seca",
+        "1 taza de agua",
+        "1 paño de algodón limpio"
+      ],
+      "preparacion": [
+        "Hierve el agua, añade la menta y deja reposar 5 minutos. ",
+        "Cuela y empapa el paño en la infusión tibia. ",
+        "Escurre ligeramente y colócalo sobre el abdomen. ",
+        "Cubre con otro paño seco y deja actuar de 10 a 15 minutos. "
+      ],
+      "dosis": "aplicar una o dos veces al día según necesidad.",
+      "almacenamiento": "usar al momento; no guardar el líquido restante.",
+      "evidencia": "",
+      "categoria": "digestivo",
+      "imagen": "assets/images/recetas/digestivo_10.webp",
+      "imagenPlaceholder": "assets/images/recetas/digestivo_10_placeholder.webp"
+    },
+    {
+      "id": "digestivo_11",
+      "nombre": "Bebida que estimula la función hepática y ayuda a aliviar...",
+      "descripcion": "Bebida tradicional que estimula la función hepática y ayuda a aliviar la sensación de pesadez tras comidas grasas o copiosas. El boldo apoya la digestión del hígado y la bilis, mientras que el anís calma los gases y el malestar abdominal.",
+      "idealPara": [
+        "digestiones pesadas",
+        "gases",
+        "hígado lento"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "después de comidas abundantes o por la noche.",
+      "precaucion": "no usar durante el embarazo ni en tratamientos hepáticos sin control médico.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de hojas de boldo seca",
+        "½ cucharadita de semillas de anís",
+        "1 rodaja fina de limón (opcional)"
+      ],
+      "preparacion": [
+        "Hierve el agua, apaga el fuego y añade el boldo y el anís. ",
+        "Cubre y deja reposar de 8 a 10 minutos. ",
+        "Cuela y añade la rodaja de limón si lo deseas. "
+      ],
+      "dosis": "1 taza tibia después de las comidas, hasta dos veces al día.",
+      "almacenamiento": "preparar fresca cada vez; conservar las hierbas secas hasta 6 meses en frasco hermético.",
+      "evidencia": "",
+      "categoria": "digestivo",
+      "imagen": "assets/images/recetas/digestivo_11.webp",
+      "imagenPlaceholder": "assets/images/recetas/digestivo_11_placeholder.webp"
+    },
+    {
+      "id": "digestivo_12",
+      "nombre": "Preparación externa que ayuda a aliviar la hinchazón y la...",
+      "descripcion": "Preparación externa que ayuda a aliviar la hinchazón y las molestias digestivas leves. El masaje con aceites tibios activa la circulación abdominal, relaja los músculos y favorece el movimiento intestinal natural.",
+      "idealPara": [
+        "gases",
+        "cólicos leves",
+        "digestión lenta"
+      ],
+      "tipo": "externo",
+      "tipoPreparacion": "aceite de masaje",
+      "cuandoUsar": "después de las comidas o antes de dormir.",
+      "precaucion": "no aplicar sobre heridas ni durante el embarazo sin orientación profesional.",
+      "ingredientes": [
+        "50 ml de aceite base (oliva o almendra dulce)",
+        "5 gotas de aceite esencial de menta",
+        "3 gotas de aceite esencial de jengibre",
+        "2 gotas de aceite esencial de lavanda (opcional)"
+      ],
+      "preparacion": [
+        "Mezcla los aceites en un frasco de vidrio oscuro y agita suavemente. ",
+        "Antes de usar, calienta unas gotas entre las manos. ",
+        "Masajea el abdomen en círculos suaves, en sentido horario, durante 5 minutos. "
+      ],
+      "dosis": "aplicar una o dos veces al día, según necesidad.",
+      "almacenamiento": "conservar en lugar fresco y oscuro hasta 3 meses.",
+      "evidencia": "",
+      "categoria": "digestivo",
+      "imagen": "assets/images/recetas/digestivo_12.webp",
+      "imagenPlaceholder": "assets/images/recetas/digestivo_12_placeholder.webp"
+    },
+    {
+      "id": "digestivo_13",
+      "nombre": "Bebida ligera que favorece la digestión",
+      "descripcion": "Bebida ligera que favorece la digestión, ayuda a eliminar gases y reduce la hinchazón abdominal. El perejil estimula la función renal y depurativa, mientras que la canela mejora la digestión y aporta un sabor cálido y aromático.",
+      "idealPara": [
+        "digestión lenta",
+        "gases",
+        "abdomen inflamado"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "agua medicinal",
+      "cuandoUsar": "antes o después de las comidas principales.",
+      "precaucion": "no usar durante el embarazo ni en casos de insuficiencia renal.",
+      "ingredientes": [
+        "2 ramitas de perejil fresco",
+        "1 trozo pequeño de canela en rama",
+        "500 ml de agua"
+      ],
+      "preparacion": [
+        "Coloca el perejil y la canela en una olla con el agua. ",
+        "Lleva a ebullición y deja hervir 5 minutos a fuego bajo. ",
+        "Apaga, deja reposar 10 minutos y cuela. "
+      ],
+      "dosis": "beber tibia o a temperatura ambiente, medio vaso antes o después de las comidas.",
+      "almacenamiento": "conservar en refrigeración hasta 24 horas.",
+      "evidencia": "",
+      "categoria": "digestivo",
+      "imagen": "assets/images/recetas/digestivo_13.webp",
+      "imagenPlaceholder": "assets/images/recetas/digestivo_13_placeholder.webp"
+    },
+    {
+      "id": "digestivo_14",
+      "nombre": "Tónico energizante que activa la digestión",
+      "descripcion": "Tónico natural energizante que activa la digestión, estimula el metabolismo y ayuda a eliminar toxinas acumuladas durante la noche. El jengibre calienta el cuerpo y mejora la circulación, mientras que el limón equilibra el pH y apoya la función hepática.",
+      "idealPara": [
+        "digestión lenta",
+        "sensación de pesadez matinal",
+        "depuración"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "tónico",
+      "cuandoUsar": "en ayunas, una vez al día.",
+      "precaucion": "evitar en casos de gastritis, úlcera o reflujo severo.",
+      "ingredientes": [
+        "½ vaso de agua tibia",
+        "1 cucharadita de jugo de jengibre fresco (rallado y exprimido)",
+        "1 cucharada de jugo de limón fresco",
+        "1 cucharadita de miel pura (opcional)"
+      ],
+      "preparacion": [
+        "Mezcla todos los ingredientes en un vaso pequeño y remueve bien. ",
+        "Bebe lentamente, en pequeños sorbos, preferiblemente con el estómago vacío. "
+      ],
+      "dosis": "1 shot matinal al día, durante 5 a 7 días seguidos.",
+      "almacenamiento": "preparar fresco cada vez; no guardar la mezcla.",
+      "evidencia": "",
+      "categoria": "digestivo",
+      "imagen": "assets/images/recetas/digestivo_14.webp",
+      "imagenPlaceholder": "assets/images/recetas/digestivo_14_placeholder.webp"
+    },
+    {
+      "id": "digestivo_15",
+      "nombre": "Infusión aromática y refrescante que ayuda a aliviar la p...",
+      "descripcion": "Infusión aromática y refrescante que ayuda a aliviar la pesadez y la hinchazón después de comidas abundantes. La menta relaja los músculos del estómago y el cardamomo estimula la digestión, reduciendo gases y malestar.",
+      "idealPara": [
+        "digestión pesada",
+        "gases",
+        "sensación de plenitud"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "infusión",
+      "cuandoUsar": "después de comidas copiosas o muy condimentadas.",
+      "precaucion": "no usar en casos de reflujo crónico o gastritis activa.",
+      "ingredientes": [
+        "1 taza de agua",
+        "1 cucharadita de hojas de menta seca o fresca",
+        "3 vainas de cardamomo ligeramente machacadas",
+        "1 trocito pequeño de jengibre (opcional)"
+      ],
+      "preparacion": [
+        "Calienta el agua hasta hervir, apaga el fuego y añade los ingredientes. ",
+        "Cubre y deja reposar de 8 a 10 minutos. ",
+        "Cuela antes de beber. "
+      ],
+      "dosis": "1 taza tibia después de las comidas, hasta dos veces al día.",
+      "almacenamiento": "preparar fresca cada vez; conservar las hierbas secas en frasco cerrado.",
+      "evidencia": "",
+      "categoria": "digestivo",
+      "imagen": "assets/images/recetas/digestivo_15.webp",
+      "imagenPlaceholder": "assets/images/recetas/digestivo_15_placeholder.webp"
+    },
+    {
+      "id": "digestivo_16",
+      "nombre": "Mezcla seca práctica y de acción rápida para aliviar la p...",
+      "descripcion": "Mezcla seca práctica y de acción rápida para aliviar la pesadez o los gases cuando no es posible preparar infusiones. Combina hierbas digestivas molidas que estimulan el estómago y favorecen la eliminación de gases. Ideal para viajes o comidas fuera de casa.",
+      "idealPara": [
+        "digestión lenta",
+        "gases",
+        "malestar estomacal leve"
+      ],
+      "tipo": "interno",
+      "tipoPreparacion": "mezcla seca",
+      "cuandoUsar": "después de comer o ante sensación de pesadez.",
+      "precaucion": "no usar durante el embarazo ni en casos de gastritis o úlcera activa.",
+      "ingredientes": [
+        "1 cucharada de semillas de hinojo molidas",
+        "1 cucharadita de jengibre seco en polvo",
+        "½ cucharadita de cúrcuma en polvo",
+        "½ cucharadita de canela en polvo"
+      ],
+      "preparacion": [
+        "Mezcla todos los ingredientes y guárdalos en un frasco seco y hermético. ",
+        "Para tomar, disuelve ½ cucharadita del polvo en medio vaso de agua tibia o mézclalo con una cucharadita de miel. "
+      ],
+      "dosis": "½ cucharadita después de las comidas, hasta dos veces al día.",
+      "almacenamiento": "conservar en lugar seco y oscuro",
+      "evidencia": "",
+      "categoria": "digestivo",
+      "imagen": "assets/images/recetas/digestivo_16.webp",
+      "imagenPlaceholder": "assets/images/recetas/digestivo_16_placeholder.webp"
+    }
+  ]
+}

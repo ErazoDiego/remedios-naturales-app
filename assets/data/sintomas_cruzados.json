@@ -1,0 +1,425 @@
+{
+  "tablas": [
+    {
+      "sistema": "Molestias digestivas",
+      "entradas": [
+        {
+          "sintoma": "Digestión lenta"
+        },
+        {
+          "sintoma": "hinojo, menta, jengibre"
+        },
+        {
+          "sintoma": "Acidez leve"
+        },
+        {
+          "sintoma": "manzanilla, avena, regaliz"
+        },
+        {
+          "sintoma": "Gases"
+        },
+        {
+          "sintoma": "menta, anís, cardamomo"
+        },
+        {
+          "sintoma": "cataplasma de menta para gases, infusión de boldo y anís"
+        },
+        {
+          "sintoma": "Pesadez abdominal"
+        },
+        {
+          "sintoma": "jengibre, romero, cardamomo"
+        },
+        {
+          "sintoma": "infusión de menta y cardamomo para digestiones pesadas"
+        },
+        {
+          "sintoma": "Náuseas suaves"
+        },
+        {
+          "sintoma": "jengibre, limón"
+        },
+        {
+          "sintoma": "shot matinal de jengibre y limón"
+        }
+      ]
+    },
+    {
+      "sistema": "Sistema nervioso y mental",
+      "entradas": [
+        {
+          "sintoma": "Estrés leve"
+        },
+        {
+          "sintoma": "melisa, lavanda, pasiflora"
+        },
+        {
+          "sintoma": "Ansiedad"
+        },
+        {
+          "sintoma": "tila, lavanda, hierbas calmantes"
+        },
+        {
+          "sintoma": "baño de hierbas para ansiedad, jarabe nocturno de tilo"
+        },
+        {
+          "sintoma": "Falta de enfoque"
+        },
+        {
+          "sintoma": "avena verde, romero"
+        },
+        {
+          "sintoma": "Insomnio suave"
+        },
+        {
+          "sintoma": "valeriana, tilo, manzanilla"
+        },
+        {
+          "sintoma": "Cefalea leve"
+        },
+        {
+          "sintoma": "menta"
+        },
+        {
+          "sintoma": "compresa de menta para cefaleas"
+        }
+      ]
+    },
+    {
+      "sistema": "Sistema respiratorio",
+      "entradas": [
+        {
+          "sintoma": "Congestión nasal"
+        },
+        {
+          "sintoma": "eucalipto, \tpino, menta"
+        },
+        {
+          "sintoma": "vaporización con eucalipto, inhalación con aceite de pino"
+        },
+        {
+          "sintoma": "Dolor \tde"
+        },
+        {
+          "sintoma": "garganta"
+        },
+        {
+          "sintoma": "salvia, miel, limón"
+        },
+        {
+          "sintoma": "gárgaras de salvia, pastillas de limón y jengibre"
+        },
+        {
+          "sintoma": "Tos suave"
+        },
+        {
+          "sintoma": "tomillo, \tcebolla, malva"
+        },
+        {
+          "sintoma": "jarabe natural de tomillo y miel, jarabe de cebolla y miel"
+        },
+        {
+          "sintoma": "Mucosidad"
+        },
+        {
+          "sintoma": "regaliz, gordolobo"
+        }
+      ]
+    },
+    {
+      "sistema": "Sistema inmunitario",
+      "entradas": [
+        {
+          "sintoma": "Bajón de defensas"
+        },
+        {
+          "sintoma": "equinácea, saúco, cúrcuma"
+        },
+        {
+          "sintoma": "infusión de equinácea y saúco, leche dorada"
+        },
+        {
+          "sintoma": "Primeros síntomas de resfriado"
+        },
+        {
+          "sintoma": "jengibre, miel, limón"
+        },
+        {
+          "sintoma": "Fatiga general"
+        },
+        {
+          "sintoma": "reishi, astrágalo"
+        },
+        {
+          "sintoma": "tónico adaptógeno de reishi, infusión de astrágalo"
+        },
+        {
+          "sintoma": "Inflamación suave"
+        },
+        {
+          "sintoma": "cúrcuma, jengibre"
+        },
+        {
+          "sintoma": "tónico con cúrcuma y vinagre, jarabe antioxidante de bayas"
+        }
+      ]
+    },
+    {
+      "sistema": "Sistema cardiovascular y metabólico",
+      "entradas": [
+        {
+          "sintoma": "Circulación lenta"
+        },
+        {
+          "sintoma": "romero, cayena, espino blanco"
+        },
+        {
+          "sintoma": "infusión de espino blanco, mezcla de semillas energéticas"
+        },
+        {
+          "sintoma": "Tensión muscular por estrés"
+        },
+        {
+          "sintoma": "jengibre, limón"
+        },
+        {
+          "sintoma": "tónico de ajo y limón, extracto antioxidante de cúrcuma"
+        },
+        {
+          "sintoma": "Retención ligera"
+        },
+        {
+          "sintoma": "romero, canela"
+        },
+        {
+          "sintoma": "agua de canela, infusión depurativa con romero"
+        },
+        {
+          "sintoma": "Cansancio metabólico"
+        },
+        {
+          "sintoma": "hojas de olivo, hibisco"
+        },
+        {
+          "sintoma": "té de hibisco con jengibre, infusión de hojas de olivo"
+        }
+      ]
+    },
+    {
+      "sistema": "Sistema hormonal y reproductivo",
+      "entradas": [
+        {
+          "sintoma": "Síndrome premenstrual"
+        },
+        {
+          "sintoma": "salvia, melisa, lavanda"
+        },
+        {
+          "sintoma": "Sofocos"
+        },
+        {
+          "sintoma": "trébol rojo, maca"
+        },
+        {
+          "sintoma": "infusión de trébol rojo, elixir de maca y cacao"
+        },
+        {
+          "sintoma": "Ciclos irregulares"
+        },
+        {
+          "sintoma": "vitex, diente de león"
+        },
+        {
+          "sintoma": "Libido baja"
+        },
+        {
+          "sintoma": "maca, canela"
+        },
+        {
+          "sintoma": "tónico herbal para libido, infusión de canela y miel"
+        }
+      ]
+    },
+    {
+      "sistema": "Sistema músculo-esquelético",
+      "entradas": [
+        {
+          "sintoma": "Tensión muscular"
+        },
+        {
+          "sintoma": "jengibre, romero, árnica"
+        },
+        {
+          "sintoma": "compresa caliente de jengibre, bálsamo de árnica y romero"
+        },
+        {
+          "sintoma": "Dolor articular leve"
+        },
+        {
+          "sintoma": "cúrcuma, laurel"
+        },
+        {
+          "sintoma": "tintura de cúrcuma, infusión de laurel"
+        },
+        {
+          "sintoma": "Inflamación suave"
+        },
+        {
+          "sintoma": "cúrcuma, jengibre"
+        },
+        {
+          "sintoma": "jarabe antiinflamatorio natural, aceite tibio para masaje"
+        },
+        {
+          "sintoma": "Golpes o esguinces"
+        },
+        {
+          "sintoma": "árnica, arcilla"
+        },
+        {
+          "sintoma": "cataplasma para esguinces leves"
+        }
+      ]
+    },
+    {
+      "sistema": "Sistema urinario y renal",
+      "entradas": [
+        {
+          "sintoma": "Retención de líquidos"
+        },
+        {
+          "sintoma": "ortiga, perejil, diente de león"
+        },
+        {
+          "sintoma": "infusión diurética de ortiga, tónico depurativo con perejil"
+        },
+        {
+          "sintoma": "Irritación urinaria"
+        },
+        {
+          "sintoma": "caléndula, manzanilla"
+        },
+        {
+          "sintoma": "agua de cebada con caléndula, infusión para vejiga sensible"
+        },
+        {
+          "sintoma": "Pesadez renal"
+        },
+        {
+          "sintoma": "cola de caballo, gayuba"
+        }
+      ]
+    },
+    {
+      "sistema": "Sistema dérmico (piel y cabello)",
+      "entradas": [
+        {
+          "sintoma": "Irritación leve"
+        },
+        {
+          "sintoma": "aloe, caléndula"
+        },
+        {
+          "sintoma": "gel de aloe y menta, crema hidratante con caléndula"
+        },
+        {
+          "sintoma": "Piel grasa o mixta"
+        },
+        {
+          "sintoma": "arcilla, avena"
+        },
+        {
+          "sintoma": "mascarilla purificante de arcilla y avena"
+        },
+        {
+          "sintoma": "Quemadura solar suave"
+        },
+        {
+          "sintoma": "manzanilla, aloe"
+        },
+        {
+          "sintoma": "spray calmante post-solar"
+        },
+        {
+          "sintoma": "Cabello débil"
+        },
+        {
+          "sintoma": "romero, ortiga"
+        },
+        {
+          "sintoma": "champú natural de romero y ortiga"
+        }
+      ]
+    },
+    {
+      "sistema": "Sistema sensorial y bucal",
+      "entradas": [
+        {
+          "sintoma": "Ojos cansados"
+        },
+        {
+          "sintoma": "manzanilla, té verde"
+        },
+        {
+          "sintoma": "compresa ocular refrescante, tónico ocular"
+        },
+        {
+          "sintoma": "Halitosis leve"
+        },
+        {
+          "sintoma": "salvia, menta"
+        },
+        {
+          "sintoma": "enjuague bucal con salvia y clavo, spray bucal antiséptico"
+        },
+        {
+          "sintoma": "Molestia en oído externo"
+        },
+        {
+          "sintoma": "ajo, oliva"
+        },
+        {
+          "sintoma": "gotas para oído con ajo y oliva"
+        },
+        {
+          "sintoma": "Mareo o vértigo suave"
+        },
+        {
+          "sintoma": "menta, jengibre"
+        },
+        {
+          "sintoma": "roll-on para mareo y vértigo"
+        }
+      ]
+    },
+    {
+      "sistema": "Si no mejora, cambia a una opción más suave o consulta.",
+      "entradas": [
+        {
+          "sintoma": "Adaptógeno"
+        },
+        {
+          "sintoma": "Aceite base"
+        },
+        {
+          "sintoma": "Aceite esencial"
+        },
+        {
+          "sintoma": "Alcaloide"
+        },
+        {
+          "sintoma": "Decocción"
+        },
+        {
+          "sintoma": "Depurativo"
+        },
+        {
+          "sintoma": "Dosis suave"
+        },
+        {
+          "sintoma": "Extracto"
+        }
+      ]
+    }
+  ]
+}
