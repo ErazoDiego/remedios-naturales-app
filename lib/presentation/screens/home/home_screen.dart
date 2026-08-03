@@ -366,6 +366,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       const SizedBox(height: 8),
                       _buildQuickLink(
+                        icon: TablerIcons.leaf,
+                        title: 'Herbolario',
+                        subtitle: 'Directorio de hierbas medicinales',
+                        onTap: () => context.go('/herbolario'),
+                      ),
+                      const SizedBox(height: 8),
+                      _buildQuickLink(
                         icon: TablerIcons.alert_triangle,
                         title: 'Seguridad',
                         subtitle: 'Precauciones importantes',

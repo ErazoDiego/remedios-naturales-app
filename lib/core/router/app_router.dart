@@ -5,6 +5,8 @@ import '../../presentation/screens/remedy_detail/remedy_detail_screen.dart';
 import '../../presentation/screens/search/search_screen.dart';
 import '../../presentation/screens/by_symptom/by_symptom_screen.dart';
 import '../../presentation/screens/favorites/favorites_screen.dart';
+import '../../presentation/screens/herbolario/herbolario_screen.dart';
+import '../../presentation/screens/herba_detail/herba_detail_screen.dart';
 import '../../presentation/screens/fundamentals/fundamentals_screen.dart';
 import '../../presentation/screens/safety/safety_screen.dart';
 import '../../presentation/screens/about/about_screen.dart';
@@ -60,6 +62,21 @@ class AppRouter {
       GoRoute(
         path: '/favorites',
         builder: (context, state) => const FavoritesScreen(),
+      ),
+
+      // Herbolario (directorio de hierbas)
+      GoRoute(
+        path: '/herbolario',
+        builder: (context, state) => const HerbolarioScreen(),
+      ),
+
+      // Detalle de hierba
+      GoRoute(
+        path: '/herba/:herbaId',
+        builder: (context, state) {
+          final herbaId = state.pathParameters['herbaId']!;
+          return HerbaDetailScreen(herbaId: herbaId);
+        },
       ),
       
       // Fundamentos

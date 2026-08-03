@@ -1,0 +1,811 @@
+[
+  {
+    "id": "achicoria",
+    "nombre": "Achicoria",
+    "propiedades": "Abre el apetito, baja colesterol",
+    "tags": [
+      "digestivo",
+      "metabolico"
+    ]
+  },
+  {
+    "id": "alcachofa",
+    "nombre": "Alcachofa",
+    "propiedades": "Colerética, mejora el colesterol",
+    "tags": [
+      "depurativo",
+      "metabolico"
+    ]
+  },
+  {
+    "id": "alfalfa",
+    "nombre": "Alfalfa",
+    "propiedades": "Aporte de vitaminas y minerales, digestivo, laxante, colesterol, menopausia",
+    "tags": [
+      "digestivo",
+      "hormonal",
+      "metabolico"
+    ]
+  },
+  {
+    "id": "amargon",
+    "nombre": "Amargón",
+    "propiedades": "Pérdida de apetito, hepático, flatulencia, digestivo",
+    "tags": [
+      "depurativo",
+      "digestivo"
+    ]
+  },
+  {
+    "id": "ambay",
+    "nombre": "Ambay",
+    "propiedades": "Expectorante, vías respiratorias",
+    "tags": [
+      "respiratorio"
+    ]
+  },
+  {
+    "id": "anacahuita",
+    "nombre": "Anacahuita",
+    "propiedades": "Afecciones respiratorias, expectorante",
+    "tags": [
+      "respiratorio"
+    ]
+  },
+  {
+    "id": "angelica",
+    "nombre": "Angélica",
+    "propiedades": "Diurético, diaforético",
+    "tags": [
+      "diaforetico",
+      "diuretico"
+    ]
+  },
+  {
+    "id": "apio_cimarron",
+    "nombre": "Apio cimarrón",
+    "propiedades": "Diurético, diaforético, tratamiento de la reuma, inflamaciones",
+    "tags": [
+      "antiinflamatorio",
+      "diaforetico",
+      "diuretico"
+    ]
+  },
+  {
+    "id": "arandano",
+    "nombre": "Arándano",
+    "propiedades": "Antiséptico para vías urinarias, hipoglucemiante, mejora la visión nocturna",
+    "tags": [
+      "antiséptico",
+      "diuretico",
+      "inmunologico",
+      "metabolico",
+      "vision"
+    ]
+  },
+  {
+    "id": "boldo",
+    "nombre": "Boldo",
+    "propiedades": "Colagogo, colerético, para el hígado",
+    "tags": [
+      "depurativo"
+    ]
+  },
+  {
+    "id": "borraja",
+    "nombre": "Borraja",
+    "propiedades": "Depurativo, emoliente",
+    "tags": [
+      "depurativo"
+    ]
+  },
+  {
+    "id": "calendula",
+    "nombre": "Caléndula",
+    "propiedades": "Estimulante de la circulación, cicatrizante, enfermedades de la piel, acné",
+    "tags": [
+      "circulacion",
+      "energizante",
+      "piel"
+    ]
+  },
+  {
+    "id": "canchalagua",
+    "nombre": "Canchalagua",
+    "propiedades": "Gastrointestinal, dolor de estómago, antiácido",
+    "tags": [
+      "digestivo"
+    ]
+  },
+  {
+    "id": "cardo_mariano",
+    "nombre": "Cardo mariano",
+    "propiedades": "Hepatoprotector, antioxidante e hipotensor, digestivo",
+    "tags": [
+      "antioxidante",
+      "digestivo"
+    ]
+  },
+  {
+    "id": "carqueja",
+    "nombre": "Carqueja",
+    "propiedades": "Colagogo, diurético, hepático, impotencia masculina",
+    "tags": [
+      "depurativo",
+      "diuretico"
+    ]
+  },
+  {
+    "id": "castano_de_indias",
+    "nombre": "Castaño de indias",
+    "propiedades": "Estimula la circulación periférica, enfermedades venosas",
+    "tags": [
+      "circulacion"
+    ]
+  },
+  {
+    "id": "cedron",
+    "nombre": "Cedrón",
+    "propiedades": "Digestivo, sedante, antiflatulento, mareos",
+    "tags": [
+      "digestivo",
+      "sedante"
+    ]
+  },
+  {
+    "id": "centella_asiatica",
+    "nombre": "Centella asiática",
+    "propiedades": "Cicatrizante, eutrófico, tratamiento de celulitis, regenerador cutáneo",
+    "tags": [
+      "piel"
+    ]
+  },
+  {
+    "id": "chanar",
+    "nombre": "Chañar",
+    "propiedades": "Emoliente de vías aéreas, bronquitis",
+    "tags": [
+      "respiratorio"
+    ]
+  },
+  {
+    "id": "chia",
+    "nombre": "Chía",
+    "propiedades": "Aporte de omega 3 y 6, colesterol",
+    "tags": [
+      "metabolico"
+    ]
+  },
+  {
+    "id": "cimicifuga",
+    "nombre": "Cimicífuga",
+    "propiedades": "Trastornos premenstruales, menopausia",
+    "tags": [
+      "hormonal"
+    ]
+  },
+  {
+    "id": "cola_de_caballo",
+    "nombre": "Cola de caballo",
+    "propiedades": "Diurético, antiséptico de vías urinarias, antirreumático",
+    "tags": [
+      "antiinflamatorio",
+      "antiséptico",
+      "diuretico",
+      "inmunologico"
+    ]
+  },
+  {
+    "id": "congorosa",
+    "nombre": "Congorosa",
+    "propiedades": "Digestiva, antiespasmódica, calma el dolor de la úlcera",
+    "tags": [
+      "digestivo",
+      "sedante"
+    ]
+  },
+  {
+    "id": "crataegus",
+    "nombre": "Crataegus",
+    "propiedades": "Sedante, tónico cardíaco, hipertensión",
+    "tags": [
+      "circulacion",
+      "energizante",
+      "sedante"
+    ]
+  },
+  {
+    "id": "cuasia",
+    "nombre": "Cuasia",
+    "propiedades": "Tónico estomacal, digestivo, parásitos capilares",
+    "tags": [
+      "antiséptico",
+      "digestivo",
+      "energizante",
+      "respiratorio"
+    ]
+  },
+  {
+    "id": "cascara_sagrada",
+    "nombre": "Cáscara sagrada",
+    "propiedades": "Laxante, purgante",
+    "tags": [
+      "digestivo"
+    ]
+  },
+  {
+    "id": "damiana",
+    "nombre": "Damiana",
+    "propiedades": "Tratamiento en disfunción sexual, afrodisíaco",
+    "tags": [
+      "hormonal"
+    ]
+  },
+  {
+    "id": "diente_de_leon",
+    "nombre": "Diente de león",
+    "propiedades": "Pérdida de apetito, hepático, flatulencia, digestivo",
+    "tags": [
+      "depurativo",
+      "digestivo"
+    ]
+  },
+  {
+    "id": "doradilla",
+    "nombre": "Doradilla",
+    "propiedades": "Regula menstruación",
+    "tags": [
+      "hormonal"
+    ]
+  },
+  {
+    "id": "equinacea",
+    "nombre": "Equinácea",
+    "propiedades": "Energizante natural en enfermedades infecciosas, diaforético, antiséptico, antibiótico",
+    "tags": [
+      "antiséptico",
+      "diaforetico",
+      "energizante",
+      "inmunologico"
+    ]
+  },
+  {
+    "id": "estigma_de_maiz",
+    "nombre": "Estigma de maíz",
+    "propiedades": "Diurético",
+    "tags": [
+      "diuretico"
+    ]
+  },
+  {
+    "id": "eucaliptus",
+    "nombre": "Eucaliptus",
+    "propiedades": "Anticatarral, fluidificante de las vías aéreas, bronquitis, asma",
+    "tags": [
+      "respiratorio"
+    ]
+  },
+  {
+    "id": "fresno",
+    "nombre": "Fresno",
+    "propiedades": "Artritis, gota, laxante, diurético, tratamiento de la reuma",
+    "tags": [
+      "antiinflamatorio",
+      "digestivo",
+      "diuretico"
+    ]
+  },
+  {
+    "id": "fucus",
+    "nombre": "Fucus",
+    "propiedades": "Depurativo sanguíneo, digestivo",
+    "tags": [
+      "depurativo",
+      "digestivo"
+    ]
+  },
+  {
+    "id": "fumaria",
+    "nombre": "Fumaria",
+    "propiedades": "Antihistamínico, depurativo, reumatismo",
+    "tags": [
+      "antiinflamatorio",
+      "depurativo"
+    ]
+  },
+  {
+    "id": "garcinia",
+    "nombre": "Garcinia",
+    "propiedades": "Quemador de grasas y celulítico",
+    "tags": [
+      "metabolico",
+      "piel"
+    ]
+  },
+  {
+    "id": "ginkgo_biloba",
+    "nombre": "Ginkgo biloba",
+    "propiedades": "Estimulante de la circulación cerebral y periférica, para la memoria",
+    "tags": [
+      "circulacion",
+      "energizante",
+      "memoria"
+    ]
+  },
+  {
+    "id": "ginseng",
+    "nombre": "Ginseng",
+    "propiedades": "Energizante, decaimiento, disminución prematura de la potencia sexual",
+    "tags": [
+      "energizante",
+      "hormonal"
+    ]
+  },
+  {
+    "id": "graviola",
+    "nombre": "Graviola",
+    "propiedades": "Antimicrobiano, bioestimulante",
+    "tags": [
+      "energizante",
+      "inmunologico"
+    ]
+  },
+  {
+    "id": "hamamelis",
+    "nombre": "Hamamelis",
+    "propiedades": "Antiinflamatorio local y de mucosas",
+    "tags": [
+      "antiinflamatorio"
+    ]
+  },
+  {
+    "id": "harpagofito",
+    "nombre": "Harpagofito",
+    "propiedades": "Tratamiento de reuma, gota, antiespasmódico",
+    "tags": [
+      "antiinflamatorio",
+      "digestivo"
+    ]
+  },
+  {
+    "id": "higuera",
+    "nombre": "Higuera",
+    "propiedades": "Expectorante, anticatarral, laxante, hipoglucemiante, diabetes",
+    "tags": [
+      "digestivo",
+      "metabolico",
+      "respiratorio"
+    ]
+  },
+  {
+    "id": "hinojo",
+    "nombre": "Hinojo",
+    "propiedades": "Trastornos digestivos, flatulencias, catarros, afecciones respiratorias",
+    "tags": [
+      "digestivo",
+      "respiratorio"
+    ]
+  },
+  {
+    "id": "hipericon",
+    "nombre": "Hipericón",
+    "propiedades": "Antidepresivo, contra la ansiedad y el insomnio nervioso",
+    "tags": [
+      "sedante"
+    ]
+  },
+  {
+    "id": "hisopo",
+    "nombre": "Hisopo",
+    "propiedades": "Obesidad, estimulante de la circulación, desórdenes digestivos",
+    "tags": [
+      "circulacion",
+      "digestivo",
+      "energizante",
+      "metabolico"
+    ]
+  },
+  {
+    "id": "lapacho",
+    "nombre": "Lapacho",
+    "propiedades": "Reconstituyente general, antianémico, depurativo, tratamiento de la reuma, diurético",
+    "tags": [
+      "antiinflamatorio",
+      "depurativo",
+      "diuretico",
+      "energizante"
+    ]
+  },
+  {
+    "id": "lavanda",
+    "nombre": "Lavanda",
+    "propiedades": "Insomnio, angustia, ansiedad",
+    "tags": [
+      "sedante"
+    ]
+  },
+  {
+    "id": "llanten",
+    "nombre": "Llantén",
+    "propiedades": "Astringente, emoliente de vías aéreas, ronqueras, dolor de garganta",
+    "tags": [
+      "respiratorio"
+    ]
+  },
+  {
+    "id": "maca",
+    "nombre": "Maca",
+    "propiedades": "Energizante, afrodisíaco",
+    "tags": [
+      "energizante",
+      "hormonal"
+    ]
+  },
+  {
+    "id": "malva",
+    "nombre": "Malva",
+    "propiedades": "Anticatarral, irrigación de la mucosa de la garganta y boca, antiinflamatorio",
+    "tags": [
+      "antiinflamatorio",
+      "respiratorio"
+    ]
+  },
+  {
+    "id": "manzanilla",
+    "nombre": "Manzanilla",
+    "propiedades": "Antiespasmódico, digestivo, sedante, lavaje de ojos",
+    "tags": [
+      "digestivo",
+      "sedante",
+      "vision"
+    ]
+  },
+  {
+    "id": "marcela",
+    "nombre": "Marcela",
+    "propiedades": "Digestivo, carminativo",
+    "tags": [
+      "digestivo"
+    ]
+  },
+  {
+    "id": "marrubio",
+    "nombre": "Marrubio",
+    "propiedades": "Regula la menstruación, pérdida de apetito, trastornos digestivos, flatulencia, expectorante",
+    "tags": [
+      "digestivo",
+      "hormonal",
+      "respiratorio"
+    ]
+  },
+  {
+    "id": "meliloto",
+    "nombre": "Meliloto",
+    "propiedades": "Tos rebelde, calma la ansiedad, insomnio, calmante",
+    "tags": [
+      "respiratorio",
+      "sedante"
+    ]
+  },
+  {
+    "id": "melisa",
+    "nombre": "Melisa",
+    "propiedades": "Desórdenes de sueño, tónico cardíaco, antiespasmo, estimulante nervioso",
+    "tags": [
+      "circulacion",
+      "energizante",
+      "sedante"
+    ]
+  },
+  {
+    "id": "menta",
+    "nombre": "Menta",
+    "propiedades": "Afecciones gastrointestinales, digestivo",
+    "tags": [
+      "digestivo"
+    ]
+  },
+  {
+    "id": "mil_hombres",
+    "nombre": "Mil hombres",
+    "propiedades": "Tratamiento de la reuma, gota y artritis",
+    "tags": [
+      "antiinflamatorio"
+    ]
+  },
+  {
+    "id": "muna_muna",
+    "nombre": "Muña muña",
+    "propiedades": "Afrodisíaco, digestivo, laxante suave",
+    "tags": [
+      "digestivo",
+      "hormonal"
+    ]
+  },
+  {
+    "id": "matico",
+    "nombre": "Mático",
+    "propiedades": "Hemostático",
+    "tags": [
+      "hemostatico"
+    ]
+  },
+  {
+    "id": "naranjo_hojas",
+    "nombre": "Naranjo hojas",
+    "propiedades": "Depresión, palpitación",
+    "tags": [
+      "circulacion",
+      "sedante"
+    ]
+  },
+  {
+    "id": "nogal",
+    "nombre": "Nogal",
+    "propiedades": "Sudorífico, oscurece el cabello",
+    "tags": [
+      "diaforetico",
+      "piel"
+    ]
+  },
+  {
+    "id": "ortiga",
+    "nombre": "Ortiga",
+    "propiedades": "Antirreumática, hepatoprotector, depurativo, diurético",
+    "tags": [
+      "antiinflamatorio",
+      "depurativo",
+      "diuretico"
+    ]
+  },
+  {
+    "id": "palo_azul",
+    "nombre": "Palo azul",
+    "propiedades": "Diurético, antiséptico de vías urinarias, tratamiento de la reuma, artritis",
+    "tags": [
+      "antiinflamatorio",
+      "antiséptico",
+      "diuretico",
+      "inmunologico"
+    ]
+  },
+  {
+    "id": "palo_pichi",
+    "nombre": "Palo pichi",
+    "propiedades": "Diurético",
+    "tags": [
+      "diuretico"
+    ]
+  },
+  {
+    "id": "palo_santo",
+    "nombre": "Palo santo",
+    "propiedades": "Diurético, digestivo, depurativo, tratamiento de la gota, reuma, artritis",
+    "tags": [
+      "antiinflamatorio",
+      "depurativo",
+      "digestivo",
+      "diuretico"
+    ]
+  },
+  {
+    "id": "pasionaria",
+    "nombre": "Pasionaria",
+    "propiedades": "Sedante, palpitaciones",
+    "tags": [
+      "circulacion",
+      "sedante"
+    ]
+  },
+  {
+    "id": "pezuna_de_vaca",
+    "nombre": "Pezuña de vaca",
+    "propiedades": "Hipoglucemiante, diabetes",
+    "tags": [
+      "metabolico"
+    ]
+  },
+  {
+    "id": "poleo",
+    "nombre": "Poleo",
+    "propiedades": "Trastornos gastrointestinales",
+    "tags": [
+      "digestivo"
+    ]
+  },
+  {
+    "id": "regaliz",
+    "nombre": "Regaliz",
+    "propiedades": "Anticatarral, y para úlceras gástricas, acidez",
+    "tags": [
+      "digestivo",
+      "respiratorio"
+    ]
+  },
+  {
+    "id": "romerillo",
+    "nombre": "Romerillo",
+    "propiedades": "Estimulante, debilidad nerviosa y del cerebro",
+    "tags": [
+      "energizante",
+      "memoria",
+      "sedante"
+    ]
+  },
+  {
+    "id": "romero",
+    "nombre": "Romero",
+    "propiedades": "Problemas digestivos",
+    "tags": [
+      "digestivo"
+    ]
+  },
+  {
+    "id": "rompepiedra",
+    "nombre": "Rompepiedra",
+    "propiedades": "Diurético",
+    "tags": [
+      "diuretico"
+    ]
+  },
+  {
+    "id": "ruda",
+    "nombre": "Ruda",
+    "propiedades": "Parásitos, adelanta la menstruación",
+    "tags": [
+      "antiséptico",
+      "hormonal",
+      "respiratorio"
+    ]
+  },
+  {
+    "id": "salvia_blanca",
+    "nombre": "Salvia blanca",
+    "propiedades": "Afecciones de boca y garganta, resfríos, gripes",
+    "tags": [
+      "respiratorio"
+    ]
+  },
+  {
+    "id": "sen",
+    "nombre": "Sen",
+    "propiedades": "Laxante",
+    "tags": [
+      "digestivo"
+    ]
+  },
+  {
+    "id": "sombra_de_toro",
+    "nombre": "Sombra de toro",
+    "propiedades": "Combate el uso del alcohol, antiinflamatorio de vías respiratorias, digestivo",
+    "tags": [
+      "antialcoholico",
+      "antiinflamatorio",
+      "digestivo",
+      "respiratorio"
+    ]
+  },
+  {
+    "id": "tilo",
+    "nombre": "Tilo",
+    "propiedades": "Diaforético, sedante",
+    "tags": [
+      "diaforetico",
+      "sedante"
+    ]
+  },
+  {
+    "id": "tusca",
+    "nombre": "Tusca",
+    "propiedades": "Tratamiento de la gota, reuma",
+    "tags": [
+      "antiinflamatorio"
+    ]
+  },
+  {
+    "id": "te_del_burro",
+    "nombre": "Té del burro",
+    "propiedades": "Trastornos gastrointestinales",
+    "tags": [
+      "digestivo"
+    ]
+  },
+  {
+    "id": "te_rojo",
+    "nombre": "Té rojo",
+    "propiedades": "Estimulante, antioxidante, adelgazante",
+    "tags": [
+      "antioxidante",
+      "energizante",
+      "metabolico"
+    ]
+  },
+  {
+    "id": "te_verde",
+    "nombre": "Té verde",
+    "propiedades": "Estimulante, antioxidante, adelgazante",
+    "tags": [
+      "antioxidante",
+      "energizante",
+      "metabolico"
+    ]
+  },
+  {
+    "id": "uva_ursi",
+    "nombre": "Uva ursi",
+    "propiedades": "Antiinflamatorio del tracto urinario, diurético, próstata",
+    "tags": [
+      "antiinflamatorio",
+      "diuretico"
+    ]
+  },
+  {
+    "id": "una_de_gato",
+    "nombre": "Uña de gato",
+    "propiedades": "Mejora el sistema inmunológico, aumenta las defensas",
+    "tags": [
+      "inmunologico"
+    ]
+  },
+  {
+    "id": "valeriana",
+    "nombre": "Valeriana",
+    "propiedades": "Sedante, antiespasmódica",
+    "tags": [
+      "digestivo",
+      "sedante"
+    ]
+  },
+  {
+    "id": "vira_vira",
+    "nombre": "Vira vira",
+    "propiedades": "Tos, catarro, cansancio",
+    "tags": [
+      "energizante",
+      "respiratorio"
+    ]
+  },
+  {
+    "id": "yerba_buena",
+    "nombre": "Yerba buena",
+    "propiedades": "Digestivo, aperitivo",
+    "tags": [
+      "digestivo"
+    ]
+  },
+  {
+    "id": "yerba_carnicera",
+    "nombre": "Yerba carnicera",
+    "propiedades": "Antirreumático, diurético",
+    "tags": [
+      "antiinflamatorio",
+      "diuretico"
+    ]
+  },
+  {
+    "id": "yerba_del_pollo",
+    "nombre": "Yerba del pollo",
+    "propiedades": "Digestivo, diurético, empachos",
+    "tags": [
+      "digestivo",
+      "diuretico"
+    ]
+  },
+  {
+    "id": "yerba_dulce",
+    "nombre": "Yerba dulce",
+    "propiedades": "Edulcorante",
+    "tags": [
+      "edulcorante"
+    ]
+  },
+  {
+    "id": "zarzaparrilla",
+    "nombre": "Zarzaparrilla",
+    "propiedades": "Enfermedades hepáticas del riñón y diaforéticas",
+    "tags": [
+      "diaforetico",
+      "diuretico"
+    ]
+  }
+]

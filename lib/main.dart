@@ -4,6 +4,7 @@ import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'presentation/providers/recetas_provider.dart';
 import 'presentation/providers/user_provider.dart';
+import 'presentation/providers/hierbas_provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +20,7 @@ class RemediosNaturalesApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => RecetasProvider()),
         ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => HierbasProvider()),
       ],
       child: MaterialApp.router(
         title: 'Remedios Naturales',
