@@ -5,6 +5,7 @@ import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../providers/recetas_provider.dart';
+import '../../providers/user_provider.dart';
 import '../../widgets/loading_error_empty.dart';
 
 /// Pantalla principal - Muestra los 10 sistemas corporales
@@ -351,6 +352,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       const SizedBox(height: 12),
+                      _buildProfileQuickLink(),
+                      const SizedBox(height: 8),
                       _buildQuickLink(
                         icon: TablerIcons.heart,
                         title: 'Mis Favoritos',
@@ -480,6 +483,30 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  // ═══════════════════════════════════════════════════════════════════
+  // ENLACE RÁPIDO DE PERFIL - refleja estado de sesión
+  // ═══════════════════════════════════════════════════════════════════
+  Widget _buildProfileQuickLink() {
+    final userProvider = context.watch<UserProvider>();
+    final isLoggedIn = userProvider.isLoggedIn;
+    final email = userProvider.userEmail ?? '';
+    final nombre = userProvider.profile?.nombre ?? '';
+
+    final title = isLoggedIn
+        ? (nombre.isNotEmpty ? nombre : 'Mi cuenta')
+        : 'Mi cuenta';
+    final subtitle = isLoggedIn
+        ? 'Sincronizado · $email'
+        : 'Iniciá sesión para sincronizar tus datos';
+
+    return _buildQuickLink(
+      icon: isLoggedIn ? TablerIcons.user_circle : TablerIcons.user_plus,
+      title: title,
+      subtitle: subtitle,
+      onTap: () => context.go('/profile'),
     );
   }
 

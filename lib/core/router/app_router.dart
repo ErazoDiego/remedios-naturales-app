@@ -10,6 +10,9 @@ import '../../presentation/screens/herba_detail/herba_detail_screen.dart';
 import '../../presentation/screens/fundamentals/fundamentals_screen.dart';
 import '../../presentation/screens/safety/safety_screen.dart';
 import '../../presentation/screens/about/about_screen.dart';
+import '../../presentation/screens/login/login_screen.dart';
+import '../../presentation/screens/register/register_screen.dart';
+import '../../presentation/screens/profile/profile_screen.dart';
 
 /// Configuración de rutas de la aplicación
 class AppRouter {
@@ -95,6 +98,24 @@ class AppRouter {
       GoRoute(
         path: '/about',
         builder: (context, state) => const AboutScreen(),
+      ),
+
+      // Login
+      GoRoute(
+        path: '/login',
+        builder: (context, state) => const LoginScreen(),
+      ),
+
+      // Registro
+      GoRoute(
+        path: '/register',
+        builder: (context, state) => const RegisterScreen(),
+      ),
+
+      // Perfil
+      GoRoute(
+        path: '/profile',
+        builder: (context, state) => const ProfileScreen(),
       ),
     ],
   );

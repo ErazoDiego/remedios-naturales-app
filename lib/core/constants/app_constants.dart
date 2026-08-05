@@ -75,6 +75,9 @@ class AppConstants {
   // Color de alerta - Ámbar
   static const Color alertAmber = Color(0xFFBA7517);
   static const Color alertAmberBackground = Color(0xFFFFF8E1);
+
+  // Color de alerta - Rojo (errores, eliminación)
+  static const Color alertRed = Color(0xFFB3261E);
   
   // Colores de texto
   static const Color textPrimary = Color(0xFF2C2C2A);
