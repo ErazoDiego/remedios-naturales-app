@@ -14,7 +14,13 @@ class FundamentalsScreen extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(TablerIcons.arrow_left),
-          onPressed: () => context.go('/'),
+          onPressed: () {
+              if (context.canPop()) {
+                context.pop();
+              } else {
+                context.go('/');
+              }
+            },
         ),
         title: const Row(
           mainAxisSize: MainAxisSize.min,

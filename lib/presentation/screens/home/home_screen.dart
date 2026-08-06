@@ -5,7 +5,6 @@ import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../providers/recetas_provider.dart';
-import '../../providers/user_provider.dart';
 import '../../widgets/loading_error_empty.dart';
 
 /// Pantalla principal - Muestra los 10 sistemas corporales
@@ -90,33 +89,24 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Título con ícono de hoja + avatar de usuario arriba a la derecha
-                    Stack(
+                    // Título con ícono de hoja
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              TablerIcons.leaf,
-                              size: 24,
-                              color: AppConstants.sageGreenTitle,
-                            ),
-                            const SizedBox(width: 10),
-                            const Text(
-                              'Remedios Naturales',
-                              style: TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w600,
-                                color: AppConstants.textPrimary,
-                                letterSpacing: -0.3,
-                              ),
-                            ),
-                          ],
+                        Icon(
+                          TablerIcons.leaf,
+                          size: 24,
+                          color: AppConstants.sageGreenTitle,
                         ),
-                        Positioned(
-                          right: 0,
-                          top: 0,
-                          child: _buildProfileButton(),
+                        const SizedBox(width: 10),
+                        const Text(
+                          'Remedios Naturales',
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w600,
+                            color: AppConstants.textPrimary,
+                            letterSpacing: -0.3,
+                          ),
                         ),
                       ],
                     ),
@@ -343,7 +333,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
 
               // ═══════════════════════════════════════════════════════
-              // ENLACES RÁPIDOS - Fondo blanco, borde fino
+              // ACCESOS RÁPIDOS - 3 chips horizontales
               // ═══════════════════════════════════════════════════════
               SliverToBoxAdapter(
                 child: Padding(
@@ -361,34 +351,32 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       const SizedBox(height: 12),
-                      _buildProfileQuickLink(),
-                      const SizedBox(height: 8),
-                      _buildQuickLink(
-                        icon: TablerIcons.heart,
-                        title: 'Mis Favoritos',
-                        subtitle: 'Recetas guardadas',
-                        onTap: () => context.go('/favorites'),
-                      ),
-                      const SizedBox(height: 8),
-                      _buildQuickLink(
-                        icon: TablerIcons.book,
-                        title: 'Fundamentos',
-                        subtitle: 'Principios de la medicina natural',
-                        onTap: () => context.go('/fundamentals'),
-                      ),
-                      const SizedBox(height: 8),
-                      _buildQuickLink(
-                        icon: TablerIcons.leaf,
-                        title: 'Herbolario',
-                        subtitle: 'Directorio de hierbas medicinales',
-                        onTap: () => context.go('/herbolario'),
-                      ),
-                      const SizedBox(height: 8),
-                      _buildQuickLink(
-                        icon: TablerIcons.alert_triangle,
-                        title: 'Seguridad',
-                        subtitle: 'Precauciones importantes',
-                        onTap: () => context.go('/safety'),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: _buildQuickChip(
+                              icon: TablerIcons.book,
+                              label: 'Fundamentos',
+                              onTap: () => context.go('/fundamentals'),
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: _buildQuickChip(
+                              icon: TablerIcons.leaf,
+                              label: 'Herbolario',
+                              onTap: () => context.go('/herbolario'),
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: _buildQuickChip(
+                              icon: TablerIcons.alert_triangle,
+                              label: 'Seguridad',
+                              onTap: () => context.go('/safety'),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -496,73 +484,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   // ═══════════════════════════════════════════════════════════════════
-  // BOTÓN DE PERFIL - arriba a la derecha del header
-  // Logueado: avatar con la inicial del nombre. Anónimo: ícono simple.
+  // CHIP DE ACCESO RÁPIDO - fondo blanco, borde fino, ícono arriba
   // ═══════════════════════════════════════════════════════════════════
-  Widget _buildProfileButton() {
-    final userProvider = context.watch<UserProvider>();
-    final isLoggedIn = userProvider.isLoggedIn;
-    final nombre = userProvider.profile?.nombre ?? '';
-    final inicial = nombre.isNotEmpty ? nombre[0].toUpperCase() : 'U';
-
-    return InkWell(
-      onTap: () => context.go('/profile'),
-      borderRadius: BorderRadius.circular(20),
-      child: Tooltip(
-        message: 'Mi cuenta',
-        child: isLoggedIn
-            ? CircleAvatar(
-                radius: 17,
-                backgroundColor: AppConstants.sageGreenTitle,
-                child: Text(
-                  inicial,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  ),
-                ),
-              )
-            : const Icon(
-                TablerIcons.user_circle,
-                size: 28,
-                color: AppConstants.sageGreenTitle,
-              ),
-      ),
-    );
-  }
-
-  // ═══════════════════════════════════════════════════════════════════
-  // ENLACE RÁPIDO DE PERFIL - refleja estado de sesión
-  // ═══════════════════════════════════════════════════════════════════
-  Widget _buildProfileQuickLink() {
-    final userProvider = context.watch<UserProvider>();
-    final isLoggedIn = userProvider.isLoggedIn;
-    final email = userProvider.userEmail ?? '';
-    final nombre = userProvider.profile?.nombre ?? '';
-
-    final title = isLoggedIn
-        ? (nombre.isNotEmpty ? nombre : 'Mi cuenta')
-        : 'Mi cuenta';
-    final subtitle = isLoggedIn
-        ? 'Sincronizado · $email'
-        : 'Iniciá sesión para sincronizar tus datos';
-
-    return _buildQuickLink(
-      icon: isLoggedIn ? TablerIcons.user_circle : TablerIcons.user_plus,
-      title: title,
-      subtitle: subtitle,
-      onTap: () => context.go('/profile'),
-    );
-  }
-
-  // ═══════════════════════════════════════════════════════════════════
-  // ENLACE RÁPIDO - Fondo blanco, borde fino, íconos Tabler
-  // ═══════════════════════════════════════════════════════════════════
-  Widget _buildQuickLink({
+  Widget _buildQuickChip({
     required IconData icon,
-    required String title,
-    required String subtitle,
+    required String label,
     required VoidCallback onTap,
   }) {
     return Container(
@@ -574,33 +500,31 @@ class _HomeScreenState extends State<HomeScreen> {
           width: 0.5,
         ),
       ),
-      child: ListTile(
-        leading: Icon(
-          icon,
-          size: 20,
-          color: AppConstants.sageGreenTitle,
-        ),
-        title: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: AppConstants.textPrimary,
-          ),
-        ),
-        subtitle: Text(
-          subtitle,
-          style: const TextStyle(
-            fontSize: 12,
-            color: AppConstants.textSecondary,
-          ),
-        ),
-        trailing: const Icon(
-          TablerIcons.chevron_right,
-          size: 18,
-          color: AppConstants.textTertiary,
-        ),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
         onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 14),
+          child: Column(
+            children: [
+              Icon(
+                icon,
+                size: 22,
+                color: AppConstants.sageGreenTitle,
+              ),
+              const SizedBox(height: 6),
+              Text(
+                label,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: AppConstants.textPrimary,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

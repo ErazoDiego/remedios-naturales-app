@@ -98,7 +98,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
           backgroundColor: AppConstants.sageGreenTitle,
         ),
       );
-      context.go('/');
+      if (context.canPop()) {
+        context.pop();
+      } else {
+        context.go('/');
+      }
     }
   }
 
@@ -119,7 +123,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
         actions: [
           TextButton(
-            onPressed: () => context.go('/login'),
+            onPressed: () {
+              if (context.canPop()) {
+                context.pop();
+              } else {
+                context.go('/login');
+              }
+            },
             child: const Text(
               'Entendido',
               style: TextStyle(
@@ -140,7 +150,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(TablerIcons.arrow_left),
-          onPressed: () => context.go('/login'),
+          onPressed: () {
+            if (context.canPop()) {
+              context.pop();
+            } else {
+              context.go('/login');
+            }
+          },
         ),
         title: const Row(
           mainAxisSize: MainAxisSize.min,

@@ -48,7 +48,13 @@ class _SearchScreenState extends State<SearchScreen> {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(TablerIcons.arrow_left),
-          onPressed: () => context.go('/'),
+          onPressed: () {
+            if (context.canPop()) {
+              context.pop();
+            } else {
+              context.go('/');
+            }
+          },
         ),
         title: const Row(
           mainAxisSize: MainAxisSize.min,
@@ -162,10 +168,10 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   // ═══════════════════════════════════════════════════════════════════
-  // SUGERENCIAS DE BÚSQUEDA RÁPIDA
+  // SUGERENCIAS - Explorar por síntoma
   // ═══════════════════════════════════════════════════════════════════
   Widget _buildSuggestions() {
-    final suggestions = [
+    final symptoms = [
       {'icon': TablerIcons.bandage, 'text': 'dolor de cabeza'},
       {'icon': TablerIcons.virus, 'text': 'gripe'},
       {'icon': TablerIcons.brain, 'text': 'ansiedad'},
@@ -178,7 +184,7 @@ class _SearchScreenState extends State<SearchScreen> {
       padding: const EdgeInsets.all(20),
       children: [
         const Text(
-          'Búsquedas populares',
+          'Explorar por síntoma',
           style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w600,
@@ -187,7 +193,7 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
         ),
         const SizedBox(height: 12),
-        ...suggestions.map((suggestion) {
+        ...symptoms.map((symptom) {
           return Container(
             margin: const EdgeInsets.only(bottom: 8),
             decoration: BoxDecoration(
@@ -200,16 +206,20 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
             child: ListTile(
               leading: Icon(
-                suggestion['icon'] as IconData,
+                symptom['icon'] as IconData,
                 size: 20,
                 color: AppConstants.sageGreenTitle,
               ),
               title: Text(
-                suggestion['text'] as String,
+                symptom['text'] as String,
                 style: const TextStyle(
                   fontSize: 14,
                   color: AppConstants.textPrimary,
                 ),
+              ),
+              subtitle: const Text(
+                'Ver remedios para este síntoma',
+                style: TextStyle(fontSize: 12),
               ),
               trailing: const Icon(
                 TablerIcons.arrow_right,
@@ -221,13 +231,10 @@ class _SearchScreenState extends State<SearchScreen> {
                 vertical: 2,
               ),
               onTap: () {
-                _searchController.text = suggestion['text'] as String;
-                setState(() {
-                  _currentQuery = suggestion['text'] as String;
-                });
-                context.read<RecetasProvider>().search(
-                      suggestion['text'] as String,
-                    );
+                final condition = symptom['text'] as String;
+                context.go(
+                  '/symptom/${Uri.encodeComponent(condition)}',
+                );
               },
             ),
           );

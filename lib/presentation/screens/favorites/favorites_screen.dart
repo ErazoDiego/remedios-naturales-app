@@ -57,7 +57,13 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(TablerIcons.arrow_left),
-          onPressed: () => context.go('/'),
+          onPressed: () {
+              if (context.canPop()) {
+                context.pop();
+              } else {
+                context.go('/');
+              }
+            },
         ),
         title: Row(
           mainAxisSize: MainAxisSize.min,
@@ -279,7 +285,13 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
             ),
             const SizedBox(height: 24),
             ElevatedButton(
-              onPressed: () => context.go('/'),
+              onPressed: () {
+              if (context.canPop()) {
+                context.pop();
+              } else {
+                context.go('/');
+              }
+            },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppConstants.sageGreenTitle,
                 foregroundColor: Colors.white,

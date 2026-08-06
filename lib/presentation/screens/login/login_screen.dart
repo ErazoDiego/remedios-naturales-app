@@ -60,7 +60,11 @@ class _LoginScreenState extends State<LoginScreen> {
     if (!mounted) return;
 
     if (result.success) {
-      context.go('/');
+      if (context.canPop()) {
+        context.pop();
+      } else {
+        context.go('/');
+      }
     } else {
       setState(() => _submitting = false);
       ScaffoldMessenger.of(context).showSnackBar(
@@ -79,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(TablerIcons.arrow_left),
-          onPressed: () => context.go('/'),
+          onPressed: () => context.pop(),
         ),
         title: const Row(
           mainAxisSize: MainAxisSize.min,

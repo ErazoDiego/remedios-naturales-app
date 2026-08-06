@@ -13,18 +13,72 @@ import '../../presentation/screens/about/about_screen.dart';
 import '../../presentation/screens/login/login_screen.dart';
 import '../../presentation/screens/register/register_screen.dart';
 import '../../presentation/screens/profile/profile_screen.dart';
+import '../../presentation/widgets/app_shell.dart';
 
 /// Configuración de rutas de la aplicación
+///
+/// - 4 tabs raíz (Inicio/Buscar/Favoritos/Perfil) viven dentro de un
+///   StatefulShellRoute.indexedStack: preservan estado entre cambios de tab.
+/// - El resto (detalles de receta, hierbas, categorías, auth...) son
+///   pantallas full-screen SIN bottom nav, con botón atrás.
 class AppRouter {
   static final GoRouter router = GoRouter(
     initialLocation: '/',
     routes: [
-      // Home
-      GoRoute(
-        path: '/',
-        builder: (context, state) => const HomeScreen(),
+      // ═══════════════════════════════════════════════════════════════
+      // SHELL CON BOTTOM NAV - 4 tabs
+      // ═══════════════════════════════════════════════════════════════
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) =>
+            AppShell(navigationShell: navigationShell),
+        branches: [
+          // ─── Tab Inicio ───
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/',
+                builder: (context, state) => const HomeScreen(),
+              ),
+            ],
+          ),
+          // ─── Tab Buscar ───
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/search',
+                builder: (context, state) {
+                  final query =
+                      state.uri.queryParameters['q'] ?? '';
+                  return SearchScreen(initialQuery: query);
+                },
+              ),
+            ],
+          ),
+          // ─── Tab Favoritos ───
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/favorites',
+                builder: (context, state) => const FavoritesScreen(),
+              ),
+            ],
+          ),
+          // ─── Tab Perfil ───
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/profile',
+                builder: (context, state) => const ProfileScreen(),
+              ),
+            ],
+          ),
+        ],
       ),
-      
+
+      // ═══════════════════════════════════════════════════════════════
+      // PANTALLAS FULL-SCREEN (sin bottom nav)
+      // ═══════════════════════════════════════════════════════════════
+
       // Categoría (sistema corporal)
       GoRoute(
         path: '/category/:systemId',
@@ -33,7 +87,7 @@ class AppRouter {
           return CategoryScreen(systemId: systemId);
         },
       ),
-      
+
       // Detalle de receta
       GoRoute(
         path: '/remedy/:recipeId',
@@ -42,16 +96,7 @@ class AppRouter {
           return RemedyDetailScreen(recipeId: recipeId);
         },
       ),
-      
-      // Búsqueda
-      GoRoute(
-        path: '/search',
-        builder: (context, state) {
-          final query = state.uri.queryParameters['q'] ?? '';
-          return SearchScreen(initialQuery: query);
-        },
-      ),
-      
+
       // Por síntoma
       GoRoute(
         path: '/symptom/:condition',
@@ -59,12 +104,6 @@ class AppRouter {
           final condition = state.pathParameters['condition']!;
           return BySymptomScreen(condition: condition);
         },
-      ),
-      
-      // Favoritos
-      GoRoute(
-        path: '/favorites',
-        builder: (context, state) => const FavoritesScreen(),
       ),
 
       // Herbolario (directorio de hierbas)
@@ -81,19 +120,19 @@ class AppRouter {
           return HerbaDetailScreen(herbaId: herbaId);
         },
       ),
-      
+
       // Fundamentos
       GoRoute(
         path: '/fundamentals',
         builder: (context, state) => const FundamentalsScreen(),
       ),
-      
+
       // Seguridad
       GoRoute(
         path: '/safety',
         builder: (context, state) => const SafetyScreen(),
       ),
-      
+
       // Acerca de
       GoRoute(
         path: '/about',
@@ -110,12 +149,6 @@ class AppRouter {
       GoRoute(
         path: '/register',
         builder: (context, state) => const RegisterScreen(),
-      ),
-
-      // Perfil
-      GoRoute(
-        path: '/profile',
-        builder: (context, state) => const ProfileScreen(),
       ),
     ],
   );

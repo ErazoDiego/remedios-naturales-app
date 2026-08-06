@@ -43,7 +43,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
           appBar: AppBar(
             leading: IconButton(
               icon: const Icon(TablerIcons.arrow_left),
-              onPressed: () => context.go('/'),
+              onPressed: () {
+              if (context.canPop()) {
+                context.pop();
+              } else {
+                context.go('/');
+              }
+            },
             ),
             title: Row(
               mainAxisSize: MainAxisSize.min,
