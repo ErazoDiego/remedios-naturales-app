@@ -90,24 +90,33 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Título con ícono de hoja
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    // Título con ícono de hoja + avatar de usuario arriba a la derecha
+                    Stack(
                       children: [
-                        Icon(
-                          TablerIcons.leaf,
-                          size: 24,
-                          color: AppConstants.sageGreenTitle,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              TablerIcons.leaf,
+                              size: 24,
+                              color: AppConstants.sageGreenTitle,
+                            ),
+                            const SizedBox(width: 10),
+                            const Text(
+                              'Remedios Naturales',
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.w600,
+                                color: AppConstants.textPrimary,
+                                letterSpacing: -0.3,
+                              ),
+                            ),
+                          ],
                         ),
-                        const SizedBox(width: 10),
-                        const Text(
-                          'Remedios Naturales',
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600,
-                            color: AppConstants.textPrimary,
-                            letterSpacing: -0.3,
-                          ),
+                        Positioned(
+                          right: 0,
+                          top: 0,
+                          child: _buildProfileButton(),
                         ),
                       ],
                     ),
@@ -482,6 +491,43 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  // ═══════════════════════════════════════════════════════════════════
+  // BOTÓN DE PERFIL - arriba a la derecha del header
+  // Logueado: avatar con la inicial del nombre. Anónimo: ícono simple.
+  // ═══════════════════════════════════════════════════════════════════
+  Widget _buildProfileButton() {
+    final userProvider = context.watch<UserProvider>();
+    final isLoggedIn = userProvider.isLoggedIn;
+    final nombre = userProvider.profile?.nombre ?? '';
+    final inicial = nombre.isNotEmpty ? nombre[0].toUpperCase() : 'U';
+
+    return InkWell(
+      onTap: () => context.go('/profile'),
+      borderRadius: BorderRadius.circular(20),
+      child: Tooltip(
+        message: 'Mi cuenta',
+        child: isLoggedIn
+            ? CircleAvatar(
+                radius: 17,
+                backgroundColor: AppConstants.sageGreenTitle,
+                child: Text(
+                  inicial,
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
+                ),
+              )
+            : const Icon(
+                TablerIcons.user_circle,
+                size: 28,
+                color: AppConstants.sageGreenTitle,
+              ),
       ),
     );
   }
