@@ -308,6 +308,10 @@ class UserService {
   Future<void> _saveLocalProfile(UserProfile profile) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_profileKey, json.encode(profile.toJson()));
+    // Mantener el cache en memoria sincronizado: sin esto, la UI lee el
+    // profile viejo tras addFavorite/removeFavorite (corazón ✅ pero lista
+    // de favoritos vacía). BUG corregido — ver tests 'updates cached profile'.
+    _currentProfile = profile;
   }
 
   /// Perfil logueado desde Supabase (con cache local como fallback offline).

@@ -109,6 +109,30 @@ void main() {
 
       expect(isFav, true);
     });
+
+    test('addFavorite updates cached profile used by the UI', () async {
+      // BUG REGRESIÓN: la pantalla de Favoritos lee userProvider.profile.favoritos,
+      // que viene del cache _currentProfile. En la app real el perfil YA está
+      // cacheado (init → loadProfile) antes de agregar el favorito. Si addFavorite
+      // no actualiza el cache, el corazoncito se marca (isFavorite lee el disco)
+      // pero la lista queda vacía.
+      await service.getCurrentProfile(); // precargar cache (como hace la app)
+      await service.addFavorite('digestivo_01');
+
+      final profile = await service.getCurrentProfile();
+
+      expect(profile!.favoritos, contains('digestivo_01'));
+    });
+
+    test('removeFavorite updates cached profile used by the UI', () async {
+      await service.getCurrentProfile(); // precargar cache
+      await service.addFavorite('digestivo_01');
+      await service.removeFavorite('digestivo_01');
+
+      final profile = await service.getCurrentProfile();
+
+      expect(profile!.favoritos, isNot(contains('digestivo_01')));
+    });
   });
 
   // ═══════════════════════════════════════════════════════════════════
