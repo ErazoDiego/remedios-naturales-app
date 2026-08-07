@@ -6,6 +6,7 @@ import '../../../core/constants/app_constants.dart';
 import '../../../data/models/receta.dart';
 import '../../providers/recetas_provider.dart';
 import '../../providers/user_provider.dart';
+import '../../widgets/ads/banner_ad_widget.dart';
 
 /// Pantalla de favoritos — Muestra las recetas guardadas con el mismo layout que CategoryScreen
 class FavoritesScreen extends StatefulWidget {
@@ -78,16 +79,24 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         backgroundColor: AppConstants.headerBeige,
         foregroundColor: AppConstants.textPrimary,
       ),
-      body: _isLoading
-          ? const Center(
-              child: CircularProgressIndicator(
-                color: AppConstants.sageGreenTitle,
-                strokeWidth: 2,
-              ),
-            )
-          : _favoriteRecetas.isEmpty
-              ? _buildEmptyState()
-              : _buildRecipeList(),
+      body: Column(
+        children: [
+          Expanded(
+            child: _isLoading
+                ? const Center(
+                    child: CircularProgressIndicator(
+                      color: AppConstants.sageGreenTitle,
+                      strokeWidth: 2,
+                    ),
+                  )
+                : _favoriteRecetas.isEmpty
+                    ? _buildEmptyState()
+                    : _buildRecipeList(),
+          ),
+          // Banner publicitario (si el usuario no es premium)
+          const BannerAdWidget(),
+        ],
+      ),
     );
   }
 

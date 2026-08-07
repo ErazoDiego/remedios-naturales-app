@@ -5,6 +5,7 @@ import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../data/models/hierba.dart';
 import '../../providers/hierbas_provider.dart';
+import '../../widgets/ads/banner_ad_widget.dart';
 import '../../widgets/loading_error_empty.dart';
 
 /// Pantalla de detalle de una hierba del herbolario
@@ -71,12 +72,20 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
             backgroundColor: AppConstants.headerBeige,
             foregroundColor: AppConstants.textPrimary,
           ),
-          body: LoadingErrorEmpty(
-            isLoading: provider.isLoading && hierba == null,
-            error: provider.error,
-            isEmpty: hierba == null,
-            emptyMessage: 'Hierba no encontrada',
-            child: hierba != null ? _buildDetail(hierba, provider) : null,
+          body: Column(
+            children: [
+              Expanded(
+                child: LoadingErrorEmpty(
+                  isLoading: provider.isLoading && hierba == null,
+                  error: provider.error,
+                  isEmpty: hierba == null,
+                  emptyMessage: 'Hierba no encontrada',
+                  child: hierba != null ? _buildDetail(hierba, provider) : null,
+                ),
+              ),
+              // Banner publicitario (si el usuario no es premium)
+              const BannerAdWidget(),
+            ],
           ),
         );
       },

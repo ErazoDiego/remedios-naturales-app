@@ -5,6 +5,7 @@ import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../providers/recetas_provider.dart';
 import '../../providers/user_provider.dart';
+import '../../widgets/ads/banner_ad_widget.dart';
 import '../../widgets/loading_error_empty.dart';
 
 /// Pantalla de detalle de receta - Muestra toda la información de un remedio
@@ -80,12 +81,20 @@ class _RemedyDetailScreenState extends State<RemedyDetailScreen> {
                 ),
             ],
           ),
-          body: LoadingErrorEmpty(
-            isLoading: provider.isLoading,
-            error: provider.error,
-            isEmpty: receta == null,
-            emptyMessage: 'Receta no encontrada',
-            child: receta != null ? _buildRecipeDetail(receta) : null,
+          body: Column(
+            children: [
+              Expanded(
+                child: LoadingErrorEmpty(
+                  isLoading: provider.isLoading,
+                  error: provider.error,
+                  isEmpty: receta == null,
+                  emptyMessage: 'Receta no encontrada',
+                  child: receta != null ? _buildRecipeDetail(receta) : null,
+                ),
+              ),
+              // Banner publicitario (si el usuario no es premium)
+              const BannerAdWidget(),
+            ],
           ),
         );
       },

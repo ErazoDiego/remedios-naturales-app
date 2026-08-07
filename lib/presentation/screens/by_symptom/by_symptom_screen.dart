@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../providers/recetas_provider.dart';
+import '../../widgets/ads/banner_ad_widget.dart';
 import '../../widgets/search_result_card.dart';
 
 /// Pantalla por síntoma - Muestra recetas para una condición específica
@@ -207,6 +208,9 @@ class _BySymptomScreenState extends State<BySymptomScreen> {
                   },
                 ),
               ),
+
+              // Banner publicitario (si el usuario no es premium)
+              const BannerAdWidget(),
             ],
           );
         },

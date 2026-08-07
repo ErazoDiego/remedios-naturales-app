@@ -5,6 +5,7 @@ import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../providers/recetas_provider.dart';
+import '../../widgets/ads/banner_ad_widget.dart';
 import '../../widgets/loading_error_empty.dart';
 
 /// Pantalla de categoría — Muestra las recetas de un sistema corporal
@@ -75,13 +76,21 @@ class _CategoryScreenState extends State<CategoryScreen> {
             backgroundColor: AppConstants.headerBeige,
             foregroundColor: AppConstants.textPrimary,
           ),
-          body: LoadingErrorEmpty(
-            isLoading: provider.isLoading,
-            error: provider.error,
-            isEmpty: sistema?.recetas.isEmpty ?? true,
-            emptyMessage: 'No hay recetas disponibles',
-            onRetry: () => provider.loadSistema(widget.systemId),
-            child: _buildRecipeList(sistema?.recetas ?? []),
+          body: Column(
+            children: [
+              Expanded(
+                child: LoadingErrorEmpty(
+                  isLoading: provider.isLoading,
+                  error: provider.error,
+                  isEmpty: sistema?.recetas.isEmpty ?? true,
+                  emptyMessage: 'No hay recetas disponibles',
+                  onRetry: () => provider.loadSistema(widget.systemId),
+                  child: _buildRecipeList(sistema?.recetas ?? []),
+                ),
+              ),
+              // Banner publicitario (si el usuario no es premium)
+              const BannerAdWidget(),
+            ],
           ),
         );
       },

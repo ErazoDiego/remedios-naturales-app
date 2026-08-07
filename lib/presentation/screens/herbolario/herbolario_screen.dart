@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../providers/hierbas_provider.dart';
+import '../../widgets/ads/banner_ad_widget.dart';
 
 /// Pantalla del Herbolario — directorio de hierbas medicinales A-Z
 /// con buscador y filtro por propiedad
@@ -257,6 +258,9 @@ class _HerbolarioScreenState extends State<HerbolarioScreen> {
                         },
                       ),
               ),
+
+              // Banner publicitario (si el usuario no es premium)
+              const BannerAdWidget(),
             ],
           );
         },
