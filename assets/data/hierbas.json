@@ -64,7 +64,7 @@
   {
     "id": "apio_cimarron",
     "nombre": "Apio cimarrón",
-    "propiedades": "Diurético, diaforético, tratamiento de la reuma, inflamaciones",
+    "propiedades": "Diurético, diaforético, tradicionalmente usado para la reuma, inflamaciones",
     "tags": [
       "antiinflamatorio",
       "diaforetico",
@@ -155,7 +155,7 @@
   {
     "id": "centella_asiatica",
     "nombre": "Centella asiática",
-    "propiedades": "Cicatrizante, eutrófico, tratamiento de celulitis, regenerador cutáneo",
+    "propiedades": "Cicatrizante, eutrófico, tradicionalmente usado para la celulitis, regenerador cutáneo",
     "tags": [
       "piel"
     ]
@@ -236,7 +236,7 @@
   {
     "id": "damiana",
     "nombre": "Damiana",
-    "propiedades": "Tratamiento en disfunción sexual, afrodisíaco",
+    "propiedades": "Tradicionalmente usado para la disfunción sexual; afrodisíaco",
     "tags": [
       "hormonal"
     ]
@@ -288,7 +288,7 @@
   {
     "id": "fresno",
     "nombre": "Fresno",
-    "propiedades": "Artritis, gota, laxante, diurético, tratamiento de la reuma",
+    "propiedades": "Artritis, gota, laxante, diurético, tradicionalmente usado para la reuma",
     "tags": [
       "antiinflamatorio",
       "digestivo",
@@ -361,7 +361,7 @@
   {
     "id": "harpagofito",
     "nombre": "Harpagofito",
-    "propiedades": "Tratamiento de reuma, gota, antiespasmódico",
+    "propiedades": "Tradicionalmente usado para la reuma y la gota; antiespasmódico",
     "tags": [
       "antiinflamatorio",
       "digestivo"
@@ -408,7 +408,7 @@
   {
     "id": "lapacho",
     "nombre": "Lapacho",
-    "propiedades": "Reconstituyente general, antianémico, depurativo, tratamiento de la reuma, diurético",
+    "propiedades": "Reconstituyente general, antianémico, depurativo, tradicionalmente usado para la reuma, diurético",
     "tags": [
       "antiinflamatorio",
       "depurativo",
@@ -508,7 +508,7 @@
   {
     "id": "mil_hombres",
     "nombre": "Mil hombres",
-    "propiedades": "Tratamiento de la reuma, gota y artritis",
+    "propiedades": "Tradicionalmente usado para la reuma, la gota y la artritis",
     "tags": [
       "antiinflamatorio"
     ]
@@ -561,7 +561,7 @@
   {
     "id": "palo_azul",
     "nombre": "Palo azul",
-    "propiedades": "Diurético, antiséptico de vías urinarias, tratamiento de la reuma, artritis",
+    "propiedades": "Diurético, antiséptico de vías urinarias, tradicionalmente usado para la reuma, artritis",
     "tags": [
       "antiinflamatorio",
       "antiséptico",
@@ -580,7 +580,7 @@
   {
     "id": "palo_santo",
     "nombre": "Palo santo",
-    "propiedades": "Diurético, digestivo, depurativo, tratamiento de la gota, reuma, artritis",
+    "propiedades": "Diurético, digestivo, depurativo, tradicionalmente usado para la gota, reuma, artritis",
     "tags": [
       "antiinflamatorio",
       "depurativo",
@@ -697,7 +697,7 @@
   {
     "id": "tusca",
     "nombre": "Tusca",
-    "propiedades": "Tratamiento de la gota, reuma",
+    "propiedades": "Tradicionalmente usado para la gota y la reuma",
     "tags": [
       "antiinflamatorio"
     ]

@@ -282,13 +282,31 @@ class _RemedyDetailScreenState extends State<RemedyDetailScreen> {
                         width: 0.5,
                       ),
                     ),
-                    child: Text(
-                      receta.precaucion,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: AppConstants.textPrimary,
-                        height: 1.4,
-                      ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          receta.precaucion,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: AppConstants.textPrimary,
+                            height: 1.4,
+                          ),
+                        ),
+                        // Nota discreta: precaución es info tradicional, no reemplaza al profesional
+                        const Padding(
+                          padding: EdgeInsets.only(top: 8),
+                          child: Text(
+                            'Información tradicional; no reemplaza la indicación de un profesional de la salud.',
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontStyle: FontStyle.italic,
+                              color: AppConstants.textTertiary,
+                              height: 1.3,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -383,11 +401,12 @@ class _RemedyDetailScreenState extends State<RemedyDetailScreen> {
                 const SizedBox(height: 12),
 
                 // ═══════════════════════════════════════════════════════════
-                // DOSIS
+                // CÓMO TOMARLO (antes "Dosis" — lenguaje no clínico para
+                // políticas de Play Store)
                 // ═══════════════════════════════════════════════════════════
                 _buildSection(
                   icon: TablerIcons.medical_cross,
-                  title: 'Dosis',
+                  title: 'Cómo tomarlo',
                   child: Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
@@ -433,6 +452,43 @@ class _RemedyDetailScreenState extends State<RemedyDetailScreen> {
                   ),
                 ),
                 const SizedBox(height: 32),
+
+                // ═══════════════════════════════════════════════════════════
+                // DISCLAIMER FIJO - visible en cada receta
+                // Información tradicional, no consejo médico (políticas Play Store)
+                // ═══════════════════════════════════════════════════════════
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 12,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppConstants.sageGreenCard.withValues(alpha: 0.5),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(
+                        TablerIcons.info_circle,
+                        size: 16,
+                        color: AppConstants.textTertiary,
+                      ),
+                      SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          'Información tradicional, no reemplaza la indicación '
+                          'de un profesional de la salud.',
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: AppConstants.textTertiary,
+                            height: 1.4,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
