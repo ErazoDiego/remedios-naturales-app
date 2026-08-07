@@ -1,4 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Required for Supabase and AdMob in release builds.
+         Flutter only injects it automatically in debug/profile. -->
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:label="remedios_naturales_app"
         android:name="${applicationName}"
