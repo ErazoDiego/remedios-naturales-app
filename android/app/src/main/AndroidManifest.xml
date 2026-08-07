@@ -6,11 +6,11 @@
         android:label="Yuyo"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        <!-- AdMob App ID. Test ID de Google (funciona sin cuenta).
-             Reemplazar por el ID real ca-app-pub-xxx cuando exista la cuenta AdMob. -->
+        <!-- AdMob App ID real de Yuyo (cuenta AdMob de Diego Erazo).
+             SOLO usar test ID ca-app-pub-3940256099942544~3347511713 en builds de prueba. -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-4703211765619398~2995057902"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

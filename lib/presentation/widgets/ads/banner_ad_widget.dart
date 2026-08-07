@@ -8,8 +8,8 @@ import '../../../core/services/ads_service.dart';
 /// - Consulta [AdsService.shouldShowAds]: si el usuario es premium, no muestra nada.
 /// - Es TickerMode-aware: si la tab no está activa (IndexedStack/StatefulShellRoute),
 ///   pausa y libera el banner para no gastar impresiones invisibles.
-/// - Usa el ad unit de PRUEBA de Google: en desarrollo SIEMPRE ads de prueba
-///   (usar ads reales en dev = riesgo de suspensión de cuenta AdMob).
+/// - Ad unit real de producción (banner_yuyo). En desarrollo SIEMPRE ads de
+///   prueba (usar ads reales en dev = riesgo de suspensión de cuenta AdMob).
 class BannerAdWidget extends StatefulWidget {
   const BannerAdWidget({super.key, this.service});
 
@@ -21,9 +21,9 @@ class BannerAdWidget extends StatefulWidget {
 }
 
 class _BannerAdWidgetState extends State<BannerAdWidget> {
-  /// Ad unit de PRUEBA de Google (banner) — público y documentado.
-  static const String _testBannerAdUnitId =
-      'ca-app-pub-3940256099942544/6300978111';
+  /// Ad unit real de producción (unidad banner_yuyo de AdMob).
+  static const String _bannerAdUnitId =
+      'ca-app-pub-4703211765619398/6551159534';
 
   AdsService get _ads => widget.service ?? AdsService.instance;
 
@@ -51,7 +51,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
     if (_bannerAd != null || !mounted) return;
 
     final banner = BannerAd(
-      adUnitId: _testBannerAdUnitId,
+      adUnitId: _bannerAdUnitId,
       size: AdSize.banner,
       request: const AdRequest(),
       listener: BannerAdListener(
