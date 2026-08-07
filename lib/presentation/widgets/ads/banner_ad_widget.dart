@@ -94,13 +94,21 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
       return const SizedBox.shrink();
     }
 
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: Center(
-        child: SizedBox(
-          width: banner.size.width.toDouble(),
-          height: banner.size.height.toDouble(),
-          child: AdWidget(ad: banner),
+    // SafeArea: en Android 15+ (edge-to-edge forzado con targetSdk 35/36)
+    // la barra de navegación del sistema (back/home/recent) se superpone
+    // al banner. SafeArea respeta el inset inferior solo donde existe
+    // (padding 0 en Android <= 14 => cero regresión).
+    return SafeArea(
+      top: false,
+      bottom: true,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 8),
+        child: Center(
+          child: SizedBox(
+            width: banner.size.width.toDouble(),
+            height: banner.size.height.toDouble(),
+            child: AdWidget(ad: banner),
+          ),
         ),
       ),
     );
