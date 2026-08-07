@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'core/config/supabase_config.dart';
 import 'core/router/app_router.dart';
+import 'core/services/ads_service.dart';
 import 'core/theme/app_theme.dart';
 import 'presentation/providers/recetas_provider.dart';
 import 'presentation/providers/user_provider.dart';
@@ -20,6 +21,9 @@ Future<void> main() async {
 
   // Inicializa AdMob (fire-and-forget: no bloquea el arranque)
   MobileAds.instance.initialize();
+
+  // Precarga un intersticial (test) para que esté listo al navegar
+  AdsService.instance.preloadInterstitial();
 
   runApp(const RemediosNaturalesApp());
 }

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/services/ads_service.dart';
 import '../../providers/recetas_provider.dart';
 import '../../providers/user_provider.dart';
 import '../../widgets/ads/banner_ad_widget.dart';
@@ -25,6 +26,14 @@ class _RemedyDetailScreenState extends State<RemedyDetailScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<RecetasProvider>().loadReceta(widget.recipeId);
       context.read<UserProvider>().addToHistory(widget.recipeId);
+
+      // Intersticial espaciado: registra la apertura y muestra si toca
+      // (la política decide: nunca la 1ª receta, mínimo 5 min entre uno y otro)
+      final ads = AdsService.instance;
+      ads.registerRecipeOpen();
+      Future.delayed(const Duration(milliseconds: 600), () {
+        if (mounted) ads.maybeShowInterstitial();
+      });
     });
   }
 
