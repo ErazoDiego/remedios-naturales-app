@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import '../../data/models/receta_usuario.dart';
 import '../../presentation/screens/home/home_screen.dart';
 import '../../presentation/screens/category/category_screen.dart';
 import '../../presentation/screens/remedy_detail/remedy_detail_screen.dart';
@@ -13,6 +14,9 @@ import '../../presentation/screens/about/about_screen.dart';
 import '../../presentation/screens/login/login_screen.dart';
 import '../../presentation/screens/register/register_screen.dart';
 import '../../presentation/screens/profile/profile_screen.dart';
+import '../../presentation/screens/mis_recetas/mis_recetas_screen.dart';
+import '../../presentation/screens/receta_usuario_form/receta_usuario_form_screen.dart';
+import '../../presentation/screens/receta_usuario_detail/receta_usuario_detail_screen.dart';
 import '../../presentation/widgets/app_shell.dart';
 
 /// Configuración de rutas de la aplicación
@@ -149,6 +153,41 @@ class AppRouter {
       GoRoute(
         path: '/register',
         builder: (context, state) => const RegisterScreen(),
+      ),
+
+      // ═══════════════════════════════════════════════════════════
+      // MIS RECETAS (recetas propias del usuario - premium)
+      // ═══════════════════════════════════════════════════════════
+      GoRoute(
+        path: '/mis-recetas',
+        builder: (context, state) => const MisRecetasScreen(),
+      ),
+
+      // Crear receta nueva
+      GoRoute(
+        path: '/mis-recetas/nueva',
+        builder: (context, state) => const RecetaUsuarioFormScreen(),
+      ),
+
+      // Detalle de receta propia (la receta viaja en `extra`; sin
+      // extra = deep link inválido → volvemos a la lista)
+      GoRoute(
+        path: '/mis-recetas/:id',
+        redirect: (context, state) =>
+            state.extra == null ? '/mis-recetas' : null,
+        builder: (context, state) => RecetaUsuarioDetailScreen(
+          receta: state.extra! as RecetaUsuario,
+        ),
+      ),
+
+      // Editar receta propia
+      GoRoute(
+        path: '/mis-recetas/:id/editar',
+        redirect: (context, state) =>
+            state.extra == null ? '/mis-recetas' : null,
+        builder: (context, state) => RecetaUsuarioFormScreen(
+          receta: state.extra! as RecetaUsuario,
+        ),
       ),
     ],
   );

@@ -233,6 +233,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
       const SizedBox(height: 20),
 
       // ═══════════════════════════════════════════════════════════
+      // MIS RECETAS (feature premium)
+      // ═══════════════════════════════════════════════════════════
+      _buildMisRecetasCard(),
+      const SizedBox(height: 16),
+
+      // ═══════════════════════════════════════════════════════════
       // SINCRONIZACIÓN
       // ═══════════════════════════════════════════════════════════
       Container(
@@ -369,7 +375,73 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
       const SizedBox(height: 20),
+
+      // ═══════════════════════════════════════════════════════════
+      // MIS RECETAS (feature premium — visible también sin sesión;
+      // la pantalla invita a iniciar sesión)
+      // ═══════════════════════════════════════════════════════════
+      _buildMisRecetasCard(),
+      const SizedBox(height: 20),
     ];
+  }
+
+  /// Tarjeta de acceso a "Mis Recetas" (visible con y sin sesión).
+  Widget _buildMisRecetasCard() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: AppConstants.borderLight,
+          width: 0.5,
+        ),
+      ),
+      child: InkWell(
+        onTap: () => context.push('/mis-recetas'),
+        borderRadius: BorderRadius.circular(12),
+        child: const Padding(
+          padding: EdgeInsets.all(16),
+          child: Row(
+            children: [
+              Icon(
+                TablerIcons.notes,
+                size: 22,
+                color: AppConstants.sageGreenTitle,
+              ),
+              SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Mis recetas',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: AppConstants.textPrimary,
+                      ),
+                    ),
+                    SizedBox(height: 2),
+                    Text(
+                      'Creá y guardá tus propias recetas caseras',
+                      style: TextStyle(
+                        fontSize: 12.5,
+                        color: AppConstants.textSecondary,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(
+                TablerIcons.chevron_right,
+                size: 18,
+                color: AppConstants.textTertiary,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   Widget _buildStatCard({

@@ -9,6 +9,7 @@ import 'core/theme/app_theme.dart';
 import 'presentation/providers/recetas_provider.dart';
 import 'presentation/providers/user_provider.dart';
 import 'presentation/providers/hierbas_provider.dart';
+import 'presentation/providers/mis_recetas_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,6 +39,7 @@ class RemediosNaturalesApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => RecetasProvider()),
         ChangeNotifierProvider(create: (_) => UserProvider()..init()),
         ChangeNotifierProvider(create: (_) => HierbasProvider()),
+        ChangeNotifierProvider(create: (_) => MisRecetasProvider()),
       ],
       child: MaterialApp.router(
         title: 'Yuyo',
