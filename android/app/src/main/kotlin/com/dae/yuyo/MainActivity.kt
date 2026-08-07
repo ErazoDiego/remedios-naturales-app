@@ -1,4 +1,4 @@
-package com.dae.remedios_naturales_app
+package com.dae.yuyo
 
 import io.flutter.embedding.android.FlutterActivity
 

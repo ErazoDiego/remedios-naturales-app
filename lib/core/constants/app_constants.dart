@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 
-/// Constantes de la aplicación Remedios Naturales
+/// Constantes de la aplicación Yuyo
 class AppConstants {
   // Nombre de la aplicación
-  static const String appName = 'Remedios Naturales';
+  static const String appName = 'Yuyo';
   static const String appVersion = '1.0.0';
   
   // Descripción

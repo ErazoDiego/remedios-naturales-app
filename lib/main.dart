@@ -40,7 +40,7 @@ class RemediosNaturalesApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => HierbasProvider()),
       ],
       child: MaterialApp.router(
-        title: 'Remedios Naturales',
+        title: 'Yuyo',
         theme: AppTheme.lightTheme,
         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,

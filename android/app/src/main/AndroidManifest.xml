@@ -3,7 +3,7 @@
          Flutter only injects it automatically in debug/profile. -->
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:label="remedios_naturales_app"
+        android:label="Yuyo"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <!-- AdMob App ID. Test ID de Google (funciona sin cuenta).

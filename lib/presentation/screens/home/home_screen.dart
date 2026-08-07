@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         const SizedBox(width: 10),
                         const Text(
-                          'Remedios Naturales',
+                          'Yuyo',
                           style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.w600,

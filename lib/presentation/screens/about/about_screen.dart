@@ -58,7 +58,7 @@ class AboutScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 16),
                 Text(
-                  'Remedios Naturales',
+                  'Yuyo',
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w600,

@@ -44,5 +44,9 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+# Keystore de firma de release (NUNCA versionar: llave eterna de la app)
+/android/key.properties
+/android/app/upload-keystore.jks
+
 # Supabase credentials (NUNCA subir keys al repo)
 /lib/core/config/supabase_config.dart

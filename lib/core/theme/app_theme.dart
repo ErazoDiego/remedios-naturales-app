@@ -22,7 +22,7 @@ class SystemIcons {
   }
 }
 
-/// Tema de la aplicación Remedios Naturales
+/// Tema de la aplicación Yuyo
 class AppTheme {
   // Colores de la paleta
   static const Color primaryGreen = AppConstants.sageGreenTitle;
