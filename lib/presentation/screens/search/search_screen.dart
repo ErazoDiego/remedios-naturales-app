@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../providers/recetas_provider.dart';
+import '../../widgets/ads/banner_ad_widget.dart';
 import '../../widgets/search_result_card.dart';
 
 /// Pantalla de búsqueda - Permite buscar recetas por texto o condición
@@ -162,6 +163,9 @@ class _SearchScreenState extends State<SearchScreen> {
 
           if (_currentQuery.isNotEmpty)
             Expanded(child: _buildSearchResults()),
+
+          // Banner publicitario (si el usuario no es premium)
+          const BannerAdWidget(),
         ],
       ),
     );

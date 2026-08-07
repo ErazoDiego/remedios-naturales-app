@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'core/config/supabase_config.dart';
@@ -16,6 +17,9 @@ Future<void> main() async {
     url: SupabaseConfig.url,
     publishableKey: SupabaseConfig.anonKey,
   );
+
+  // Inicializa AdMob (fire-and-forget: no bloquea el arranque)
+  MobileAds.instance.initialize();
 
   runApp(const RemediosNaturalesApp());
 }
