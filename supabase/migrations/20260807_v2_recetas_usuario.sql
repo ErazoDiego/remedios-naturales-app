@@ -43,3 +43,11 @@ create policy "recetas_usuario_delete_own" on public.recetas_usuario
 
 -- Índice para listar "mis recetas" rápido (ordenadas por actualización)
 create index recetas_usuario_usuario_idx on public.recetas_usuario (usuario_id, actualizado_at desc);
+
+-- GRANTS: Supabase NO otorga permisos automáticos a tablas creadas vía
+-- SQL Editor. Sin estos grants PostgREST responde 42501 "permission denied
+-- for table" (verificado empíricamente). Las políticas RLS filtran igual:
+-- anon/authenticated solo ven filas propias (auth.uid()).
+grant all on public.recetas_usuario to authenticated;
+grant all on public.recetas_usuario to service_role;
+grant all on public.recetas_usuario to anon;
