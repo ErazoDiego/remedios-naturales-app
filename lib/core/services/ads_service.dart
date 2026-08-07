@@ -70,12 +70,12 @@ class AdsService {
   /// política de espaciado). No muestra nada por sí mismo.
   void registerRecipeOpen() => interstitialPolicy.registerOpen();
 
-  /// Precarga un intersticial (ad unit de PRUEBA de Google).
+  /// Precarga un intersticial (ad unit real de producción).
   /// Se llama tras inicializar AdMob y tras cada visualización, para que
   /// el siguiente siempre esté listo.
   void preloadInterstitial() {
     InterstitialAd.load(
-      adUnitId: _testInterstitialAdUnitId,
+      adUnitId: _interstitialAdUnitId,
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (ad) {
@@ -105,9 +105,9 @@ class AdsService {
     preloadInterstitial(); // el siguiente ya viene cargado
   }
 
-  /// Ad unit de PRUEBA de Google (intersticial) — público y documentado.
-  static const String _testInterstitialAdUnitId =
-      'ca-app-pub-3940256099942544/1033173712';
+  /// Ad unit real de producción (unidad interstitial_yuyo de AdMob).
+  static const String _interstitialAdUnitId =
+      'ca-app-pub-4703211765619398/3092482015';
 }
 
 /// Política pura de espaciado de intersticiales — sin SDK, testeable.
