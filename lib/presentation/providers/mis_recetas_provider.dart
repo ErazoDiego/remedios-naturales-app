@@ -89,16 +89,17 @@ class MisRecetasProvider extends ChangeNotifier {
   /// Elimina una receta. Devuelve true si fue exitoso.
   Future<bool> eliminar(String id) async {
     _error = null;
-    notifyListeners();
-
     try {
       await _service.eliminar(id);
       _recetas = _recetas.where((r) => r.id != id).toList();
       return true;
     } catch (e) {
       _error = 'No se pudo eliminar la receta: $e';
-      notifyListeners();
       return false;
+    } finally {
+      // Notificar SIEMPRE tras el cambio (éxito o error): sin esto la
+      // lista no se refresca hasta recargar la pantalla.
+      notifyListeners();
     }
   }
 
