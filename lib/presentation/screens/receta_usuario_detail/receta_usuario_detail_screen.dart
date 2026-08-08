@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../data/models/receta_usuario.dart';
+import '../../providers/user_provider.dart';
 import '../../widgets/ads/banner_ad_widget.dart';
 
 /// Detalle de una receta propia del usuario.
@@ -59,6 +61,34 @@ class RecetaUsuarioDetailScreen extends StatelessWidget {
               extra: receta,
             ),
           ),
+          // Corazón de favorito (mismo patrón que RemedyDetailScreen).
+          // Requiere sesión: las recetas propias solo existen logueado.
+          if (context.watch<UserProvider>().isLoggedIn)
+            Consumer<UserProvider>(
+              builder: (context, userProvider, child) {
+                return FutureBuilder<bool>(
+                  future: userProvider.isFavorite(receta.id),
+                  builder: (context, snapshot) {
+                    final isFavorite = snapshot.data ?? false;
+                    return IconButton(
+                      icon: Icon(
+                        isFavorite ? Icons.favorite : TablerIcons.heart,
+                        color: isFavorite
+                            ? AppConstants.alertAmber
+                            : AppConstants.textTertiary,
+                      ),
+                      onPressed: () {
+                        if (isFavorite) {
+                          userProvider.removeFavorite(receta.id);
+                        } else {
+                          userProvider.addFavorite(receta.id);
+                        }
+                      },
+                    );
+                  },
+                );
+              },
+            ),
         ],
       ),
       body: Column(

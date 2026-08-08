@@ -48,6 +48,19 @@ class UserProvider extends ChangeNotifier {
 
     _applySession(_auth.currentUser);
     _authSub = _auth.onAuthStateChange.listen(_onAuthStateChanged);
+
+    // Reintentar migración anónimo→cloud si quedó pendiente: si el primer
+    // intento falló (ej: grants faltantes → 42501), el perfil anónimo local
+    // sigue en el dispositivo y al reabrir la app con sesión se sube solo.
+    // Idempotente: si no hay datos locales, no hace nada.
+    if (_auth.isLoggedIn) {
+      try {
+        await _service.migrateLocalToCloud();
+      } catch (e) {
+        debugPrint('Migración local→cloud diferida (init): $e');
+      }
+    }
+
     await loadProfile();
 
     _isInitializing = false;

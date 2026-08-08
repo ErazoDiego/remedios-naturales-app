@@ -284,5 +284,40 @@ void main() {
       );
     });
   });
+
+  group('isRecetaPropiaId', () {
+    test('reconoce UUID v4 como receta propia', () {
+      expect(
+        RecetasUsuarioService.isRecetaPropiaId(
+          '3f2a9d51-7c4e-4b8a-9f1e-2d6b5c8a0f77',
+        ),
+        isTrue,
+      );
+      expect(
+        RecetasUsuarioService.isRecetaPropiaId(
+          'F3F2A9D5-7C4E-4B8A-9F1E-2D6B5C8A0F77',
+        ),
+        isTrue,
+        reason: 'UUID con mayúsculas también es válido',
+      );
+    });
+
+    test('NO reconoce IDs del catálogo como propios', () {
+      expect(RecetasUsuarioService.isRecetaPropiaId('digestivo_remedio_01'),
+          isFalse);
+      expect(RecetasUsuarioService.isRecetaPropiaId('respiratorio_jarabe_2'),
+          isFalse);
+    });
+
+    test('no confunde strings similares con UUID', () {
+      expect(RecetasUsuarioService.isRecetaPropiaId(''), isFalse);
+      expect(
+        RecetasUsuarioService.isRecetaPropiaId(
+          '3f2a9d51-7c4e-4b8a-9f1e-2d6b5c8a0f7', // 35 chars, falta un char
+        ),
+        isFalse,
+      );
+    });
+  });
 }
 

@@ -38,6 +38,17 @@ class RecetasUsuarioService {
 
   bool get isLoggedIn => _userId.isNotEmpty;
 
+  /// Regex de UUID v4 (formato 8-4-4-4-12 hex).
+  /// Los IDs de recetas propias son UUIDs que genera la DB; los del
+  /// catálogo son legibles ("digestivo_remedio_x"). Esto permite
+  /// distinguir en Favoritos qué id resolver dónde.
+  static final RegExp _uuidRegex =
+      RegExp(r'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-'
+          r'[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$');
+
+  /// True si el id corresponde a una receta propia (formato UUID).
+  static bool isRecetaPropiaId(String id) => _uuidRegex.hasMatch(id);
+
   /// Invalida el cache (logout / cambio de usuario).
   void invalidateCache() {
     _cache = null;

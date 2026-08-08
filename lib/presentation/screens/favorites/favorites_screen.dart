@@ -4,11 +4,17 @@ import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../data/models/receta.dart';
+import '../../../data/models/receta_usuario.dart';
+import '../../../data/services/recetas_usuario_service.dart';
 import '../../providers/recetas_provider.dart';
 import '../../providers/user_provider.dart';
 import '../../widgets/ads/banner_ad_widget.dart';
 
-/// Pantalla de favoritos — Muestra las recetas guardadas con el mismo layout que CategoryScreen
+/// Pantalla de favoritos — Muestra las recetas guardadas con el mismo layout que CategoryScreen.
+///
+/// Soporta dos fuentes:
+/// - Recetas del catálogo (IDs legibles tipo "digestivo_remedio_x")
+/// - Recetas propias del usuario (IDs UUID) — requieren sesión
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});
 
@@ -16,14 +22,71 @@ class FavoritesScreen extends StatefulWidget {
   State<FavoritesScreen> createState() => _FavoritesScreenState();
 }
 
+/// Item unificado de favoritos: envuelve una receta del catálogo o una
+/// propia para que la card sea agnóstica del origen.
+class _FavoriteItem {
+  final String id;
+  final String nombre;
+  final String tipoPreparacion;
+  final String? imagen;
+  final List<String> idealPara;
+  final bool esPropia;
+  final RecetaUsuario? recetaPropia;
+
+  _FavoriteItem.fromCatalogo(Receta r)
+      : id = r.id,
+        nombre = r.nombre,
+        tipoPreparacion = r.tipoPreparacion,
+        imagen = r.imagen,
+        idealPara = r.idealPara,
+        esPropia = false,
+        recetaPropia = null;
+
+  _FavoriteItem.fromPropia(RecetaUsuario r)
+      : id = r.id,
+        nombre = r.nombre,
+        tipoPreparacion = r.tipoPreparacion,
+        imagen = r.imagen,
+        idealPara = r.idealPara,
+        esPropia = true,
+        recetaPropia = r;
+}
+
 class _FavoritesScreenState extends State<FavoritesScreen> {
-  List<Receta> _favoriteRecetas = [];
+  List<_FavoriteItem> _favoriteItems = [];
   bool _isLoading = true;
+  List<String> _lastFavoritos = const [];
 
   @override
   void initState() {
     super.initState();
     _loadFavorites();
+    // El tab vive en un indexedStack: initState NO vuelve a correr al
+    // volver, así que escuchamos al UserProvider y recargamos SOLO si
+    // cambió la lista de favoritos (no en cada notify de historial/error).
+    context.read<UserProvider>().addListener(_onUserChanged);
+  }
+
+  @override
+  void dispose() {
+    context.read<UserProvider>().removeListener(_onUserChanged);
+    super.dispose();
+  }
+
+  void _onUserChanged() {
+    final favorites = context.read<UserProvider>().profile?.favoritos ?? [];
+    if (!_sameList(_lastFavoritos, favorites)) {
+      _lastFavoritos = favorites;
+      _loadFavorites();
+    }
+  }
+
+  static bool _sameList(List<String> a, List<String> b) {
+    if (a.length != b.length) return false;
+    for (var i = 0; i < a.length; i++) {
+      if (a[i] != b[i]) return false;
+    }
+    return true;
   }
 
   Future<void> _loadFavorites() async {
@@ -36,18 +99,53 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
       return;
     }
 
-    try {
-      final recetas = await recetasProvider.getRecetasByIds(favorites);
-      if (mounted) {
-        setState(() {
-          _favoriteRecetas = recetas;
-          _isLoading = false;
-        });
+    // Separar por origen: UUID = receta propia, resto = catálogo
+    final catalogIds = favorites
+        .where((id) => !RecetasUsuarioService.isRecetaPropiaId(id))
+        .toList();
+    final propiaIds = favorites
+        .where(RecetasUsuarioService.isRecetaPropiaId)
+        .toList();
+
+    final itemsById = <String, _FavoriteItem>{};
+
+    // ── Catálogo ──
+    if (catalogIds.isNotEmpty) {
+      try {
+        final recetas = await recetasProvider.getRecetasByIds(catalogIds);
+        for (final r in recetas) {
+          itemsById[r.id] = _FavoriteItem.fromCatalogo(r);
+        }
+      } catch (_) {
+        // IDs de catálogo que no resuelven se omiten
       }
-    } catch (e) {
-      if (mounted) {
-        setState(() => _isLoading = false);
+    }
+
+    // ── Recetas propias (solo con sesión; sin sesión no existen) ──
+    if (propiaIds.isNotEmpty && userProvider.isLoggedIn) {
+      try {
+        final todas = await RecetasUsuarioService().getMisRecetas();
+        for (final r in todas) {
+          if (propiaIds.contains(r.id)) {
+            itemsById[r.id] = _FavoriteItem.fromPropia(r);
+          }
+        }
+      } catch (_) {
+        // Offline o sin permisos: se omiten; se reintenta al recargar
       }
+    }
+
+    // Preservar el orden en que el usuario las marcó
+    final items = [
+      for (final id in favorites)
+        if (itemsById[id] != null) itemsById[id]!,
+    ];
+
+    if (mounted) {
+      setState(() {
+        _favoriteItems = items;
+        _isLoading = false;
+      });
     }
   }
 
@@ -59,12 +157,12 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         leading: IconButton(
           icon: const Icon(TablerIcons.arrow_left),
           onPressed: () {
-              if (context.canPop()) {
-                context.pop();
-              } else {
-                context.go('/');
-              }
-            },
+            if (context.canPop()) {
+              context.pop();
+            } else {
+              context.go('/');
+            }
+          },
         ),
         title: Row(
           mainAxisSize: MainAxisSize.min,
@@ -72,7 +170,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
             const Icon(TablerIcons.heart, size: 20, color: AppConstants.sageGreenTitle),
             const SizedBox(width: 8),
             Text(
-              'Mis Favoritos${_favoriteRecetas.isNotEmpty ? ' (${_favoriteRecetas.length})' : ''}',
+              'Mis Favoritos${_favoriteItems.isNotEmpty ? ' (${_favoriteItems.length})' : ''}',
             ),
           ],
         ),
@@ -89,7 +187,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                       strokeWidth: 2,
                     ),
                   )
-                : _favoriteRecetas.isEmpty
+                : _favoriteItems.isEmpty
                     ? _buildEmptyState()
                     : _buildRecipeList(),
           ),
@@ -106,20 +204,18 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   Widget _buildRecipeList() {
     return ListView.builder(
       padding: const EdgeInsets.all(20),
-      itemCount: _favoriteRecetas.length,
+      itemCount: _favoriteItems.length,
       itemBuilder: (context, index) {
-        final receta = _favoriteRecetas[index];
-        return _buildRecipeCard(receta);
+        return _buildRecipeCard(_favoriteItems[index]);
       },
     );
   }
 
   // ═══════════════════════════════════════════════════════════════════
-  // CARD DE RECETA — Copy de CategoryScreen._buildRecipeCard
+  // CARD DE RECETA — Mismo layout que CategoryScreen, con badge "Propia"
   // ═══════════════════════════════════════════════════════════════════
-  Widget _buildRecipeCard(Receta receta) {
-    final tipo = receta.tipoPreparacion;
-    final preparacionStyle = AppConstants.getPreparacionStyle(tipo);
+  Widget _buildRecipeCard(_FavoriteItem item) {
+    final preparacionStyle = AppConstants.getPreparacionStyle(item.tipoPreparacion);
 
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -132,7 +228,13 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         ),
       ),
       child: InkWell(
-        onTap: () => context.go('/remedy/${receta.id}'),
+        onTap: () {
+          if (item.esPropia) {
+            context.push('/mis-recetas/${item.id}', extra: item.recetaPropia);
+          } else {
+            context.go('/remedy/${item.id}');
+          }
+        },
         borderRadius: BorderRadius.circular(12),
         child: Padding(
           padding: const EdgeInsets.all(14),
@@ -145,9 +247,9 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                 child: SizedBox(
                   width: 72,
                   height: 72,
-                  child: receta.imagen != null
+                  child: item.imagen != null
                       ? Image.asset(
-                          receta.imagen!,
+                          item.imagen!,
                           fit: BoxFit.cover,
                           errorBuilder: (context, error, stackTrace) {
                             return _buildColorPlaceholder(preparacionStyle);
@@ -163,32 +265,57 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Badge de tipo de preparación
-                    if (tipo.isNotEmpty)
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 3,
-                        ),
-                        decoration: BoxDecoration(
-                          color: preparacionStyle.bg,
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        child: Text(
-                          tipo,
-                          style: TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
-                            color: preparacionStyle.fg,
-                            letterSpacing: 0.2,
+                    Row(
+                      children: [
+                        if (item.tipoPreparacion.isNotEmpty) ...[
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 3,
+                            ),
+                            decoration: BoxDecoration(
+                              color: preparacionStyle.bg,
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            child: Text(
+                              item.tipoPreparacion,
+                              style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w600,
+                                color: preparacionStyle.fg,
+                                letterSpacing: 0.2,
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    if (tipo.isNotEmpty) const SizedBox(height: 8),
+                          const SizedBox(width: 6),
+                        ],
+                        if (item.esPropia)
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 3,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppConstants.sageGreenCard,
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            child: const Text(
+                              'Propia',
+                              style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w500,
+                                color: AppConstants.sageGreenTitle,
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
+                    if (item.tipoPreparacion.isNotEmpty || item.esPropia)
+                      const SizedBox(height: 8),
 
                     // Título de la receta
                     Text(
-                      receta.nombre,
+                      item.nombre,
                       style: const TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
@@ -199,12 +326,12 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                     ),
 
                     // Tags "ideal para" — máx 3 visibles
-                    if (receta.idealPara.isNotEmpty) ...[
+                    if (item.idealPara.isNotEmpty) ...[
                       const SizedBox(height: 8),
                       Wrap(
                         spacing: 6,
                         runSpacing: 6,
-                        children: receta.idealPara.take(3).map<Widget>((condicion) {
+                        children: item.idealPara.take(3).map<Widget>((condicion) {
                           return Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 8,
@@ -295,12 +422,12 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
             const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () {
-              if (context.canPop()) {
-                context.pop();
-              } else {
-                context.go('/');
-              }
-            },
+                if (context.canPop()) {
+                  context.pop();
+                } else {
+                  context.go('/');
+                }
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppConstants.sageGreenTitle,
                 foregroundColor: Colors.white,
