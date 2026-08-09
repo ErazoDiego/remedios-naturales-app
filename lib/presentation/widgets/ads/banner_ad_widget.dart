@@ -29,6 +29,11 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
 
   BannerAd? _bannerAd;
   bool _isLoaded = false;
+  bool _isLoading = false;
+
+  /// Última orientación usada para el tamaño adaptativo del banner.
+  /// Al rotar, el ancho cambia => hay que recargar con un AdSize nuevo.
+  Orientation? _lastOrientation;
 
   bool get _isVisible =>
       TickerMode.valuesOf(context).enabled && _ads.shouldShowAds;
@@ -36,6 +41,11 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    final orientation = MediaQuery.orientationOf(context);
+    if (orientation != _lastOrientation) {
+      _lastOrientation = orientation;
+      _disposeBanner(); // fuerza recarga con el ancho de la nueva orientación
+    }
     _syncVisibility();
   }
 
@@ -47,12 +57,35 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
     }
   }
 
-  void _loadBanner() {
-    if (_bannerAd != null || !mounted) return;
+  Future<void> _loadBanner() async {
+    if (_bannerAd != null || _isLoading || !mounted) return;
+
+    // Banner adaptativo anclado: se ajusta al ancho real del viewport y
+    // llena mucho mejor que el 320x50 fijo (AdSize.banner). El tamaño se
+    // pide al canal nativo (async) y puede devolver null si el ancho no
+    // es válido para el dispositivo.
+    _isLoading = true;
+    final width = MediaQuery.sizeOf(context).width.truncate();
+    final orientation = MediaQuery.orientationOf(context);
+    final adSize =
+        await AdSize.getLargeAnchoredAdaptiveBannerAdSizeWithOrientation(
+      orientation,
+      width,
+    );
+
+    if (!mounted) return;
+    _isLoading = false;
+
+    // Si rotó mientras esperábamos, el size quedó viejo: recargamos.
+    if (adSize == null) return;
+    if (MediaQuery.orientationOf(context) != orientation) {
+      _loadBanner();
+      return;
+    }
 
     final banner = BannerAd(
       adUnitId: _bannerAdUnitId,
-      size: AdSize.banner,
+      size: adSize,
       request: const AdRequest(),
       listener: BannerAdListener(
         onAdLoaded: (ad) {
@@ -76,6 +109,7 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
   }
 
   void _disposeBanner() {
+    _isLoading = false;
     _bannerAd?.dispose();
     _bannerAd = null;
     _isLoaded = false;
