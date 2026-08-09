@@ -57,24 +57,34 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   bool _isLoading = true;
   List<String> _lastFavoritos = const [];
 
+  /// Referencias capturadas en initState (NO usar `context` en dispose:
+  /// el Element ya está deactivated y Provider._inheritedElementOf
+  /// devuelve null → "Null check operator used on a null value" al
+  /// desmontar (lo destapa el remount que causa el interstitial de AdMob).
+  late final UserProvider _userProvider;
+  late final RecetasProvider _recetasProvider;
+
   @override
   void initState() {
     super.initState();
+    _userProvider = context.read<UserProvider>();
+    _recetasProvider = context.read<RecetasProvider>();
     _loadFavorites();
     // El tab vive en un indexedStack: initState NO vuelve a correr al
     // volver, así que escuchamos al UserProvider y recargamos SOLO si
     // cambió la lista de favoritos (no en cada notify de historial/error).
-    context.read<UserProvider>().addListener(_onUserChanged);
+    _userProvider.addListener(_onUserChanged);
   }
 
   @override
   void dispose() {
-    context.read<UserProvider>().removeListener(_onUserChanged);
+    _userProvider.removeListener(_onUserChanged);
     super.dispose();
   }
 
   void _onUserChanged() {
-    final favorites = context.read<UserProvider>().profile?.favoritos ?? [];
+    if (!mounted) return;
+    final favorites = _userProvider.profile?.favoritos ?? [];
     if (!_sameList(_lastFavoritos, favorites)) {
       _lastFavoritos = favorites;
       _loadFavorites();
@@ -90,9 +100,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   }
 
   Future<void> _loadFavorites() async {
-    final userProvider = context.read<UserProvider>();
-    final recetasProvider = context.read<RecetasProvider>();
-    final favorites = userProvider.profile?.favoritos ?? [];
+    final favorites = _userProvider.profile?.favoritos ?? [];
 
     if (favorites.isEmpty) {
       if (mounted) setState(() => _isLoading = false);
@@ -112,7 +120,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
     // ── Catálogo ──
     if (catalogIds.isNotEmpty) {
       try {
-        final recetas = await recetasProvider.getRecetasByIds(catalogIds);
+        final recetas = await _recetasProvider.getRecetasByIds(catalogIds);
         for (final r in recetas) {
           itemsById[r.id] = _FavoriteItem.fromCatalogo(r);
         }
@@ -122,7 +130,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
     }
 
     // ── Recetas propias (solo con sesión; sin sesión no existen) ──
-    if (propiaIds.isNotEmpty && userProvider.isLoggedIn) {
+    if (propiaIds.isNotEmpty && _userProvider.isLoggedIn) {
       try {
         final todas = await RecetasUsuarioService().getMisRecetas();
         for (final r in todas) {
