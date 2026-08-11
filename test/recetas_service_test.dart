@@ -1,6 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:remedios_naturales_app/data/models/hierba.dart';
 import 'package:remedios_naturales_app/data/models/receta.dart';
 import 'package:remedios_naturales_app/data/models/sistema_corporal.dart';
+import 'package:remedios_naturales_app/data/repositories/hierbas_repository.dart';
 import 'package:remedios_naturales_app/data/repositories/recetas_repository.dart';
 import 'package:remedios_naturales_app/data/services/recetas_service.dart';
 
@@ -102,6 +104,31 @@ Receta _createReceta({
   );
 }
 
+/// Fake de la fuente de hierbas (interfaz [HierbasDataSource]) con datos
+/// en memoria para tests.
+class FakeHierbasDataSource implements HierbasDataSource {
+  final List<Hierba> hierbas;
+
+  FakeHierbasDataSource(this.hierbas);
+
+  @override
+  Future<List<Hierba>> getHierbas() async => hierbas;
+}
+
+Hierba _createHierba({
+  required String id,
+  required String nombre,
+  String? propiedades,
+  List<String>? tags,
+}) {
+  return Hierba(
+    id: id,
+    nombre: nombre,
+    propiedades: propiedades ?? '',
+    tags: tags ?? [],
+  );
+}
+
 SistemaCorporal _createSistema({
   required String id,
   required String nombre,
@@ -191,7 +218,11 @@ void main() {
     ];
 
     final mockRepository = InMemoryRecetasRepository(testSistemas);
-    service = RecetasService(repository: mockRepository);
+    // Sin hierbas por defecto: los tests existentes validan SOLO recetas.
+    service = RecetasService(
+      repository: mockRepository,
+      hierbasRepository: FakeHierbasDataSource(const []),
+    );
   });
 
   // ═══════════════════════════════════════════════════════════════════
@@ -410,20 +441,84 @@ void main() {
   });
 
   // ═══════════════════════════════════════════════════════════════════
-  // BÚSQUEDA POR CONDICIÓN
+  // BÚSQUEDA CON HIERBAS DEL HERBOLARIO
   // ═══════════════════════════════════════════════════════════════════
-  group('searchByCondition', () {
-    test('returns recetas matching condition in idealPara', () async {
-      final results = await service.searchByCondition('gases');
+  group('search con hierbas del herbolario', () {
+    late RecetasService serviceConHierbas;
 
-      expect(results.isNotEmpty, true);
-      final manzanilla = results.firstWhere((r) => r.id == 'digestivo_01');
-      expect(manzanilla.idealPara, contains('gases'));
+    setUp(() {
+      final hierbas = [
+        _createHierba(
+          id: 'menta',
+          nombre: 'Menta',
+          propiedades: 'Alivia la digestión',
+          tags: ['digestivo'],
+        ),
+        _createHierba(
+          id: 'valeriana',
+          nombre: 'Valeriana',
+          propiedades: 'Calma la ansiedad y el insomnio',
+          tags: ['sedante', 'nervioso'],
+        ),
+        // 35 hierbas con tag genérico para validar el cap del top 10
+        ...List.generate(
+          35,
+          (i) => _createHierba(
+            id: 'generica_$i',
+            nombre: 'Hierba genérica $i',
+            propiedades: 'Propiedades varias',
+            tags: ['digestivo'],
+          ),
+        ),
+      ];
+      serviceConHierbas = RecetasService(
+        repository: InMemoryRecetasRepository(testSistemas),
+        hierbasRepository: FakeHierbasDataSource(hierbas),
+      );
     });
 
-    test('returns empty for non-matching condition', () async {
-      final results = await service.searchByCondition('xyz123');
-      expect(results, isEmpty);
+    test('encuentra una hierba por nombre (score 10)', () async {
+      final results = await serviceConHierbas.search('menta');
+
+      expect(results.first.id, 'menta');
+      expect(results.first.type, ResultType.hierba);
+      expect(results.first.score, greaterThanOrEqualTo(10));
+    });
+
+    test('encuentra una hierba por tag (score 8)', () async {
+      final results = await serviceConHierbas.search('sedante');
+
+      expect(results.any((r) => r.id == 'valeriana'), isTrue);
+      final valeriana = results.firstWhere((r) => r.id == 'valeriana');
+      expect(valeriana.type, ResultType.hierba);
+      expect(valeriana.score, greaterThanOrEqualTo(8));
+    });
+
+    test('encuentra una hierba por propiedades (score 5)', () async {
+      final results = await serviceConHierbas.search('insomnio');
+
+      expect(results.any((r) => r.id == 'valeriana'), isTrue);
+    });
+
+    test('tag genérico no inunda el top 10: máx 3 hierbas', () async {
+      final results = await serviceConHierbas.search('digestivo');
+
+      final hierbas = results.where((r) => r.type == ResultType.hierba);
+      expect(hierbas.length, lessThanOrEqualTo(3));
+    });
+
+    test('la hierba por nombre compite con recetas en el mismo listado',
+        () async {
+      // 'valeriana' matchea la receta nervioso_01 (su nombre la incluye)
+      // y la hierba valeriana (nombre exacto): ambas con score 10.
+      final results = await serviceConHierbas.search('valeriana');
+
+      final receta = results.firstWhere((r) => r.id == 'nervioso_01');
+      final hierba = results.firstWhere((r) => r.id == 'valeriana');
+      expect(receta.score, greaterThanOrEqualTo(10));
+      expect(hierba.score, greaterThanOrEqualTo(10));
+      expect(results.length, greaterThanOrEqualTo(2),
+          reason: 'receta y hierba coexisten en el mismo listado');
     });
   });
 }

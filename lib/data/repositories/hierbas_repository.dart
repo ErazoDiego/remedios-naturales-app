@@ -2,8 +2,15 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import '../models/hierba.dart';
 
+/// Abstracción de la fuente de hierbas del herbolario.
+/// Permite inyectar fakes en tests (DIP: RecetasService depende de esta
+/// interfaz, no del repositorio concreto).
+abstract class HierbasDataSource {
+  Future<List<Hierba>> getHierbas();
+}
+
 /// Repositorio de datos que carga las hierbas desde el archivo JSON
-class HierbasRepository {
+class HierbasRepository implements HierbasDataSource {
   // Singleton
   static final HierbasRepository _instance = HierbasRepository._internal();
   factory HierbasRepository() => _instance;
@@ -13,6 +20,7 @@ class HierbasRepository {
   List<Hierba>? _hierbas;
 
   /// Carga todas las hierbas del herbolario desde el asset
+  @override
   Future<List<Hierba>> getHierbas() async {
     if (_hierbas != null) return _hierbas!;
 

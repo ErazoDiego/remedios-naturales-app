@@ -1,6 +1,8 @@
 import '../../core/utils/text_normalizer.dart';
+import '../models/hierba.dart';
 import '../models/receta.dart';
 import '../models/sistema_corporal.dart';
+import '../repositories/hierbas_repository.dart';
 import '../repositories/recetas_repository.dart';
 import 'search_index.dart';
 
@@ -8,9 +10,17 @@ import 'search_index.dart';
 /// Contiene la lógica de búsqueda, filtrado y reglas de negocio
 class RecetasService {
   final RecetasRepository _repository;
+  final HierbasDataSource _hierbasRepository;
 
-  RecetasService({RecetasRepository? repository})
-      : _repository = repository ?? RecetasRepository();
+  /// Máximo de resultados de tipo hierba por búsqueda (el herbolario
+  /// acompaña, no inunda el top 10 de recetas).
+  static const int maxHierbasPorBusqueda = 3;
+
+  RecetasService({
+    RecetasRepository? repository,
+    HierbasDataSource? hierbasRepository,
+  })  : _repository = repository ?? RecetasRepository(),
+        _hierbasRepository = hierbasRepository ?? HierbasRepository();
 
   /// Obtiene todos los sistemas corporales
   Future<List<SistemaCorporal>> getSistemas() async {
@@ -28,7 +38,9 @@ class RecetasService {
   }
 
   /// Busca recetas por texto (nombre, descripción, ingredientes, condiciones
-  /// y keywords del índice [SearchIndex]).
+  /// y keywords del índice [SearchIndex]). Además agrega hierbas del
+  /// herbolario ([HierbasRepository]) como resultados complementarios
+  /// (máximo [maxHierbasPorBusqueda] por búsqueda).
   ///
   /// Motor de búsqueda:
   /// 1. Normaliza la query (minúsculas, sin tildes, ñ→n) y la descompone
@@ -81,6 +93,26 @@ class RecetasService {
         }
       }
     }
+
+    // Buscar en hierbas (herbolario): complemento, con cap para no
+    // desplazar a las recetas en el top 10.
+    final hierbaMatches = <RecetaResult>[];
+    final hierbas = await _hierbasRepository.getHierbas();
+    for (final hierba in hierbas) {
+      final score = _calculateHierbaScore(hierba, terminos);
+      if (score > 0) {
+        hierbaMatches.add(RecetaResult(
+          id: hierba.id,
+          title: hierba.nombre,
+          subtitle: hierba.propiedades,
+          type: ResultType.hierba,
+          sistemaId: '',
+          score: score,
+        ));
+      }
+    }
+    hierbaMatches.sort((a, b) => b.score.compareTo(a.score));
+    resultados.addAll(hierbaMatches.take(maxHierbasPorBusqueda));
 
     // Ordenar por relevancia (score descendente)
     resultados.sort((a, b) => b.score.compareTo(a.score));
@@ -195,6 +227,32 @@ class RecetasService {
     return score;
   }
 
+  /// Score de coincidencia de una hierba del herbolario con los términos.
+  /// Mismo esquema ponderado que las recetas: nombre(10) > tags(8) >
+  /// propiedades(5). Suma por término.
+  int _calculateHierbaScore(Hierba hierba, List<String> terminos) {
+    final nombre = normalizarTexto(hierba.nombre);
+    final tags = hierba.tags.map(normalizarTexto).toList();
+    final propiedades = normalizarTexto(hierba.propiedades);
+
+    int score = 0;
+    for (final termino in terminos) {
+      final variantes = SearchIndex.sinonimosDe(termino);
+      int mejorPorTermino = 0;
+      for (final variante in variantes) {
+        if (nombre.contains(variante)) mejorPorTermino = _max(mejorPorTermino, 10);
+        if (tags.any((t) => t.contains(variante)) && variante.length > 1) {
+          mejorPorTermino = _max(mejorPorTermino, 8);
+        }
+        if (propiedades.contains(variante) && variante.length > 1) {
+          mejorPorTermino = _max(mejorPorTermino, 5);
+        }
+      }
+      score += mejorPorTermino;
+    }
+    return score;
+  }
+
   int _max(int a, int b) => a > b ? a : b;
 }
 
@@ -202,6 +260,7 @@ class RecetasService {
 enum ResultType {
   sistema,
   receta,
+  hierba,
 }
 
 /// Modelo de resultado de búsqueda

@@ -238,6 +238,10 @@ void main() {
     'halitosis': 'sensorial_03',
     'ojos cansados': 'sensorial_02',
     'oido': 'sensorial_06',
+    // Herbolario (la búsqueda global también encuentra hierbas reales)
+    'menta': 'menta',
+    'romero': 'romero',
+    'manzanilla': 'manzanilla',
   };
 
   for (final entry in casos.entries) {

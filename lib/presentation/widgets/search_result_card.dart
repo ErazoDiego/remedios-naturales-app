@@ -14,6 +14,8 @@ import 'app_card.dart';
 /// Muestra imagen para recetas, ícono para sistemas.
 /// Las recetas fuera del muestreo gratis muestran candado (plan FREE)
 /// y al tocarlas abren el CTA premium en vez de navegar.
+/// Las hierbas del herbolario son gratis: badge "Hierba" y navegan a su
+/// ficha sin candado.
 class SearchResultCard extends StatelessWidget {
   final RecetaResult result;
   final bool showImage;
@@ -27,14 +29,17 @@ class SearchResultCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isSistema = result.type == ResultType.sistema;
+    final esHierba = result.type == ResultType.hierba;
     final sistemaId = result.sistemaId;
     final cardBg = AppConstants.getCardBackgroundColor(sistemaId);
     final titleColor = AppConstants.getCardTitleColor(sistemaId);
     final icon = SystemIcons.getIcon(sistemaId);
 
     // Receta fuera del muestreo gratis: candado y CTA premium (FREE).
+    // Las hierbas son gratis: nunca bloqueadas.
     final premium = context.watch<PremiumProvider>();
     final bloqueada = !isSistema &&
+        !esHierba &&
         !PremiumRules.puedeAccederAReceta(
           isPremium: premium.isPremium,
           recipeId: result.id,
@@ -54,6 +59,8 @@ class SearchResultCard extends StatelessWidget {
         }
         if (isSistema) {
           context.go('/category/$sistemaId');
+        } else if (esHierba) {
+          context.go('/herba/${result.id}');
         } else {
           context.go('/remedy/${result.id}');
         }
@@ -63,6 +70,7 @@ class SearchResultCard extends StatelessWidget {
           // ─── Leading: imagen o ícono ───
           _buildLeading(
             isSistema: isSistema,
+            esHierba: esHierba,
             cardBg: cardBg,
             titleColor: titleColor,
             icon: icon,
@@ -113,7 +121,9 @@ class SearchResultCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: Text(
-                  isSistema ? 'Sistema' : 'Receta',
+                  isSistema
+                      ? 'Sistema'
+                      : (esHierba ? 'Hierba' : 'Receta'),
                   style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w600,
@@ -142,12 +152,13 @@ class SearchResultCard extends StatelessWidget {
 
   Widget _buildLeading({
     required bool isSistema,
+    required bool esHierba,
     required Color cardBg,
     required Color titleColor,
     required IconData icon,
   }) {
-    // Solo mostrar imagen si no es sistema y está habilitado
-    if (!isSistema && showImage) {
+    // Solo mostrar imagen si es receta (sistemas y hierbas usan ícono)
+    if (!isSistema && !esHierba && showImage) {
       return ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: SizedBox(
