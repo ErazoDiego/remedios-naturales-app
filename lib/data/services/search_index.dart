@@ -9,7 +9,7 @@ import '../../core/utils/text_normalizer.dart';
 ///   + lotes por sistema extraídos del libro "Remedios naturales olvidados
 ///   de la abuela" (vocabulario coloquial: "no puedo ir al baño", "me cae
 ///   pesada la comida", etc.). Lote actual: digestivo (16/16) + nervioso
-///   (14/14) + respiratorio (12/12) completos.
+///   (14/14) + respiratorio (12/12) + inmunitario (13/13) completos.
 /// - gruposSinonimos: vocabulario del libro (cefalea↔dolor de cabeza,
 ///   resfriado↔gripe, etc.).
 ///
@@ -67,11 +67,19 @@ class SearchIndex {
     'respiratorio_11': ['sauco', 'sudoracion', 'romper el resfriado', 'malestar general', 'resfriado comun'],
     'respiratorio_12': ['despejar la nariz', 'cabeza pesada', 'nariz congestionada', 'roll on', 'oler mejor'],
     // ── Inmunitario ───────────────────────────────────────────────────
-    'inmunitario_03': ['resfriado', 'primeros sintomas', 'defensas', 'gripe', 'refuerzo'],
-    'inmunitario_08': ['prevencion', 'invierno', 'defensas', 'resfriado', 'protegerse'],
     'inmunitario_01': ['defensas bajas', 'bajon de defensas', 'inmunidad', 'equinacea', 'sauco'],
+    'inmunitario_02': ['leche dorada', 'curcuma y pimienta', 'bebida caliente', 'dias frios', 'reconfortante', 'por la noche'],
+    'inmunitario_03': ['resfriado', 'primeros sintomas', 'defensas', 'gripe', 'refuerzo'],
+    'inmunitario_04': ['bayas', 'frutos rojos', 'antioxidantes', 'recuperacion tras resfriado', 'despues de la gripe', 'jarabe de frutos rojos'],
     'inmunitario_05': ['fatiga', 'cansancio', 'agotamiento', 'adaptogeno', 'falta de energia'],
+    'inmunitario_06': ['caldo de ajo', 'caldo de cebolla', 'sopa para el resfriado', 'estoy debil', 'recuperarse rapido'],
+    'inmunitario_07': ['cambio de estacion', 'limpiar la sangre', 'depuracion de primavera', 'ortiga', 'diente de leon', 'depurar'],
+    'inmunitario_08': ['prevencion', 'invierno', 'defensas', 'resfriado', 'protegerse'],
+    'inmunitario_09': ['antiviral', 'virus', 'gotas de ajo', 'ajo y limon', 'combatir virus', 'defensas contra virus'],
     'inmunitario_10': ['inflamacion', 'antiinflamatorio', 'curcuma'],
+    'inmunitario_11': ['balsamo protector', 'antes de salir de casa', 'ambientes cargados', 'arbol de te', 'protegerse del frio'],
+    'inmunitario_12': ['astragalo', 'energia estable', 'energia sostenida', 'cansancio prolongado', 'sin estimulantes'],
+    'inmunitario_13': ['propolis', 'tintura', 'microbios', 'reforzar defensas', 'prepararse para el invierno'],
     // ── Cardiovascular ────────────────────────────────────────────────
     'cardiovascular_01': ['circulacion', 'circulacion lenta', 'corazon', 'espino blanco', 'mala circulacion'],
     'cardiovascular_07': ['semillas', 'energia', 'circulacion', 'chia', 'linaza'],
