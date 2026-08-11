@@ -10,7 +10,7 @@ import '../../core/utils/text_normalizer.dart';
 ///   de la abuela" (vocabulario coloquial: "no puedo ir al baño", "me cae
 ///   pesada la comida", etc.). Lote actual: digestivo (16/16) + nervioso
 ///   (14/14) + respiratorio (12/12) + inmunitario (13/13) + cardiovascular
-///   (12/12) + hormonal (14/14) completos.
+///   (12/12) + hormonal (14/14) + musculoesqueletico (16/16) completos.
 /// - gruposSinonimos: vocabulario del libro (cefalea↔dolor de cabeza,
 ///   resfriado↔gripe, etc.).
 ///
@@ -110,11 +110,22 @@ class SearchIndex {
     'hormonal_13': ['cansancio hormonal', 'agotamiento menstrual', 'regaliz', 'energia durante el ciclo', 'dias de baja energia'],
     'hormonal_14': ['calmar el ciclo', 'tension premenstrual', 'irritable con la regla', 'hinojo', 'relajar el abdomen', 'rosa'],
     // ── Músculo-esquelético ───────────────────────────────────────────
-    'musculoesqueletico_03': ['dolor articular', 'articulaciones', 'artritis', 'dolor de huesos', 'curcuma'],
-    'musculoesqueletico_16': ['dolor articular', 'laurel', 'dolores', 'tension muscular'],
+    'musculoesqueletico_01': ['arnica', 'chichon', 'me di un golpe', 'dolor despues de entrenar', 'hematomas', 'golpeado'],
     'musculoesqueletico_02': ['tension muscular', 'musculos', 'contractura', 'compresa caliente', 'jengibre'],
-    'musculoesqueletico_12': ['inflamacion', 'antiinflamatorio', 'jarabe', 'dolor muscular'],
+    'musculoesqueletico_03': ['dolor articular', 'articulaciones', 'artritis', 'dolor de huesos', 'curcuma'],
+    'musculoesqueletico_04': ['sales de magnesio', 'musculos cansados', 'bano de inmersion', 'descanso profundo', 'dolor de cuerpo despues del gym'],
+    'musculoesqueletico_05': ['cayena', 'crema caliente', 'rigidez al despertar', 'dolor de rodilla', 'movilidad', 'manos rigidas'],
+    'musculoesqueletico_06': ['agujetas', 'musculos doloridos', 'despues del gym', 'post entrenamiento', 'sobrecarga', 'unguento deportivo'],
+    'musculoesqueletico_07': ['cola de caballo', 'tendones', 'ligamentos', 'fortalecer huesos', 'silice', 'debilidad articular'],
     'musculoesqueletico_08': ['golpes', 'esguinces', 'hematomas', 'moretones', 'cataplasma'],
+    'musculoesqueletico_09': ['cuerpo pesado', 'pesadez corporal', 'cuerpo agotado', 'activar el cuerpo', 'romero y limon'],
+    'musculoesqueletico_10': ['musculos tensos', 'aceite para masaje', 'calor en la zona', 'relajar musculos', 'despues del ejercicio'],
+    'musculoesqueletico_11': ['calcio', 'huesos debiles', 'osteoporosis', 'descalcificacion', 'huesos fuertes', 'magnesio'],
+    'musculoesqueletico_12': ['inflamacion', 'antiinflamatorio', 'jarabe', 'dolor muscular'],
+    'musculoesqueletico_13': ['dolor de cuello', 'cervicales', 'contractura en el cuello', 'mala postura', 'mucho tiempo en la compu', 'hombros cargados'],
+    'musculoesqueletico_14': ['dolor de espalda', 'espalda cargada', 'lumbago', 'dolor lumbar', 'cintura dolorida', 'espalda tensa'],
+    'musculoesqueletico_15': ['sales de bano', 'bano muscular', 'bano con hierbas', 'relajar la tension', 'bano caliente'],
+    'musculoesqueletico_16': ['dolor articular', 'laurel', 'dolores', 'tension muscular'],
     // ── Urinario ──────────────────────────────────────────────────────
     'urinario_03': ['cistitis', 'irritacion urinaria', 'infeccion de orina', 'ardor al orinar', 'cebada', 'calendula'],
     'urinario_12': ['vejiga sensible', 'irritacion urinaria', 'infeccion de orina', 'ardor'],
