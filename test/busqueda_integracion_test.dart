@@ -205,6 +205,18 @@ void main() {
     'malvavisco': 'urinario_08',
     'hinchazon al final del dia': 'urinario_09',
     'tintura de riñones': 'urinario_11',
+    // Lote libro (dermico completo): vocabulario coloquial real
+    'hamamelis': 'dermico_01',
+    'arrugas': 'dermico_04',
+    'pie de atleta': 'dermico_05',
+    'hongos en los pies': 'dermico_05',
+    'labios partidos': 'dermico_07',
+    'aceite de almendra': 'dermico_08',
+    'se me cae el pelo': 'dermico_09',
+    'enjuague de vinagre': 'dermico_10',
+    'pepino': 'dermico_11',
+    'uñas debiles': 'dermico_13',
+    'cuero cabelludo': 'dermico_14',
     // Urinario
     'cistitis': 'urinario_03',
     'pesadez renal': 'urinario_10',

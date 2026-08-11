@@ -11,7 +11,7 @@ import '../../core/utils/text_normalizer.dart';
 ///   pesada la comida", etc.). Lote actual: digestivo (16/16) + nervioso
 ///   (14/14) + respiratorio (12/12) + inmunitario (13/13) + cardiovascular
 ///   (12/12) + hormonal (14/14) + musculoesqueletico (16/16) + urinario
-///   (12/12) completos.
+///   (12/12) + dermico (14/14) completos.
 /// - gruposSinonimos: vocabulario del libro (cefalea↔dolor de cabeza,
 ///   resfriado↔gripe, etc.).
 ///
@@ -141,11 +141,20 @@ class SearchIndex {
     'urinario_11': ['tintura de riñones', 'apoyo renal', 'diente de leon', 'acumulacion de liquidos', 'pesadez en los riñones'],
     'urinario_12': ['vejiga sensible', 'irritacion urinaria', 'infeccion de orina', 'ardor'],
     // ── Dérmico ───────────────────────────────────────────────────────
-    'dermico_03': ['irritacion', 'piel irritada', 'aloe', 'quemadura', 'picazon'],
-    'dermico_12': ['hidratacion', 'piel seca', 'calendula', 'crema', 'suavizar'],
+    'dermico_01': ['hamamelis', 'locion facial', 'piel sensible', 'tonificar la piel', 'rosa mosqueta'],
     'dermico_02': ['piel grasa', 'acne', 'barros', 'espinillas', 'mascarilla', 'puntos negros'],
+    'dermico_03': ['irritacion', 'piel irritada', 'aloe', 'quemadura', 'picazon'],
+    'dermico_04': ['serum facial', 'arrugas', 'lineas de expresion', 'jojoba', 'luminosidad'],
+    'dermico_05': ['pie de atleta', 'hongos en la piel', 'arbol de te', 'hongos en los pies', 'entre los dedos', 'sudor en los pies'],
     'dermico_06': ['quemadura solar', 'sol', 'enrojecimiento', 'post solar', 'piel quemada'],
-    'dermico_09': ['cabello debil', 'caida del cabello', 'champu', 'romero', 'fortalecer cabello'],
+    'dermico_07': ['labios secos', 'labios partidos', 'protector labial', 'labios agrietados', 'grietas en la boca'],
+    'dermico_08': ['aceite corporal', 'aceite de almendra', 'piel tirante', 'elasticidad', 'piel apagada'],
+    'dermico_09': ['se me cae el pelo', 'caida del cabello', 'champu de romero', 'cabello debil', 'fortalecer el pelo'],
+    'dermico_10': ['vinagre de manzana', 'enjuague de vinagre', 'pelo apagado', 'pelo sin brillo', 'acondicionador natural'],
+    'dermico_11': ['pepino', 'piel irritada', 'piel caliente', 'mascarilla de pepino', 'enrojecimiento'],
+    'dermico_12': ['hidratacion', 'piel seca', 'calendula', 'crema', 'suavizar'],
+    'dermico_13': ['uñas debiles', 'uñas que se rompen', 'fortalecer las uñas', 'cuticulas secas', 'vitamina e'],
+    'dermico_14': ['cuero cabelludo', 'te verde', 'pelo sin vida', 'frescura en el pelo', 'cabello apagado'],
     // ── Sensorial ─────────────────────────────────────────────────────
     'sensorial_07': ['mareo', 'vertigo', 'mareos', 'roll-on', 'vahido'],
     'sensorial_03': ['halitosis', 'mal aliento', 'aliento', 'enjuague', 'boca'],
