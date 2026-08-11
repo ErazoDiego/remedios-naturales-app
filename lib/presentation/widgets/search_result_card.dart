@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/services/payments/premium_rules.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../data/services/recetas_service.dart';
+import '../providers/premium_provider.dart';
+import 'premium/premium_dialog.dart';
 import 'app_card.dart';
 
 /// Card de resultado de búsqueda — reutilizada en search y by_symptom
-/// Muestra imagen para recetas, ícono para sistemas
+/// Muestra imagen para recetas, ícono para sistemas.
+/// Las recetas fuera del muestreo gratis muestran candado (plan FREE)
+/// y al tocarlas abren el CTA premium en vez de navegar.
 class SearchResultCard extends StatelessWidget {
   final RecetaResult result;
   final bool showImage;
@@ -26,8 +32,26 @@ class SearchResultCard extends StatelessWidget {
     final titleColor = AppConstants.getCardTitleColor(sistemaId);
     final icon = SystemIcons.getIcon(sistemaId);
 
+    // Receta fuera del muestreo gratis: candado y CTA premium (FREE).
+    final premium = context.watch<PremiumProvider>();
+    final bloqueada = !isSistema &&
+        !PremiumRules.puedeAccederAReceta(
+          isPremium: premium.isPremium,
+          recipeId: result.id,
+        );
+
     return AppCard(
       onTap: () {
+        if (bloqueada) {
+          showPremiumDialog(
+            context,
+            title: 'Receta Premium',
+            message: 'Esta receta forma parte de Yuyo Premium. '
+                'Con el plan gratis tenés acceso a 5 recetas '
+                'de cada sistema.',
+          );
+          return;
+        }
         if (isSistema) {
           context.go('/category/$sistemaId');
         } else {
@@ -98,11 +122,17 @@ class SearchResultCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 6),
-              const Icon(
-                TablerIcons.chevron_right,
-                size: 16,
-                color: AppConstants.textTertiary,
-              ),
+              bloqueada
+                  ? const Icon(
+                      TablerIcons.lock,
+                      size: 16,
+                      color: AppConstants.alertAmber,
+                    )
+                  : const Icon(
+                      TablerIcons.chevron_right,
+                      size: 16,
+                      color: AppConstants.textTertiary,
+                    ),
             ],
           ),
         ],

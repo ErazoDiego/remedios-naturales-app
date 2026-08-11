@@ -3,10 +3,13 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/services/payments/premium_rules.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../providers/premium_provider.dart';
 import '../../providers/recetas_provider.dart';
 import '../../widgets/ads/banner_ad_widget.dart';
 import '../../widgets/loading_error_empty.dart';
+import '../../widgets/premium/premium_dialog.dart';
 
 /// Pantalla de categoría — Muestra las recetas de un sistema corporal
 ///
@@ -118,6 +121,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
     final tipo = receta.tipoPreparacion ?? receta.tipo ?? '';
     final preparacionStyle = AppConstants.getPreparacionStyle(tipo);
 
+    // Receta fuera del muestreo gratis: candado y CTA premium (FREE).
+    final premium = context.watch<PremiumProvider>();
+    final bloqueada = !PremiumRules.puedeAccederAReceta(
+      isPremium: premium.isPremium,
+      recipeId: receta.id,
+    );
+
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
@@ -129,7 +139,19 @@ class _CategoryScreenState extends State<CategoryScreen> {
         ),
       ),
       child: InkWell(
-        onTap: () => context.go('/remedy/${receta.id}'),
+        onTap: () {
+          if (bloqueada) {
+            showPremiumDialog(
+              context,
+              title: 'Receta Premium',
+              message: 'Esta receta forma parte de Yuyo Premium. '
+                  'Con el plan gratis tenés acceso a 5 recetas '
+                  'de cada sistema.',
+            );
+            return;
+          }
+          context.go('/remedy/${receta.id}');
+        },
         borderRadius: BorderRadius.circular(12),
         child: Padding(
           padding: const EdgeInsets.all(14),
@@ -226,14 +248,20 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 ),
               ),
 
-              // ─── Chevron de navegación ───
-              const Padding(
-                padding: EdgeInsets.only(left: 8, top: 16),
-                child: Icon(
-                  TablerIcons.chevron_right,
-                  size: 18,
-                  color: AppConstants.textTertiary,
-                ),
+              // ─── Chevron de navegación / candado premium ───
+              Padding(
+                padding: const EdgeInsets.only(left: 8, top: 16),
+                child: bloqueada
+                    ? const Icon(
+                        TablerIcons.lock,
+                        size: 18,
+                        color: AppConstants.alertAmber,
+                      )
+                    : const Icon(
+                        TablerIcons.chevron_right,
+                        size: 18,
+                        color: AppConstants.textTertiary,
+                      ),
               ),
             ],
           ),
