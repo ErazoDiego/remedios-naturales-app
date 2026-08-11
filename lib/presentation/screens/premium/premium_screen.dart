@@ -141,9 +141,11 @@ class PremiumScreen extends StatelessWidget {
                           color: Colors.white,
                         ),
                       )
-                    : const Text(
-                        'Comprar premium',
-                        style: TextStyle(
+                    : Text(
+                        premium.premiumPrice == null
+                            ? 'Comprar premium'
+                            : 'Comprar premium · ${premium.premiumPrice}',
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
@@ -316,9 +318,9 @@ class PremiumScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
-              child: const Text(
-                'Comprar pack',
-                style: TextStyle(
+              child: Text(
+                _packButtonLabel(premium, packId),
+                style: const TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
                 ),
@@ -327,6 +329,12 @@ class PremiumScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  /// Etiqueta del botón de compra: con precio si la tienda lo devolvió.
+  String _packButtonLabel(PremiumProvider premium, String packId) {
+    final precio = premium.priceFor(packId);
+    return precio == null ? 'Comprar pack' : 'Comprar pack · $precio';
   }
 
   Widget _buildPremiumActive(BuildContext context) {

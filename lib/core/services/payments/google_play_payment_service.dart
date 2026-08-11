@@ -66,6 +66,29 @@ class GooglePlayPaymentService implements PaymentService {
   Future<bool> purchasePack(String sistemaId) =>
       _buy(AppConstants.packProductId(sistemaId));
 
+  @override
+  Future<Map<String, String>> getProducts({List<String>? productIds}) async {
+    final ids = (productIds ?? _productosConocidos()).toSet();
+    if (ids.isEmpty) return {};
+
+    try {
+      final response = await _iap.queryProductDetails(ids);
+      return {
+        for (final product in response.productDetails)
+          product.id: product.price,
+      };
+    } catch (_) {
+      return {}; // sin Play Store / sin conexión: la UI no muestra precios
+    }
+  }
+
+  /// IDs conocidos por la app: premium + pack de cada sistema.
+  List<String> _productosConocidos() => [
+        PaymentService.premiumProductId,
+        for (final sistemaId in AppConstants.sistemasIds)
+          AppConstants.packProductId(sistemaId),
+      ];
+
   Future<bool> _buy(String productId) async {
     if (_pendingPurchase != null) return false; // ya hay una compra en curso
 

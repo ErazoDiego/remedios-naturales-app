@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/services/payments/premium_rules.dart';
 import '../../providers/premium_provider.dart';
 
 /// Modal que aparece al tocar una función bloqueada por el plan FREE.
@@ -45,17 +46,27 @@ Future<void> showPremiumDialog(
           ),
         ),
         if (sistemaId != null)
-          FilledButton(
-            onPressed: () {
+          Builder(
+            builder: (context) {
               final premium = context.read<PremiumProvider>();
-              Navigator.of(context).pop();
-              premium.purchasePack(sistemaId);
+              final packId = PremiumRules.packIdDeSistema(sistemaId);
+              final precio = premium.priceFor(packId);
+              return FilledButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  premium.purchasePack(sistemaId);
+                },
+                style: FilledButton.styleFrom(
+                  backgroundColor: AppConstants.alertAmberBackground,
+                  foregroundColor: AppConstants.alertAmber,
+                ),
+                child: Text(
+                  precio == null
+                      ? 'Desbloquear sistema'
+                      : 'Desbloquear sistema · $precio',
+                ),
+              );
             },
-            style: FilledButton.styleFrom(
-              backgroundColor: AppConstants.alertAmberBackground,
-              foregroundColor: AppConstants.alertAmber,
-            ),
-            child: const Text('Desbloquear sistema'),
           ),
         FilledButton(
           onPressed: () {

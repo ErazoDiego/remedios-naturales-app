@@ -20,6 +20,17 @@ abstract class PaymentService {
   /// Devuelve true solo si el pago se completó y confirmó.
   Future<bool> purchasePack(String sistemaId);
 
+  /// Consulta los precios de los productos en la tienda.
+  ///
+  /// - Sin [productIds]: los productos conocidos (premium + packs de
+  ///   todos los sistemas).
+  /// - Con [productIds]: solo esos (lo usa la tienda de colecciones,
+  ///   cuyos packs se conocen recién al leer el catálogo).
+  ///
+  /// Devuelve Map<productId, precio formateado> LISTO PARA MOSTRAR
+  /// (ej: 'USD 4.99'). Vacío si la tienda no tiene configurado nada.
+  Future<Map<String, String>> getProducts({List<String>? productIds});
+
   /// Restaura compras previas (reinstalación / nuevo dispositivo).
   /// Devuelve true si hay premium activo tras la restauración.
   Future<bool> restorePurchases();

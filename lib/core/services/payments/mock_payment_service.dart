@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../constants/app_constants.dart';
 import 'payment_service.dart';
 import 'premium_rules.dart';
 
@@ -57,6 +58,26 @@ class MockPaymentService implements PaymentService {
     await prefs.setStringList(_packsKey, _purchasedPacks.toList());
     return true;
   }
+
+  @override
+  Future<Map<String, String>> getProducts({List<String>? productIds}) async {
+    final ids = productIds ?? _productosConocidos();
+    return {
+      for (final id in ids) id: _precioDePrueba(id),
+    };
+  }
+
+  /// IDs conocidos por la app: premium + pack de cada sistema.
+  List<String> _productosConocidos() => [
+        PaymentService.premiumProductId,
+        for (final sistemaId in AppConstants.sistemasIds)
+          AppConstants.packProductId(sistemaId),
+      ];
+
+  /// Precios FAKE de desarrollo (en release los define Play Console vía
+  /// [GooglePlayPaymentService.getProducts]).
+  String _precioDePrueba(String productId) =>
+      productId == PaymentService.premiumProductId ? 'USD 4.99' : 'USD 1.99';
 
   @override
   Future<bool> restorePurchases() async {

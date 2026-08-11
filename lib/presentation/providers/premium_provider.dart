@@ -30,6 +30,7 @@ class PremiumProvider extends ChangeNotifier {
   bool _isLoading = false;
   String? _error;
   final List<String> _packs = [];
+  Map<String, String> _productPrices = {};
 
   bool get isPremium => _isPremium;
   bool get isLoading => _isLoading;
@@ -37,6 +38,16 @@ class PremiumProvider extends ChangeNotifier {
 
   /// Packs poseídos (device + perfil), ej: ['yuyo_pack_digestivo'].
   List<String> get packs => List.unmodifiable(_packs);
+
+  /// Precios de la tienda: productId → precio formateado (ej: 'USD 4.99').
+  /// Vacío si la tienda no tiene configurados los productos.
+  Map<String, String> get productPrices => Map.unmodifiable(_productPrices);
+
+  /// Precio formateado de un producto, o null si la tienda no lo tiene.
+  String? priceFor(String productId) => _productPrices[productId];
+
+  /// Precio del premium (atajo para la UI).
+  String? get premiumPrice => priceFor(PaymentService.premiumProductId);
 
   /// ¿Tiene acceso a la receta? (premium, muestreo gratis o pack del sistema)
   bool puedeAccederAReceta(String recipeId) =>
@@ -91,6 +102,9 @@ class PremiumProvider extends ChangeNotifier {
           debugPrint('No se pudo persistir pack $packId: $e');
         }
       }
+
+      // Precios de la tienda (para mostrar en PremiumScreen y diálogos).
+      _productPrices = await _payment.getProducts();
     } catch (e) {
       _error = 'Error al inicializar premium: $e';
     } finally {

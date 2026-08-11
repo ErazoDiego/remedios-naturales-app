@@ -1,5 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:remedios_naturales_app/core/constants/app_constants.dart';
 import 'package:remedios_naturales_app/core/services/payments/mock_payment_service.dart';
+import 'package:remedios_naturales_app/core/services/payments/payment_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// MockPaymentService: flujo premium completo sin plataforma de pago.
@@ -116,6 +118,42 @@ void main() {
 
       expect(await payment.purchasePack('digestivo'), isFalse);
       expect(payment.purchasedPacks, isEmpty);
+    });
+  });
+
+  group('getProducts (precios)', () {
+    test('devuelve precios fake para premium y packs de sistemas', () async {
+      final payment = MockPaymentService();
+      await payment.init();
+
+      final products = await payment.getProducts();
+
+      expect(products[PaymentService.premiumProductId], 'USD 4.99');
+      expect(products['yuyo_pack_digestivo'], 'USD 1.99');
+      // Sin args NO incluye packs de colecciones (la tienda los consulta
+      // con productIds explícitos, ver test siguiente).
+      expect(products.containsKey('yuyo_pack_jugos'), isFalse);
+      // Debe incluir premium + un pack por sistema del núcleo.
+      expect(products.length, AppConstants.sistemasIds.length + 1);
+    });
+
+    test('con ids específicos devuelve solo esos', () async {
+      final payment = MockPaymentService();
+      await payment.init();
+
+      final products =
+          await payment.getProducts(productIds: ['yuyo_pack_jugos']);
+
+      expect(products, {'yuyo_pack_jugos': 'USD 1.99'});
+    });
+
+    test('ids desconocidos reciben precio de pack por defecto', () async {
+      final payment = MockPaymentService();
+      await payment.init();
+
+      final products = await payment.getProducts(productIds: ['otro_producto']);
+
+      expect(products['otro_producto'], 'USD 1.99');
     });
   });
 }
