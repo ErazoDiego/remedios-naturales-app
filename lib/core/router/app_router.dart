@@ -17,6 +17,7 @@ import '../../presentation/screens/profile/profile_screen.dart';
 import '../../presentation/screens/mis_recetas/mis_recetas_screen.dart';
 import '../../presentation/screens/receta_usuario_form/receta_usuario_form_screen.dart';
 import '../../presentation/screens/receta_usuario_detail/receta_usuario_detail_screen.dart';
+import '../../presentation/screens/premium/premium_screen.dart';
 import '../../presentation/widgets/app_shell.dart';
 
 /// Configuración de rutas de la aplicación
@@ -153,6 +154,12 @@ class AppRouter {
       GoRoute(
         path: '/register',
         builder: (context, state) => const RegisterScreen(),
+      ),
+
+      // Premium (compra única)
+      GoRoute(
+        path: '/premium',
+        builder: (context, state) => const PremiumScreen(),
       ),
 
       // ═══════════════════════════════════════════════════════════

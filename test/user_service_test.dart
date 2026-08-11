@@ -189,6 +189,41 @@ void main() {
   });
 
   // ═══════════════════════════════════════════════════════════════════
+  // PREMIUM / PACKS (modo anónimo)
+  // ═══════════════════════════════════════════════════════════════════
+  group('Premium (anónimo)', () {
+    test('setPremium(true) persiste premium en el perfil local', () async {
+      await service.setPremium(true);
+
+      final profile = await service.getCurrentProfile();
+      expect(profile!.premium, isTrue);
+    });
+
+    test('setPremium(false) vuelve a free', () async {
+      await service.setPremium(true);
+      await service.setPremium(false);
+
+      final profile = await service.getCurrentProfile();
+      expect(profile!.premium, isFalse);
+    });
+
+    test('setPackOwned agrega el pack al perfil', () async {
+      await service.setPackOwned('jugos');
+
+      final profile = await service.getCurrentProfile();
+      expect(profile!.packs, contains('jugos'));
+    });
+
+    test('setPackOwned es idempotente: no duplica packs', () async {
+      await service.setPackOwned('jugos');
+      await service.setPackOwned('jugos');
+
+      final profile = await service.getCurrentProfile();
+      expect(profile!.packs.length, 1);
+    });
+  });
+
+  // ═══════════════════════════════════════════════════════════════════
   // LIMPIAR DATOS
   // ═══════════════════════════════════════════════════════════════════
   group('clearAll', () {

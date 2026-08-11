@@ -7,6 +7,12 @@ class UserProfile {
   final List<String> favoritos;
   final List<String> historial;
 
+  /// Usuario premium (compra única): sin anuncios, todo ilimitado.
+  final bool premium;
+
+  /// IDs de packs comprados (ej: 'jugos', 'kefir').
+  final List<String> packs;
+
   UserProfile({
     required this.id,
     required this.email,
@@ -14,6 +20,8 @@ class UserProfile {
     required this.fechaRegistro,
     this.favoritos = const [],
     this.historial = const [],
+    this.premium = false,
+    this.packs = const [],
   });
 
   factory UserProfile.fromJson(Map<String, dynamic> json) {
@@ -24,6 +32,8 @@ class UserProfile {
       fechaRegistro: DateTime.parse(json['fechaRegistro'] ?? DateTime.now().toIso8601String()),
       favoritos: List<String>.from(json['favoritos'] ?? []),
       historial: List<String>.from(json['historial'] ?? []),
+      premium: json['premium'] ?? false,
+      packs: List<String>.from(json['packs'] ?? []),
     );
   }
 
@@ -35,6 +45,8 @@ class UserProfile {
       'fechaRegistro': fechaRegistro.toIso8601String(),
       'favoritos': favoritos,
       'historial': historial,
+      'premium': premium,
+      'packs': packs,
     };
   }
 
@@ -42,6 +54,8 @@ class UserProfile {
     String? nombre,
     List<String>? favoritos,
     List<String>? historial,
+    bool? premium,
+    List<String>? packs,
   }) {
     return UserProfile(
       id: id,
@@ -50,6 +64,8 @@ class UserProfile {
       fechaRegistro: fechaRegistro,
       favoritos: favoritos ?? this.favoritos,
       historial: historial ?? this.historial,
+      premium: premium ?? this.premium,
+      packs: packs ?? this.packs,
     );
   }
 

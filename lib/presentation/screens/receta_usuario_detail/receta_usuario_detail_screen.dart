@@ -3,9 +3,12 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/services/payments/premium_rules.dart';
 import '../../../data/models/receta_usuario.dart';
+import '../../providers/premium_provider.dart';
 import '../../providers/user_provider.dart';
 import '../../widgets/ads/banner_ad_widget.dart';
+import '../../widgets/premium/premium_dialog.dart';
 
 /// Detalle de una receta propia del usuario.
 ///
@@ -81,7 +84,25 @@ class RecetaUsuarioDetailScreen extends StatelessWidget {
                         if (isFavorite) {
                           userProvider.removeFavorite(receta.id);
                         } else {
-                          userProvider.addFavorite(receta.id);
+                          final premium =
+                              context.read<PremiumProvider>();
+                          final favoritosActuales =
+                              userProvider.profile?.favoritos.length ?? 0;
+                          if (PremiumRules.canAddFavorite(
+                            isPremium: premium.isPremium,
+                            currentFavorites: favoritosActuales,
+                          )) {
+                            userProvider.addFavorite(receta.id);
+                          } else {
+                            showPremiumDialog(
+                              context,
+                              title: 'Llegaste al límite de favoritos',
+                              message: 'En el plan gratis podés guardar '
+                                  '${AppConstants.freeFavoritosLimit} '
+                                  'recetas. Con Premium guardás todas '
+                                  'las que quieras.',
+                            );
+                          }
                         }
                       },
                     );

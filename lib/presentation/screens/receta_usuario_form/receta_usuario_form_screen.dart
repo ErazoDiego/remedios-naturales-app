@@ -3,8 +3,11 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/services/payments/premium_rules.dart';
 import '../../../data/models/receta_usuario.dart';
 import '../../providers/mis_recetas_provider.dart';
+import '../../providers/premium_provider.dart';
+import '../../widgets/premium/premium_dialog.dart';
 
 /// Formulario de creación/edición de una receta propia.
 ///
@@ -83,6 +86,31 @@ class _RecetaUsuarioFormScreenState extends State<RecetaUsuarioFormScreen> {
     if (!_formKey.currentState!.validate()) return;
 
     final provider = context.read<MisRecetasProvider>();
+
+    // Gating premium (solo modo crear; editar no suma una receta nueva):
+    // el plan FREE permite ${freeMisRecetasLimit} recetas propias.
+    if (!widget.isEditing) {
+      // Garantizar el conteo real: si la lista no se cargó aún (deep
+      // link directo al form), cargar antes de validar el límite.
+      if (provider.recetas.isEmpty) {
+        await provider.load();
+        if (!mounted) return;
+      }
+      final premium = context.read<PremiumProvider>();
+      if (!PremiumRules.canCreateReceta(
+        isPremium: premium.isPremium,
+        currentRecetas: provider.recetas.length,
+      )) {
+        await showPremiumDialog(
+          context,
+          title: 'Llegaste al límite de recetas propias',
+          message: 'En el plan gratis podés crear '
+              '${AppConstants.freeMisRecetasLimit} recetas. Con Premium '
+              'creás todas las que quieras.',
+        );
+        return;
+      }
+    }
 
     // Valores que vienen del form (los listados ya están normalizados).
     final nombre = _nombreController.text.trim();

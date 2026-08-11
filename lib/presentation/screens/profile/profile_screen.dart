@@ -5,6 +5,7 @@ import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../data/models/user_profile.dart';
 import '../../providers/user_provider.dart';
+import '../../providers/premium_provider.dart';
 
 /// Pantalla de perfil del usuario.
 ///
@@ -209,6 +210,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
       const SizedBox(height: 16),
 
       // ═══════════════════════════════════════════════════════════
+      // YUYO PREMIUM (badge / acceso a la compra)
+      // ═══════════════════════════════════════════════════════════
+      _buildPremiumCard(),
+      const SizedBox(height: 16),
+
+      // ═══════════════════════════════════════════════════════════
       // ESTADÍSTICAS
       // ═══════════════════════════════════════════════════════════
       Row(
@@ -377,12 +384,92 @@ class _ProfileScreenState extends State<ProfileScreen> {
       const SizedBox(height: 20),
 
       // ═══════════════════════════════════════════════════════════
+      // YUYO PREMIUM (acceso a la compra, también sin sesión: la
+      // compra queda asociada a la cuenta de Google del dispositivo)
+      // ═══════════════════════════════════════════════════════════
+      _buildPremiumCard(),
+      const SizedBox(height: 20),
+
+      // ═══════════════════════════════════════════════════════════
       // MIS RECETAS (feature premium — visible también sin sesión;
       // la pantalla invita a iniciar sesión)
       // ═══════════════════════════════════════════════════════════
       _buildMisRecetasCard(),
       const SizedBox(height: 20),
     ];
+  }
+
+  /// Tarjeta de estado/acceso a Yuyo Premium (con y sin sesión).
+  Widget _buildPremiumCard() {
+    return Consumer<PremiumProvider>(
+      builder: (context, premium, child) {
+        final isPremium = premium.isPremium;
+        return Container(
+          decoration: BoxDecoration(
+            color: isPremium
+                ? AppConstants.sageGreenCard
+                : Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: AppConstants.borderLight,
+              width: 0.5,
+            ),
+          ),
+          child: InkWell(
+            onTap: () => context.push('/premium'),
+            borderRadius: BorderRadius.circular(12),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  Icon(
+                    isPremium ? TablerIcons.crown : TablerIcons.lock,
+                    size: 22,
+                    color: isPremium
+                        ? AppConstants.alertAmber
+                        : AppConstants.sageGreenTitle,
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          isPremium
+                              ? 'Yuyo Premium activo'
+                              : 'Yuyo Premium',
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            color: AppConstants.textPrimary,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          isPremium
+                              ? 'Sin anuncios y todo desbloqueado'
+                              : 'Todas las recetas, sin anuncios',
+                          style: const TextStyle(
+                            fontSize: 13,
+                            color: AppConstants.textSecondary,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  if (!isPremium)
+                    const Icon(
+                      TablerIcons.chevron_right,
+                      size: 20,
+                      color: AppConstants.textTertiary,
+                    ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 
   /// Tarjeta de acceso a "Mis Recetas" (visible con y sin sesión).

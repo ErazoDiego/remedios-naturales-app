@@ -204,6 +204,42 @@ class UserService {
     await _saveLocalProfile(profile.copyWith(nombre: newName));
   }
 
+  // ═══════════════════════════════════════════════════════════════════
+  // PREMIUM / PACKS (modelo freemium)
+  // ═══════════════════════════════════════════════════════════════════
+
+  /// Marca/desmarca al usuario como premium. Lo llama PremiumProvider
+  /// tras confirmar la compra (o el restore en otro dispositivo).
+  Future<void> setPremium(bool value) async {
+    if (_isLoggedIn) {
+      await _client.from('perfiles').update({'premium': value}).eq('id', _userId);
+      await _refreshRemoteProfile();
+      return;
+    }
+
+    final profile = await _loadLocalProfile();
+    await _saveLocalProfile(profile.copyWith(premium: value));
+  }
+
+  /// Registra la compra de un pack (ej: 'jugos'). Idempotente: si el
+  /// pack ya estaba, no duplica.
+  Future<void> setPackOwned(String packId) async {
+    if (_isLoggedIn) {
+      final profile = await _loadRemoteProfile();
+      if (profile.packs.contains(packId)) return;
+      final packs = [...profile.packs, packId];
+      await _client.from('perfiles').update({'packs': packs}).eq('id', _userId);
+      await _refreshRemoteProfile();
+      return;
+    }
+
+    final profile = await _loadLocalProfile();
+    if (profile.packs.contains(packId)) return;
+    await _saveLocalProfile(
+      profile.copyWith(packs: [...profile.packs, packId]),
+    );
+  }
+
   /// Crea el perfil en la tabla `perfiles` (se llama tras el registro).
   Future<void> ensureProfileExists() async {
     if (!_isLoggedIn) return;
@@ -321,7 +357,7 @@ class UserService {
       final user = _client.auth.currentUser;
       final perfilRows = await _client
           .from('perfiles')
-          .select('nombre, fecha_registro')
+          .select('nombre, fecha_registro, premium, packs')
           .eq('id', _userId)
           .maybeSingle();
 
@@ -346,6 +382,8 @@ class UserService {
             : DateTime.now(),
         favoritos: favRows.map((r) => r['receta_id'] as String).toList(),
         historial: histRows.map((r) => r['receta_id'] as String).toList(),
+        premium: perfilRows?['premium'] ?? false,
+        packs: List<String>.from(perfilRows?['packs'] ?? []),
       );
 
       // Guardar cache local para modo offline

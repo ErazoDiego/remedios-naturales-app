@@ -9,6 +9,18 @@ class AppConstants {
   
   // Descripción
   static const String appDescription = 'Tu guía de bienestar natural';
+
+  // ═══════════════════════════════════════════════════════════════════
+  // MODELO PREMIUM (freemium - compra única)
+  // ═══════════════════════════════════════════════════════════════════
+  // Plan FREE: 5 favoritos y 5 recetas propias. Premium: ilimitado.
+  // Las recetas "gratis por sistema" (muestreo) se configuran aparte
+  // en PremiumRules (la lista la elige el usuario/producto).
+  static const int freeFavoritosLimit = 5;
+  static const int freeMisRecetasLimit = 5;
+
+  // Producto de pago de Google Play (compra única).
+  static const String premiumProductId = 'yuyo_premium';
   
   // IDs de sistemas corporales
   static const List<String> sistemasIds = [

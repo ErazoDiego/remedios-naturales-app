@@ -28,6 +28,12 @@ dependencies:
   supabase_flutter: ^2.16.0
   google_mobile_ads: ^9.0.0
 
+  # Pagos (Google Play Billing). Solo se ejercita en release con
+  # productos configurados en Play Console; en dev se usa el Mock.
+  in_app_purchase: ^3.2.0
+  # Platform addition de Android (queryPastPurchases para restore en frío).
+  in_app_purchase_android: ^0.5.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

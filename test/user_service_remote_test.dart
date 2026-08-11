@@ -16,9 +16,11 @@ void main() {
   late UserService service;
 
   /// Crea un cliente Supabase fake. `online=false` simula fallo de red.
+  /// `perfilExtra` agrega columnas a la fila de perfiles (ej: premium).
   SupabaseClient fakeClient({
     bool online = true,
     List<http.Request>? requestsLog,
+    Map<String, dynamic>? perfilExtra,
   }) {
     // PostgREST accede a response.request!.headers: hay que adjuntar el
     // request a cada respuesta, si no revienta con null check.
@@ -49,6 +51,7 @@ void main() {
             {
               'nombre': 'Juan Pérez',
               'fecha_registro': '2026-01-01T00:00:00.000Z',
+              ...?perfilExtra,
             }
           ], 200);
         }
@@ -228,6 +231,56 @@ void main() {
       await service.migrateLocalToCloud();
 
       expect(log, isEmpty);
+    });
+  });
+
+  group('premium remoto', () {
+    test('setPremium(true) hace PATCH de premium en perfiles', () async {
+      final log = <http.Request>[];
+      service.testClient = fakeClient(requestsLog: log);
+      service.setSession(userId: 'user-123', email: 'juan@email.com');
+
+      await service.setPremium(true);
+
+      final patch = log.firstWhere((r) => r.method == 'PATCH');
+      expect(patch.url.path, '/rest/v1/perfiles');
+      final body = json.decode(patch.body) as Map<String, dynamic>;
+      expect(body['premium'], isTrue);
+    });
+
+    test('setPackOwned hace PATCH con el pack agregado', () async {
+      final log = <http.Request>[];
+      service.testClient = fakeClient(requestsLog: log);
+      service.setSession(userId: 'user-123', email: 'juan@email.com');
+
+      await service.setPackOwned('jugos');
+
+      final patch = log.firstWhere((r) => r.method == 'PATCH');
+      final body = json.decode(patch.body) as Map<String, dynamic>;
+      expect(body['packs'], ['jugos']);
+    });
+
+    test('getCurrentProfile carga premium y packs de la nube', () async {
+      service.testClient = fakeClient(perfilExtra: {
+        'premium': true,
+        'packs': ['jugos'],
+      });
+      service.setSession(userId: 'user-123', email: 'juan@email.com');
+
+      final profile = await service.getCurrentProfile();
+
+      expect(profile!.premium, isTrue);
+      expect(profile.packs, ['jugos']);
+    });
+
+    test('getCurrentProfile sin columnas premium usa defaults', () async {
+      service.testClient = fakeClient();
+      service.setSession(userId: 'user-123', email: 'juan@email.com');
+
+      final profile = await service.getCurrentProfile();
+
+      expect(profile!.premium, isFalse);
+      expect(profile.packs, isEmpty);
     });
   });
 }
