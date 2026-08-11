@@ -87,4 +87,124 @@ void main() {
     expect(ok, isFalse);
     expect(provider.error, isNotNull);
   });
+
+  group('packs por sistema', () {
+    test('purchasePack: agrega el pack, NO apaga anuncios ni activa premium',
+        () async {
+      final provider = PremiumProvider(payment: MockPaymentService());
+      await provider.init();
+
+      final ok = await provider.purchasePack('digestivo');
+
+      expect(ok, isTrue);
+      expect(provider.packs, contains('yuyo_pack_digestivo'));
+      expect(provider.isPremium, isFalse);
+      expect(AdsService.instance.isPremium, isFalse);
+
+      // Persistido en el perfil (anónimo local) para restore
+      final profile = await UserService().getCurrentProfile();
+      expect(profile!.packs, contains('yuyo_pack_digestivo'));
+    });
+
+    test('purchasePack: idempotente (no duplica el pack)', () async {
+      final provider = PremiumProvider(payment: MockPaymentService());
+      await provider.init();
+
+      await provider.purchasePack('urinario');
+      await provider.purchasePack('urinario');
+
+      expect(provider.packs.where((p) => p == 'yuyo_pack_urinario'),
+          hasLength(1));
+    });
+
+    test('purchasePack fallida: no agrega el pack y setea error', () async {
+      final payment = MockPaymentService()..setFailPurchasesForTesting(true);
+      final provider = PremiumProvider(payment: payment);
+      await provider.init();
+
+      final ok = await provider.purchasePack('dermico');
+
+      expect(ok, isFalse);
+      expect(provider.packs, isEmpty);
+      expect(provider.error, isNotNull);
+    });
+
+    test('init: restaura packs del perfil (multi-dispositivo)', () async {
+      await UserService().setPackOwned('yuyo_pack_sensorial');
+
+      final provider = PremiumProvider(payment: MockPaymentService());
+      await provider.init();
+
+      expect(provider.packs, contains('yuyo_pack_sensorial'));
+    });
+
+    test('init: restaura packs del dispositivo y los persiste al perfil',
+        () async {
+      // Compra simulada en el device (persistida en prefs del mock)
+      final device = MockPaymentService();
+      await device.init();
+      await device.purchasePack('hormonal');
+
+      final provider = PremiumProvider(payment: device);
+      await provider.init();
+
+      expect(provider.packs, contains('yuyo_pack_hormonal'));
+      final profile = await UserService().getCurrentProfile();
+      expect(profile!.packs, contains('yuyo_pack_hormonal'));
+    });
+
+    test('init: unión de packs device + perfil sin duplicar', () async {
+      await UserService().setPackOwned('yuyo_pack_digestivo');
+
+      final device = MockPaymentService();
+      await device.init();
+      await device.purchasePack('digestivo'); // el mismo pack en el device
+      await device.purchasePack('cardiovascular');
+
+      final provider = PremiumProvider(payment: device);
+      await provider.init();
+
+      expect(provider.packs, containsAll([
+        'yuyo_pack_digestivo',
+        'yuyo_pack_cardiovascular',
+      ]));
+      expect(provider.packs.where((p) => p == 'yuyo_pack_digestivo'),
+          hasLength(1));
+    });
+
+    test('restorePurchases: restaura packs del dispositivo', () async {
+      final device = MockPaymentService();
+      await device.init();
+      await device.purchasePack('nervioso');
+      // Reinicio simulado: la "compra" quedó solo en prefs del mock
+      final reinicio = MockPaymentService();
+      await reinicio.init();
+
+      final provider = PremiumProvider(payment: reinicio);
+      await provider.init();
+
+      final ok = await provider.restorePurchases();
+
+      expect(ok, isTrue);
+      expect(provider.packs, contains('yuyo_pack_nervioso'));
+      final profile = await UserService().getCurrentProfile();
+      expect(profile!.packs, contains('yuyo_pack_nervioso'));
+    });
+
+    test('puedeAccederAReceta: pack del sistema desbloquea sus recetas',
+        () async {
+      final provider = PremiumProvider(payment: MockPaymentService());
+      await provider.init();
+
+      // Free sin packs: bloqueada
+      expect(provider.puedeAccederAReceta('digestivo_01'), isFalse);
+
+      await provider.purchasePack('digestivo');
+
+      // Con el pack del sistema: desbloqueada
+      expect(provider.puedeAccederAReceta('digestivo_01'), isTrue);
+      // Otro sistema sigue bloqueado
+      expect(provider.puedeAccederAReceta('nervioso_01'), isFalse);
+    });
+  });
 }
