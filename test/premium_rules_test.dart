@@ -176,6 +176,60 @@ void main() {
     });
   });
 
+  group('PremiumRules.puedeAccederRecetaColeccion', () {
+    test('premium accede a CUALQUIER colección (presente o futura)', () {
+      expect(
+        PremiumRules.puedeAccederRecetaColeccion(
+          coleccionId: 'jugos',
+          isPremium: true,
+          packs: const [],
+        ),
+        isTrue,
+      );
+      expect(
+        PremiumRules.puedeAccederRecetaColeccion(
+          coleccionId: 'futura_coleccion',
+          isPremium: true,
+          packs: const [],
+        ),
+        isTrue,
+      );
+    });
+
+    test('sin premium ni pack: bloqueado', () {
+      expect(
+        PremiumRules.puedeAccederRecetaColeccion(
+          coleccionId: 'jugos',
+          isPremium: false,
+          packs: const [],
+        ),
+        isFalse,
+      );
+    });
+
+    test('con el pack de la colección: acceso', () {
+      expect(
+        PremiumRules.puedeAccederRecetaColeccion(
+          coleccionId: 'jugos',
+          isPremium: false,
+          packs: const ['yuyo_pack_jugos'],
+        ),
+        isTrue,
+      );
+    });
+
+    test('el pack de OTRA colección no da acceso', () {
+      expect(
+        PremiumRules.puedeAccederRecetaColeccion(
+          coleccionId: 'jugos',
+          isPremium: false,
+          packs: const ['yuyo_pack_sin_tacc'],
+        ),
+        isFalse,
+      );
+    });
+  });
+
   group('PremiumRules.recetasGratisPorSistema', () {
     test('contiene 50 recetas gratis (5 por cada uno de los 10 sistemas)', () {
       final ids = PremiumRules.recetasGratisPorSistema;

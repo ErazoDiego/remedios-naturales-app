@@ -58,6 +58,19 @@ class PremiumRules {
       esRecetaGratuita(recipeId) ||
       tienePackDeSistema(packs, sistemaDeReceta(recipeId));
 
+  /// ¿Puede el usuario abrir una receta de una colección de la biblioteca?
+  ///
+  /// Premium incluye TODAS las colecciones, presentes y futuras
+  /// (decisión de producto 2026-08-11). Sin premium, se necesita el
+  /// pack de la colección ('yuyo_pack_<coleccionId>', mismo formato que
+  /// los packs por sistema).
+  static bool puedeAccederRecetaColeccion({
+    required String coleccionId,
+    required bool isPremium,
+    required List<String> packs,
+  }) =>
+      isPremium || packs.contains(packIdDeSistema(coleccionId));
+
   /// IDs de recetas gratis por sistema (muestreo visible del plan FREE).
   ///
   /// Definidas por el usuario (recetas_mas_buscadas_por_sistema.xlsx):

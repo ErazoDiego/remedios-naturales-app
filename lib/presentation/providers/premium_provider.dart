@@ -49,6 +49,15 @@ class PremiumProvider extends ChangeNotifier {
   /// Precio del premium (atajo para la UI).
   String? get premiumPrice => priceFor(PaymentService.premiumProductId);
 
+  /// Consulta precios adicionales (ej: packs de colecciones de la
+  /// tienda) y los SUMA al mapa de precios existente.
+  Future<void> fetchProductsFor(List<String> productIds) async {
+    if (productIds.isEmpty) return;
+    final nuevos = await _payment.getProducts(productIds: productIds);
+    _productPrices = {..._productPrices, ...nuevos};
+    notifyListeners();
+  }
+
   /// ¿Tiene acceso a la receta? (premium, muestreo gratis o pack del sistema)
   bool puedeAccederAReceta(String recipeId) =>
       PremiumRules.puedeAccederAReceta(
