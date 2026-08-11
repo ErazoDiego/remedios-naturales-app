@@ -44,7 +44,13 @@ class RemediosNaturalesApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => HierbasProvider()),
         ChangeNotifierProvider(create: (_) => MisRecetasProvider()),
         ChangeNotifierProvider(
-          create: (_) => BibliotecaProvider(premium: context.read())..init(),
+          // IMPORTANTE: usar el context del create (parámetro), NO una
+          // variable capturada del build: el context del build está ARRIBA
+          // del MultiProvider y no resuelve al PremiumProvider → se crea
+          // una segunda instancia vía el fallback de BibliotecaProvider y
+          // la compra desde el diálogo premium "no hace nada" en la vista.
+          create: (context) =>
+              BibliotecaProvider(premium: context.read())..init(),
         ),
       ],
       child: MaterialApp.router(

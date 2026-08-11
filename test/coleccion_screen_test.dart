@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:provider/provider.dart';
@@ -156,5 +157,157 @@ void main() {
 
     expect(find.text('Jugo verde matinal'), findsOneWidget);
     expect(find.text('Desbloquear'), findsNothing);
+  });
+
+  testWidgets(
+      'árbol real (main.dart): comprar desde el diálogo de la vista '
+      'previa desbloquea la colección', (tester) async {
+    // Reproduce el wiring de main.dart: MultiProvider donde BibliotecaProvider
+    // toma el premium del árbol con context.read() (misma instancia).
+    final router = GoRouter(
+      initialLocation: '/biblioteca/jugos',
+      routes: [
+        GoRoute(
+          path: '/biblioteca/:coleccionId',
+          builder: (context, state) => ColeccionScreen(
+            coleccionId: state.pathParameters['coleccionId']!,
+          ),
+        ),
+        GoRoute(
+          path: '/premium',
+          builder: (context, state) => const Scaffold(
+            body: Text('PremiumScreen'),
+          ),
+        ),
+      ],
+    );
+
+    await tester.pumpWidget(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (_) => PremiumProvider(payment: MockPaymentService())
+              ..init(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) =>
+                BibliotecaProvider(premium: context.read())..init(),
+          ),
+        ],
+        child: MaterialApp.router(routerConfig: router),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    // Vista previa candada → diálogo → comprar el pack de la colección.
+    expect(find.byIcon(TablerIcons.lock), findsOneWidget);
+    await tester.tap(find.text('Desbloquear · USD 1.99'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Desbloquear sistema · USD 1.99'));
+    await tester.pumpAndSettle();
+
+    // La compra se acredita y la vista rebuilda sin candados.
+    expect(find.byIcon(TablerIcons.lock), findsNothing);
+    expect(find.byIcon(TablerIcons.chevron_right), findsOneWidget);
+  });
+
+  testWidgets('árbol real (main.dart): Ver Premium navega a la pantalla',
+      (tester) async {
+    final router = GoRouter(
+      initialLocation: '/biblioteca/jugos',
+      routes: [
+        GoRoute(
+          path: '/biblioteca/:coleccionId',
+          builder: (context, state) => ColeccionScreen(
+            coleccionId: state.pathParameters['coleccionId']!,
+          ),
+        ),
+        GoRoute(
+          path: '/premium',
+          builder: (context, state) => const Scaffold(
+            body: Text('PremiumScreen'),
+          ),
+        ),
+      ],
+    );
+
+    await tester.pumpWidget(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (_) => PremiumProvider(payment: MockPaymentService())
+              ..init(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) =>
+                BibliotecaProvider(premium: context.read())..init(),
+          ),
+        ],
+        child: MaterialApp.router(routerConfig: router),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Desbloquear · USD 1.99'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Ver Premium'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('PremiumScreen'), findsOneWidget);
+  });
+
+  testWidgets(
+      'regresión wiring main.dart: el contexto del CREATE (no el capturado '
+      'del build) inyecta la MISMA instancia → el diálogo desbloquea',
+      (tester) async {
+    final router = GoRouter(
+      initialLocation: '/biblioteca/jugos',
+      routes: [
+        GoRoute(
+          path: '/biblioteca/:coleccionId',
+          builder: (context, state) => ColeccionScreen(
+            coleccionId: state.pathParameters['coleccionId']!,
+          ),
+        ),
+        GoRoute(
+          path: '/premium',
+          builder: (context, state) => const Scaffold(
+            body: Text('PremiumScreen'),
+          ),
+        ),
+      ],
+    );
+
+    // El contexto del create (parámetro) SÍ ve al PremiumProvider anterior
+    // del MultiProvider → instancia única → el diálogo desbloquea la vista.
+    // (Con `create: (_) => ... context.read()` capturando el context del
+    // build — arriba del MultiProvider — se crea una segunda instancia por
+    // el fallback `premium ?? PremiumProvider()` y el flujo se rompe.)
+    await tester.pumpWidget(
+      Builder(
+        builder: (context) => MultiProvider(
+          providers: [
+            ChangeNotifierProvider(
+              create: (_) => PremiumProvider(payment: MockPaymentService())
+                ..init(),
+            ),
+            ChangeNotifierProvider(
+              create: (context) =>
+                  BibliotecaProvider(premium: context.read())..init(),
+            ),
+          ],
+          child: MaterialApp.router(routerConfig: router),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Desbloquear · USD 1.99'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Desbloquear sistema · USD 1.99'));
+    await tester.pumpAndSettle();
+
+    expect(find.byIcon(TablerIcons.lock), findsNothing);
+    expect(find.byIcon(TablerIcons.chevron_right), findsOneWidget);
   });
 }
