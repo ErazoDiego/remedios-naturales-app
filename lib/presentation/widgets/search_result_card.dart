@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
-import '../../../core/services/payments/premium_rules.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../data/services/recetas_service.dart';
 import '../providers/premium_provider.dart';
@@ -40,10 +39,7 @@ class SearchResultCard extends StatelessWidget {
     final premium = context.watch<PremiumProvider>();
     final bloqueada = !isSistema &&
         !esHierba &&
-        !PremiumRules.puedeAccederAReceta(
-          isPremium: premium.isPremium,
-          recipeId: result.id,
-        );
+        !premium.puedeAccederAReceta(result.id);
 
     return AppCard(
       onTap: () {
@@ -54,6 +50,7 @@ class SearchResultCard extends StatelessWidget {
             message: 'Esta receta forma parte de Yuyo Premium. '
                 'Con el plan gratis tenés acceso a 5 recetas '
                 'de cada sistema.',
+            sistemaId: sistemaId,
           );
           return;
         }

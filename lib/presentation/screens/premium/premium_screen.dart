@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/services/payments/premium_rules.dart';
+import '../../../core/theme/app_theme.dart';
 import '../../providers/premium_provider.dart';
 
 /// Pantalla de Yuyo Premium: beneficios, compra única y restauración.
@@ -163,6 +165,13 @@ class PremiumScreen extends StatelessWidget {
 
           const SizedBox(height: 12),
 
+          // ═══════════════════════════════════════════════════════
+          // PACKS POR SISTEMA
+          // ═══════════════════════════════════════════════════════
+          _buildPacksSection(premium),
+
+          const SizedBox(height: 12),
+
           // Restaurar compras
           TextButton.icon(
             onPressed: isLoading ? null : () => premium.restorePurchases(),
@@ -196,6 +205,129 @@ class PremiumScreen extends StatelessWidget {
   // ═══════════════════════════════════════════════════════════════════
   // WIDGETS INTERNOS
   // ═══════════════════════════════════════════════════════════════════
+
+  /// Sección "Packs por sistema": desbloqueo por sistema completo.
+  /// Visible siempre: con premium activo muestra todo desbloqueado.
+  Widget _buildPacksSection(PremiumProvider premium) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Row(
+          children: [
+            Icon(
+              TablerIcons.package,
+              size: 18,
+              color: AppConstants.sageGreenTitle,
+            ),
+            SizedBox(width: 6),
+            Text(
+              'Packs por sistema',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: AppConstants.textPrimary,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 4),
+        const Text(
+          'Comprá el pack de un sistema y desbloqueá TODAS sus recetas. '
+          'El precio lo define la tienda (Google Play).',
+          style: TextStyle(
+            fontSize: 12.5,
+            color: AppConstants.textSecondary,
+            height: 1.4,
+          ),
+        ),
+        const SizedBox(height: 12),
+        for (final sistemaId in AppConstants.sistemasIds)
+          _buildPackCard(premium, sistemaId),
+      ],
+    );
+  }
+
+  Widget _buildPackCard(PremiumProvider premium, String sistemaId) {
+    final packId = PremiumRules.packIdDeSistema(sistemaId);
+    final desbloqueado =
+        premium.isPremium || premium.packs.contains(packId);
+    final titleColor = AppConstants.getCardTitleColor(sistemaId);
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: AppConstants.borderLight, width: 0.5),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            SystemIcons.getIcon(sistemaId),
+            size: 22,
+            color: titleColor,
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Text(
+              AppConstants.sistemasNombres[sistemaId] ?? sistemaId,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: AppConstants.textPrimary,
+              ),
+            ),
+          ),
+          if (desbloqueado)
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  TablerIcons.check,
+                  size: 16,
+                  color: AppConstants.sageGreenTitle,
+                ),
+                const SizedBox(width: 4),
+                Text(
+                  premium.isPremium ? 'Incluido' : 'Desbloqueado',
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                    color: AppConstants.sageGreenTitle,
+                  ),
+                ),
+              ],
+            )
+          else
+            FilledButton(
+              onPressed: premium.isLoading
+                  ? null
+                  : () => premium.purchasePack(sistemaId),
+              style: FilledButton.styleFrom(
+                backgroundColor: AppConstants.sageGreenTitle,
+                foregroundColor: Colors.white,
+                visualDensity: VisualDensity.compact,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 8,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+              child: const Text(
+                'Comprar pack',
+                style: TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
 
   Widget _buildPremiumActive(BuildContext context) {
     return Container(

@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../providers/premium_provider.dart';
 
 /// Modal que aparece al tocar una función bloqueada por el plan FREE.
-/// CTA: lleva a la pantalla de compra de premium.
+///
+/// CTA principal: lleva a la pantalla de compra de premium.
+/// Si viene [sistemaId], ofrece además comprar el pack de ese sistema
+/// (desbloquea todas sus recetas sin pagar premium completo).
 Future<void> showPremiumDialog(
   BuildContext context, {
   String? title,
   String? message,
+  String? sistemaId,
 }) {
   return showDialog<void>(
     context: context,
@@ -22,7 +28,7 @@ Future<void> showPremiumDialog(
       content: Text(
         message ??
             'Con Premium desbloqueás todas las recetas, favoritos y '
-            'recetas propias ilimitados, y sin anuncios.',
+                'recetas propias ilimitados, y sin anuncios.',
         textAlign: TextAlign.center,
         style: const TextStyle(
           fontSize: 14,
@@ -38,6 +44,19 @@ Future<void> showPremiumDialog(
             style: TextStyle(color: AppConstants.textSecondary),
           ),
         ),
+        if (sistemaId != null)
+          FilledButton(
+            onPressed: () {
+              final premium = context.read<PremiumProvider>();
+              Navigator.of(context).pop();
+              premium.purchasePack(sistemaId);
+            },
+            style: FilledButton.styleFrom(
+              backgroundColor: AppConstants.alertAmberBackground,
+              foregroundColor: AppConstants.alertAmber,
+            ),
+            child: const Text('Desbloquear sistema'),
+          ),
         FilledButton(
           onPressed: () {
             Navigator.of(context).pop();

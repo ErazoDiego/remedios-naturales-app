@@ -33,10 +33,7 @@ class _RemedyDetailScreenState extends State<RemedyDetailScreen> {
 
       // Receta bloqueada por el plan FREE: sin historial ni intersticial.
       final premium = context.read<PremiumProvider>();
-      if (!PremiumRules.puedeAccederAReceta(
-        isPremium: premium.isPremium,
-        recipeId: widget.recipeId,
-      )) {
+      if (!premium.puedeAccederAReceta(widget.recipeId)) {
         return;
       }
 
@@ -62,10 +59,7 @@ class _RemedyDetailScreenState extends State<RemedyDetailScreen> {
 
         // Acceso al detalle: FREE solo al muestreo, Premium a todas.
         final premium = context.watch<PremiumProvider>();
-        final accesoPermitido = PremiumRules.puedeAccederAReceta(
-          isPremium: premium.isPremium,
-          recipeId: widget.recipeId,
-        );
+        final accesoPermitido = premium.puedeAccederAReceta(widget.recipeId);
 
         return Scaffold(
           backgroundColor: AppConstants.backgroundCream,

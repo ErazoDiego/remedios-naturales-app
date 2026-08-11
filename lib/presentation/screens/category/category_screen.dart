@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
-import '../../../core/services/payments/premium_rules.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../providers/premium_provider.dart';
 import '../../providers/recetas_provider.dart';
@@ -123,10 +122,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
 
     // Receta fuera del muestreo gratis: candado y CTA premium (FREE).
     final premium = context.watch<PremiumProvider>();
-    final bloqueada = !PremiumRules.puedeAccederAReceta(
-      isPremium: premium.isPremium,
-      recipeId: receta.id,
-    );
+    final bloqueada = !premium.puedeAccederAReceta(receta.id);
 
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -147,6 +143,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
               message: 'Esta receta forma parte de Yuyo Premium. '
                   'Con el plan gratis tenés acceso a 5 recetas '
                   'de cada sistema.',
+              sistemaId: receta.id.split('_').first,
             );
             return;
           }
