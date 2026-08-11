@@ -11,7 +11,8 @@ import '../../core/utils/text_normalizer.dart';
 ///   pesada la comida", etc.). Lote actual: digestivo (16/16) + nervioso
 ///   (14/14) + respiratorio (12/12) + inmunitario (13/13) + cardiovascular
 ///   (12/12) + hormonal (14/14) + musculoesqueletico (16/16) + urinario
-///   (12/12) + dermico (14/14) completos.
+///   (12/12) + dermico (14/14) + sensorial (10/10) completos — TODAS las
+///   133 recetas cubiertas.
 /// - gruposSinonimos: vocabulario del libro (cefalea↔dolor de cabeza,
 ///   resfriado↔gripe, etc.).
 ///
@@ -156,11 +157,16 @@ class SearchIndex {
     'dermico_13': ['uñas debiles', 'uñas que se rompen', 'fortalecer las uñas', 'cuticulas secas', 'vitamina e'],
     'dermico_14': ['cuero cabelludo', 'te verde', 'pelo sin vida', 'frescura en el pelo', 'cabello apagado'],
     // ── Sensorial ─────────────────────────────────────────────────────
-    'sensorial_07': ['mareo', 'vertigo', 'mareos', 'roll-on', 'vahido'],
-    'sensorial_03': ['halitosis', 'mal aliento', 'aliento', 'enjuague', 'boca'],
+    'sensorial_01': ['eufrasia', 'ojos irritados', 'sensacion de arenilla', 'limpiar los ojos', 'ojos rojos'],
     'sensorial_02': ['ojos cansados', 'ojos hinchados', 'ojeras', 'compresa', 'refrescar ojos'],
-    'sensorial_10': ['ojos cansados', 'fatiga visual', 'ojos', 'pantalla'],
+    'sensorial_03': ['halitosis', 'mal aliento', 'aliento', 'enjuague', 'boca'],
+    'sensorial_04': ['bicarbonato', 'pasta de dientes', 'blanquear dientes', 'limpiar los dientes', 'dentadura'],
+    'sensorial_05': ['oil pulling', 'enjuague con aceite', 'boca seca', 'limpiar la boca', 'pesadez bucal'],
     'sensorial_06': ['oido', 'molestia en oido', 'dolor de oido', 'gotas', 'infeccion de oido'],
+    'sensorial_07': ['mareo', 'vertigo', 'mareos', 'roll-on', 'vahido'],
+    'sensorial_08': ['spray bucal', 'tomillo', 'mal aliento', 'aliento fresco', 'despues de comer'],
+    'sensorial_09': ['hidratar labios', 'balsamo de menta', 'tirantez en los labios', 'labios resecos', 'aloe'],
+    'sensorial_10': ['ojos cansados', 'fatiga visual', 'ojos', 'pantalla'],
   };
 
   /// Grupos de sinónimos con evidencia del libro original:

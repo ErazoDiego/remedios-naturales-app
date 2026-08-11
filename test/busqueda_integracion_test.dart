@@ -217,6 +217,15 @@ void main() {
     'pepino': 'dermico_11',
     'uñas debiles': 'dermico_13',
     'cuero cabelludo': 'dermico_14',
+    // Lote libro (sensorial completo): vocabulario coloquial real
+    'eufrasia': 'sensorial_01',
+    'bicarbonato': 'sensorial_04',
+    'oil pulling': 'sensorial_05',
+    'boca seca': 'sensorial_05',
+    'spray bucal': 'sensorial_08',
+    'tomillo': 'sensorial_08',
+    'hidratar labios': 'sensorial_09',
+    'tirantez': 'sensorial_09',
     // Urinario
     'cistitis': 'urinario_03',
     'pesadez renal': 'urinario_10',
