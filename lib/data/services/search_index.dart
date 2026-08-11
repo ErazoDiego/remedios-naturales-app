@@ -10,7 +10,8 @@ import '../../core/utils/text_normalizer.dart';
 ///   de la abuela" (vocabulario coloquial: "no puedo ir al baño", "me cae
 ///   pesada la comida", etc.). Lote actual: digestivo (16/16) + nervioso
 ///   (14/14) + respiratorio (12/12) + inmunitario (13/13) + cardiovascular
-///   (12/12) + hormonal (14/14) + musculoesqueletico (16/16) completos.
+///   (12/12) + hormonal (14/14) + musculoesqueletico (16/16) + urinario
+///   (12/12) completos.
 /// - gruposSinonimos: vocabulario del libro (cefalea↔dolor de cabeza,
 ///   resfriado↔gripe, etc.).
 ///
@@ -127,11 +128,18 @@ class SearchIndex {
     'musculoesqueletico_15': ['sales de bano', 'bano muscular', 'bano con hierbas', 'relajar la tension', 'bano caliente'],
     'musculoesqueletico_16': ['dolor articular', 'laurel', 'dolores', 'tension muscular'],
     // ── Urinario ──────────────────────────────────────────────────────
-    'urinario_03': ['cistitis', 'irritacion urinaria', 'infeccion de orina', 'ardor al orinar', 'cebada', 'calendula'],
-    'urinario_12': ['vejiga sensible', 'irritacion urinaria', 'infeccion de orina', 'ardor'],
     'urinario_01': ['retencion de liquidos', 'diuretico', 'hinchazon', 'ortiga', 'eliminar liquidos'],
     'urinario_02': ['depurar', 'retencion', 'perejil', 'limpieza'],
+    'urinario_03': ['cistitis', 'irritacion urinaria', 'infeccion de orina', 'ardor al orinar', 'cebada', 'calendula'],
+    'urinario_04': ['hinojo', 'depurativa', 'digestion pesada', 'diente de leon', 'hinchazon de abdomen'],
+    'urinario_05': ['colico renal', 'dolor de riñones', 'molestias lumbares', 'calor en la zona lumbar', 'cataplasma de manzanilla'],
+    'urinario_06': ['sistema linfatico', 'drenar liquidos', 'linfa', 'ortiga y limon', 'drenaje'],
+    'urinario_07': ['apio', 'jarabe de apio', 'menta', 'retencion de liquidos', 'hinchazon leve'],
+    'urinario_08': ['malvavisco', 'molestias urinarias', 'aliviar la irritacion', 'manzanilla', 'ardor'],
+    'urinario_09': ['hinchazon al final del dia', 'depurar de noche', 'relajarse antes de dormir', 'manzanilla y miel', 'pesadez nocturna'],
     'urinario_10': ['pesadez renal', 'riñones', 'gayuba', 'cola de caballo', 'infeccion urinaria'],
+    'urinario_11': ['tintura de riñones', 'apoyo renal', 'diente de leon', 'acumulacion de liquidos', 'pesadez en los riñones'],
+    'urinario_12': ['vejiga sensible', 'irritacion urinaria', 'infeccion de orina', 'ardor'],
     // ── Dérmico ───────────────────────────────────────────────────────
     'dermico_03': ['irritacion', 'piel irritada', 'aloe', 'quemadura', 'picazon'],
     'dermico_12': ['hidratacion', 'piel seca', 'calendula', 'crema', 'suavizar'],

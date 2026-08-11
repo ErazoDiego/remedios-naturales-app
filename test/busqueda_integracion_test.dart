@@ -196,6 +196,15 @@ void main() {
     'lumbago': 'musculoesqueletico_14',
     'sales de bano': 'musculoesqueletico_15',
     'bano muscular': 'musculoesqueletico_15',
+    // Lote libro (urinario completo): vocabulario coloquial real
+    'depurativa': 'urinario_04',
+    'colico renal': 'urinario_05',
+    'dolor de riñones': 'urinario_05',
+    'drenar liquidos': 'urinario_06',
+    'jarabe de apio': 'urinario_07',
+    'malvavisco': 'urinario_08',
+    'hinchazon al final del dia': 'urinario_09',
+    'tintura de riñones': 'urinario_11',
     // Urinario
     'cistitis': 'urinario_03',
     'pesadez renal': 'urinario_10',
