@@ -8,7 +8,8 @@ import '../../core/utils/text_normalizer.dart';
 ///   REALES que la gente busca, elegidos por el usuario a partir del libro)
 ///   + lotes por sistema extraídos del libro "Remedios naturales olvidados
 ///   de la abuela" (vocabulario coloquial: "no puedo ir al baño", "me cae
-///   pesada la comida", etc.). Lote actual: digestivo completo (16/16).
+///   pesada la comida", etc.). Lote actual: digestivo (16/16) + nervioso
+///   (14/14) completos.
 /// - gruposSinonimos: vocabulario del libro (cefalea↔dolor de cabeza,
 ///   resfriado↔gripe, etc.).
 ///
@@ -38,11 +39,20 @@ class SearchIndex {
     'digestivo_15': ['pesadez abdominal', 'comidas copiosas', 'digestion pesada', 'gases', 'mucha comida'],
     'digestivo_16': ['para viajar', 'comer fuera de casa', 'en el trabajo', 'polvo digestivo', 'alivio rapido', 'sin preparar'],
     // ── Nervioso ──────────────────────────────────────────────────────
-    'nervioso_13': ['ansiedad', 'nervios', 'bano relajante', 'calmarse'],
-    'nervioso_11': ['insomnio', 'desvelo', 'no poder dormir', 'descansar', 'sueño'],
-    'nervioso_10': ['cefalea', 'dolor de cabeza', 'migraña', 'jaqueca', 'dolor de cabeza por tension'],
+    'nervioso_01': ['calmar los nervios', 'dia agitado', 'desconectar', 'relajarse despues del trabajo', 'antes de dormir'],
     'nervioso_02': ['estres', 'tension nerviosa', 'antiestres', 'relajacion'],
+    'nervioso_03': ['conciliar el sueno', 'sueno profundo', 'dormir mejor', 'antes de acostarse', 'miel para dormir'],
     'nervioso_04': ['falta de enfoque', 'concentracion', 'atencion', 'estudiar', 'enfoque mental'],
+    'nervioso_05': ['dia de nervios', 'preocupaciones', 'bano de hierbas', 'relajarse en el bano', 'bano caliente'],
+    'nervioso_06': ['despejar la mente', 'roll on', 'antes de trabajar', 'energia mental', 'concentrarse', 'aromaterapia'],
+    'nervioso_07': ['valeriana', 'calma profunda', 'relajante natural', 'sin somnolencia', 'nerviosismo'],
+    'nervioso_08': ['tilo', 'jarabe para dormir', 'agitacion nocturna', 'sueno natural', 'dormir tranquilo'],
+    'nervioso_09': ['ashwagandha', 'adaptogeno', 'descanso reparador', 'recuperar energia', 'estres cronico', 'sin excitacion'],
+    'nervioso_10': ['cefalea', 'dolor de cabeza', 'migrana', 'jaqueca', 'dolor de cabeza por tension'],
+    'nervioso_11': ['insomnio', 'desvelo', 'no poder dormir', 'descansar', 'sueno'],
+    'nervioso_12': ['memoria', 'estado de animo', 'desanimo', 'cacao', 'maca', 'mente cansada'],
+    'nervioso_13': ['ansiedad', 'nervios', 'bano relajante', 'calmarse'],
+    'nervioso_14': ['tristeza', 'serenidad', 'sobrecarga emocional', 'flores de bach', 'agua de azahar', 'bajon emocional'],
     // ── Respiratorio ──────────────────────────────────────────────────
     'respiratorio_05': ['dolor de garganta', 'garganta irritada', 'anginas', 'gargaras'],
     'respiratorio_10': ['dolor de garganta', 'garganta', 'pastillas', 'caramelos'],
