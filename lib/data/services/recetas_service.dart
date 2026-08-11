@@ -1,6 +1,8 @@
+import '../../core/utils/text_normalizer.dart';
 import '../models/receta.dart';
 import '../models/sistema_corporal.dart';
 import '../repositories/recetas_repository.dart';
+import 'search_index.dart';
 
 /// Servicio de lógica de negocio para recetas
 /// Contiene la lógica de búsqueda, filtrado y reglas de negocio
@@ -25,31 +27,48 @@ class RecetasService {
     return _repository.getRecetaById(id);
   }
 
-  /// Busca recetas por texto (nombre, descripción, ingredientes, condiciones)
-  /// Retorna resultados ordenados por relevancia
+  /// Busca recetas por texto (nombre, descripción, ingredientes, condiciones
+  /// y keywords del índice [SearchIndex]).
+  ///
+  /// Motor de búsqueda:
+  /// 1. Normaliza la query (minúsculas, sin tildes, ñ→n) y la descompone
+  ///    en términos (sin stopwords): "Dolor de cabeza" → [dolor, cabeza].
+  /// 2. Cada término se expande con sinónimos ([SearchIndex.sinonimosDe]).
+  /// 3. Score ponderado por campo: nombre > keywords > idealPara >
+  ///    ingredientes > descripción. Suma por término.
+  /// Retorna resultados ordenados por relevancia.
   Future<List<RecetaResult>> search(String query) async {
     if (query.trim().isEmpty) return [];
 
     final sistemas = await _repository.getSistemas();
-    final queryLower = query.toLowerCase().trim();
+    final terminos = SearchIndex.terminosDe(query);
+    if (terminos.isEmpty) return [];
+
     List<RecetaResult> resultados = [];
 
     for (final sistema in sistemas) {
       // Buscar en nombre del sistema
-      if (sistema.nombre.toLowerCase().contains(queryLower) ||
-          sistema.id.toLowerCase().contains(queryLower)) {
+      final nombreSistema = normalizarTexto(sistema.nombre);
+      final idSistema = normalizarTexto(sistema.id);
+      final scoreSistema = _calcularScoreCampos(
+        terminos,
+        [nombreSistema],
+        camposLigeros: [idSistema],
+      );
+      if (scoreSistema > 0) {
         resultados.add(RecetaResult(
           id: sistema.id,
           title: '${sistema.emoji} ${sistema.nombre}',
           subtitle: '${sistema.totalRecetas} recetas',
           type: ResultType.sistema,
           sistemaId: sistema.id,
+          score: scoreSistema,
         ));
       }
 
       // Buscar en recetas
       for (final receta in sistema.recetas) {
-        final matchScore = _calculateMatchScore(receta, queryLower);
+        final matchScore = _calculateMatchScore(receta, terminos);
         if (matchScore > 0) {
           resultados.add(RecetaResult(
             id: receta.id,
@@ -110,33 +129,73 @@ class RecetasService {
     return ids.where((id) => recetasMap.containsKey(id)).map((id) => recetasMap[id]!).toList();
   }
 
-  /// Calcula el score de coincidencia de una receta con un query
-  /// 0 = no coincide, Mayor = mejor coincidencia
-  int _calculateMatchScore(Receta receta, String queryLower) {
+  /// Calcula el score de coincidencia de una receta con los términos.
+  /// 0 = no coincide, Mayor = mejor coincidencia.
+  ///
+  /// Cada término suma el mejor score del campo donde matcheó:
+  /// nombre(10) > keywords(8) > idealPara(5) > ingredientes(2) >
+  /// descripción(1). Sinónimos: un término matchea si CUALQUIERA de sus
+  /// variantes aparece en algún campo.
+  int _calculateMatchScore(Receta receta, List<String> terminos) {
+    final nombre = normalizarTexto(receta.nombre);
+    final descripcion = normalizarTexto(receta.descripcion);
+    final idealPara = receta.idealPara.map(normalizarTexto).toList();
+    final ingredientes = receta.ingredientes.map(normalizarTexto).toList();
+    final keywords = SearchIndex.keywordsDe(receta.id);
+
     int score = 0;
+    for (final termino in terminos) {
+      final variantes = SearchIndex.sinonimosDe(termino);
+      int mejorPorTermino = 0;
 
-    // Coincidencia en nombre (mayor peso)
-    if (receta.nombre.toLowerCase().contains(queryLower)) {
-      score += 10;
+      for (final variante in variantes) {
+        if (nombre.contains(variante)) mejorPorTermino = _max(mejorPorTermino, 10);
+        if (keywords.any((k) => k.contains(variante)) &&
+            variante.length > 1) {
+          mejorPorTermino = _max(mejorPorTermino, 8);
+        }
+        if (idealPara.any((c) => c.contains(variante)) &&
+            variante.length > 1) {
+          mejorPorTermino = _max(mejorPorTermino, 5);
+        }
+        if (ingredientes.any((i) => i.contains(variante)) &&
+            variante.length > 1) {
+          mejorPorTermino = _max(mejorPorTermino, 2);
+        }
+        if (descripcion.contains(variante) && variante.length > 1) {
+          mejorPorTermino = _max(mejorPorTermino, 1);
+        }
+      }
+
+      score += mejorPorTermino;
     }
-
-    // Coincidencia en condiciones (medio peso)
-    if (receta.idealPara.any((c) => c.toLowerCase().contains(queryLower))) {
-      score += 5;
-    }
-
-    // Coincidencia en ingredientes (menor peso)
-    if (receta.ingredientes.any((i) => i.toLowerCase().contains(queryLower))) {
-      score += 2;
-    }
-
-    // Coincidencia en descripción (menor peso)
-    if (receta.descripcion.toLowerCase().contains(queryLower)) {
-      score += 1;
-    }
-
     return score;
   }
+
+  /// Score genérico para campos de texto (usa el mismo esquema ponderado).
+  int _calcularScoreCampos(
+    List<String> terminos,
+    List<String> camposPesados, {
+    List<String> camposLigeros = const [],
+  }) {
+    int score = 0;
+    for (final termino in terminos) {
+      final variantes = SearchIndex.sinonimosDe(termino);
+      int mejorPorTermino = 0;
+      for (final variante in variantes) {
+        for (final campo in camposPesados) {
+          if (campo.contains(variante)) mejorPorTermino = _max(mejorPorTermino, 10);
+        }
+        for (final campo in camposLigeros) {
+          if (campo.contains(variante)) mejorPorTermino = _max(mejorPorTermino, 2);
+        }
+      }
+      score += mejorPorTermino;
+    }
+    return score;
+  }
+
+  int _max(int a, int b) => a > b ? a : b;
 }
 
 /// Tipo de resultado de búsqueda

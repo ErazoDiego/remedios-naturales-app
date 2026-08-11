@@ -142,6 +142,17 @@ void main() {
             idealPara: ['náuseas', 'malestar estomacal'],
             ingredientes: ['jengibre fresco', 'agua'],
           ),
+          // Contenido neutro a propósito: SearchIndex.keywordsPorReceta
+          // define las keywords de digestivo_03 (acidez/ardor/reflujo del
+          // Excel), así este test valida la búsqueda por ÍNDICE sin
+          // depender del contenido.
+          _createReceta(
+            id: 'digestivo_03',
+            nombre: 'Té de melisa',
+            descripcion: 'Infusión suave',
+            idealPara: ['calmante'],
+            ingredientes: ['melisa', 'agua'],
+          ),
         ],
       ),
       _createSistema(
@@ -264,6 +275,55 @@ void main() {
       expect(results1.length, results2.length);
       expect(results2.length, results3.length);
     });
+
+    test('sin tildes: estres encuentra la receta de estrés', () async {
+      final results = await service.search('estres');
+
+      expect(results.any((r) => r.id == 'nervioso_01'), isTrue,
+          reason: '"estres" (sin tilde) debería encontrar "estrés"');
+    });
+
+    test('sinónimo: resfrio encuentra la receta de resfriado', () async {
+      final results = await service.search('resfrio');
+
+      expect(results.first.id, 'respiratorio_01');
+    });
+
+    test('singular: nausea encuentra la receta de náuseas', () async {
+      final results = await service.search('nausea');
+
+      expect(results.first.id, 'digestivo_02');
+    });
+
+    test('multi-término: "dolor cabeza" encuentra dolor de cabeza', () async {
+      final results = await service.search('dolor cabeza');
+
+      expect(results.first.id, 'nervioso_02');
+    });
+
+    test('multi-término con stopwords: "para el estomago" funciona', () async {
+      final results = await service.search('para el estomago');
+
+      // Las stopwords se filtran y el término busca en campos + keywords.
+      // digestivo_03 matchea por keywords (acidez de estómago), digestivo_02
+      // por idealPara (malestar estomacal).
+      expect(results.any((r) => r.id == 'digestivo_02'), isTrue);
+    });
+
+    test('keywords del índice: ardor encuentra digestivo_03 sin que el '
+        'contenido lo mencione', () async {
+      final results = await service.search('ardor');
+
+      expect(results.first.id, 'digestivo_03');
+      expect(results.first.score, greaterThanOrEqualTo(8));
+    });
+
+    test('sinónimo de keyword: reflujo también encuentra digestivo_03',
+        () async {
+      final results = await service.search('reflujo');
+
+      expect(results.first.id, 'digestivo_03');
+    });
   });
 
   // ═══════════════════════════════════════════════════════════════════
@@ -293,7 +353,7 @@ void main() {
 
       expect(sistema, isNotNull);
       expect(sistema!.id, 'digestivo');
-      expect(sistema.recetas.length, 2);
+      expect(sistema.recetas.length, 3);
     });
 
     test('returns null when not found', () async {
@@ -309,9 +369,10 @@ void main() {
     test('returns recetas for valid sistema', () async {
       final recetas = await service.getRecetasBySistema('digestivo');
 
-      expect(recetas.length, 2);
+      expect(recetas.length, 3);
       expect(recetas[0].id, 'digestivo_01');
       expect(recetas[1].id, 'digestivo_02');
+      expect(recetas[2].id, 'digestivo_03');
     });
 
     test('returns empty list for invalid sistema', () async {
