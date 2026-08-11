@@ -1,7 +1,8 @@
 # Diseño: Biblioteca de Colecciones (módulo aislado)
 
 Estado: **diseño para validar** (agosto 2026). Nada de esto está implementado.
-Decisiones abiertas al final.
+Decisiones de producto validadas (ver sección 12) y diseño actualizado.
+Sección 12: decisiones RESUELTAS con el usuario (2026-08-11).
 
 ## 1. Objetivo y no-objetivos
 
@@ -167,10 +168,10 @@ static bool puedeAccederRecetaColeccion({
 }) => isPremium || packs.contains('yuyo_pack_$coleccionId');
 ```
 
-**Decisión de negocio a validar**: premium incluye TODAS las colecciones
-(actuales y futuras). Coherente con "premium = todo desbloqueado" y no
-complica el mensaje. Los packs por colección siguen existiendo para quien
-no quiere premium completo.
+**Decisión de negocio VALIDADA (2026-08-11)**: premium incluye TODAS las
+colecciones — actuales y futuras. Coherente con "premium = todo
+desbloqueado". Los packs por colección siguen existiendo para quien no
+quiere premium completo.
 
 ## 8. Detalle de receta de colección — el punto más delicado
 
@@ -217,18 +218,22 @@ tienda no vende).
 8. **Build + instalar en S908E + copiar a D:\** + prueba end-to-end con
    la colección "jugos"
 
-## 12. Decisiones abiertas (validar con el usuario)
+## 12. Decisiones (todas RESUELTAS con el usuario — 2026-08-11)
 
-1. **Premium ¿incluye colecciones?** (recomendación: SÍ — "premium = todo")
-2. **Colección de prueba**: "Jugos naturales" — ¿quién escribe las 5
-   recetas? ¿las extraemos del libro? ¿el usuario las redacta?
-3. **Intersticiales**: ¿la biblioteca muestra anuncios si no es premium?
-   (recomendación MVP: NO, para mantenerla aislada)
-4. **Buscador de biblioteca**: ¿solo en la pantalla Biblioteca o también
-   integrado a la tab Buscar con un toggle? (recomendación: solo en
-   Biblioteca, cero mezcla)
-5. **Nombre de la sección en home**: "Biblioteca" vs "Colecciones"
-   (recomendación: "Biblioteca")
+1. **Premium SÍ incluye todas las colecciones** — presentes y FUTURAS
+   ("el premium desbloquea todo"). Gating: `isPremium || packs` para las
+   que sí requieren pack; premium lo tiene todo de una.
+2. **Colección de prueba "Jugos naturales"**: el usuario escribe las
+   originales; mientras tanto se usa el seed de EJEMPLO con 5 recetas de
+   dominio público (`20260811_v6_seed_jugos_ejemplo.sql`) que se
+   reemplazan después.
+3. **Sin intersticiales en la biblioteca** — que quede limpia, no
+   saturar la navegación.
+4. **Buscador propio SOLO en la biblioteca** — cero mezcla con el
+   buscador global del núcleo embebido.
+5. **Nombres**: la pantalla de catálogo/compra = **Tienda**; la de lo
+   adquirido/descargado = **Biblioteca**. Entrada en home lleva a la
+   Biblioteca, con acceso a la Tienda.
 
 ## 13. Qué NO se hace en este diseño
 
