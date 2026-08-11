@@ -10,7 +10,7 @@ import '../../core/utils/text_normalizer.dart';
 ///   de la abuela" (vocabulario coloquial: "no puedo ir al baño", "me cae
 ///   pesada la comida", etc.). Lote actual: digestivo (16/16) + nervioso
 ///   (14/14) + respiratorio (12/12) + inmunitario (13/13) + cardiovascular
-///   (12/12) completos.
+///   (12/12) + hormonal (14/14) completos.
 /// - gruposSinonimos: vocabulario del libro (cefalea↔dolor de cabeza,
 ///   resfriado↔gripe, etc.).
 ///
@@ -96,10 +96,19 @@ class SearchIndex {
     'cardiovascular_12': ['vinagre de manzana', 'miel y vinagre', 'energia al despertar', 'despertar cansado', 'en ayunas'],
     // ── Hormonal ──────────────────────────────────────────────────────
     'hormonal_01': ['sindrome premenstrual', 'spm', 'menstruacion', 'regla', 'dolores menstruales'],
-    'hormonal_03': ['colicos', 'dolor menstrual', 'spm', 'menstruacion', 'bano'],
-    'hormonal_05': ['sofocos', 'menopausia', 'calores', 'trebol rojo'],
     'hormonal_02': ['ciclos irregulares', 'menstruacion irregular', 'vitex', 'equilibrio hormonal'],
+    'hormonal_03': ['colicos', 'dolor menstrual', 'spm', 'menstruacion', 'bano'],
+    'hormonal_04': ['aceite para colicos', 'masaje abdominal', 'bajo vientre', 'panza adolorida', 'masaje con lavanda'],
+    'hormonal_05': ['sofocos', 'menopausia', 'calores', 'trebol rojo'],
+    'hormonal_06': ['maca', 'cacao', 'elixir de maca', 'levanta el animo', 'energia femenina', 'decaimiento'],
+    'hormonal_07': ['higado', 'diente de leon', 'hinchazon premenstrual', 'periodo hinchada', 'desinflamar el abdomen', 'depurar en el ciclo'],
+    'hormonal_08': ['batido de avena', 'desayuno energetico', 'levantar energia', 'energia en el ciclo', 'banana y canela'],
     'hormonal_09': ['libido', 'deseo', 'apetito sexual', 'maca'],
+    'hormonal_10': ['canela y miel', 'bajon de animo', 'levantar el animo', 'dias grises', 'animarse'],
+    'hormonal_11': ['postparto', 'despues del parto', 'zona intima', 'puerperio', 'calendula', 'pezon agrietado'],
+    'hormonal_12': ['regular el ciclo', 'regla irregular', 'periodo irregular', 'atraso menstrual', 'angelica'],
+    'hormonal_13': ['cansancio hormonal', 'agotamiento menstrual', 'regaliz', 'energia durante el ciclo', 'dias de baja energia'],
+    'hormonal_14': ['calmar el ciclo', 'tension premenstrual', 'irritable con la regla', 'hinojo', 'relajar el abdomen', 'rosa'],
     // ── Músculo-esquelético ───────────────────────────────────────────
     'musculoesqueletico_03': ['dolor articular', 'articulaciones', 'artritis', 'dolor de huesos', 'curcuma'],
     'musculoesqueletico_16': ['dolor articular', 'laurel', 'dolores', 'tension muscular'],

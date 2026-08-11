@@ -145,6 +145,17 @@ void main() {
       }
     });
 
+    test('hormonal completo: las 14 recetas tienen keywords', () {
+      final ids = List.generate(14, (i) => 'hormonal_${(i + 1).toString().padLeft(2, '0')}');
+      for (final id in ids) {
+        expect(
+          SearchIndex.keywordsDe(id).isNotEmpty,
+          isTrue,
+          reason: '$id debería tener keywords (lote hormonal completo)',
+        );
+      }
+    });
+
     test('keywords coloquiales matchean términos de query reales', () {
       // "no puedo ir al baño" → términos [puedo, ir, bano] → 'bano' está
       // en la keyword de digestivo_08.
