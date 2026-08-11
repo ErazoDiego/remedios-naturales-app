@@ -2,19 +2,22 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:provider/provider.dart';
 import 'package:remedios_naturales_app/core/services/payments/mock_payment_service.dart';
 import 'package:remedios_naturales_app/data/services/user_service.dart';
 import 'package:remedios_naturales_app/features/biblioteca/data/biblioteca_repository.dart';
+import 'package:remedios_naturales_app/features/biblioteca/presentation/coleccion_screen.dart';
 import 'package:remedios_naturales_app/features/biblioteca/presentation/tienda_screen.dart';
 import 'package:remedios_naturales_app/presentation/providers/biblioteca_provider.dart';
 import 'package:remedios_naturales_app/presentation/providers/premium_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:tabler_icons/tabler_icons.dart';
 
-/// TiendaScreen: catálogo con precios + compra de colecciones.
+/// TiendaScreen: catálogo con precios + compra + navegación al índice.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -89,10 +92,25 @@ void main() {
   });
 
   Future<void> pumpTienda(WidgetTester tester) async {
+    final router = GoRouter(
+      initialLocation: '/tienda',
+      routes: [
+        GoRoute(
+          path: '/tienda',
+          builder: (context, state) => const TiendaScreen(),
+        ),
+        GoRoute(
+          path: '/biblioteca/:coleccionId',
+          builder: (context, state) => ColeccionScreen(
+            coleccionId: state.pathParameters['coleccionId']!,
+          ),
+        ),
+      ],
+    );
     await tester.pumpWidget(
       ChangeNotifierProvider<BibliotecaProvider>.value(
         value: biblioteca,
-        child: MaterialApp(home: const TiendaScreen()),
+        child: MaterialApp.router(routerConfig: router),
       ),
     );
     await tester.pumpAndSettle();
@@ -140,5 +158,23 @@ void main() {
 
     expect(find.text('Incluida en Premium'), findsOneWidget);
     expect(find.text('Comprar · USD 1.99'), findsNothing);
+  });
+
+  testWidgets('tocar la tarjeta navega a la vista previa con candados',
+      (tester) async {
+    await pumpTienda(tester);
+
+    // El tap en la tarjeta (no en el botón) abre el índice de la
+    // colección: vista previa con recetas candadas sin acceso.
+    await tester.tap(find.text('Jugos naturales'));
+    await tester.pumpAndSettle();
+
+    expect(
+      find.text('Esta colección no está desbloqueada. Comprá el pack '
+          'para descargarla, o con Premium ya la tenés.'),
+      findsOneWidget,
+    );
+    expect(find.text('Jugo verde matinal'), findsOneWidget);
+    expect(find.byIcon(TablerIcons.lock), findsOneWidget);
   });
 }

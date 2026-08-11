@@ -92,9 +92,16 @@ class _TiendaCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: AppConstants.borderLight, width: 0.5),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+      child: InkWell(
+        // La tarjeta navega al "índice" de la colección: sin acceso es
+        // la vista previa con candados (ayuda a decidir la compra);
+        // con acceso, la lista normal. El botón Comprar captura su
+        // propio tap (no propaga la navegación).
+        borderRadius: BorderRadius.circular(12),
+        onTap: () => context.push('/biblioteca/${coleccion.id}'),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
           Padding(
             padding: const EdgeInsets.all(14),
             child: Row(
@@ -204,7 +211,8 @@ class _TiendaCard extends StatelessWidget {
               ],
             ),
           ),
-        ],
+          ],
+        ),
       ),
     );
   }
