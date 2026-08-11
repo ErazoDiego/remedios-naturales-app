@@ -26,14 +26,37 @@ class PremiumRules {
   static bool esRecetaGratuita(String recipeId) =>
       recetasGratisPorSistema.contains(recipeId);
 
+  /// Sistema corporal de una receta a partir de su ID
+  /// ('digestivo_03' → 'digestivo').
+  static String sistemaDeReceta(String recipeId) {
+    final guion = recipeId.indexOf('_');
+    return guion == -1 ? recipeId : recipeId.substring(0, guion);
+  }
+
+  /// ID del pack de un sistema ('digestivo' → 'yuyo_pack_digestivo').
+  static String packIdDeSistema(String sistemaId) =>
+      AppConstants.packProductId(sistemaId);
+
+  /// Sistema al que pertenece un pack ('yuyo_pack_digestivo' → 'digestivo').
+  static String sistemaIdDePack(String packId) =>
+      packId.replaceFirst('yuyo_pack_', '');
+
+  /// ¿El usuario posee el pack del sistema?
+  static bool tienePackDeSistema(List<String> packs, String sistemaId) =>
+      packs.contains(packIdDeSistema(sistemaId));
+
   /// ¿Puede el usuario abrir el detalle de la receta?
   ///
   /// FREE: solo las [recetasGratisPorSistema]. Premium: todas.
+  /// Con packs: todas las recetas del sistema comprado.
   static bool puedeAccederAReceta({
     required bool isPremium,
     required String recipeId,
+    List<String> packs = const [],
   }) =>
-      isPremium || esRecetaGratuita(recipeId);
+      isPremium ||
+      esRecetaGratuita(recipeId) ||
+      tienePackDeSistema(packs, sistemaDeReceta(recipeId));
 
   /// IDs de recetas gratis por sistema (muestreo visible del plan FREE).
   ///

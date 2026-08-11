@@ -99,6 +99,81 @@ void main() {
         isFalse,
       );
     });
+
+    test('free con pack del sistema: accede a TODAS las recetas del sistema', () {
+      expect(
+        PremiumRules.puedeAccederAReceta(
+          isPremium: false,
+          recipeId: 'digestivo_01',
+          packs: ['yuyo_pack_digestivo'],
+        ),
+        isTrue,
+      );
+      expect(
+        PremiumRules.puedeAccederAReceta(
+          isPremium: false,
+          recipeId: 'digestivo_15',
+          packs: ['yuyo_pack_digestivo'],
+        ),
+        isTrue,
+      );
+    });
+
+    test('free con pack de OTRO sistema: no accede a este sistema', () {
+      expect(
+        PremiumRules.puedeAccederAReceta(
+          isPremium: false,
+          recipeId: 'digestivo_01',
+          packs: ['yuyo_pack_nervioso'],
+        ),
+        isFalse,
+      );
+    });
+
+    test('pack del sistema NO habilita las recetas de otros sistemas', () {
+      expect(
+        PremiumRules.puedeAccederAReceta(
+          isPremium: false,
+          recipeId: 'nervioso_01',
+          packs: ['yuyo_pack_digestivo'],
+        ),
+        isFalse,
+      );
+    });
+  });
+
+  group('PremiumRules packs (helpers)', () {
+    test('sistemaDeReceta extrae el prefijo del ID', () {
+      expect(PremiumRules.sistemaDeReceta('digestivo_03'), 'digestivo');
+      expect(PremiumRules.sistemaDeReceta('musculoesqueletico_16'),
+          'musculoesqueletico');
+    });
+
+    test('packIdDeSistema y sistemaIdDePack son inversos', () {
+      for (final sistema in [
+        'digestivo',
+        'nervioso',
+        'musculoesqueletico',
+        'sensorial',
+      ]) {
+        final packId = PremiumRules.packIdDeSistema(sistema);
+        expect(packId, 'yuyo_pack_$sistema');
+        expect(PremiumRules.sistemaIdDePack(packId), sistema);
+      }
+    });
+
+    test('tienePackDeSistema: true solo con el pack exacto', () {
+      expect(
+        PremiumRules.tienePackDeSistema(
+            ['yuyo_pack_digestivo', 'yuyo_pack_urinario'], 'digestivo'),
+        isTrue,
+      );
+      expect(
+        PremiumRules.tienePackDeSistema(['yuyo_pack_digestivo'], 'urinario'),
+        isFalse,
+      );
+      expect(PremiumRules.tienePackDeSistema(const [], 'digestivo'), isFalse);
+    });
   });
 
   group('PremiumRules.recetasGratisPorSistema', () {

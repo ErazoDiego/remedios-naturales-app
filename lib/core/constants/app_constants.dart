@@ -21,6 +21,12 @@ class AppConstants {
 
   // Producto de pago de Google Play (compra única).
   static const String premiumProductId = 'yuyo_premium';
+
+  /// Producto IAP del pack de un sistema (ej: 'yuyo_pack_digestivo').
+  ///
+  /// El pack comparte el mismo identificador en Play Console y en el
+  /// array `packs` del perfil (Supabase/local), así no hay mapeo.
+  static String packProductId(String sistemaId) => 'yuyo_pack_$sistemaId';
   
   // IDs de sistemas corporales
   static const List<String> sistemasIds = [
