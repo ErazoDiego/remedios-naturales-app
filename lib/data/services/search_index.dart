@@ -9,7 +9,7 @@ import '../../core/utils/text_normalizer.dart';
 ///   + lotes por sistema extraídos del libro "Remedios naturales olvidados
 ///   de la abuela" (vocabulario coloquial: "no puedo ir al baño", "me cae
 ///   pesada la comida", etc.). Lote actual: digestivo (16/16) + nervioso
-///   (14/14) completos.
+///   (14/14) + respiratorio (12/12) completos.
 /// - gruposSinonimos: vocabulario del libro (cefalea↔dolor de cabeza,
 ///   resfriado↔gripe, etc.).
 ///
@@ -54,11 +54,18 @@ class SearchIndex {
     'nervioso_13': ['ansiedad', 'nervios', 'bano relajante', 'calmarse'],
     'nervioso_14': ['tristeza', 'serenidad', 'sobrecarga emocional', 'flores de bach', 'agua de azahar', 'bajon emocional'],
     // ── Respiratorio ──────────────────────────────────────────────────
-    'respiratorio_05': ['dolor de garganta', 'garganta irritada', 'anginas', 'gargaras'],
-    'respiratorio_10': ['dolor de garganta', 'garganta', 'pastillas', 'caramelos'],
     'respiratorio_01': ['tos', 'tos seca', 'tos productiva', 'jarabe', 'tos suave'],
+    'respiratorio_02': ['vapor de eucalipto', 'abrir la nariz', 'respirar mejor', 'presion en la cabeza', 'vias respiratorias tapadas'],
+    'respiratorio_03': ['gordolobo', 'bronquios', 'pulmones', 'mucosidad atrapada', 'pecho con flema', 'descongestionar el pecho'],
+    'respiratorio_04': ['balsamo para el pecho', 'opresion en el pecho', 'pecho tapado', 'unguento', 'frotar el pecho'],
+    'respiratorio_05': ['dolor de garganta', 'garganta irritada', 'anginas', 'gargaras'],
     'respiratorio_06': ['congestion nasal', 'nariz tapada', 'vapor', 'descongestionar', 'vias respiratorias'],
     'respiratorio_07': ['mucosidad', 'flemas', 'expectorante', 'pecho congestionado'],
+    'respiratorio_08': ['spray nasal', 'nariz seca', 'resequedad', 'lavado nasal', 'alergia', 'humectar la nariz'],
+    'respiratorio_09': ['jarabe de cebolla', 'cebolla y miel', 'remedio de la abuela', 'jarabe casero', 'tos nocturna'],
+    'respiratorio_10': ['dolor de garganta', 'garganta', 'pastillas', 'caramelos'],
+    'respiratorio_11': ['sauco', 'sudoracion', 'romper el resfriado', 'malestar general', 'resfriado comun'],
+    'respiratorio_12': ['despejar la nariz', 'cabeza pesada', 'nariz congestionada', 'roll on', 'oler mejor'],
     // ── Inmunitario ───────────────────────────────────────────────────
     'inmunitario_03': ['resfriado', 'primeros sintomas', 'defensas', 'gripe', 'refuerzo'],
     'inmunitario_08': ['prevencion', 'invierno', 'defensas', 'resfriado', 'protegerse'],
