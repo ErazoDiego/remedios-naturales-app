@@ -15,12 +15,21 @@ abstract class PaymentService {
   /// Devuelve true solo si el pago se completó y confirmó.
   Future<bool> purchasePremium();
 
+  /// Inicia el flujo de compra del pack de un sistema (ej: 'digestivo').
+  /// El producto IAP es [AppConstants.packProductId] (no consumible).
+  /// Devuelve true solo si el pago se completó y confirmó.
+  Future<bool> purchasePack(String sistemaId);
+
   /// Restaura compras previas (reinstalación / nuevo dispositivo).
   /// Devuelve true si hay premium activo tras la restauración.
   Future<bool> restorePurchases();
 
   /// ¿Premium activo? (fuente de verdad del pago, en memoria)
   bool get isPremium;
+
+  /// Packs comprados en este dispositivo (fuente de verdad del pago).
+  /// Ej: {'yuyo_pack_digestivo', 'yuyo_pack_urinario'}.
+  Set<String> get purchasedPacks;
 
   /// ID del producto premium en la tienda (compra única).
   static const String premiumProductId = AppConstants.premiumProductId;

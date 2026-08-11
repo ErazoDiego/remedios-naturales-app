@@ -58,4 +58,64 @@ void main() {
     expect(ok, isFalse);
     expect(payment.isPremium, isFalse);
   });
+
+  group('packs por sistema', () {
+    test('purchasePack: simula compra del pack y lo expone', () async {
+      final payment = MockPaymentService();
+      await payment.init();
+
+      final ok = await payment.purchasePack('digestivo');
+
+      expect(ok, isTrue);
+      expect(payment.purchasedPacks, contains('yuyo_pack_digestivo'));
+      // Comprar un pack NO activa premium (son productos distintos).
+      expect(payment.isPremium, isFalse);
+    });
+
+    test('init: restaura packs persistidos entre sesiones', () async {
+      final payment = MockPaymentService();
+      await payment.init();
+      await payment.purchasePack('digestivo');
+      await payment.purchasePack('urinario');
+
+      final reinicio = MockPaymentService();
+      await reinicio.init();
+
+      expect(reinicio.purchasedPacks,
+          containsAll(['yuyo_pack_digestivo', 'yuyo_pack_urinario']));
+      expect(reinicio.isPremium, isFalse);
+    });
+
+    test('restorePurchases restaura premium y packs persistidos', () async {
+      final payment = MockPaymentService();
+      await payment.init();
+      await payment.purchasePremium();
+      await payment.purchasePack('sensorial');
+
+      final reinicio = MockPaymentService();
+      await reinicio.init();
+      expect(await reinicio.restorePurchases(), isTrue);
+      expect(reinicio.isPremium, isTrue);
+      expect(reinicio.purchasedPacks, contains('yuyo_pack_sensorial'));
+    });
+
+    test('packs y premium se restauran juntos', () async {
+      final payment = MockPaymentService();
+      await payment.init();
+      await payment.purchasePack('dermico');
+      await payment.purchasePremium();
+
+      expect(payment.isPremium, isTrue);
+      expect(payment.purchasedPacks, contains('yuyo_pack_dermico'));
+    });
+
+    test('con fallo forzado: la compra del pack devuelve false', () async {
+      final payment = MockPaymentService();
+      await payment.init();
+      payment.setFailPurchasesForTesting(true);
+
+      expect(await payment.purchasePack('digestivo'), isFalse);
+      expect(payment.purchasedPacks, isEmpty);
+    });
+  });
 }
