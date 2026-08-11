@@ -100,13 +100,15 @@ void main() {
     await tester.pumpAndSettle();
   }
 
-  testWidgets('sin descargadas: estado vacío + banner a la tienda',
+  testWidgets('sin descargadas: estado vacío + banner a la tienda, sin buscador',
       (tester) async {
     await pumpBiblioteca(tester);
 
     expect(find.text('Biblioteca'), findsOneWidget);
     expect(find.text('Todavía no tenés colecciones.'), findsOneWidget);
     expect(find.text('Tienda de colecciones'), findsOneWidget);
+    // Sin contenido no hay buscador (no hay nada que buscar).
+    expect(find.byType(TextField), findsNothing);
   });
 
   testWidgets('con colección descargada: se lista y el buscador filtra recetas',
@@ -114,8 +116,11 @@ void main() {
     await premium.purchasePack('jugos');
     await pumpBiblioteca(tester);
 
+    // El buscador queda arriba de Mis colecciones.
+    expect(find.text('Buscar en tus colecciones'), findsOneWidget);
     expect(find.text('Jugos naturales'), findsOneWidget);
     expect(find.text('1 recetas'), findsOneWidget);
+    expect(find.byType(TextField), findsOneWidget);
 
     // Buscador propio: sin matches → "Sin resultados".
     await tester.enterText(find.byType(TextField), 'xyz');

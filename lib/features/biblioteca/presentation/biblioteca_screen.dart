@@ -41,16 +41,7 @@ class _BibliotecaScreenState extends State<BibliotecaScreen> {
     return Scaffold(
       backgroundColor: AppConstants.backgroundCream,
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(TablerIcons.arrow_left),
-          onPressed: () {
-            if (context.canPop()) {
-              context.pop();
-            } else {
-              context.go('/');
-            }
-          },
-        ),
+        // Sin botón atrás: es una tab del bottom nav (rama del shell).
         title: const Text(
           'Biblioteca',
           style: TextStyle(fontWeight: FontWeight.w600),
@@ -64,89 +55,114 @@ class _BibliotecaScreenState extends State<BibliotecaScreen> {
             child: ListView(
               padding: const EdgeInsets.all(20),
               children: [
-                _buildTiendaBanner(biblioteca),
-                const SizedBox(height: 20),
+                if (descargadas.isEmpty) ...[
+                  // Sin contenido: la tienda manda (promo-first).
+                  _buildTiendaBanner(biblioteca),
+                  const SizedBox(height: 20),
 
-                // ═══════════════════════════════════════════════════
-                // MIS COLECCIONES
-                // ═══════════════════════════════════════════════════
-                const Row(
-                  children: [
-                    Icon(
-                      TablerIcons.download,
-                      size: 18,
-                      color: AppConstants.sageGreenTitle,
-                    ),
-                    SizedBox(width: 6),
-                    Text(
-                      'Mis colecciones',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: AppConstants.textPrimary,
+                  // ── MIS COLECCIONES (vacías) ──
+                  const Row(
+                    children: [
+                      Icon(
+                        TablerIcons.download,
+                        size: 18,
+                        color: AppConstants.sageGreenTitle,
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 12),
-                if (descargadas.isEmpty)
-                  _buildEmptyState()
-                else
-                  for (final coleccion in descargadas)
-                    _buildColeccionCard(coleccion),
-                const SizedBox(height: 20),
+                      SizedBox(width: 6),
+                      Text(
+                        'Mis colecciones',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: AppConstants.textPrimary,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  _buildEmptyState(),
+                ] else ...[
+                  // Con contenido: el buscador es la acción primaria
+                  // (search-first).
 
-                // ═══════════════════════════════════════════════════
-                // BUSCADOR PROPIO (solo colecciones descargadas)
-                // ═══════════════════════════════════════════════════
-                const Row(
-                  children: [
-                    Icon(
-                      TablerIcons.search,
-                      size: 18,
-                      color: AppConstants.sageGreenTitle,
-                    ),
-                    SizedBox(width: 6),
-                    Text(
-                      'Buscar en tus colecciones',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: AppConstants.textPrimary,
+                  // ── BUSCADOR PROPIO (solo colecciones descargadas) ──
+                  const Row(
+                    children: [
+                      Icon(
+                        TablerIcons.search,
+                        size: 18,
+                        color: AppConstants.sageGreenTitle,
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 12),
-                TextField(
-                  controller: _searchController,
-                  onChanged: (value) => setState(() => _query = value.trim()),
-                  decoration: InputDecoration(
-                    hintText: 'Jugo, energía, defensas...',
-                    prefixIcon: const Icon(
-                      TablerIcons.search,
-                      size: 20,
-                      color: AppConstants.textTertiary,
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(
-                        color: AppConstants.borderLight,
-                        width: 0.5,
+                      SizedBox(width: 6),
+                      Text(
+                        'Buscar en tus colecciones',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: AppConstants.textPrimary,
+                        ),
                       ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(
-                        color: AppConstants.borderLight,
-                        width: 0.5,
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  TextField(
+                    controller: _searchController,
+                    onChanged: (value) => setState(() => _query = value.trim()),
+                    decoration: InputDecoration(
+                      hintText: 'Jugo, energía, defensas...',
+                      prefixIcon: const Icon(
+                        TablerIcons.search,
+                        size: 20,
+                        color: AppConstants.textTertiary,
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(
+                          color: AppConstants.borderLight,
+                          width: 0.5,
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(
+                          color: AppConstants.borderLight,
+                          width: 0.5,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                if (_query.isNotEmpty) _buildResultados(descargadas),
+                  if (_query.isNotEmpty) _buildResultados(descargadas),
+                  const SizedBox(height: 20),
+
+                  // ── MIS COLECCIONES ──
+                  const Row(
+                    children: [
+                      Icon(
+                        TablerIcons.download,
+                        size: 18,
+                        color: AppConstants.sageGreenTitle,
+                      ),
+                      SizedBox(width: 6),
+                      Text(
+                        'Mis colecciones',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: AppConstants.textPrimary,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  for (final coleccion in descargadas)
+                    _buildColeccionCard(coleccion),
+                  const SizedBox(height: 20),
+
+                  // La tienda queda al final (promoción, no navegación).
+                  _buildTiendaBanner(biblioteca),
+                ],
               ],
             ),
           ),

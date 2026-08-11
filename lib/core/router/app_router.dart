@@ -26,8 +26,9 @@ import '../../presentation/widgets/app_shell.dart';
 
 /// Configuración de rutas de la aplicación
 ///
-/// - 4 tabs raíz (Inicio/Buscar/Favoritos/Perfil) viven dentro de un
-///   StatefulShellRoute.indexedStack: preservan estado entre cambios de tab.
+/// - 5 tabs raíz (Inicio/Buscar/Biblioteca/Favoritos/Perfil) viven dentro
+///   de un StatefulShellRoute.indexedStack: preservan estado entre cambios
+///   de tab. La biblioteca (y sus sub-pantallas) vive dentro de su tab.
 /// - El resto (detalles de receta, hierbas, categorías, auth...) son
 ///   pantallas full-screen SIN bottom nav, con botón atrás.
 class AppRouter {
@@ -60,6 +61,41 @@ class AppRouter {
                       state.uri.queryParameters['q'] ?? '';
                   return SearchScreen(initialQuery: query);
                 },
+              ),
+            ],
+          ),
+          // ─── Tab Biblioteca (colecciones) ───
+          // Las sub-pantallas viven DENTRO de la rama: el bottom nav
+          // persiste en tienda, colección y detalle de receta.
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/biblioteca',
+                builder: (context, state) => const BibliotecaScreen(),
+                routes: [
+                  // 'tienda' va antes que ':coleccionId' para que no sea
+                  // capturado como id de colección.
+                  GoRoute(
+                    path: 'tienda',
+                    builder: (context, state) => const TiendaScreen(),
+                  ),
+                  GoRoute(
+                    path: ':coleccionId',
+                    builder: (context, state) => ColeccionScreen(
+                      coleccionId: state.pathParameters['coleccionId']!,
+                    ),
+                    routes: [
+                      GoRoute(
+                        path: ':recetaId',
+                        builder: (context, state) => RecetaColeccionScreen(
+                          coleccionId:
+                              state.pathParameters['coleccionId']!,
+                          recetaId: state.pathParameters['recetaId']!,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ],
           ),
@@ -164,36 +200,6 @@ class AppRouter {
       GoRoute(
         path: '/premium',
         builder: (context, state) => const PremiumScreen(),
-      ),
-
-      // ═══════════════════════════════════════════════════════════
-      // BIBLIOTECA DE COLECCIONES (módulo aislado)
-      // ═══════════════════════════════════════════════════════════
-      GoRoute(
-        path: '/biblioteca',
-        builder: (context, state) => const BibliotecaScreen(),
-      ),
-
-      // La tienda va ANTES que ':coleccionId' para que 'tienda' no sea
-      // capturado como id de colección.
-      GoRoute(
-        path: '/biblioteca/tienda',
-        builder: (context, state) => const TiendaScreen(),
-      ),
-
-      GoRoute(
-        path: '/biblioteca/:coleccionId',
-        builder: (context, state) => ColeccionScreen(
-          coleccionId: state.pathParameters['coleccionId']!,
-        ),
-      ),
-
-      GoRoute(
-        path: '/biblioteca/:coleccionId/:recetaId',
-        builder: (context, state) => RecetaColeccionScreen(
-          coleccionId: state.pathParameters['coleccionId']!,
-          recetaId: state.pathParameters['recetaId']!,
-        ),
       ),
 
       // ═══════════════════════════════════════════════════════════

@@ -88,6 +88,10 @@ class AppShell extends StatelessWidget {
               label: 'Buscar',
             ),
             const NavigationDestination(
+              icon: Icon(TablerIcons.books),
+              label: 'Biblioteca',
+            ),
+            const NavigationDestination(
               icon: Icon(TablerIcons.heart),
               selectedIcon: Icon(TablerIcons.heart_filled),
               label: 'Favoritos',
