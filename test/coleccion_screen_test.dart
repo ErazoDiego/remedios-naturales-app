@@ -13,6 +13,7 @@ import 'package:remedios_naturales_app/presentation/providers/biblioteca_provide
 import 'package:remedios_naturales_app/presentation/providers/premium_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:tabler_icons/tabler_icons.dart';
 
 /// ColeccionScreen: muro de bloqueo vs lista de recetas según el acceso.
 void main() {
@@ -102,14 +103,20 @@ void main() {
     await tester.pumpAndSettle();
   }
 
-  testWidgets('sin acceso: muro con Desbloquear + precio', (tester) async {
+  testWidgets(
+      'sin acceso: vista previa con índice candado + banner de desbloqueo',
+      (tester) async {
     await pumpColeccion(tester);
 
+    // Header de la colección + banner de compra.
     expect(find.text('Jugos naturales'), findsWidgets);
     expect(find.text('Esta colección no está desbloqueada. Comprá el pack '
         'para descargarla, o con Premium ya la tenés.'), findsOneWidget);
     expect(find.text('Desbloquear · USD 1.99'), findsOneWidget);
-    expect(find.text('Jugo verde matinal'), findsNothing);
+    // Índice del libro: la receta se VE pero con candado.
+    expect(find.text('Jugo verde matinal'), findsOneWidget);
+    expect(find.byIcon(TablerIcons.lock), findsOneWidget);
+    expect(find.byIcon(TablerIcons.chevron_right), findsNothing);
   });
 
   testWidgets('sin acceso: Desbloquear abre el diálogo premium',
@@ -123,11 +130,23 @@ void main() {
     expect(find.text('Ver Premium'), findsOneWidget);
   });
 
-  testWidgets('con pack de la colección: lista las recetas', (tester) async {
+  testWidgets('sin acceso: tocar una receta candada abre el diálogo',
+      (tester) async {
+    await pumpColeccion(tester);
+
+    await tester.tap(find.text('Jugo verde matinal'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Desbloquear sistema · USD 1.99'), findsOneWidget);
+  });
+
+  testWidgets('con pack de la colección: lista las recetas sin candado',
+      (tester) async {
     await premium.purchasePack('jugos');
     await pumpColeccion(tester);
 
     expect(find.text('Jugo verde matinal'), findsOneWidget);
+    expect(find.byIcon(TablerIcons.lock), findsNothing);
     expect(find.text('Desbloquear'), findsNothing);
   });
 
