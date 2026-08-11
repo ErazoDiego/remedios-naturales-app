@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../providers/biblioteca_provider.dart';
 import '../../providers/recetas_provider.dart';
 import '../../widgets/loading_error_empty.dart';
 
@@ -377,6 +378,98 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                         ],
+                      ),
+                      const SizedBox(height: 16),
+
+                      // ═══════════════════════════════════════════════
+                      // BIBLIOTECA DE COLECCIONES (entrada destacada)
+                      // ═══════════════════════════════════════════════
+                      Consumer<BibliotecaProvider>(
+                        builder: (context, biblioteca, child) {
+                          final descargadas =
+                              biblioteca.coleccionesDescargadas.length;
+                          final disponibles = biblioteca.catalogo.length -
+                              descargadas;
+                          return Container(
+                            decoration: BoxDecoration(
+                              color: AppConstants.sageGreenCard,
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
+                                color: AppConstants.borderLight,
+                                width: 0.5,
+                              ),
+                            ),
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(12),
+                              onTap: () => context.go('/biblioteca'),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 14,
+                                  vertical: 12,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.all(8),
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: const Icon(
+                                        TablerIcons.library,
+                                        size: 22,
+                                        color: AppConstants.sageGreenTitle,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 12),
+                                    const Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Biblioteca',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w600,
+                                              color: AppConstants.textPrimary,
+                                            ),
+                                          ),
+                                          SizedBox(height: 2),
+                                          Text(
+                                            'Colecciones y tienda de recetas',
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: AppConstants
+                                                  .textSecondary,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Text(
+                                      descargadas > 0
+                                          ? '$descargadas descargadas'
+                                          : disponibles > 0
+                                              ? '¡$disponibles nuevas!'
+                                              : '',
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w600,
+                                        color: AppConstants.sageGreenTitle,
+                                      ),
+                                    ),
+                                    const Icon(
+                                      TablerIcons.chevron_right,
+                                      size: 18,
+                                      color: AppConstants.textTertiary,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),

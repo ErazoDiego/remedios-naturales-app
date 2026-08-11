@@ -1,5 +1,9 @@
 import 'package:go_router/go_router.dart';
 import '../../data/models/receta_usuario.dart';
+import '../../features/biblioteca/presentation/biblioteca_screen.dart';
+import '../../features/biblioteca/presentation/coleccion_screen.dart';
+import '../../features/biblioteca/presentation/receta_coleccion_screen.dart';
+import '../../features/biblioteca/presentation/tienda_screen.dart';
 import '../../presentation/screens/home/home_screen.dart';
 import '../../presentation/screens/category/category_screen.dart';
 import '../../presentation/screens/remedy_detail/remedy_detail_screen.dart';
@@ -160,6 +164,36 @@ class AppRouter {
       GoRoute(
         path: '/premium',
         builder: (context, state) => const PremiumScreen(),
+      ),
+
+      // ═══════════════════════════════════════════════════════════
+      // BIBLIOTECA DE COLECCIONES (módulo aislado)
+      // ═══════════════════════════════════════════════════════════
+      GoRoute(
+        path: '/biblioteca',
+        builder: (context, state) => const BibliotecaScreen(),
+      ),
+
+      // La tienda va ANTES que ':coleccionId' para que 'tienda' no sea
+      // capturado como id de colección.
+      GoRoute(
+        path: '/biblioteca/tienda',
+        builder: (context, state) => const TiendaScreen(),
+      ),
+
+      GoRoute(
+        path: '/biblioteca/:coleccionId',
+        builder: (context, state) => ColeccionScreen(
+          coleccionId: state.pathParameters['coleccionId']!,
+        ),
+      ),
+
+      GoRoute(
+        path: '/biblioteca/:coleccionId/:recetaId',
+        builder: (context, state) => RecetaColeccionScreen(
+          coleccionId: state.pathParameters['coleccionId']!,
+          recetaId: state.pathParameters['recetaId']!,
+        ),
       ),
 
       // ═══════════════════════════════════════════════════════════

@@ -19,7 +19,19 @@ class BibliotecaProvider extends ChangeNotifier {
 
   BibliotecaProvider({PremiumProvider? premium, BibliotecaRepository? repo})
       : _premium = premium ?? PremiumProvider(),
-        _repo = repo ?? BibliotecaRepository();
+        _repo = repo ?? BibliotecaRepository() {
+    // Los packs/premium cambian afuera (compra directa, restore):
+    // re-notificar para que tienda y biblioteca rebuilden.
+    _premium.addListener(_onPremiumChanged);
+  }
+
+  @override
+  void dispose() {
+    _premium.removeListener(_onPremiumChanged);
+    super.dispose();
+  }
+
+  void _onPremiumChanged() => notifyListeners();
 
   List<Coleccion> _catalogo = [];
   bool _isLoading = false;
