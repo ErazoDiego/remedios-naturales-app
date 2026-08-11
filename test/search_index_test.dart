@@ -88,4 +88,28 @@ void main() {
       }
     });
   });
+
+  group('Lotes por sistema (fuente: libro de la abuela)', () {
+    test('digestivo completo: las 16 recetas tienen keywords', () {
+      final ids = List.generate(16, (i) => 'digestivo_${(i + 1).toString().padLeft(2, '0')}');
+      for (final id in ids) {
+        expect(
+          SearchIndex.keywordsDe(id).isNotEmpty,
+          isTrue,
+          reason: '$id debería tener keywords (lote digestivo completo)',
+        );
+      }
+    });
+
+    test('keywords coloquiales matchean términos de query reales', () {
+      // "no puedo ir al baño" → términos [puedo, ir, bano] → 'bano' está
+      // en la keyword de digestivo_08.
+      expect(SearchIndex.keywordsDe('digestivo_08'), contains('no puedo ir al bano'));
+      expect(SearchIndex.keywordsDe('digestivo_08'), contains('estoy estrenido'));
+      // "hígado" como término suelto lo captura digestivo_11.
+      expect(SearchIndex.keywordsDe('digestivo_11'), contains('higado'));
+      // "me cae mal la comida" → 'comida' y 'cae' en digestivo_01.
+      expect(SearchIndex.keywordsDe('digestivo_01'), contains('me cae pesada la comida'));
+    });
+  });
 }

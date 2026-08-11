@@ -3,11 +3,14 @@ import '../../core/utils/text_normalizer.dart';
 /// Índice de búsqueda: keywords por receta + sinónimos + stopwords.
 ///
 /// Fuentes:
-/// - keywordsPorReceta: columna "Dolencia / motivo de selección" del Excel
-///   `recetas_mas_buscadas_por_sistema.xlsx` (términos REALES que la gente
-///   busca, elegidos por el usuario a partir del libro).
-/// - gruposSinonimos: vocabulario del libro "Remedios naturales olvidados
-///   de la abuela" (cefalea↔dolor de cabeza, resfriado↔gripe, etc.).
+/// - keywordsPorReceta: 50 recetas con la columna "Dolencia / motivo de
+///   selección" del Excel `recetas_mas_buscadas_por_sistema.xlsx` (términos
+///   REALES que la gente busca, elegidos por el usuario a partir del libro)
+///   + lotes por sistema extraídos del libro "Remedios naturales olvidados
+///   de la abuela" (vocabulario coloquial: "no puedo ir al baño", "me cae
+///   pesada la comida", etc.). Lote actual: digestivo completo (16/16).
+/// - gruposSinonimos: vocabulario del libro (cefalea↔dolor de cabeza,
+///   resfriado↔gripe, etc.).
 ///
 /// Lógica pura, sin estado: testeable.
 class SearchIndex {
@@ -18,11 +21,22 @@ class SearchIndex {
   /// el lenguaje real con el que la gente busca.
   static const Map<String, List<String>> keywordsPorReceta = {
     // ── Digestivo ─────────────────────────────────────────────────────
-    'digestivo_03': ['acidez', 'acidez de estomago', 'ardor', 'reflujo', 'malestar estomacal'],
-    'digestivo_12': ['gases', 'colicos', 'hinchazon abdominal', 'inflamacion abdominal', 'flatulencia'],
+    'digestivo_01': ['me cae pesada la comida', 'no digiero bien', 'sensacion de llenura', 'pesadez despues de comer', 'comida copiosa'],
     'digestivo_02': ['digestion lenta', 'pesadez postcomida', 'pesadez', 'comida abundante', 'indigestion'],
-    'digestivo_15': ['pesadez abdominal', 'comidas copiosas', 'digestion pesada', 'gases', 'mucha comida'],
+    'digestivo_03': ['acidez', 'acidez de estomago', 'ardor', 'reflujo', 'malestar estomacal'],
+    'digestivo_04': ['dolor de panza', 'frio en el estomago', 'panza hinchada', 'compresa caliente', 'calor en la panza'],
+    'digestivo_05': ['jarabe para la digestion', 'ardor de estomago', 'me quema la panza', 'acidez despues de comer', 'proteger el estomago'],
+    'digestivo_06': ['no tengo hambre', 'sin apetito', 'abrir el apetito', 'espasmos intestinales', 'panza inflamada'],
+    'digestivo_07': ['depurar el cuerpo', 'limpiar el organismo', 'limpieza interna', 'desintoxicar', 'depurar el higado', 'eliminar liquidos'],
+    'digestivo_08': ['estoy estrenido', 'no puedo ir al bano', 'batido digestivo', 'limpiar el intestino', 'transito lento'],
+    'digestivo_09': ['no tengo hambre', 'me lleno rapido', 'estimular el apetito', 'manzanilla amarga', 'sin ganas de comer'],
+    'digestivo_10': ['panza dura', 'vientre inflamado', 'no me salen los gases', 'expulsar gases', 'cataplasma de menta', 'tirarme el aire'],
+    'digestivo_11': ['higado', 'higado lento', 'me cae mal la grasa', 'digestion de grasas', 'comidas grasosas', 'boldo'],
+    'digestivo_12': ['gases', 'colicos', 'hinchazon abdominal', 'inflamacion abdominal', 'flatulencia'],
+    'digestivo_13': ['agua digestiva', 'panza inflamada', 'hinchazon de panza', 'abdomen distendido', 'vientre hinchado'],
     'digestivo_14': ['nauseas', 'nausea', 'vomito', 'malestar', 'mareos matinales'],
+    'digestivo_15': ['pesadez abdominal', 'comidas copiosas', 'digestion pesada', 'gases', 'mucha comida'],
+    'digestivo_16': ['para viajar', 'comer fuera de casa', 'en el trabajo', 'polvo digestivo', 'alivio rapido', 'sin preparar'],
     // ── Nervioso ──────────────────────────────────────────────────────
     'nervioso_13': ['ansiedad', 'nervios', 'bano relajante', 'calmarse'],
     'nervioso_11': ['insomnio', 'desvelo', 'no poder dormir', 'descansar', 'sueño'],
