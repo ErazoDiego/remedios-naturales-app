@@ -219,10 +219,11 @@ class _TiendaCard extends StatelessWidget {
 
   String _estadoComprada(BuildContext context) {
     final biblioteca = context.read<BibliotecaProvider>();
-    return biblioteca.puedeAcceder(coleccion.id) &&
-            !biblioteca.coleccionesDescargadas.contains(coleccion.id)
-        ? 'Incluida en Premium'
-        : 'Descargada';
+    // "Descargada" solo con el PACK comprado; con premium sin pack es
+    // "Incluida en Premium" (acceso por suscripción, no descarga).
+    return biblioteca.tienePack(coleccion.id)
+        ? 'Descargada'
+        : 'Incluida en Premium';
   }
 
   Future<void> _comprar(BuildContext context) async {

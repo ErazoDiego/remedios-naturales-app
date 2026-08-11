@@ -44,10 +44,12 @@ class BibliotecaProvider extends ChangeNotifier {
   String? get error => _error;
 
   /// Ids de colecciones del catálogo que el usuario POSEE
-  /// (pack en el perfil/device). Son las "descargadas" en la biblioteca.
+  /// (pack en el perfil/device, o premium: incluye TODAS las colecciones
+  /// presentes y futuras). Son las "descargadas" en la biblioteca.
   Set<String> get coleccionesDescargadas => {
         for (final c in _catalogo)
-          if (_premium.packs.contains(PremiumRules.packIdDeSistema(c.id)))
+          if (_premium.isPremium ||
+              _premium.packs.contains(PremiumRules.packIdDeSistema(c.id)))
             c.id,
       };
 
@@ -58,6 +60,11 @@ class BibliotecaProvider extends ChangeNotifier {
         isPremium: _premium.isPremium,
         packs: _premium.packs,
       );
+
+  /// ¿El PACK de esta colección está comprado? (descarga real; NO se
+  /// activa con premium). Distingue "Descargada" de "Incluida en Premium".
+  bool tienePack(String coleccionId) =>
+      _premium.packs.contains(PremiumRules.packIdDeSistema(coleccionId));
 
   /// Precio formateado del pack de la colección, o null si la tienda
   /// no lo devolvió (vive en el mapa global de precios del premium).

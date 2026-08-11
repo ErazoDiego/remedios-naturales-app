@@ -134,4 +134,19 @@ void main() {
     expect(find.text('Jugo verde matinal'), findsOneWidget);
     expect(find.text('Sin resultados'), findsNothing);
   });
+
+  testWidgets(
+      'con premium (sin pack): todas las colecciones listadas + buscador, '
+      'sin estado vacío', (tester) async {
+    await premium.purchasePremium();
+    await pumpBiblioteca(tester);
+
+    // Premium incluye TODO el catálogo: la biblioteca ya no está vacía.
+    expect(find.text('Buscar en tus colecciones'), findsOneWidget);
+    expect(find.text('Jugos naturales'), findsOneWidget);
+    expect(find.text('Todavía no tenés colecciones.'), findsNothing);
+    expect(find.byType(TextField), findsOneWidget);
+    // Banner de tienda: ya tiene todo lo disponible.
+    expect(find.text('Ya tenés todo lo disponible.'), findsOneWidget);
+  });
 }
