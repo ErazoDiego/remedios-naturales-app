@@ -134,6 +134,17 @@ void main() {
       }
     });
 
+    test('cardiovascular completo: las 12 recetas tienen keywords', () {
+      final ids = List.generate(12, (i) => 'cardiovascular_${(i + 1).toString().padLeft(2, '0')}');
+      for (final id in ids) {
+        expect(
+          SearchIndex.keywordsDe(id).isNotEmpty,
+          isTrue,
+          reason: '$id debería tener keywords (lote cardiovascular completo)',
+        );
+      }
+    });
+
     test('keywords coloquiales matchean términos de query reales', () {
       // "no puedo ir al baño" → términos [puedo, ir, bano] → 'bano' está
       // en la keyword de digestivo_08.

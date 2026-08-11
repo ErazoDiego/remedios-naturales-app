@@ -9,7 +9,8 @@ import '../../core/utils/text_normalizer.dart';
 ///   + lotes por sistema extraídos del libro "Remedios naturales olvidados
 ///   de la abuela" (vocabulario coloquial: "no puedo ir al baño", "me cae
 ///   pesada la comida", etc.). Lote actual: digestivo (16/16) + nervioso
-///   (14/14) + respiratorio (12/12) + inmunitario (13/13) completos.
+///   (14/14) + respiratorio (12/12) + inmunitario (13/13) + cardiovascular
+///   (12/12) completos.
 /// - gruposSinonimos: vocabulario del libro (cefalea↔dolor de cabeza,
 ///   resfriado↔gripe, etc.).
 ///
@@ -82,10 +83,17 @@ class SearchIndex {
     'inmunitario_13': ['propolis', 'tintura', 'microbios', 'reforzar defensas', 'prepararse para el invierno'],
     // ── Cardiovascular ────────────────────────────────────────────────
     'cardiovascular_01': ['circulacion', 'circulacion lenta', 'corazon', 'espino blanco', 'mala circulacion'],
-    'cardiovascular_07': ['semillas', 'energia', 'circulacion', 'chia', 'linaza'],
-    'cardiovascular_03': ['circulacion', 'tension', 'ajo', 'limon', 'colesterol', 'presion'],
     'cardiovascular_02': ['retencion', 'retencion de liquidos', 'canela', 'metabolismo', 'hinchazon'],
+    'cardiovascular_03': ['circulacion', 'tension', 'ajo', 'limon', 'colesterol', 'presion'],
     'cardiovascular_04': ['cansancio metabolico', 'metabolismo', 'energia', 'hibisco', 'jengibre'],
+    'cardiovascular_05': ['extracto de curcuma', 'proteger el corazon', 'metabolismo', 'antiinflamatorio natural', 'inflamacion del cuerpo'],
+    'cardiovascular_06': ['presion alta', 'presion arterial', 'hojas de olivo', 'tension alta', 'regular la presion', 'presion natural'],
+    'cardiovascular_07': ['semillas', 'energia', 'circulacion', 'chia', 'linaza'],
+    'cardiovascular_08': ['batido verde', 'licuado verde', 'espinaca', 'energia por la manana', 'empezar el dia con energia'],
+    'cardiovascular_09': ['ajo negro', 'ajo fermentado', 'no me gusta el ajo', 'tintura de ajo', 'colesterol'],
+    'cardiovascular_10': ['piernas cansadas', 'piernas pesadas', 'masaje circulatorio', 'pies frios', 'manos frias', 'activar la circulacion'],
+    'cardiovascular_11': ['cansancio mental', 'mente nublada', 'despejar la mente', 'pesadez mental', 'depurar la mente'],
+    'cardiovascular_12': ['vinagre de manzana', 'miel y vinagre', 'energia al despertar', 'despertar cansado', 'en ayunas'],
     // ── Hormonal ──────────────────────────────────────────────────────
     'hormonal_01': ['sindrome premenstrual', 'spm', 'menstruacion', 'regla', 'dolores menstruales'],
     'hormonal_03': ['colicos', 'dolor menstrual', 'spm', 'menstruacion', 'bano'],
