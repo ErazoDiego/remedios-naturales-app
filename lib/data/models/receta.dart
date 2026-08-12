@@ -13,7 +13,6 @@ class Receta {
   final String dosis;
   final String almacenamiento;
   final String? imagen;
-  final String? imagenPlaceholder;
 
   Receta({
     required this.id,
@@ -29,7 +28,6 @@ class Receta {
     required this.dosis,
     required this.almacenamiento,
     this.imagen,
-    this.imagenPlaceholder,
   });
 
   factory Receta.fromJson(Map<String, dynamic> json) {
@@ -47,7 +45,6 @@ class Receta {
       dosis: json['dosis'] ?? '',
       almacenamiento: json['almacenamiento'] ?? '',
       imagen: json['imagen'],
-      imagenPlaceholder: json['imagenPlaceholder'],
     );
   }
 
@@ -66,7 +63,6 @@ class Receta {
       'dosis': dosis,
       'almacenamiento': almacenamiento,
       'imagen': imagen,
-      'imagenPlaceholder': imagenPlaceholder,
     };
   }
 

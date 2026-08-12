@@ -32,8 +32,7 @@
       "almacenamiento": "preparar fresca cada vez; conservar las hierbas secas en frasco cerrado hasta 6 meses.",
       "evidencia": "",
       "categoria": "digestivo",
-      "imagen": "assets/images/recetas/digestivo_01.webp",
-      "imagenPlaceholder": "assets/images/recetas/digestivo_01_placeholder.webp"
+      "imagen": "assets/images/recetas/digestivo_01.webp"
     },
     {
       "id": "digestivo_02",
@@ -64,8 +63,7 @@
       "almacenamiento": "preparar fresco cada vez; conservar las hierbas secas en recipiente sellado hasta 6 meses.",
       "evidencia": "",
       "categoria": "digestivo",
-      "imagen": "assets/images/recetas/digestivo_02.webp",
-      "imagenPlaceholder": "assets/images/recetas/digestivo_02_placeholder.webp"
+      "imagen": "assets/images/recetas/digestivo_02.webp"
     },
     {
       "id": "digestivo_03",
@@ -97,8 +95,7 @@
       "almacenamiento": "preparar fresca; conservar las hierbas secas hasta 6 meses en recipiente hermético.",
       "evidencia": "",
       "categoria": "digestivo",
-      "imagen": "assets/images/recetas/digestivo_03.webp",
-      "imagenPlaceholder": "assets/images/recetas/digestivo_03_placeholder.webp"
+      "imagen": "assets/images/recetas/digestivo_03.webp"
     },
     {
       "id": "digestivo_04",
@@ -128,8 +125,7 @@
       "almacenamiento": "usar de inmediato; no guardar el líquido preparado.",
       "evidencia": "",
       "categoria": "digestivo",
-      "imagen": "assets/images/recetas/digestivo_04.webp",
-      "imagenPlaceholder": "assets/images/recetas/digestivo_04_placeholder.webp"
+      "imagen": "assets/images/recetas/digestivo_04.webp"
     },
     {
       "id": "digestivo_05",
@@ -159,8 +155,7 @@
       "almacenamiento": "conservar en refrigeración hasta por 7 días.",
       "evidencia": "",
       "categoria": "digestivo",
-      "imagen": "assets/images/recetas/digestivo_05.webp",
-      "imagenPlaceholder": "assets/images/recetas/digestivo_05_placeholder.webp"
+      "imagen": "assets/images/recetas/digestivo_05.webp"
     },
     {
       "id": "digestivo_06",
@@ -189,8 +184,7 @@
       "almacenamiento": "conservar en lugar fresco y oscuro hasta por 12 meses.",
       "evidencia": "",
       "categoria": "digestivo",
-      "imagen": "assets/images/recetas/digestivo_06.webp",
-      "imagenPlaceholder": "assets/images/recetas/digestivo_06_placeholder.webp"
+      "imagen": "assets/images/recetas/digestivo_06.webp"
     },
     {
       "id": "digestivo_07",
@@ -220,8 +214,7 @@
       "almacenamiento": "preparar fresca cada vez; no guardar más de 12 horas.",
       "evidencia": "",
       "categoria": "digestivo",
-      "imagen": "assets/images/recetas/digestivo_07.webp",
-      "imagenPlaceholder": "assets/images/recetas/digestivo_07_placeholder.webp"
+      "imagen": "assets/images/recetas/digestivo_07.webp"
     },
     {
       "id": "digestivo_08",
@@ -250,8 +243,7 @@
       "almacenamiento": "preparar justo antes de consumir; no guardar una vez licuado.",
       "evidencia": "",
       "categoria": "digestivo",
-      "imagen": "assets/images/recetas/digestivo_08.webp",
-      "imagenPlaceholder": "assets/images/recetas/digestivo_08_placeholder.webp"
+      "imagen": "assets/images/recetas/digestivo_08.webp"
     },
     {
       "id": "digestivo_09",
@@ -280,8 +272,7 @@
       "almacenamiento": "conservar en lugar fresco y oscuro hasta por 3 meses.",
       "evidencia": "",
       "categoria": "digestivo",
-      "imagen": "assets/images/recetas/digestivo_09.webp",
-      "imagenPlaceholder": "assets/images/recetas/digestivo_09_placeholder.webp"
+      "imagen": "assets/images/recetas/digestivo_09.webp"
     },
     {
       "id": "digestivo_10",
@@ -311,8 +302,7 @@
       "almacenamiento": "usar al momento; no guardar el líquido restante.",
       "evidencia": "",
       "categoria": "digestivo",
-      "imagen": "assets/images/recetas/digestivo_10.webp",
-      "imagenPlaceholder": "assets/images/recetas/digestivo_10_placeholder.webp"
+      "imagen": "assets/images/recetas/digestivo_10.webp"
     },
     {
       "id": "digestivo_11",
@@ -342,8 +332,7 @@
       "almacenamiento": "preparar fresca cada vez; conservar las hierbas secas hasta 6 meses en frasco hermético.",
       "evidencia": "",
       "categoria": "digestivo",
-      "imagen": "assets/images/recetas/digestivo_11.webp",
-      "imagenPlaceholder": "assets/images/recetas/digestivo_11_placeholder.webp"
+      "imagen": "assets/images/recetas/digestivo_11.webp"
     },
     {
       "id": "digestivo_12",
@@ -373,8 +362,7 @@
       "almacenamiento": "conservar en lugar fresco y oscuro hasta 3 meses.",
       "evidencia": "",
       "categoria": "digestivo",
-      "imagen": "assets/images/recetas/digestivo_12.webp",
-      "imagenPlaceholder": "assets/images/recetas/digestivo_12_placeholder.webp"
+      "imagen": "assets/images/recetas/digestivo_12.webp"
     },
     {
       "id": "digestivo_13",
@@ -403,8 +391,7 @@
       "almacenamiento": "conservar en refrigeración hasta 24 horas.",
       "evidencia": "",
       "categoria": "digestivo",
-      "imagen": "assets/images/recetas/digestivo_13.webp",
-      "imagenPlaceholder": "assets/images/recetas/digestivo_13_placeholder.webp"
+      "imagen": "assets/images/recetas/digestivo_13.webp"
     },
     {
       "id": "digestivo_14",
@@ -433,8 +420,7 @@
       "almacenamiento": "preparar fresco cada vez; no guardar la mezcla.",
       "evidencia": "",
       "categoria": "digestivo",
-      "imagen": "assets/images/recetas/digestivo_14.webp",
-      "imagenPlaceholder": "assets/images/recetas/digestivo_14_placeholder.webp"
+      "imagen": "assets/images/recetas/digestivo_14.webp"
     },
     {
       "id": "digestivo_15",
@@ -464,8 +450,7 @@
       "almacenamiento": "preparar fresca cada vez; conservar las hierbas secas en frasco cerrado.",
       "evidencia": "",
       "categoria": "digestivo",
-      "imagen": "assets/images/recetas/digestivo_15.webp",
-      "imagenPlaceholder": "assets/images/recetas/digestivo_15_placeholder.webp"
+      "imagen": "assets/images/recetas/digestivo_15.webp"
     },
     {
       "id": "digestivo_16",
@@ -494,8 +479,7 @@
       "almacenamiento": "conservar en lugar seco y oscuro",
       "evidencia": "",
       "categoria": "digestivo",
-      "imagen": "assets/images/recetas/digestivo_16.webp",
-      "imagenPlaceholder": "assets/images/recetas/digestivo_16_placeholder.webp"
+      "imagen": "assets/images/recetas/digestivo_16.webp"
     }
   ]
 }

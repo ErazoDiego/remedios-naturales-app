@@ -32,8 +32,7 @@
       "almacenamiento": "preparar fresca cada vez.",
       "evidencia": "",
       "categoria": "hormonal",
-      "imagen": "assets/images/recetas/hormonal_01.webp",
-      "imagenPlaceholder": "assets/images/recetas/hormonal_01_placeholder.webp"
+      "imagen": "assets/images/recetas/hormonal_01.webp"
     },
     {
       "id": "hormonal_02",
@@ -62,8 +61,7 @@
       "almacenamiento": "conservar en lugar fresco y oscuro hasta 6 meses.",
       "evidencia": "",
       "categoria": "hormonal",
-      "imagen": "assets/images/recetas/hormonal_02.webp",
-      "imagenPlaceholder": "assets/images/recetas/hormonal_02_placeholder.webp"
+      "imagen": "assets/images/recetas/hormonal_02.webp"
     },
     {
       "id": "hormonal_03",
@@ -92,8 +90,7 @@
       "almacenamiento": "preparar al momento.",
       "evidencia": "",
       "categoria": "hormonal",
-      "imagen": "assets/images/recetas/hormonal_03.webp",
-      "imagenPlaceholder": "assets/images/recetas/hormonal_03_placeholder.webp"
+      "imagen": "assets/images/recetas/hormonal_03.webp"
     },
     {
       "id": "hormonal_04",
@@ -122,8 +119,7 @@
       "almacenamiento": "conservar en lugar fresco hasta 3 meses.",
       "evidencia": "",
       "categoria": "hormonal",
-      "imagen": "assets/images/recetas/hormonal_04.webp",
-      "imagenPlaceholder": "assets/images/recetas/hormonal_04_placeholder.webp"
+      "imagen": "assets/images/recetas/hormonal_04.webp"
     },
     {
       "id": "hormonal_05",
@@ -153,8 +149,7 @@
       "almacenamiento": "preparar fresca cada vez.",
       "evidencia": "",
       "categoria": "hormonal",
-      "imagen": "assets/images/recetas/hormonal_05.webp",
-      "imagenPlaceholder": "assets/images/recetas/hormonal_05_placeholder.webp"
+      "imagen": "assets/images/recetas/hormonal_05.webp"
     },
     {
       "id": "hormonal_06",
@@ -185,8 +180,7 @@
       "almacenamiento": "preparar al momento.",
       "evidencia": "",
       "categoria": "hormonal",
-      "imagen": "assets/images/recetas/hormonal_06.webp",
-      "imagenPlaceholder": "assets/images/recetas/hormonal_06_placeholder.webp"
+      "imagen": "assets/images/recetas/hormonal_06.webp"
     },
     {
       "id": "hormonal_07",
@@ -216,8 +210,7 @@
       "almacenamiento": "preparar fresca cada vez.",
       "evidencia": "",
       "categoria": "hormonal",
-      "imagen": "assets/images/recetas/hormonal_07.webp",
-      "imagenPlaceholder": "assets/images/recetas/hormonal_07_placeholder.webp"
+      "imagen": "assets/images/recetas/hormonal_07.webp"
     },
     {
       "id": "hormonal_08",
@@ -248,8 +241,7 @@
       "almacenamiento": "no guardar una vez preparado.",
       "evidencia": "",
       "categoria": "hormonal",
-      "imagen": "assets/images/recetas/hormonal_08.webp",
-      "imagenPlaceholder": "assets/images/recetas/hormonal_08_placeholder.webp"
+      "imagen": "assets/images/recetas/hormonal_08.webp"
     },
     {
       "id": "hormonal_09",
@@ -279,8 +271,7 @@
       "almacenamiento": "preparar fresco cada vez.",
       "evidencia": "",
       "categoria": "hormonal",
-      "imagen": "assets/images/recetas/hormonal_09.webp",
-      "imagenPlaceholder": "assets/images/recetas/hormonal_09_placeholder.webp"
+      "imagen": "assets/images/recetas/hormonal_09.webp"
     },
     {
       "id": "hormonal_10",
@@ -309,8 +300,7 @@
       "almacenamiento": "preparar fresca cada vez.",
       "evidencia": "",
       "categoria": "hormonal",
-      "imagen": "assets/images/recetas/hormonal_10.webp",
-      "imagenPlaceholder": "assets/images/recetas/hormonal_10_placeholder.webp"
+      "imagen": "assets/images/recetas/hormonal_10.webp"
     },
     {
       "id": "hormonal_11",
@@ -339,8 +329,7 @@
       "almacenamiento": "guardar en lugar fresco hasta 2 meses.",
       "evidencia": "",
       "categoria": "hormonal",
-      "imagen": "assets/images/recetas/hormonal_11.webp",
-      "imagenPlaceholder": "assets/images/recetas/hormonal_11_placeholder.webp"
+      "imagen": "assets/images/recetas/hormonal_11.webp"
     },
     {
       "id": "hormonal_12",
@@ -370,8 +359,7 @@
       "almacenamiento": "preparar fresca cada vez.",
       "evidencia": "",
       "categoria": "hormonal",
-      "imagen": "assets/images/recetas/hormonal_12.webp",
-      "imagenPlaceholder": "assets/images/recetas/hormonal_12_placeholder.webp"
+      "imagen": "assets/images/recetas/hormonal_12.webp"
     },
     {
       "id": "hormonal_13",
@@ -402,8 +390,7 @@
       "almacenamiento": "conservar en lugar fresco y oscuro hasta 4 meses.",
       "evidencia": "",
       "categoria": "hormonal",
-      "imagen": "assets/images/recetas/hormonal_13.webp",
-      "imagenPlaceholder": "assets/images/recetas/hormonal_13_placeholder.webp"
+      "imagen": "assets/images/recetas/hormonal_13.webp"
     },
     {
       "id": "hormonal_14",
@@ -434,8 +421,7 @@
       "almacenamiento": "preparar fresca cada vez.",
       "evidencia": "",
       "categoria": "hormonal",
-      "imagen": "assets/images/recetas/hormonal_14.webp",
-      "imagenPlaceholder": "assets/images/recetas/hormonal_14_placeholder.webp"
+      "imagen": "assets/images/recetas/hormonal_14.webp"
     }
   ]
 }

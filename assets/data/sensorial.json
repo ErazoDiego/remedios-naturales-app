@@ -32,8 +32,7 @@
       "almacenamiento": "usar en el día; descartar el sobrante. Compresa suave que ayuda a bajar la hinchazón y refrescar los ojos cansados. La manzanilla calma y el pepino reduce la sensación de pesadez.",
       "evidencia": "",
       "categoria": "sensorial",
-      "imagen": "assets/images/recetas/sensorial_01.webp",
-      "imagenPlaceholder": "assets/images/recetas/sensorial_01_placeholder.webp"
+      "imagen": "assets/images/recetas/sensorial_01.webp"
     },
     {
       "id": "sensorial_02",
@@ -62,8 +61,7 @@
       "almacenamiento": "preparar al momento.",
       "evidencia": "",
       "categoria": "sensorial",
-      "imagen": "assets/images/recetas/sensorial_02.webp",
-      "imagenPlaceholder": "assets/images/recetas/sensorial_02_placeholder.webp"
+      "imagen": "assets/images/recetas/sensorial_02.webp"
     },
     {
       "id": "sensorial_03",
@@ -93,8 +91,7 @@
       "almacenamiento": "refrigerar hasta 24 horas.",
       "evidencia": "",
       "categoria": "sensorial",
-      "imagen": "assets/images/recetas/sensorial_03.webp",
-      "imagenPlaceholder": "assets/images/recetas/sensorial_03_placeholder.webp"
+      "imagen": "assets/images/recetas/sensorial_03.webp"
     },
     {
       "id": "sensorial_04",
@@ -124,8 +121,7 @@
       "almacenamiento": "guardar en frasco cerrado hasta 1 semana.",
       "evidencia": "",
       "categoria": "sensorial",
-      "imagen": "assets/images/recetas/sensorial_04.webp",
-      "imagenPlaceholder": "assets/images/recetas/sensorial_04_placeholder.webp"
+      "imagen": "assets/images/recetas/sensorial_04.webp"
     },
     {
       "id": "sensorial_05",
@@ -152,8 +148,7 @@
       "almacenamiento": "mantener el aceite en frasco cerrado a temperatura ambiente.",
       "evidencia": "",
       "categoria": "sensorial",
-      "imagen": "assets/images/recetas/sensorial_05.webp",
-      "imagenPlaceholder": "assets/images/recetas/sensorial_05_placeholder.webp"
+      "imagen": "assets/images/recetas/sensorial_05.webp"
     },
     {
       "id": "sensorial_06",
@@ -181,8 +176,7 @@
       "almacenamiento": "desechar después de 48 horas.",
       "evidencia": "",
       "categoria": "sensorial",
-      "imagen": "assets/images/recetas/sensorial_06.webp",
-      "imagenPlaceholder": "assets/images/recetas/sensorial_06_placeholder.webp"
+      "imagen": "assets/images/recetas/sensorial_06.webp"
     },
     {
       "id": "sensorial_07",
@@ -212,8 +206,7 @@
       "almacenamiento": "guardar en lugar fresco hasta 3 meses.",
       "evidencia": "",
       "categoria": "sensorial",
-      "imagen": "assets/images/recetas/sensorial_07.webp",
-      "imagenPlaceholder": "assets/images/recetas/sensorial_07_placeholder.webp"
+      "imagen": "assets/images/recetas/sensorial_07.webp"
     },
     {
       "id": "sensorial_08",
@@ -243,8 +236,7 @@
       "almacenamiento": "refrigerar hasta 3 días.",
       "evidencia": "",
       "categoria": "sensorial",
-      "imagen": "assets/images/recetas/sensorial_08.webp",
-      "imagenPlaceholder": "assets/images/recetas/sensorial_08_placeholder.webp"
+      "imagen": "assets/images/recetas/sensorial_08.webp"
     },
     {
       "id": "sensorial_09",
@@ -274,8 +266,7 @@
       "almacenamiento": "refrigerar hasta 1 semana.",
       "evidencia": "",
       "categoria": "sensorial",
-      "imagen": "assets/images/recetas/sensorial_09.webp",
-      "imagenPlaceholder": "assets/images/recetas/sensorial_09_placeholder.webp"
+      "imagen": "assets/images/recetas/sensorial_09.webp"
     },
     {
       "id": "sensorial_10",
@@ -303,8 +294,7 @@
       "almacenamiento": "refrigerar hasta 24 horas.",
       "evidencia": "",
       "categoria": "sensorial",
-      "imagen": "assets/images/recetas/sensorial_10.webp",
-      "imagenPlaceholder": "assets/images/recetas/sensorial_10_placeholder.webp"
+      "imagen": "assets/images/recetas/sensorial_10.webp"
     }
   ]
 }

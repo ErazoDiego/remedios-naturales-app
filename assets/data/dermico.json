@@ -31,8 +31,7 @@
       "almacenamiento": "conservar en lugar fresco hasta 2 semanas.",
       "evidencia": "",
       "categoria": "dermico",
-      "imagen": "assets/images/recetas/dermico_01.webp",
-      "imagenPlaceholder": "assets/images/recetas/dermico_01_placeholder.webp"
+      "imagen": "assets/images/recetas/dermico_01.webp"
     },
     {
       "id": "dermico_02",
@@ -62,8 +61,7 @@
       "almacenamiento": "preparar al momento.",
       "evidencia": "",
       "categoria": "dermico",
-      "imagen": "assets/images/recetas/dermico_02.webp",
-      "imagenPlaceholder": "assets/images/recetas/dermico_02_placeholder.webp"
+      "imagen": "assets/images/recetas/dermico_02.webp"
     },
     {
       "id": "dermico_03",
@@ -92,8 +90,7 @@
       "almacenamiento": "refrigerar hasta 1 semana.",
       "evidencia": "",
       "categoria": "dermico",
-      "imagen": "assets/images/recetas/dermico_03.webp",
-      "imagenPlaceholder": "assets/images/recetas/dermico_03_placeholder.webp"
+      "imagen": "assets/images/recetas/dermico_03.webp"
     },
     {
       "id": "dermico_04",
@@ -121,8 +118,7 @@
       "almacenamiento": "guardar en frasco oscuro hasta 2 meses.",
       "evidencia": "",
       "categoria": "dermico",
-      "imagen": "assets/images/recetas/dermico_04.webp",
-      "imagenPlaceholder": "assets/images/recetas/dermico_04_placeholder.webp"
+      "imagen": "assets/images/recetas/dermico_04.webp"
     },
     {
       "id": "dermico_05",
@@ -153,8 +149,7 @@
       "almacenamiento": "mantener en lugar fresco hasta 2 meses.",
       "evidencia": "",
       "categoria": "dermico",
-      "imagen": "assets/images/recetas/dermico_05.webp",
-      "imagenPlaceholder": "assets/images/recetas/dermico_05_placeholder.webp"
+      "imagen": "assets/images/recetas/dermico_05.webp"
     },
     {
       "id": "dermico_06",
@@ -184,8 +179,7 @@
       "almacenamiento": "refrigerar hasta 1 semana.",
       "evidencia": "",
       "categoria": "dermico",
-      "imagen": "assets/images/recetas/dermico_06.webp",
-      "imagenPlaceholder": "assets/images/recetas/dermico_06_placeholder.webp"
+      "imagen": "assets/images/recetas/dermico_06.webp"
     },
     {
       "id": "dermico_07",
@@ -215,8 +209,7 @@
       "almacenamiento": "conservar en lugar fresco hasta 2 meses.",
       "evidencia": "",
       "categoria": "dermico",
-      "imagen": "assets/images/recetas/dermico_07.webp",
-      "imagenPlaceholder": "assets/images/recetas/dermico_07_placeholder.webp"
+      "imagen": "assets/images/recetas/dermico_07.webp"
     },
     {
       "id": "dermico_08",
@@ -244,8 +237,7 @@
       "almacenamiento": "guardar en frasco oscuro hasta 2 meses.",
       "evidencia": "",
       "categoria": "dermico",
-      "imagen": "assets/images/recetas/dermico_08.webp",
-      "imagenPlaceholder": "assets/images/recetas/dermico_08_placeholder.webp"
+      "imagen": "assets/images/recetas/dermico_08.webp"
     },
     {
       "id": "dermico_09",
@@ -276,8 +268,7 @@
       "almacenamiento": "refrigerar hasta 2 semanas.",
       "evidencia": "",
       "categoria": "dermico",
-      "imagen": "assets/images/recetas/dermico_09.webp",
-      "imagenPlaceholder": "assets/images/recetas/dermico_09_placeholder.webp"
+      "imagen": "assets/images/recetas/dermico_09.webp"
     },
     {
       "id": "dermico_10",
@@ -306,8 +297,7 @@
       "almacenamiento": "conservar en lugar fresco hasta 1 semana.",
       "evidencia": "",
       "categoria": "dermico",
-      "imagen": "assets/images/recetas/dermico_10.webp",
-      "imagenPlaceholder": "assets/images/recetas/dermico_10_placeholder.webp"
+      "imagen": "assets/images/recetas/dermico_10.webp"
     },
     {
       "id": "dermico_11",
@@ -336,8 +326,7 @@
       "almacenamiento": "preparar al momento.",
       "evidencia": "",
       "categoria": "dermico",
-      "imagen": "assets/images/recetas/dermico_11.webp",
-      "imagenPlaceholder": "assets/images/recetas/dermico_11_placeholder.webp"
+      "imagen": "assets/images/recetas/dermico_11.webp"
     },
     {
       "id": "dermico_12",
@@ -367,8 +356,7 @@
       "almacenamiento": "guardar en lugar fresco hasta 2 meses.",
       "evidencia": "",
       "categoria": "dermico",
-      "imagen": "assets/images/recetas/dermico_12.webp",
-      "imagenPlaceholder": "assets/images/recetas/dermico_12_placeholder.webp"
+      "imagen": "assets/images/recetas/dermico_12.webp"
     },
     {
       "id": "dermico_13",
@@ -397,8 +385,7 @@
       "almacenamiento": "guardar en frasco oscuro hasta 2 meses.",
       "evidencia": "",
       "categoria": "dermico",
-      "imagen": "assets/images/recetas/dermico_13.webp",
-      "imagenPlaceholder": "assets/images/recetas/dermico_13_placeholder.webp"
+      "imagen": "assets/images/recetas/dermico_13.webp"
     },
     {
       "id": "dermico_14",
@@ -429,8 +416,7 @@
       "almacenamiento": "refrigerar hasta 3 días.",
       "evidencia": "",
       "categoria": "dermico",
-      "imagen": "assets/images/recetas/dermico_14.webp",
-      "imagenPlaceholder": "assets/images/recetas/dermico_14_placeholder.webp"
+      "imagen": "assets/images/recetas/dermico_14.webp"
     }
   ]
 }

@@ -31,8 +31,7 @@
       "almacenamiento": "preparar fresca cada vez.",
       "evidencia": "",
       "categoria": "urinario",
-      "imagen": "assets/images/recetas/urinario_01.webp",
-      "imagenPlaceholder": "assets/images/recetas/urinario_01_placeholder.webp"
+      "imagen": "assets/images/recetas/urinario_01.webp"
     },
     {
       "id": "urinario_02",
@@ -62,8 +61,7 @@
       "almacenamiento": "preparar al momento.",
       "evidencia": "",
       "categoria": "urinario",
-      "imagen": "assets/images/recetas/urinario_02.webp",
-      "imagenPlaceholder": "assets/images/recetas/urinario_02_placeholder.webp"
+      "imagen": "assets/images/recetas/urinario_02.webp"
     },
     {
       "id": "urinario_03",
@@ -93,8 +91,7 @@
       "almacenamiento": "refrigerar hasta 24 horas.",
       "evidencia": "",
       "categoria": "urinario",
-      "imagen": "assets/images/recetas/urinario_03.webp",
-      "imagenPlaceholder": "assets/images/recetas/urinario_03_placeholder.webp"
+      "imagen": "assets/images/recetas/urinario_03.webp"
     },
     {
       "id": "urinario_04",
@@ -124,8 +121,7 @@
       "almacenamiento": "preparar fresca cada vez.",
       "evidencia": "",
       "categoria": "urinario",
-      "imagen": "assets/images/recetas/urinario_04.webp",
-      "imagenPlaceholder": "assets/images/recetas/urinario_04_placeholder.webp"
+      "imagen": "assets/images/recetas/urinario_04.webp"
     },
     {
       "id": "urinario_05",
@@ -154,8 +150,7 @@
       "almacenamiento": "preparar al momento.",
       "evidencia": "",
       "categoria": "urinario",
-      "imagen": "assets/images/recetas/urinario_05.webp",
-      "imagenPlaceholder": "assets/images/recetas/urinario_05_placeholder.webp"
+      "imagen": "assets/images/recetas/urinario_05.webp"
     },
     {
       "id": "urinario_06",
@@ -185,8 +180,7 @@
       "almacenamiento": "preparar fresco cada vez.",
       "evidencia": "",
       "categoria": "urinario",
-      "imagen": "assets/images/recetas/urinario_06.webp",
-      "imagenPlaceholder": "assets/images/recetas/urinario_06_placeholder.webp"
+      "imagen": "assets/images/recetas/urinario_06.webp"
     },
     {
       "id": "urinario_07",
@@ -217,8 +211,7 @@
       "almacenamiento": "refrigerar hasta 3 días.",
       "evidencia": "",
       "categoria": "urinario",
-      "imagen": "assets/images/recetas/urinario_07.webp",
-      "imagenPlaceholder": "assets/images/recetas/urinario_07_placeholder.webp"
+      "imagen": "assets/images/recetas/urinario_07.webp"
     },
     {
       "id": "urinario_08",
@@ -247,8 +240,7 @@
       "almacenamiento": "preparar fresca cada vez.",
       "evidencia": "",
       "categoria": "urinario",
-      "imagen": "assets/images/recetas/urinario_08.webp",
-      "imagenPlaceholder": "assets/images/recetas/urinario_08_placeholder.webp"
+      "imagen": "assets/images/recetas/urinario_08.webp"
     },
     {
       "id": "urinario_09",
@@ -278,8 +270,7 @@
       "almacenamiento": "preparar al momento.",
       "evidencia": "",
       "categoria": "urinario",
-      "imagen": "assets/images/recetas/urinario_09.webp",
-      "imagenPlaceholder": "assets/images/recetas/urinario_09_placeholder.webp"
+      "imagen": "assets/images/recetas/urinario_09.webp"
     },
     {
       "id": "urinario_10",
@@ -309,8 +300,7 @@
       "almacenamiento": "preparar fresca cada vez.",
       "evidencia": "",
       "categoria": "urinario",
-      "imagen": "assets/images/recetas/urinario_10.webp",
-      "imagenPlaceholder": "assets/images/recetas/urinario_10_placeholder.webp"
+      "imagen": "assets/images/recetas/urinario_10.webp"
     },
     {
       "id": "urinario_11",
@@ -341,8 +331,7 @@
       "almacenamiento": "conservar en lugar fresco y oscuro hasta 3 meses.",
       "evidencia": "",
       "categoria": "urinario",
-      "imagen": "assets/images/recetas/urinario_11.webp",
-      "imagenPlaceholder": "assets/images/recetas/urinario_11_placeholder.webp"
+      "imagen": "assets/images/recetas/urinario_11.webp"
     },
     {
       "id": "urinario_12",
@@ -374,8 +363,7 @@
       "almacenamiento": "preparar fresca cada vez; no guardar.",
       "evidencia": "",
       "categoria": "urinario",
-      "imagen": "assets/images/recetas/urinario_12.webp",
-      "imagenPlaceholder": "assets/images/recetas/urinario_12_placeholder.webp"
+      "imagen": "assets/images/recetas/urinario_12.webp"
     }
   ]
 }

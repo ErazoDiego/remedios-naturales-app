@@ -25,7 +25,6 @@ void main() {
         'dosis': '1 taza',
         'almacenamiento': 'preparar fresca',
         'imagen': 'assets/images/recetas/digestivo_01.webp',
-        'imagenPlaceholder': 'assets/images/recetas/digestivo_01_placeholder.webp',
       };
 
       final receta = Receta.fromJson(json);
@@ -43,7 +42,6 @@ void main() {
       expect(receta.dosis, '1 taza');
       expect(receta.almacenamiento, 'preparar fresca');
       expect(receta.imagen, 'assets/images/recetas/digestivo_01.webp');
-      expect(receta.imagenPlaceholder, 'assets/images/recetas/digestivo_01_placeholder.webp');
     });
 
     test('fromJson handles missing optional fields', () {
@@ -65,7 +63,6 @@ void main() {
 
       expect(receta.cuandoUsar, isNull);
       expect(receta.imagen, isNull);
-      expect(receta.imagenPlaceholder, isNull);
       expect(receta.idealPara, isEmpty);
       expect(receta.ingredientes, isEmpty);
     });

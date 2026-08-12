@@ -33,8 +33,7 @@
       "almacenamiento": "conservar en refrigeración hasta 2 semanas.",
       "evidencia": "",
       "categoria": "respiratorio",
-      "imagen": "assets/images/recetas/respiratorio_01.webp",
-      "imagenPlaceholder": "assets/images/recetas/respiratorio_01_placeholder.webp"
+      "imagen": "assets/images/recetas/respiratorio_01.webp"
     },
     {
       "id": "respiratorio_02",
@@ -64,8 +63,7 @@
       "almacenamiento": "usar la preparación de inmediato; no guardar.",
       "evidencia": "",
       "categoria": "respiratorio",
-      "imagen": "assets/images/recetas/respiratorio_02.webp",
-      "imagenPlaceholder": "assets/images/recetas/respiratorio_02_placeholder.webp"
+      "imagen": "assets/images/recetas/respiratorio_02.webp"
     },
     {
       "id": "respiratorio_03",
@@ -95,8 +93,7 @@
       "almacenamiento": "preparar fresca cada vez; conservar las flores secas en frasco cerrado.",
       "evidencia": "",
       "categoria": "respiratorio",
-      "imagen": "assets/images/recetas/respiratorio_03.webp",
-      "imagenPlaceholder": "assets/images/recetas/respiratorio_03_placeholder.webp"
+      "imagen": "assets/images/recetas/respiratorio_03.webp"
     },
     {
       "id": "respiratorio_04",
@@ -127,8 +124,7 @@
       "almacenamiento": "conservar en lugar fresco y oscuro hasta 3 meses.",
       "evidencia": "",
       "categoria": "respiratorio",
-      "imagen": "assets/images/recetas/respiratorio_04.webp",
-      "imagenPlaceholder": "assets/images/recetas/respiratorio_04_placeholder.webp"
+      "imagen": "assets/images/recetas/respiratorio_04.webp"
     },
     {
       "id": "respiratorio_05",
@@ -158,8 +154,7 @@
       "almacenamiento": "preparar fresca cada vez; no guardar la mezcla.",
       "evidencia": "",
       "categoria": "respiratorio",
-      "imagen": "assets/images/recetas/respiratorio_05.webp",
-      "imagenPlaceholder": "assets/images/recetas/respiratorio_05_placeholder.webp"
+      "imagen": "assets/images/recetas/respiratorio_05.webp"
     },
     {
       "id": "respiratorio_06",
@@ -189,8 +184,7 @@
       "almacenamiento": "usar inmediatamente; no guardar la preparación.",
       "evidencia": "",
       "categoria": "respiratorio",
-      "imagen": "assets/images/recetas/respiratorio_06.webp",
-      "imagenPlaceholder": "assets/images/recetas/respiratorio_06_placeholder.webp"
+      "imagen": "assets/images/recetas/respiratorio_06.webp"
     },
     {
       "id": "respiratorio_07",
@@ -221,8 +215,7 @@
       "almacenamiento": "preparar fresca cada vez; conservar las hierbas secas en frasco hermético.",
       "evidencia": "",
       "categoria": "respiratorio",
-      "imagen": "assets/images/recetas/respiratorio_07.webp",
-      "imagenPlaceholder": "assets/images/recetas/respiratorio_07_placeholder.webp"
+      "imagen": "assets/images/recetas/respiratorio_07.webp"
     },
     {
       "id": "respiratorio_08",
@@ -253,8 +246,7 @@
       "almacenamiento": "conservar en refrigeración hasta 48 horas; preparar una nueva mezcla frecuentemente.",
       "evidencia": "",
       "categoria": "respiratorio",
-      "imagen": "assets/images/recetas/respiratorio_08.webp",
-      "imagenPlaceholder": "assets/images/recetas/respiratorio_08_placeholder.webp"
+      "imagen": "assets/images/recetas/respiratorio_08.webp"
     },
     {
       "id": "respiratorio_09",
@@ -285,8 +277,7 @@
       "almacenamiento": "conservar en refrigeración hasta 3 días; preparar en pequeñas cantidades.",
       "evidencia": "",
       "categoria": "respiratorio",
-      "imagen": "assets/images/recetas/respiratorio_09.webp",
-      "imagenPlaceholder": "assets/images/recetas/respiratorio_09_placeholder.webp"
+      "imagen": "assets/images/recetas/respiratorio_09.webp"
     },
     {
       "id": "respiratorio_10",
@@ -318,8 +309,7 @@
       "almacenamiento": "guardar en frasco hermético en lugar fresco hasta 1 semana.",
       "evidencia": "",
       "categoria": "respiratorio",
-      "imagen": "assets/images/recetas/respiratorio_10.webp",
-      "imagenPlaceholder": "assets/images/recetas/respiratorio_10_placeholder.webp"
+      "imagen": "assets/images/recetas/respiratorio_10.webp"
     },
     {
       "id": "respiratorio_11",
@@ -348,8 +338,7 @@
       "almacenamiento": "preparar fresca cada vez; conservar las flores secas en frasco cerrado.",
       "evidencia": "",
       "categoria": "respiratorio",
-      "imagen": "assets/images/recetas/respiratorio_11.webp",
-      "imagenPlaceholder": "assets/images/recetas/respiratorio_11_placeholder.webp"
+      "imagen": "assets/images/recetas/respiratorio_11.webp"
     },
     {
       "id": "respiratorio_12",
@@ -381,8 +370,7 @@
       "almacenamiento": "conservar en lugar fresco y oscuro hasta 6 meses.",
       "evidencia": "",
       "categoria": "respiratorio",
-      "imagen": "assets/images/recetas/respiratorio_12.webp",
-      "imagenPlaceholder": "assets/images/recetas/respiratorio_12_placeholder.webp"
+      "imagen": "assets/images/recetas/respiratorio_12.webp"
     }
   ]
 }

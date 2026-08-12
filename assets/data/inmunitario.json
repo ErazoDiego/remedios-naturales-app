@@ -33,8 +33,7 @@
       "almacenamiento": "preparar fresca cada vez; conservar las hierbas secas en frascos herméticos.",
       "evidencia": "",
       "categoria": "inmunitario",
-      "imagen": "assets/images/recetas/inmunitario_01.webp",
-      "imagenPlaceholder": "assets/images/recetas/inmunitario_01_placeholder.webp"
+      "imagen": "assets/images/recetas/inmunitario_01.webp"
     },
     {
       "id": "inmunitario_02",
@@ -66,8 +65,7 @@
       "almacenamiento": "preparar fresca cada vez; conservar los polvos en frascos cerrados.",
       "evidencia": "",
       "categoria": "inmunitario",
-      "imagen": "assets/images/recetas/inmunitario_02.webp",
-      "imagenPlaceholder": "assets/images/recetas/inmunitario_02_placeholder.webp"
+      "imagen": "assets/images/recetas/inmunitario_02.webp"
     },
     {
       "id": "inmunitario_03",
@@ -97,8 +95,7 @@
       "almacenamiento": "preparar y tomar al momento; no guardar. Jarabe espeso y rico en antioxidantes que ayuda a fortalecer las defensas y reducir la inflamación. Las bayas aportan energía suave y apoyo natural en días fríos o de cansancio.",
       "evidencia": "",
       "categoria": "inmunitario",
-      "imagen": "assets/images/recetas/inmunitario_03.webp",
-      "imagenPlaceholder": "assets/images/recetas/inmunitario_03_placeholder.webp"
+      "imagen": "assets/images/recetas/inmunitario_03.webp"
     },
     {
       "id": "inmunitario_04",
@@ -130,8 +127,7 @@
       "almacenamiento": "conservar en refrigeración hasta 1 semana.",
       "evidencia": "",
       "categoria": "inmunitario",
-      "imagen": "assets/images/recetas/inmunitario_04.webp",
-      "imagenPlaceholder": "assets/images/recetas/inmunitario_04_placeholder.webp"
+      "imagen": "assets/images/recetas/inmunitario_04.webp"
     },
     {
       "id": "inmunitario_05",
@@ -161,8 +157,7 @@
       "almacenamiento": "preparar fresca cada vez; conservar el polvo en frasco hermético.",
       "evidencia": "",
       "categoria": "inmunitario",
-      "imagen": "assets/images/recetas/inmunitario_05.webp",
-      "imagenPlaceholder": "assets/images/recetas/inmunitario_05_placeholder.webp"
+      "imagen": "assets/images/recetas/inmunitario_05.webp"
     },
     {
       "id": "inmunitario_06",
@@ -193,8 +188,7 @@
       "almacenamiento": "conservar en refrigeración hasta 48 horas.",
       "evidencia": "",
       "categoria": "inmunitario",
-      "imagen": "assets/images/recetas/inmunitario_06.webp",
-      "imagenPlaceholder": "assets/images/recetas/inmunitario_06_placeholder.webp"
+      "imagen": "assets/images/recetas/inmunitario_06.webp"
     },
     {
       "id": "inmunitario_07",
@@ -224,8 +218,7 @@
       "almacenamiento": "preparar fresca cada vez; conservar las hierbas secas en frasco cerrado.",
       "evidencia": "",
       "categoria": "inmunitario",
-      "imagen": "assets/images/recetas/inmunitario_07.webp",
-      "imagenPlaceholder": "assets/images/recetas/inmunitario_07_placeholder.webp"
+      "imagen": "assets/images/recetas/inmunitario_07.webp"
     },
     {
       "id": "inmunitario_08",
@@ -257,8 +250,7 @@
       "almacenamiento": "preparar fresca; guardar las hierbas secas en frasco hermético.",
       "evidencia": "",
       "categoria": "inmunitario",
-      "imagen": "assets/images/recetas/inmunitario_08.webp",
-      "imagenPlaceholder": "assets/images/recetas/inmunitario_08_placeholder.webp"
+      "imagen": "assets/images/recetas/inmunitario_08.webp"
     },
     {
       "id": "inmunitario_09",
@@ -288,8 +280,7 @@
       "almacenamiento": "refrigerar y usar dentro de 48 horas.",
       "evidencia": "",
       "categoria": "inmunitario",
-      "imagen": "assets/images/recetas/inmunitario_09.webp",
-      "imagenPlaceholder": "assets/images/recetas/inmunitario_09_placeholder.webp"
+      "imagen": "assets/images/recetas/inmunitario_09.webp"
     },
     {
       "id": "inmunitario_10",
@@ -320,8 +311,7 @@
       "almacenamiento": "preparar fresco cada vez; no guardar.",
       "evidencia": "",
       "categoria": "inmunitario",
-      "imagen": "assets/images/recetas/inmunitario_10.webp",
-      "imagenPlaceholder": "assets/images/recetas/inmunitario_10_placeholder.webp"
+      "imagen": "assets/images/recetas/inmunitario_10.webp"
     },
     {
       "id": "inmunitario_11",
@@ -353,8 +343,7 @@
       "almacenamiento": "conservar en lugar fresco hasta 3 meses.",
       "evidencia": "",
       "categoria": "inmunitario",
-      "imagen": "assets/images/recetas/inmunitario_11.webp",
-      "imagenPlaceholder": "assets/images/recetas/inmunitario_11_placeholder.webp"
+      "imagen": "assets/images/recetas/inmunitario_11.webp"
     },
     {
       "id": "inmunitario_12",
@@ -384,8 +373,7 @@
       "almacenamiento": "preparar fresca cada vez; guardar la raíz seca en frasco cerrado.",
       "evidencia": "",
       "categoria": "inmunitario",
-      "imagen": "assets/images/recetas/inmunitario_12.webp",
-      "imagenPlaceholder": "assets/images/recetas/inmunitario_12_placeholder.webp"
+      "imagen": "assets/images/recetas/inmunitario_12.webp"
     },
     {
       "id": "inmunitario_13",
@@ -415,8 +403,7 @@
       "almacenamiento": "conservar en lugar fresco y oscuro hasta 2 semanas.",
       "evidencia": "",
       "categoria": "inmunitario",
-      "imagen": "assets/images/recetas/inmunitario_13.webp",
-      "imagenPlaceholder": "assets/images/recetas/inmunitario_13_placeholder.webp"
+      "imagen": "assets/images/recetas/inmunitario_13.webp"
     }
   ]
 }

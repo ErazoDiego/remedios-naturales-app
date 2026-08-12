@@ -31,8 +31,7 @@
       "almacenamiento": "preparar fresca cada vez.",
       "evidencia": "",
       "categoria": "cardiovascular",
-      "imagen": "assets/images/recetas/cardiovascular_01.webp",
-      "imagenPlaceholder": "assets/images/recetas/cardiovascular_01_placeholder.webp"
+      "imagen": "assets/images/recetas/cardiovascular_01.webp"
     },
     {
       "id": "cardiovascular_02",
@@ -61,8 +60,7 @@
       "almacenamiento": "preparar fresca cada vez.",
       "evidencia": "",
       "categoria": "cardiovascular",
-      "imagen": "assets/images/recetas/cardiovascular_02.webp",
-      "imagenPlaceholder": "assets/images/recetas/cardiovascular_02_placeholder.webp"
+      "imagen": "assets/images/recetas/cardiovascular_02.webp"
     },
     {
       "id": "cardiovascular_03",
@@ -92,8 +90,7 @@
       "almacenamiento": "preparar justo antes de tomar.",
       "evidencia": "",
       "categoria": "cardiovascular",
-      "imagen": "assets/images/recetas/cardiovascular_03.webp",
-      "imagenPlaceholder": "assets/images/recetas/cardiovascular_03_placeholder.webp"
+      "imagen": "assets/images/recetas/cardiovascular_03.webp"
     },
     {
       "id": "cardiovascular_04",
@@ -124,8 +121,7 @@
       "almacenamiento": "preparar fresca cada vez.",
       "evidencia": "",
       "categoria": "cardiovascular",
-      "imagen": "assets/images/recetas/cardiovascular_04.webp",
-      "imagenPlaceholder": "assets/images/recetas/cardiovascular_04_placeholder.webp"
+      "imagen": "assets/images/recetas/cardiovascular_04.webp"
     },
     {
       "id": "cardiovascular_05",
@@ -155,8 +151,7 @@
       "almacenamiento": "preparar fresco cada vez.",
       "evidencia": "",
       "categoria": "cardiovascular",
-      "imagen": "assets/images/recetas/cardiovascular_05.webp",
-      "imagenPlaceholder": "assets/images/recetas/cardiovascular_05_placeholder.webp"
+      "imagen": "assets/images/recetas/cardiovascular_05.webp"
     },
     {
       "id": "cardiovascular_06",
@@ -185,8 +180,7 @@
       "almacenamiento": "preparar fresca cada vez; guardar las hojas secas en frasco cerrado.",
       "evidencia": "",
       "categoria": "cardiovascular",
-      "imagen": "assets/images/recetas/cardiovascular_06.webp",
-      "imagenPlaceholder": "assets/images/recetas/cardiovascular_06_placeholder.webp"
+      "imagen": "assets/images/recetas/cardiovascular_06.webp"
     },
     {
       "id": "cardiovascular_07",
@@ -216,8 +210,7 @@
       "almacenamiento": "conservar en frasco hermético hasta 2 semanas.",
       "evidencia": "",
       "categoria": "cardiovascular",
-      "imagen": "assets/images/recetas/cardiovascular_07.webp",
-      "imagenPlaceholder": "assets/images/recetas/cardiovascular_07_placeholder.webp"
+      "imagen": "assets/images/recetas/cardiovascular_07.webp"
     },
     {
       "id": "cardiovascular_08",
@@ -248,8 +241,7 @@
       "almacenamiento": "no guardar una vez licuado.",
       "evidencia": "",
       "categoria": "cardiovascular",
-      "imagen": "assets/images/recetas/cardiovascular_08.webp",
-      "imagenPlaceholder": "assets/images/recetas/cardiovascular_08_placeholder.webp"
+      "imagen": "assets/images/recetas/cardiovascular_08.webp"
     },
     {
       "id": "cardiovascular_09",
@@ -279,8 +271,7 @@
       "almacenamiento": "conservar en lugar fresco y oscuro hasta 3 meses.",
       "evidencia": "",
       "categoria": "cardiovascular",
-      "imagen": "assets/images/recetas/cardiovascular_09.webp",
-      "imagenPlaceholder": "assets/images/recetas/cardiovascular_09_placeholder.webp"
+      "imagen": "assets/images/recetas/cardiovascular_09.webp"
     },
     {
       "id": "cardiovascular_10",
@@ -310,8 +301,7 @@
       "almacenamiento": "guardar en lugar fresco y oscuro hasta 3 meses.",
       "evidencia": "",
       "categoria": "cardiovascular",
-      "imagen": "assets/images/recetas/cardiovascular_10.webp",
-      "imagenPlaceholder": "assets/images/recetas/cardiovascular_10_placeholder.webp"
+      "imagen": "assets/images/recetas/cardiovascular_10.webp"
     },
     {
       "id": "cardiovascular_11",
@@ -340,8 +330,7 @@
       "almacenamiento": "preparar fresca cada vez.",
       "evidencia": "",
       "categoria": "cardiovascular",
-      "imagen": "assets/images/recetas/cardiovascular_11.webp",
-      "imagenPlaceholder": "assets/images/recetas/cardiovascular_11_placeholder.webp"
+      "imagen": "assets/images/recetas/cardiovascular_11.webp"
     },
     {
       "id": "cardiovascular_12",
@@ -371,8 +360,7 @@
       "almacenamiento": "preparar justo antes de tomar.",
       "evidencia": "",
       "categoria": "cardiovascular",
-      "imagen": "assets/images/recetas/cardiovascular_12.webp",
-      "imagenPlaceholder": "assets/images/recetas/cardiovascular_12_placeholder.webp"
+      "imagen": "assets/images/recetas/cardiovascular_12.webp"
     }
   ]
 }
