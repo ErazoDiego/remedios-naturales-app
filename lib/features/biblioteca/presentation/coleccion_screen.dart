@@ -220,9 +220,12 @@ class ColeccionScreen extends StatelessWidget {
     );
   }
 
-  /// Card de receta. Bloqueada (sin acceso): lock ámbar y el toque
-  /// abre el diálogo de desbloqueo. Desbloqueada: chevron y navega
-  /// al detalle.
+  /// Card de receta — mismo layout que el listado de un sistema del
+  /// núcleo (category_screen): imagen 72x72 + badge de preparación +
+  /// título + tags "ideal para" + chevron/candado.
+  ///
+  /// La imagen se muestra siempre (bloqueada o no, como el núcleo); el
+  /// bloqueo se comunica con el candado del lado derecho.
   Widget _buildRecetaCard(
     BuildContext context,
     Coleccion coleccion,
@@ -230,8 +233,13 @@ class ColeccionScreen extends StatelessWidget {
     Color accent, {
     required bool bloqueada,
   }) {
+    final tipo = rc.receta.tipoPreparacion.isNotEmpty
+        ? rc.receta.tipoPreparacion
+        : rc.receta.tipo;
+    final preparacionStyle = AppConstants.getPreparacionStyle(tipo);
+
     return Container(
-      margin: const EdgeInsets.only(bottom: 8),
+      margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -255,51 +263,143 @@ class ColeccionScreen extends StatelessWidget {
           );
         },
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+          padding: const EdgeInsets.all(14),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(iconoDeColeccion(coleccion.icono), size: 22, color: accent),
-              const SizedBox(width: 12),
+              // ─── Imagen (siempre si la receta tiene; el bloqueo se
+              // comunica con el candado del lado derecho, como el núcleo) ───
+              _buildThumbReceta(rc, preparacionStyle),
+              const SizedBox(width: 14),
+
+              // ─── Columna de texto (badge + título + tags) ───
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Badge de tipo de preparación.
+                    if (tipo.isNotEmpty)
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 3,
+                        ),
+                        decoration: BoxDecoration(
+                          color: preparacionStyle.bg,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: Text(
+                          tipo,
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w600,
+                            color: preparacionStyle.fg,
+                            letterSpacing: 0.2,
+                          ),
+                        ),
+                      ),
+                    if (tipo.isNotEmpty) const SizedBox(height: 8),
+
+                    // Título de la receta (envuelve en 2 líneas).
                     Text(
                       rc.receta.nombre,
                       style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
                         color: AppConstants.textPrimary,
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      rc.receta.descripcion,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: AppConstants.textSecondary,
+                        letterSpacing: -0.2,
                         height: 1.3,
                       ),
                     ),
+
+                    // Tags "ideal para" — máx 3 visibles.
+                    if (rc.receta.idealPara.isNotEmpty) ...[
+                      const SizedBox(height: 8),
+                      Wrap(
+                        spacing: 6,
+                        runSpacing: 6,
+                        children: rc.receta.idealPara.take(3).map((condicion) {
+                          return Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 3,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppConstants.warmGrayCard,
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            child: Text(
+                              condicion,
+                              style: const TextStyle(
+                                fontSize: 11,
+                                color: AppConstants.warmGraySubtitle,
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ],
                   ],
                 ),
               ),
-              bloqueada
-                  ? const Icon(
-                      TablerIcons.lock,
-                      size: 18,
-                      color: AppConstants.alertAmber,
-                    )
-                  : const Icon(
-                      TablerIcons.chevron_right,
-                      size: 18,
-                      color: AppConstants.textTertiary,
-                    ),
+
+              // ─── Chevron de navegación / candado premium ───
+              Padding(
+                padding: const EdgeInsets.only(left: 8, top: 16),
+                child: bloqueada
+                    ? const Icon(
+                        TablerIcons.lock,
+                        size: 18,
+                        color: AppConstants.alertAmber,
+                      )
+                    : const Icon(
+                        TablerIcons.chevron_right,
+                        size: 18,
+                        color: AppConstants.textTertiary,
+                      ),
+              ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  /// Thumbnail 72x72 de la receta — mismo comportamiento que el listado
+  /// del núcleo (category_screen): la imagen se muestra SIEMPRE que la
+  /// receta la tenga, esté bloqueada o no. El bloqueo se comunica con el
+  /// candado del lado derecho (lock/chevron), nunca ocultando la foto.
+  /// Si no hay imagen o el asset falla → placeholder de color con el
+  /// ícono de la preparación (mismo fallback que el núcleo).
+  Widget _buildThumbReceta(
+    RecetaColeccion rc,
+    PreparacionStyle preparacionStyle,
+  ) {
+    final Widget colorPlaceholder = Container(
+      width: 72,
+      height: 72,
+      decoration: BoxDecoration(
+        color: preparacionStyle.bg,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Icon(
+        preparacionStyle.icon,
+        size: 28,
+        color: preparacionStyle.fg,
+      ),
+    );
+
+    final imagen = rc.receta.imagen;
+    if (imagen == null || imagen.isEmpty) return colorPlaceholder;
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: Image.asset(
+        imagen,
+        width: 72,
+        height: 72,
+        fit: BoxFit.cover,
+        errorBuilder: (_, __, ___) => colorPlaceholder,
       ),
     );
   }

@@ -23,32 +23,41 @@ void main() {
   late PremiumProvider premium;
   late BibliotecaRepository repo;
 
-  Map<String, dynamic> filaJugos() => {
-        'id': 'jugos',
-        'nombre': 'Jugos naturales',
-        'descripcion': 'Jugos de prueba',
-        'icono': 'glass-full',
-        'color': 'verde',
-        'activa': true,
-        'orden': 1,
-        'version': 1,
-        'recetas': [
-          {
-            'id': 'jugos_01',
-            'nombre': 'Jugo verde matinal',
-            'descripcion': 'Apio y manzana',
-            'idealPara': ['Energía'],
-            'tipo': 'interno',
-            'tipoPreparacion': 'bebida',
-            'precaucion': 'cuidado',
-            'ingredientes': ['apio'],
-            'preparacion': ['licuar'],
-            'dosis': '1 vaso',
-            'almacenamiento': 'frasco',
-            'keywords': ['jugo', 'verde'],
-          },
-        ],
-      };
+  /// Filas del catálogo, leídas LAZY por el MockClient en cada request
+  /// (mismo patrón que biblioteca_screen_test): se setean en el BODY
+  /// del test; un segundo SupabaseClient dejaría el timer de autoRefresh
+  /// pendiente y el test fallaría al final.
+  List<Map<String, dynamic>>? filasCatalogo;
+
+  Map<String, dynamic> filaJugos({String? imagen}) {
+    return {
+      'id': 'jugos',
+      'nombre': 'Jugos naturales',
+      'descripcion': 'Jugos de prueba',
+      'icono': 'glass-full',
+      'color': 'verde',
+      'activa': true,
+      'orden': 1,
+      'version': 1,
+      'recetas': [
+        {
+          'id': 'jugos_01',
+          'nombre': 'Jugo verde matinal',
+          'descripcion': 'Apio y manzana',
+          'idealPara': ['Energía'],
+          'tipo': 'interno',
+          'tipoPreparacion': 'bebida',
+          'precaucion': 'cuidado',
+          'ingredientes': ['apio'],
+          'preparacion': ['licuar'],
+          'dosis': '1 vaso',
+          'almacenamiento': 'frasco',
+          'imagen': imagen,
+          'keywords': ['jugo', 'verde'],
+        },
+      ],
+    };
+  }
 
   SupabaseClient fakeClient() {
     http.Response jsonResp(http.Request request, Object? body, int status) {
@@ -65,7 +74,7 @@ void main() {
       'fake-publishable-key',
       httpClient: MockClient((request) async {
         if (request.url.path == '/rest/v1/colecciones') {
-          return jsonResp(request, [filaJugos()], 200);
+          return jsonResp(request, filasCatalogo ?? [filaJugos()], 200);
         }
         return http.Response('Not found: ${request.url.path}', 404,
             request: request);
@@ -75,6 +84,7 @@ void main() {
   }
 
   setUp(() async {
+    filasCatalogo = null; // default: sin placeholder (ícono)
     SharedPreferences.setMockInitialValues({});
     await UserService().clearAll();
     premium = PremiumProvider(payment: MockPaymentService());
@@ -309,5 +319,79 @@ void main() {
 
     expect(find.byIcon(TablerIcons.lock), findsNothing);
     expect(find.byIcon(TablerIcons.chevron_right), findsOneWidget);
+  });
+
+  testWidgets(
+      'sin acceso: la receta candada MUESTRA su imagen + candado '
+      '(como el núcleo: el bloqueo no oculta la foto)', (tester) async {
+    filasCatalogo = [
+      filaJugos(
+        imagen: 'assets/images/recetas/jugos_01_limpiador_radiante.webp',
+      ),
+    ];
+    await pumpColeccion(tester);
+
+    expect(find.byIcon(TablerIcons.lock), findsOneWidget);
+    // La imagen se ve aunque esté candada (mismo comportamiento que
+    // category_screen: receta.imagen != null → Image.asset siempre).
+    expect(find.byType(Image), findsOneWidget);
+    final image = tester.widget<Image>(find.byType(Image));
+    final assetName = (image.image as AssetImage).assetName;
+    expect(assetName, 'assets/images/recetas/jugos_01_limpiador_radiante.webp');
+  });
+
+  testWidgets(
+      'sin acceso: receta candada SIN imagen → color + ícono (fallback)',
+      (tester) async {
+    await pumpColeccion(tester);
+
+    expect(find.byIcon(TablerIcons.lock), findsOneWidget);
+    expect(find.byType(Image), findsNothing);
+    expect(find.byIcon(TablerIcons.cup), findsOneWidget);
+  });
+
+  testWidgets(
+      'con pack: la receta muestra su imagen real (nítida, 800x446)',
+      (tester) async {
+    // flutter test empaqueta los assets del pubspec: la imagen real
+    // carga de verdad en el listado desbloqueado.
+    filasCatalogo = [
+      filaJugos(
+        imagen: 'assets/images/recetas/jugos_01_limpiador_radiante.webp',
+      ),
+    ];
+    await premium.purchasePack('jugos');
+    await pumpColeccion(tester);
+
+    expect(find.text('Jugo verde matinal'), findsOneWidget);
+    expect(find.byType(Image), findsOneWidget);
+    final image = tester.widget<Image>(find.byType(Image));
+    final assetName = (image.image as AssetImage).assetName;
+    // Desbloqueada → imagen full, no el LQIP.
+    expect(assetName, 'assets/images/recetas/jugos_01_limpiador_radiante.webp');
+  });
+
+  testWidgets(
+      'con pack: imagen rota (asset inexistente) → fallback color + '
+      'ícono de preparación', (tester) async {
+    filasCatalogo = [
+      filaJugos(imagen: 'assets/images/recetas/no_existe.webp'),
+    ];
+    await premium.purchasePack('jugos');
+    await pumpColeccion(tester);
+
+    // En fake-async el decode del asset inexistente puede quedar pendiente
+    // dentro del pumpAndSettle; con runAsync el file IO real corre y el
+    // errorBuilder rebuilda con el fallback.
+    await tester.runAsync(
+      () => Future<void>.delayed(const Duration(milliseconds: 100)),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('Jugo verde matinal'), findsOneWidget);
+    // errorBuilder → placeholder de color con el ícono de 'bebida'.
+    // (El widget Image queda montado: el errorBuilder reemplaza el child
+    // interno, no el Image en sí.)
+    expect(find.byIcon(TablerIcons.cup), findsOneWidget);
   });
 }
