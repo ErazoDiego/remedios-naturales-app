@@ -25,7 +25,11 @@ void main() {
   late BibliotecaProvider biblioteca;
   late BibliotecaRepository repo;
 
-  Map<String, dynamic> filaJugos() => {
+  /// Filas del catálogo, leídas LAZY por el MockClient en cada request.
+  /// null = filaJugos() sin portada (fallback al ícono).
+  List<Map<String, dynamic>>? filasCatalogo;
+
+  Map<String, dynamic> filaJugos({String? imagen}) => {
         'id': 'jugos',
         'nombre': 'Jugos naturales',
         'descripcion': 'Jugos de prueba',
@@ -34,6 +38,7 @@ void main() {
         'activa': true,
         'orden': 1,
         'version': 1,
+        'imagen': imagen,
         'recetas': [
           {
             'id': 'jugos_01',
@@ -67,7 +72,7 @@ void main() {
       'fake-publishable-key',
       httpClient: MockClient((request) async {
         if (request.url.path == '/rest/v1/colecciones') {
-          return jsonResp(request, [filaJugos()], 200);
+          return jsonResp(request, filasCatalogo ?? [filaJugos()], 200);
         }
         return http.Response('Not found: ${request.url.path}', 404,
             request: request);
@@ -79,6 +84,7 @@ void main() {
   setUp(() async {
     SharedPreferences.setMockInitialValues({});
     await UserService().clearAll();
+    filasCatalogo = null; // default: sin portada (ícono)
     premium = PremiumProvider(payment: MockPaymentService());
     await premium.init();
     repo = BibliotecaRepository();
@@ -88,10 +94,15 @@ void main() {
   });
 
   tearDown(() {
+    repo.testClient?.dispose();
     repo.testClient = null;
   });
 
   Future<void> pumpTienda(WidgetTester tester) async {
+    // Mismo patrón que pumpBiblioteca: provider NUEVO con init() acá,
+    // así el MockClient lee filasCatalogo YA seteada (re-fetch real).
+    final biblioteca = BibliotecaProvider(premium: premium, repo: repo);
+    await biblioteca.init();
     final router = GoRouter(
       initialLocation: '/tienda',
       routes: [
@@ -158,6 +169,27 @@ void main() {
 
     expect(find.text('Incluida en Premium'), findsOneWidget);
     expect(find.text('Comprar · USD 1.99'), findsNothing);
+  });
+
+  testWidgets('portada: la tarjeta de la tienda muestra la imagen',
+      (tester) async {
+    filasCatalogo = [
+      filaJugos(imagen: 'assets/images/recetas/portada_jugos.webp'),
+    ];
+    await pumpTienda(tester);
+
+    expect(find.text('Jugos naturales'), findsOneWidget);
+    expect(find.byType(Image), findsOneWidget);
+    expect(find.byIcon(TablerIcons.glass_full), findsNothing);
+  });
+
+  testWidgets('sin portada: la tarjeta muestra el ícono de la familia visual',
+      (tester) async {
+    await pumpTienda(tester);
+
+    expect(find.text('Jugos naturales'), findsOneWidget);
+    expect(find.byIcon(TablerIcons.glass_full), findsOneWidget);
+    expect(find.byType(Image), findsNothing);
   });
 
   testWidgets('tocar la tarjeta navega a la vista previa con candados',

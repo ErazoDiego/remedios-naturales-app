@@ -281,7 +281,7 @@ class _BibliotecaScreenState extends State<BibliotecaScreen> {
         onTap: () => context.push('/biblioteca/${coleccion.id}'),
         child: Row(
           children: [
-            Icon(iconoDeColeccion(coleccion.icono), size: 24, color: accent),
+            coleccionThumb(coleccion, accent),
             const SizedBox(width: 12),
             Expanded(
               child: Column(

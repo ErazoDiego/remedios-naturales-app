@@ -80,7 +80,6 @@ class _TiendaCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final biblioteca = context.watch<BibliotecaProvider>();
     final accent = colorDeColeccion(coleccion.color);
-    final background = colorFondoDeColeccion(coleccion.color);
     final laTiene = biblioteca.puedeAcceder(coleccion.id);
     final precio = biblioteca.precio(coleccion.id);
     final isLoading = biblioteca.isLoading;
@@ -107,18 +106,7 @@ class _TiendaCard extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: background,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Icon(
-                    iconoDeColeccion(coleccion.icono),
-                    size: 26,
-                    color: accent,
-                  ),
-                ),
+                coleccionThumb(coleccion, accent),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Column(

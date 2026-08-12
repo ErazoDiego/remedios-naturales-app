@@ -29,7 +29,6 @@ void main() {
         'dosis': '1 vaso',
         'almacenamiento': 'Frasco',
         'imagen': null,
-        'imagenPlaceholder': null,
         'keywords': keywords,
       };
 
@@ -195,6 +194,17 @@ void main() {
       expect(clon.recetas[1].keywords, containsAll(['naranja', 'defensas']));
     });
 
+    test('round-trip con imagen de portada', () {
+      final original = Coleccion.fromJson({
+        ...filaJugos(),
+        'imagen': 'assets/images/recetas/portada_jugos.webp',
+      });
+
+      expect(original.imagen, 'assets/images/recetas/portada_jugos.webp');
+      final clon = Coleccion.fromJson(original.toJson());
+      expect(clon.imagen, original.imagen);
+    });
+
     test('campos faltantes tienen defaults', () {
       final coleccion = Coleccion.fromJson({'id': 'minima'});
 
@@ -202,6 +212,7 @@ void main() {
       expect(coleccion.icono, 'leaf');
       expect(coleccion.color, 'verde');
       expect(coleccion.activa, isTrue);
+      expect(coleccion.imagen, isNull);
       expect(coleccion.recetas, isEmpty);
     });
   });

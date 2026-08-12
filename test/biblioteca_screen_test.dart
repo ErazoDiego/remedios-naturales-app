@@ -13,6 +13,7 @@ import 'package:remedios_naturales_app/presentation/providers/biblioteca_provide
 import 'package:remedios_naturales_app/presentation/providers/premium_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:tabler_icons/tabler_icons.dart';
 
 /// BibliotecaScreen: colecciones descargadas + buscador + entrada a Tienda.
 void main() {
@@ -21,7 +22,13 @@ void main() {
   late PremiumProvider premium;
   late BibliotecaRepository repo;
 
-  Map<String, dynamic> filaJugos() => {
+  /// Filas del catálogo, leídas LAZY por el MockClient en cada request.
+  /// Se setean en el BODY del test antes del pump (el client se crea una
+  /// sola vez en el setUp; un segundo SupabaseClient dejaría el timer de
+  /// autoRefresh pendiente y el test fallaría al final).
+  List<Map<String, dynamic>>? filasCatalogo;
+
+  Map<String, dynamic> filaJugos({String? imagen}) => {
         'id': 'jugos',
         'nombre': 'Jugos naturales',
         'descripcion': 'Jugos de prueba',
@@ -30,6 +37,7 @@ void main() {
         'activa': true,
         'orden': 1,
         'version': 1,
+        'imagen': imagen,
         'recetas': [
           {
             'id': 'jugos_01',
@@ -63,7 +71,7 @@ void main() {
       'fake-publishable-key',
       httpClient: MockClient((request) async {
         if (request.url.path == '/rest/v1/colecciones') {
-          return jsonResp(request, [filaJugos()], 200);
+          return jsonResp(request, filasCatalogo ?? [filaJugos()], 200);
         }
         return http.Response('Not found: ${request.url.path}', 404,
             request: request);
@@ -73,6 +81,7 @@ void main() {
   }
 
   setUp(() async {
+    filasCatalogo = null; // default: filaJugos() sin portada
     SharedPreferences.setMockInitialValues({});
     await UserService().clearAll();
     premium = PremiumProvider(payment: MockPaymentService());
@@ -82,6 +91,9 @@ void main() {
   });
 
   tearDown(() {
+    // dispose cancela el timer de autoRefresh del GoTrueClient; si un
+    // test creó un client propio (filas custom) queda el ÚLTIMO.
+    repo.testClient?.dispose();
     repo.testClient = null;
   });
 
@@ -148,5 +160,42 @@ void main() {
     expect(find.byType(TextField), findsOneWidget);
     // Banner de tienda: ya tiene todo lo disponible.
     expect(find.text('Ya tenés todo lo disponible.'), findsOneWidget);
+  });
+
+  testWidgets('colección con portada: la tarjeta renderiza la imagen',
+      (tester) async {
+    // flutter test empaqueta los assets del pubspec: la portada real
+    // carga de verdad y reemplaza al ícono de la colección.
+    filasCatalogo = [
+      filaJugos(imagen: 'assets/images/recetas/portada_jugos.webp'),
+    ];
+    await premium.purchasePack('jugos');
+    await pumpBiblioteca(tester);
+
+    expect(find.text('Jugos naturales'), findsOneWidget);
+    expect(find.byType(Image), findsOneWidget);
+    expect(find.byIcon(TablerIcons.glass_full), findsNothing);
+  });
+
+  testWidgets('portada rota (asset inexistente): fallback al ícono sin romper',
+      (tester) async {
+    filasCatalogo = [
+      filaJugos(imagen: 'assets/images/recetas/no_existe.webp'),
+    ];
+    await premium.purchasePack('jugos');
+    await pumpBiblioteca(tester);
+
+    expect(find.text('Jugos naturales'), findsOneWidget);
+    // errorBuilder → ícono de la familia visual.
+    expect(find.byIcon(TablerIcons.glass_full), findsOneWidget);
+  });
+
+  testWidgets('colección sin portada: ícono de la familia visual',
+      (tester) async {
+    await premium.purchasePack('jugos');
+    await pumpBiblioteca(tester);
+
+    expect(find.text('Jugos naturales'), findsOneWidget);
+    expect(find.byIcon(TablerIcons.glass_full), findsOneWidget);
   });
 }
