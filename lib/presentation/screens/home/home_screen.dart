@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../../features/lista_compras/presentation/lista_compras_provider.dart';
 import '../../providers/recetas_provider.dart';
 import '../../widgets/loading_error_empty.dart';
 
@@ -89,24 +90,55 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Título con ícono de hoja
+                    // Título con ícono de hoja + carrito de compras a la
+                    // derecha (patrón e-commerce: acceso permanente con
+                    // badge que solo aparece cuando hay ítems cargados).
+                    // El SizedBox(44) balancea el IconButton para que el
+                    // título quede visualmente centrado.
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
-                          TablerIcons.leaf,
-                          size: 24,
-                          color: AppConstants.sageGreenTitle,
-                        ),
-                        const SizedBox(width: 10),
-                        const Text(
-                          'Remedios Naturales',
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w600,
-                            color: AppConstants.textPrimary,
-                            letterSpacing: -0.3,
+                        const SizedBox(width: 44),
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                TablerIcons.leaf,
+                                size: 24,
+                                color: AppConstants.sageGreenTitle,
+                              ),
+                              const SizedBox(width: 10),
+                              const Text(
+                                'Remedios Naturales',
+                                style: TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppConstants.textPrimary,
+                                  letterSpacing: -0.3,
+                                ),
+                              ),
+                            ],
                           ),
+                        ),
+                        Consumer<ListaComprasProvider>(
+                          builder: (context, provider, child) {
+                            final items = provider.totalItems;
+                            return Badge(
+                              isLabelVisible: items > 0,
+                              label: Text('$items'),
+                              backgroundColor: AppConstants.alertAmber,
+                              textColor: Colors.white,
+                              child: IconButton(
+                                icon: const Icon(
+                                  TablerIcons.shopping_cart,
+                                  size: 22,
+                                  color: AppConstants.sageGreenTitle,
+                                ),
+                                tooltip: 'Lista de compras',
+                                onPressed: () => context.go('/lista-compras'),
+                              ),
+                            );
+                          },
                         ),
                       ],
                     ),

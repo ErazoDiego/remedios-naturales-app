@@ -4,6 +4,7 @@ import '../../features/biblioteca/presentation/biblioteca_screen.dart';
 import '../../features/biblioteca/presentation/coleccion_screen.dart';
 import '../../features/biblioteca/presentation/receta_coleccion_screen.dart';
 import '../../features/biblioteca/presentation/tienda_screen.dart';
+import '../../features/lista_compras/presentation/lista_compras_screen.dart';
 import '../../presentation/screens/home/home_screen.dart';
 import '../../presentation/screens/category/category_screen.dart';
 import '../../presentation/screens/remedy_detail/remedy_detail_screen.dart';
@@ -200,6 +201,13 @@ class AppRouter {
       GoRoute(
         path: '/premium',
         builder: (context, state) => const PremiumScreen(),
+      ),
+
+      // Lista de compras (full-screen, fuera de las 5 tabs: la lista es
+      // del usuario, no un lugar de la app)
+      GoRoute(
+        path: '/lista-compras',
+        builder: (context, state) => const ListaComprasScreen(),
       ),
 
       // ═══════════════════════════════════════════════════════════

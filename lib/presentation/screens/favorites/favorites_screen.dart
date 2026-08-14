@@ -184,6 +184,18 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         ),
         backgroundColor: AppConstants.headerBeige,
         foregroundColor: AppConstants.textPrimary,
+        actions: [
+          // Atajo a la lista de compras (las recetas favoritas alimentan la lista)
+          IconButton(
+            icon: const Icon(
+              TablerIcons.shopping_cart,
+              size: 20,
+              color: AppConstants.sageGreenTitle,
+            ),
+            tooltip: 'Lista de compras',
+            onPressed: () => context.go('/lista-compras'),
+          ),
+        ],
       ),
       body: Column(
         children: [

@@ -12,6 +12,7 @@ import 'presentation/providers/hierbas_provider.dart';
 import 'presentation/providers/mis_recetas_provider.dart';
 import 'presentation/providers/premium_provider.dart';
 import 'presentation/providers/biblioteca_provider.dart';
+import 'features/lista_compras/presentation/lista_compras_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,6 +44,9 @@ class RemediosNaturalesApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => PremiumProvider()..init()),
         ChangeNotifierProvider(create: (_) => HierbasProvider()),
         ChangeNotifierProvider(create: (_) => MisRecetasProvider()),
+        ChangeNotifierProvider(
+          create: (_) => ListaComprasProvider()..init(),
+        ),
         ChangeNotifierProvider(
           // IMPORTANTE: usar el context del create (parámetro), NO una
           // variable capturada del build: el context del build está ARRIBA

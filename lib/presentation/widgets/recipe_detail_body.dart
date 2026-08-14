@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../core/constants/app_constants.dart';
 import '../../data/models/receta.dart';
+import 'agregar_a_lista_button.dart';
 
 /// Cuerpo del detalle de receta, COMPARTIDO entre el núcleo embebido
 /// (RemedyDetailScreen) y las recetas de colección de la Biblioteca.
@@ -272,6 +273,19 @@ class RecipeDetailBody extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 12),
+
+                // ═══════════════════════════════════════════════════════════
+                // AGREGAR A LA LISTA DE COMPRAS
+                // (solo si la receta tiene ingredientes; la lista la
+                // alimenta el usuario, la receta solo la suma)
+                // ═══════════════════════════════════════════════════════════
+                if (receta.ingredientes.isNotEmpty) ...[
+                  AgregarAListaButton(
+                    recetaNombre: receta.nombre,
+                    ingredientes: receta.ingredientes,
+                  ),
+                  const SizedBox(height: 12),
+                ],
 
                 // ═══════════════════════════════════════════════════════════
                 // PREPARACIÓN

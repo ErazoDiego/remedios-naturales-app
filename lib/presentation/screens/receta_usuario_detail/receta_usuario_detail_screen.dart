@@ -8,6 +8,7 @@ import '../../../data/models/receta_usuario.dart';
 import '../../providers/premium_provider.dart';
 import '../../providers/user_provider.dart';
 import '../../widgets/ads/banner_ad_widget.dart';
+import '../../widgets/agregar_a_lista_button.dart';
 import '../../widgets/premium/premium_dialog.dart';
 
 /// Detalle de una receta propia del usuario.
@@ -322,9 +323,15 @@ class RecetaUsuarioDetailScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 12),
+                    // Botón de lista de compras (solo con ingredientes)
+                    AgregarAListaButton(
+                      recetaNombre: receta.nombre,
+                      ingredientes: receta.ingredientes,
+                    ),
+                    const SizedBox(height: 12),
                   ],
 
-                  // ═══════════════════════════════════════════════
+                  // ═══════════════════════════════════════════════════
                   // PREPARACIÓN (numerada)
                   // ═══════════════════════════════════════════════
                   if (receta.preparacion.isNotEmpty) ...[
