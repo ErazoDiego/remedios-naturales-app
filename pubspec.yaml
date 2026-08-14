@@ -33,6 +33,7 @@ dependencies:
   in_app_purchase: ^3.2.0
   # Platform addition de Android (queryPastPurchases para restore en frío).
   in_app_purchase_android: ^0.5.0
+  share_plus: ^13.3.0
 
 dev_dependencies:
   flutter_test:
