@@ -205,20 +205,37 @@ class UserService {
   }
 
   // ═══════════════════════════════════════════════════════════════════
-  // PREMIUM / PACKS (modelo freemium)
+  // PREMIUM / PACKS (modelo freemium con suscripciones + compras únicas)
   // ═══════════════════════════════════════════════════════════════════
 
-  /// Marca/desmarca al usuario como premium. Lo llama PremiumProvider
-  /// tras confirmar la compra (o el restore en otro dispositivo).
-  Future<void> setPremium(bool value) async {
+  /// Registra la compra de LIFETIME (compra permanente). Lo llama
+  /// PremiumProvider tras confirmar la compra (o el restore).
+  Future<void> setLifetime(bool value) async {
     if (_isLoggedIn) {
-      await _client.from('perfiles').update({'premium': value}).eq('id', _userId);
+      await _client.from('perfiles').update({'lifetime': value}).eq('id', _userId);
       await _refreshRemoteProfile();
       return;
     }
 
     final profile = await _loadLocalProfile();
-    await _saveLocalProfile(profile.copyWith(premium: value));
+    await _saveLocalProfile(profile.copyWith(lifetime: value));
+  }
+
+  /// Registra el vencimiento de la membresía activa (null = sin
+  /// suscripción). Lo llama PremiumProvider tras confirmar la compra,
+  /// renovar o al vencer el período.
+  Future<void> setPremiumUntil(DateTime? until) async {
+    if (_isLoggedIn) {
+      await _client
+          .from('perfiles')
+          .update({'premium_until': until?.toUtc().toIso8601String()})
+          .eq('id', _userId);
+      await _refreshRemoteProfile();
+      return;
+    }
+
+    final profile = await _loadLocalProfile();
+    await _saveLocalProfile(profile.copyWith(premiumUntil: until));
   }
 
   /// Registra la compra de un pack (ej: 'jugos'). Idempotente: si el
@@ -357,7 +374,7 @@ class UserService {
       final user = _client.auth.currentUser;
       final perfilRows = await _client
           .from('perfiles')
-          .select('nombre, fecha_registro, premium, packs')
+          .select('nombre, fecha_registro, lifetime, premium_until, packs')
           .eq('id', _userId)
           .maybeSingle();
 
@@ -382,7 +399,10 @@ class UserService {
             : DateTime.now(),
         favoritos: favRows.map((r) => r['receta_id'] as String).toList(),
         historial: histRows.map((r) => r['receta_id'] as String).toList(),
-        premium: perfilRows?['premium'] ?? false,
+        lifetime: perfilRows?['lifetime'] ?? false,
+        premiumUntil: perfilRows?['premium_until'] != null
+            ? DateTime.tryParse(perfilRows!['premium_until'].toString())
+            : null,
         packs: List<String>.from(perfilRows?['packs'] ?? []),
       );
 

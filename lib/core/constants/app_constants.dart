@@ -11,16 +11,31 @@ class AppConstants {
   static const String appDescription = 'Tu guía de bienestar natural';
 
   // ═══════════════════════════════════════════════════════════════════
-  // MODELO PREMIUM (freemium - compra única)
+  // MODELO PREMIUM (freemium con suscripciones + compras individuales)
   // ═══════════════════════════════════════════════════════════════════
-  // Plan FREE: 5 favoritos y 5 recetas propias. Premium: ilimitado.
-  // Las recetas "gratis por sistema" (muestreo) se configuran aparte
-  // en PremiumRules (la lista la elige el usuario/producto).
+  // Plan FREE: 5 favoritos y 5 recetas propias, con anuncios.
+  // Acceso total (sistemas + colecciones, presentes y futuras):
+  //   - Membresía mensual (30 días) — yuyo_mensual
+  //   - Membresía anual (365 días) — yuyo_anual
+  //   - Lifetime (compra permanente) — yuyo_lifetime
+  // Compras individuales (PARA SIEMPRE, no se pierden al vencer la
+  // membresía): packs por sistema y packs por colección — yuyo_pack_*.
+  // Los anuncios solo los quitan la membresía y el lifetime; los packs
+  // NO quitan anuncios (regla de producto 2026-08-15).
   static const int freeFavoritosLimit = 5;
   static const int freeMisRecetasLimit = 5;
 
-  // Producto de pago de Google Play (compra única).
-  static const String premiumProductId = 'yuyo_premium';
+  // Precios de referencia (Play Console define el real; el Mock los usa
+  // para desarrollo). Precios definidos 2026-08-15.
+  static const String mensualProductId = 'yuyo_mensual';
+  static const String anualProductId = 'yuyo_anual';
+  static const String lifetimeProductId = 'yuyo_lifetime';
+
+  /// Duración de la membresía mensual.
+  static const Duration mensualDuracion = Duration(days: 30);
+
+  /// Duración de la membresía anual.
+  static const Duration anualDuracion = Duration(days: 365);
 
   /// Producto IAP del pack de un sistema (ej: 'yuyo_pack_digestivo').
   ///

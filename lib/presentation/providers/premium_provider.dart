@@ -5,19 +5,22 @@ import '../../core/services/payments/payment_service.dart';
 import '../../core/services/payments/payment_service_factory.dart';
 import '../../core/services/payments/premium_rules.dart';
 
-/// Provider del estado premium + packs por sistema (compras únicas).
+/// Provider del estado premium (membresías + lifetime) y packs por
+/// sistema/colección (compras únicas).
 ///
 /// Fuente de verdad = [PaymentService] (Google Play Billing / Mock),
 /// reconciliado con el perfil persistido en Supabase/local para
 /// restaurar la compra en otro dispositivo o tras reinstalar.
 ///
-/// - Premium: OR entre pago del dispositivo y perfil (un flag).
+/// - Acceso total (`isPremium`): DERIVADO de lifetime O membresía
+///   vigente (`premiumUntil > now`), combinando dispositivo y perfil.
 /// - Packs: UNIÓN entre packs del dispositivo y packs del perfil
-///   (cada sistema es un producto distinto).
+///   (cada sistema/colección es un producto distinto). Las compras
+///   individuales son PARA SIEMPRE: no se pierden al vencer la membresía.
 ///
 /// Al cambiar el estado, sincroniza [AdsService.setPremium] en un solo
-/// lugar: si es premium, banner e intersticial se apagan. Los packs NO
-/// apagan anuncios (solo premium lo hace).
+/// lugar: la membresía (mensual/anual) y el lifetime apagan anuncios.
+/// Los packs NO apagan anuncios (regla de producto).
 class PremiumProvider extends ChangeNotifier {
   final PaymentService _payment;
   final UserService _userService;
@@ -26,13 +29,27 @@ class PremiumProvider extends ChangeNotifier {
       : _payment = payment ?? PaymentServiceFactory.create(),
         _userService = userService ?? UserService();
 
-  bool _isPremium = false;
+  bool _isLifetime = false;
+  DateTime? _premiumUntil;
   bool _isLoading = false;
   String? _error;
   final List<String> _packs = [];
   Map<String, String> _productPrices = {};
 
-  bool get isPremium => _isPremium;
+  /// ¿Acceso total activo? DERIVADO: lifetime o membresía vigente.
+  bool get isPremium =>
+      PremiumRules.esPremiumActivo(
+        lifetime: _isLifetime,
+        premiumUntil: _premiumUntil,
+        now: DateTime.now(),
+      );
+
+  /// ¿Compra lifetime activa?
+  bool get isLifetime => _isLifetime;
+
+  /// Vencimiento de la membresía vigente (null si no hay suscripción).
+  DateTime? get premiumUntil => _premiumUntil;
+
   bool get isLoading => _isLoading;
   String? get error => _error;
 
@@ -46,8 +63,11 @@ class PremiumProvider extends ChangeNotifier {
   /// Precio formateado de un producto, o null si la tienda no lo tiene.
   String? priceFor(String productId) => _productPrices[productId];
 
-  /// Precio del premium (atajo para la UI).
-  String? get premiumPrice => priceFor(PaymentService.premiumProductId);
+  /// Precio del lifetime (atajo para la UI).
+  String? get lifetimePrice => priceFor(PaymentService.lifetimeProductId);
+
+  /// Precio de una membresía (atajo para la UI).
+  String? membershipPrice(MembresiaPlan plan) => priceFor(plan.productId);
 
   /// Consulta precios adicionales (ej: packs de colecciones de la
   /// tienda) y los SUMA al mapa de precios existente.
@@ -61,7 +81,7 @@ class PremiumProvider extends ChangeNotifier {
   /// ¿Tiene acceso a la receta? (premium, muestreo gratis o pack del sistema)
   bool puedeAccederAReceta(String recipeId) =>
       PremiumRules.puedeAccederAReceta(
-        isPremium: _isPremium,
+        isPremium: isPremium,
         recipeId: recipeId,
         packs: _packs,
       );
@@ -73,14 +93,17 @@ class PremiumProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      final paymentPremium = await _payment.init();
+      await _payment.init();
       final devicePacks = _payment.purchasedPacks;
       final profile = await _userService.getCurrentProfile();
-      final profilePremium = profile?.premium ?? false;
+      final profileLifetime = profile?.lifetime ?? false;
+      final profileUntil = profile?.premiumUntil;
       final profilePacks = profile?.packs ?? const [];
 
-      // Premium: OR (un solo flag: la compra puede estar en cualquiera).
-      _isPremium = paymentPremium || profilePremium;
+      // Acceso total: OR entre dispositivo y perfil.
+      _isLifetime = _payment.isLifetime || profileLifetime;
+      final deviceUntil = _payment.premiumUntil;
+      _premiumUntil = _maxDate(deviceUntil, profileUntil);
 
       // Packs: unión (device + perfil).
       _packs
@@ -88,29 +111,15 @@ class PremiumProvider extends ChangeNotifier {
         ..addAll(devicePacks)
         ..addAll(profilePacks.where((p) => !_packs.contains(p)));
 
-      if (_isPremium) {
-        AdsService.instance.setPremium(true);
-        // Compra recién detectada en el dispositivo pero aún no
-        // persistida: registrarla para el restore multi-dispositivo.
-        if (paymentPremium && !profilePremium) {
-          try {
-            await _userService.setPremium(true);
-          } catch (e) {
-            debugPrint('No se pudo persistir premium: $e');
-          }
-        }
-      }
-
-      // Mismo principio para packs: lo que está en el device pero no en
-      // el perfil se registra (idempotente en UserService).
-      for (final packId in devicePacks) {
-        if (profilePacks.contains(packId)) continue;
-        try {
-          await _userService.setPackOwned(packId);
-        } catch (e) {
-          debugPrint('No se pudo persistir pack $packId: $e');
-        }
-      }
+      _syncAds();
+      await _persistNuevos(
+        deviceLifetime: _payment.isLifetime,
+        profileLifetime: profileLifetime,
+        deviceUntil: deviceUntil,
+        profileUntil: profileUntil,
+        devicePacks: devicePacks,
+        profilePacks: profilePacks,
+      );
 
       // Precios de la tienda (para mostrar en PremiumScreen y diálogos).
       _productPrices = await _payment.getProducts();
@@ -122,20 +131,20 @@ class PremiumProvider extends ChangeNotifier {
     }
   }
 
-  /// Inicia la compra de premium. Devuelve true si se completó.
-  Future<bool> purchasePremium() async {
+  /// Compra LIFETIME (acceso permanente). Devuelve true si se completó.
+  Future<bool> purchaseLifetime() async {
     _isLoading = true;
     _error = null;
     notifyListeners();
 
-    final ok = await _payment.purchasePremium();
+    final ok = await _payment.purchaseLifetime();
     if (ok) {
-      _isPremium = true;
-      AdsService.instance.setPremium(true);
+      _isLifetime = true;
+      _syncAds();
       try {
-        await _userService.setPremium(true);
+        await _userService.setLifetime(true);
       } catch (e) {
-        debugPrint('No se pudo persistir premium: $e');
+        debugPrint('No se pudo persistir lifetime: $e');
       }
     } else {
       _error = 'La compra se canceló o no está disponible';
@@ -146,8 +155,33 @@ class PremiumProvider extends ChangeNotifier {
     return ok;
   }
 
-  /// Inicia la compra del pack de un sistema (ej: 'digestivo').
-  /// Devuelve true si el pago se completó y confirmó.
+  /// Contrata una membresía (mensual/anual). Devuelve true si se completó.
+  Future<bool> purchaseSubscription(MembresiaPlan plan) async {
+    _isLoading = true;
+    _error = null;
+    notifyListeners();
+
+    final until = await _payment.purchaseSubscription(plan);
+    if (until != null) {
+      _premiumUntil = _maxDate(_premiumUntil, until);
+      _syncAds();
+      try {
+        await _userService.setPremiumUntil(_premiumUntil);
+      } catch (e) {
+        debugPrint('No se pudo persistir premium_until: $e');
+      }
+    } else {
+      _error = 'La compra se canceló o no está disponible';
+    }
+
+    _isLoading = false;
+    notifyListeners();
+    return until != null;
+  }
+
+  /// Inicia la compra del pack de un sistema o colección (ej: 'digestivo'
+  /// o 'coleccion-id'). Los packs son PARA SIEMPRE. Devuelve true si el
+  /// pago se completó y confirmó.
   Future<bool> purchasePack(String sistemaId) async {
     _isLoading = true;
     _error = null;
@@ -159,7 +193,8 @@ class PremiumProvider extends ChangeNotifier {
       if (!_packs.contains(packId)) {
         _packs.add(packId);
       }
-      // Los packs NO apagan anuncios: solo premium lo hace.
+      // Los packs NO apagan anuncios: solo la membresía y el lifetime.
+      // _syncAds() no hace falta, pero notificamos para actualizar la UI.
       try {
         await _userService.setPackOwned(packId);
       } catch (e) {
@@ -175,25 +210,37 @@ class PremiumProvider extends ChangeNotifier {
   }
 
   /// Restaura compras previas (reinstalación / nuevo dispositivo):
-  /// premium y packs del dispositivo, persistidos al perfil.
+  /// membresías, lifetime y packs del dispositivo, persistidos al perfil.
   Future<bool> restorePurchases() async {
     _isLoading = true;
     _error = null;
     notifyListeners();
 
     try {
-      final restoredPremium = await _payment.restorePurchases();
+      await _payment.restorePurchases();
       final devicePacks = _payment.purchasedPacks;
+      final deviceLifetime = _payment.isLifetime;
+      final deviceUntil = _payment.premiumUntil;
 
-      if (restoredPremium) {
-        _isPremium = true;
-        AdsService.instance.setPremium(true);
+      final restoredAcceso = deviceLifetime || deviceUntil != null;
+
+      if (deviceLifetime) {
+        _isLifetime = true;
         try {
-          await _userService.setPremium(true);
+          await _userService.setLifetime(true);
         } catch (e) {
-          debugPrint('No se pudo persistir premium: $e');
+          debugPrint('No se pudo persistir lifetime: $e');
         }
       }
+      if (deviceUntil != null) {
+        _premiumUntil = _maxDate(_premiumUntil, deviceUntil);
+        try {
+          await _userService.setPremiumUntil(_premiumUntil);
+        } catch (e) {
+          debugPrint('No se pudo persistir premium_until: $e');
+        }
+      }
+      _syncAds();
 
       for (final packId in devicePacks) {
         if (_packs.contains(packId)) continue;
@@ -205,16 +252,64 @@ class PremiumProvider extends ChangeNotifier {
         }
       }
 
-      if (!restoredPremium && devicePacks.isEmpty) {
+      if (!restoredAcceso && devicePacks.isEmpty) {
         _error = 'No se encontraron compras para restaurar';
       }
-      return restoredPremium || devicePacks.isNotEmpty;
+      return restoredAcceso || devicePacks.isNotEmpty;
     } catch (e) {
       _error = 'Error al restaurar compras: $e';
       return false;
     } finally {
       _isLoading = false;
       notifyListeners();
+    }
+  }
+
+  // ── Internos ────────────────────────────────────────────────────────
+
+  void _syncAds() {
+    AdsService.instance.setPremium(isPremium);
+  }
+
+  /// Máxima de dos fechas (null-safe).
+  DateTime? _maxDate(DateTime? a, DateTime? b) {
+    if (a == null) return b;
+    if (b == null) return a;
+    return a.isAfter(b) ? a : b;
+  }
+
+  /// Persiste lo que está en el device pero aún no en el perfil
+  /// (idempotente en UserService) para el restore multi-dispositivo.
+  Future<void> _persistNuevos({
+    required bool deviceLifetime,
+    required bool profileLifetime,
+    required DateTime? deviceUntil,
+    required DateTime? profileUntil,
+    required Set<String> devicePacks,
+    required List<String> profilePacks,
+  }) async {
+    if (deviceLifetime && !profileLifetime) {
+      try {
+        await _userService.setLifetime(true);
+      } catch (e) {
+        debugPrint('No se pudo persistir lifetime: $e');
+      }
+    }
+    if (deviceUntil != null &&
+        (profileUntil == null || deviceUntil.isAfter(profileUntil))) {
+      try {
+        await _userService.setPremiumUntil(deviceUntil);
+      } catch (e) {
+        debugPrint('No se pudo persistir premium_until: $e');
+      }
+    }
+    for (final packId in devicePacks) {
+      if (profilePacks.contains(packId)) continue;
+      try {
+        await _userService.setPackOwned(packId);
+      } catch (e) {
+        debugPrint('No se pudo persistir pack $packId: $e');
+      }
     }
   }
 }

@@ -8,6 +8,17 @@ import '../../constants/app_constants.dart';
 class PremiumRules {
   PremiumRules._();
 
+  /// ¿Acceso total activo? Regla de producto (2026-08-15):
+  /// lifetime (compra permanente) O membresía vigente (premium_until > now).
+  /// Las compras individuales (packs) NO cuentan como premium: solo
+  /// desbloquean su sistema/colección y no quitan anuncios.
+  static bool esPremiumActivo({
+    required bool lifetime,
+    required DateTime? premiumUntil,
+    required DateTime now,
+  }) =>
+      lifetime || (premiumUntil != null && premiumUntil.isAfter(now));
+
   /// ¿Puede el usuario guardar otro favorito?
   static bool canAddFavorite({
     required bool isPremium,
@@ -62,7 +73,7 @@ class PremiumRules {
   ///
   /// Premium incluye TODAS las colecciones, presentes y futuras
   /// (decisión de producto 2026-08-11). Sin premium, se necesita el
-  /// pack de la colección ('yuyo_pack_<coleccionId>', mismo formato que
+  /// pack de la colección ('yuyo_pack_' + [coleccionId], mismo formato que
   /// los packs por sistema).
   static bool puedeAccederRecetaColeccion({
     required String coleccionId,

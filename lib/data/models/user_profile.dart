@@ -7,10 +7,18 @@ class UserProfile {
   final List<String> favoritos;
   final List<String> historial;
 
-  /// Usuario premium (compra única): sin anuncios, todo ilimitado.
-  final bool premium;
+  /// Compra lifetime (compra permanente): desbloquea todo para siempre,
+  /// sin vencimiento. Reemplazó al viejo flag `premium` (compra única).
+  final bool lifetime;
 
-  /// IDs de packs comprados (ej: 'jugos', 'kefir').
+  /// Vencimiento de la suscripción activa (mensual/anual). Null si no
+  /// hay suscripción vigente. El acceso premium se DERIVA:
+  /// `lifetime || premiumUntil > now`.
+  final DateTime? premiumUntil;
+
+  /// IDs de packs comprados (ej: 'yuyo_pack_digestivo', 'yuyo_pack_jugos').
+  /// Las compras individuales son PARA SIEMPRE: sobreviven al vencimiento
+  /// de cualquier suscripción (regla de producto).
   final List<String> packs;
 
   UserProfile({
@@ -20,7 +28,8 @@ class UserProfile {
     required this.fechaRegistro,
     this.favoritos = const [],
     this.historial = const [],
-    this.premium = false,
+    this.lifetime = false,
+    this.premiumUntil,
     this.packs = const [],
   });
 
@@ -32,7 +41,10 @@ class UserProfile {
       fechaRegistro: DateTime.parse(json['fechaRegistro'] ?? DateTime.now().toIso8601String()),
       favoritos: List<String>.from(json['favoritos'] ?? []),
       historial: List<String>.from(json['historial'] ?? []),
-      premium: json['premium'] ?? false,
+      lifetime: json['lifetime'] ?? false,
+      premiumUntil: json['premiumUntil'] != null
+          ? DateTime.tryParse(json['premiumUntil'].toString())
+          : null,
       packs: List<String>.from(json['packs'] ?? []),
     );
   }
@@ -45,16 +57,22 @@ class UserProfile {
       'fechaRegistro': fechaRegistro.toIso8601String(),
       'favoritos': favoritos,
       'historial': historial,
-      'premium': premium,
+      'lifetime': lifetime,
+      'premiumUntil': premiumUntil?.toIso8601String(),
       'packs': packs,
     };
   }
+
+  /// Sentinel para distinguir "no tocar el campo" de "limpiar a null"
+  /// en [copyWith] (el clásico problema de `field ?? this.field`).
+  static const Object _noTocar = Object();
 
   UserProfile copyWith({
     String? nombre,
     List<String>? favoritos,
     List<String>? historial,
-    bool? premium,
+    bool? lifetime,
+    Object? premiumUntil = _noTocar,
     List<String>? packs,
   }) {
     return UserProfile(
@@ -64,7 +82,10 @@ class UserProfile {
       fechaRegistro: fechaRegistro,
       favoritos: favoritos ?? this.favoritos,
       historial: historial ?? this.historial,
-      premium: premium ?? this.premium,
+      lifetime: lifetime ?? this.lifetime,
+      premiumUntil: identical(premiumUntil, _noTocar)
+          ? this.premiumUntil
+          : premiumUntil as DateTime?,
       packs: packs ?? this.packs,
     );
   }
