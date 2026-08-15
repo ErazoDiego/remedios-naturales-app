@@ -235,17 +235,32 @@ void main() {
   });
 
   group('premium remoto', () {
-    test('setPremium(true) hace PATCH de premium en perfiles', () async {
+    test('setLifetime(true) hace PATCH de lifetime en perfiles', () async {
       final log = <http.Request>[];
       service.testClient = fakeClient(requestsLog: log);
       service.setSession(userId: 'user-123', email: 'juan@email.com');
 
-      await service.setPremium(true);
+      await service.setLifetime(true);
 
       final patch = log.firstWhere((r) => r.method == 'PATCH');
       expect(patch.url.path, '/rest/v1/perfiles');
       final body = json.decode(patch.body) as Map<String, dynamic>;
-      expect(body['premium'], isTrue);
+      expect(body['lifetime'], isTrue);
+    });
+
+    test('setPremiumUntil hace PATCH de premium_until en perfiles',
+        () async {
+      final log = <http.Request>[];
+      service.testClient = fakeClient(requestsLog: log);
+      service.setSession(userId: 'user-123', email: 'juan@email.com');
+
+      await service.setPremiumUntil(
+        DateTime.utc(2026, 12, 31),
+      );
+
+      final patch = log.firstWhere((r) => r.method == 'PATCH');
+      final body = json.decode(patch.body) as Map<String, dynamic>;
+      expect(body['premium_until'], '2026-12-31T00:00:00.000Z');
     });
 
     test('setPackOwned hace PATCH con el pack agregado', () async {
@@ -260,16 +275,19 @@ void main() {
       expect(body['packs'], ['jugos']);
     });
 
-    test('getCurrentProfile carga premium y packs de la nube', () async {
+    test('getCurrentProfile carga lifetime, premium_until y packs de la nube',
+        () async {
       service.testClient = fakeClient(perfilExtra: {
-        'premium': true,
+        'lifetime': true,
+        'premium_until': '2026-03-01T00:00:00.000Z',
         'packs': ['jugos'],
       });
       service.setSession(userId: 'user-123', email: 'juan@email.com');
 
       final profile = await service.getCurrentProfile();
 
-      expect(profile!.premium, isTrue);
+      expect(profile!.lifetime, isTrue);
+      expect(profile.premiumUntil, DateTime.utc(2026, 3, 1));
       expect(profile.packs, ['jugos']);
     });
 
@@ -279,7 +297,8 @@ void main() {
 
       final profile = await service.getCurrentProfile();
 
-      expect(profile!.premium, isFalse);
+      expect(profile!.lifetime, isFalse);
+      expect(profile.premiumUntil, isNull);
       expect(profile.packs, isEmpty);
     });
   });

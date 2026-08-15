@@ -192,19 +192,36 @@ void main() {
   // PREMIUM / PACKS (modo anónimo)
   // ═══════════════════════════════════════════════════════════════════
   group('Premium (anónimo)', () {
-    test('setPremium(true) persiste premium en el perfil local', () async {
-      await service.setPremium(true);
+    test('setLifetime(true) persiste lifetime en el perfil local', () async {
+      await service.setLifetime(true);
 
       final profile = await service.getCurrentProfile();
-      expect(profile!.premium, isTrue);
+      expect(profile!.lifetime, isTrue);
     });
 
-    test('setPremium(false) vuelve a free', () async {
-      await service.setPremium(true);
-      await service.setPremium(false);
+    test('setLifetime(false) vuelve a free', () async {
+      await service.setLifetime(true);
+      await service.setLifetime(false);
 
       final profile = await service.getCurrentProfile();
-      expect(profile!.premium, isFalse);
+      expect(profile!.lifetime, isFalse);
+    });
+
+    test('setPremiumUntil persiste la membresía en el perfil local',
+        () async {
+      final hasta = DateTime.now().add(const Duration(days: 30));
+      await service.setPremiumUntil(hasta);
+
+      final profile = await service.getCurrentProfile();
+      expect(profile!.premiumUntil, isNotNull);
+    });
+
+    test('setPremiumUntil(null) limpia la membresía', () async {
+      await service.setPremiumUntil(DateTime.now().add(const Duration(days: 1)));
+      await service.setPremiumUntil(null);
+
+      final profile = await service.getCurrentProfile();
+      expect(profile!.premiumUntil, isNull);
     });
 
     test('setPackOwned agrega el pack al perfil', () async {

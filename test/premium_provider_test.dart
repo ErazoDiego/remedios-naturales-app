@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:remedios_naturales_app/core/services/ads_service.dart';
 import 'package:remedios_naturales_app/core/services/payments/mock_payment_service.dart';
+import 'package:remedios_naturales_app/core/services/payments/payment_service.dart';
 import 'package:remedios_naturales_app/data/services/user_service.dart';
 import 'package:remedios_naturales_app/presentation/providers/premium_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -32,20 +33,39 @@ void main() {
     expect(AdsService.instance.isPremium, isFalse);
   });
 
-  test('purchasePremium: activa premium, apaga anuncios y persiste',
+  test('purchaseLifetime: activa premium, apaga anuncios y persiste',
       () async {
     final provider = PremiumProvider(payment: MockPaymentService());
     await provider.init();
 
-    final ok = await provider.purchasePremium();
+    final ok = await provider.purchaseLifetime();
 
     expect(ok, isTrue);
+    expect(provider.isLifetime, isTrue);
     expect(provider.isPremium, isTrue);
     expect(AdsService.instance.isPremium, isTrue);
 
     // Persistido en el perfil (anónimo local) para restore
     final profile = await UserService().getCurrentProfile();
-    expect(profile!.premium, isTrue);
+    expect(profile!.lifetime, isTrue);
+  });
+
+  test('purchaseSubscription: activa premium temporal y apaga anuncios',
+      () async {
+    final provider = PremiumProvider(payment: MockPaymentService());
+    await provider.init();
+
+    final ok = await provider.purchaseSubscription(MembresiaPlan.mensual);
+
+    expect(ok, isTrue);
+    expect(provider.isLifetime, isFalse);
+    expect(provider.premiumUntil, isNotNull);
+    expect(provider.isPremium, isTrue);
+    expect(AdsService.instance.isPremium, isTrue);
+
+    // Persistido en el perfil (anónimo local) para restore
+    final profile = await UserService().getCurrentProfile();
+    expect(profile!.premiumUntil, isNotNull);
   });
 
   test('compra fallida: no activa premium ni toca el perfil', () async {
@@ -53,7 +73,7 @@ void main() {
     final provider = PremiumProvider(payment: payment);
     await provider.init();
 
-    final ok = await provider.purchasePremium();
+    final ok = await provider.purchaseLifetime();
 
     expect(ok, isFalse);
     expect(provider.isPremium, isFalse);
@@ -61,20 +81,48 @@ void main() {
     expect(provider.error, isNotNull);
 
     final profile = await UserService().getCurrentProfile();
-    expect(profile!.premium, isFalse);
+    expect(profile!.lifetime, isFalse);
   });
 
-  test('init: restaura premium persistido en el perfil (multi-dispositivo)',
+  test('init: restaura lifetime persistido en el perfil (multi-dispositivo)',
       () async {
     // Simula compra previa persistida en el perfil local
-    await UserService().setPremium(true);
+    await UserService().setLifetime(true);
 
     final provider = PremiumProvider(payment: MockPaymentService());
 
     await provider.init();
 
+    expect(provider.isLifetime, isTrue);
     expect(provider.isPremium, isTrue);
     expect(AdsService.instance.isPremium, isTrue);
+  });
+
+  test('init: restaura membresía vigente persistida en el perfil',
+      () async {
+    await UserService().setPremiumUntil(
+      DateTime.now().add(const Duration(days: 20)),
+    );
+
+    final provider = PremiumProvider(payment: MockPaymentService());
+    await provider.init();
+
+    expect(provider.isLifetime, isFalse);
+    expect(provider.premiumUntil, isNotNull);
+    expect(provider.isPremium, isTrue);
+    expect(AdsService.instance.isPremium, isTrue);
+  });
+
+  test('init: membresía VENCIDA en el perfil no activa premium', () async {
+    await UserService().setPremiumUntil(
+      DateTime.now().subtract(const Duration(days: 1)),
+    );
+
+    final provider = PremiumProvider(payment: MockPaymentService());
+    await provider.init();
+
+    expect(provider.isPremium, isFalse);
+    expect(AdsService.instance.isPremium, isFalse);
   });
 
   test('restorePurchases: sin compras previas devuelve false y setea error',
@@ -104,6 +152,33 @@ void main() {
       // Persistido en el perfil (anónimo local) para restore
       final profile = await UserService().getCurrentProfile();
       expect(profile!.packs, contains('yuyo_pack_digestivo'));
+    });
+
+    test('pack comprado antes de la membresía sobrevive al vencimiento '
+        '(compra para siempre)', () async {
+      final device = MockPaymentService();
+      final provider = PremiumProvider(payment: device);
+      await provider.init();
+
+      await provider.purchasePack('digestivo');
+      await provider.purchaseSubscription(MembresiaPlan.mensual);
+
+      // Ambos conviven durante la membresía.
+      expect(provider.packs, contains('yuyo_pack_digestivo'));
+      expect(provider.isPremium, isTrue);
+
+      // La membresía VENCE (el device reporta la sub vencida, como
+      // Google al restaurar) y el perfil se actualiza.
+      await device.expireMembershipForTesting();
+      await UserService().setPremiumUntil(null);
+      final reinicio = PremiumProvider(payment: device);
+      await reinicio.init();
+
+      // El pack SIGUE: es una compra individual de por vida.
+      expect(reinicio.packs, contains('yuyo_pack_digestivo'));
+      // La membresía vencida no da acceso.
+      expect(reinicio.isPremium, isFalse);
+      expect(AdsService.instance.isPremium, isFalse);
     });
 
     test('purchasePack: idempotente (no duplica el pack)', () async {

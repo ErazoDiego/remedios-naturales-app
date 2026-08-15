@@ -150,7 +150,7 @@ void main() {
   testWidgets(
       'con premium (sin pack): todas las colecciones listadas + buscador, '
       'sin estado vacío', (tester) async {
-    await premium.purchasePremium();
+    await premium.purchaseLifetime();
     await pumpBiblioteca(tester);
 
     // Premium incluye TODO el catálogo: la biblioteca ya no está vacía.

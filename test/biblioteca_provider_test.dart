@@ -157,7 +157,7 @@ void main() {
     });
 
     test('con premium todo accesible aunque no haya packs', () async {
-      await premium.purchasePremium();
+      await premium.purchaseLifetime();
       await biblioteca.init();
 
       expect(biblioteca.puedeAcceder('jugos'), isTrue);

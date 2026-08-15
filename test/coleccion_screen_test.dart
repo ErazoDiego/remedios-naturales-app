@@ -162,7 +162,7 @@ void main() {
   });
 
   testWidgets('con premium: lista las recetas', (tester) async {
-    await premium.purchasePremium();
+    await premium.purchaseLifetime();
     await pumpColeccion(tester);
 
     expect(find.text('Jugo verde matinal'), findsOneWidget);

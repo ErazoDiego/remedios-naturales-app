@@ -164,7 +164,7 @@ void main() {
   });
 
   testWidgets('premium: colección como Incluida en Premium', (tester) async {
-    await premium.purchasePremium();
+    await premium.purchaseLifetime();
     await pumpTienda(tester);
 
     expect(find.text('Incluida en Premium'), findsOneWidget);

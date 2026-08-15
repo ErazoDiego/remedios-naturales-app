@@ -51,7 +51,7 @@ void main() {
   Future<void> pumpFicha(
     WidgetTester tester, {
     required List<Receta> recetas,
-    bool startPremium = false,
+    bool startLifetime = false,
   }) async {
     final hierba = Hierba(
       id: 'menta',
@@ -76,12 +76,12 @@ void main() {
     final hierbasProvider = HierbasProvider(service: hierbasService);
 
     premium = PremiumProvider(
-      payment: MockPaymentService(startPremium: startPremium),
+      payment: MockPaymentService(startLifetime: startLifetime),
     );
     // El provider NO lee el estado del payment en el constructor: hay que
     // comprar (o init) para que _isPremium se entere.
-    if (startPremium) {
-      await premium.purchasePremium();
+    if (startLifetime) {
+      await premium.purchaseLifetime();
     }
     // Precios de la tienda (como en la app real al cargar la tienda).
     await premium.fetchProductsFor(
@@ -186,7 +186,7 @@ void main() {
 
   testWidgets('premium: sin candados ni callout, todo disponible',
       (tester) async {
-    await pumpFicha(tester, startPremium: true, recetas: [
+    await pumpFicha(tester, startLifetime: true, recetas: [
       receta('digestivo_03', 'Te calmante para la acidez'),
       receta('digestivo_01', 'Infusión de manzanilla'),
     ]);

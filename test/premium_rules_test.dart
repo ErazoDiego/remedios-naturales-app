@@ -142,7 +142,63 @@ void main() {
     });
   });
 
-  group('PremiumRules packs (helpers)', () {
+  group('PremiumRules.esPremiumActivo', () {
+    final now = DateTime.utc(2026, 8, 15, 12);
+
+    test('lifetime: siempre premium, sin importar premiumUntil', () {
+      expect(
+        PremiumRules.esPremiumActivo(
+          lifetime: true,
+          premiumUntil: null,
+          now: now,
+        ),
+        isTrue,
+      );
+      expect(
+        PremiumRules.esPremiumActivo(
+          lifetime: true,
+          premiumUntil: now.subtract(const Duration(days: 30)),
+          now: now,
+        ),
+        isTrue,
+      );
+    });
+
+    test('membresía vigente: premium (premiumUntil en el futuro)', () {
+      expect(
+        PremiumRules.esPremiumActivo(
+          lifetime: false,
+          premiumUntil: now.add(const Duration(days: 5)),
+          now: now,
+        ),
+        isTrue,
+      );
+    });
+
+    test('membresía vencida: NO premium', () {
+      expect(
+        PremiumRules.esPremiumActivo(
+          lifetime: false,
+          premiumUntil: now.subtract(const Duration(days: 1)),
+          now: now,
+        ),
+        isFalse,
+      );
+    });
+
+    test('ni lifetime ni membresía: NO premium', () {
+      expect(
+        PremiumRules.esPremiumActivo(
+          lifetime: false,
+          premiumUntil: null,
+          now: now,
+        ),
+        isFalse,
+      );
+    });
+  });
+
+  group('PremiumRules.packs (helpers)', () {
     test('sistemaDeReceta extrae el prefijo del ID', () {
       expect(PremiumRules.sistemaDeReceta('digestivo_03'), 'digestivo');
       expect(PremiumRules.sistemaDeReceta('musculoesqueletico_16'),
