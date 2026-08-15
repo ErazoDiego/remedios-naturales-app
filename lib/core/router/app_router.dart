@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import '../../data/models/receta_usuario.dart';
+import '../../data/services/auth_service.dart';
 import '../../features/biblioteca/presentation/biblioteca_screen.dart';
 import '../../features/biblioteca/presentation/coleccion_screen.dart';
 import '../../features/biblioteca/presentation/receta_coleccion_screen.dart';
@@ -18,6 +19,8 @@ import '../../presentation/screens/safety/safety_screen.dart';
 import '../../presentation/screens/about/about_screen.dart';
 import '../../presentation/screens/login/login_screen.dart';
 import '../../presentation/screens/register/register_screen.dart';
+import '../../presentation/screens/forgot_password/forgot_password_screen.dart';
+import '../../presentation/screens/reset_password/reset_password_screen.dart';
 import '../../presentation/screens/profile/profile_screen.dart';
 import '../../presentation/screens/mis_recetas/mis_recetas_screen.dart';
 import '../../presentation/screens/receta_usuario_form/receta_usuario_form_screen.dart';
@@ -195,6 +198,24 @@ class AppRouter {
       GoRoute(
         path: '/register',
         builder: (context, state) => const RegisterScreen(),
+      ),
+
+      // Recuperar contraseña: solicitar el link por email
+      GoRoute(
+        path: '/forgot-password',
+        builder: (context, state) => const ForgotPasswordScreen(),
+      ),
+
+      // Contraseña nueva: solo se llega con la sesión de recovery del
+      // deep link (email → link → evento passwordRecovery). Sin sesión
+      // activa no hay token validado → a login.
+      GoRoute(
+        path: '/reset-password',
+        redirect: (context, state) {
+          final isLoggedIn = AuthService().isLoggedIn;
+          return isLoggedIn ? null : '/login';
+        },
+        builder: (context, state) => const ResetPasswordScreen(),
       ),
 
       // Premium (compra única)

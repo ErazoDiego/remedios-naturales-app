@@ -5,26 +5,24 @@ import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../providers/user_provider.dart';
 
-/// Pantalla de inicio de sesión con email y contraseña.
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+/// Pantalla "¿Olvidaste tu contraseña?" — solicita el email y envía el
+/// link de recuperación (deep link → evento passwordRecovery).
+class ForgotPasswordScreen extends StatefulWidget {
+  const ForgotPasswordScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
 
-  bool _obscurePassword = true;
   bool _submitting = false;
 
   @override
   void dispose() {
     _emailController.dispose();
-    _passwordController.dispose();
     super.dispose();
   }
 
@@ -39,37 +37,35 @@ class _LoginScreenState extends State<LoginScreen> {
     return null;
   }
 
-  String? _validatePassword(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Ingresá tu contraseña';
-    }
-    return null;
-  }
-
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
 
     setState(() => _submitting = true);
 
     final userProvider = context.read<UserProvider>();
-    final result = await userProvider.signIn(
+    final result = await userProvider.resetPassword(
       email: _emailController.text,
-      password: _passwordController.text,
     );
 
     if (!mounted) return;
 
+    setState(() => _submitting = false);
+
     if (result.success) {
-      if (context.canPop()) {
-        context.pop();
-      } else {
-        context.go('/');
-      }
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Te enviamos un link de recuperación a tu email. '
+            'Revisá tu casilla.',
+          ),
+          backgroundColor: AppConstants.sageGreenTitle,
+        ),
+      );
+      context.go('/login');
     } else {
-      setState(() => _submitting = false);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(result.error ?? 'No se pudo iniciar sesión'),
+          content: Text(result.error ?? 'No se pudo enviar el link'),
           backgroundColor: AppConstants.alertRed,
         ),
       );
@@ -88,9 +84,9 @@ class _LoginScreenState extends State<LoginScreen> {
         title: const Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(TablerIcons.user_circle, size: 20),
+            Icon(TablerIcons.key, size: 20),
             SizedBox(width: 8),
-            Text('Iniciar sesión'),
+            Text('Recuperar contraseña'),
           ],
         ),
         backgroundColor: AppConstants.headerBeige,
@@ -117,13 +113,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: const Column(
                   children: [
                     Icon(
-                      TablerIcons.cloud_upload,
+                      TablerIcons.mail_forward,
                       size: 40,
                       color: AppConstants.sageGreenTitle,
                     ),
                     SizedBox(height: 12),
                     Text(
-                      'Guardá tus favoritos en la nube',
+                      'Te enviamos un link por email',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -132,8 +128,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(height: 6),
                     Text(
-                      'Iniciá sesión para sincronizar tus datos '
-                      'entre dispositivos.',
+                      'Ingresá el email de tu cuenta y te mandamos '
+                      'un link para crear una contraseña nueva.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 13,
@@ -150,8 +146,9 @@ class _LoginScreenState extends State<LoginScreen> {
               TextFormField(
                 controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
-                textInputAction: TextInputAction.next,
+                textInputAction: TextInputAction.done,
                 autofillHints: const [AutofillHints.email],
+                onFieldSubmitted: (_) => _submit(),
                 decoration: const InputDecoration(
                   labelText: 'Email',
                   hintText: 'tu@email.com',
@@ -159,50 +156,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 validator: _validateEmail,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 24),
 
-              // Contraseña
-              TextFormField(
-                controller: _passwordController,
-                obscureText: _obscurePassword,
-                textInputAction: TextInputAction.done,
-                autofillHints: const [AutofillHints.password],
-                onFieldSubmitted: (_) => _submit(),
-                decoration: InputDecoration(
-                  labelText: 'Contraseña',
-                  prefixIcon: const Icon(TablerIcons.lock),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      _obscurePassword
-                          ? TablerIcons.eye
-                          : TablerIcons.eye_off,
-                    ),
-                    onPressed: () =>
-                        setState(() => _obscurePassword = !_obscurePassword),
-                  ),
-                ),
-                validator: _validatePassword,
-              ),
-              // Link de recuperación
-              Align(
-                alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: _submitting
-                      ? null
-                      : () => context.go('/forgot-password'),
-                  child: const Text(
-                    '¿Olvidaste tu contraseña?',
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                      color: AppConstants.sageGreenTitle,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 12),
-
-              // Botón de ingreso
+              // Botón de envío
               SizedBox(
                 height: 48,
                 child: ElevatedButton(
@@ -217,41 +173,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         )
                       : const Text(
-                          'Ingresar',
+                          'Enviar link de recuperación',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                 ),
-              ),
-              const SizedBox(height: 16),
-
-              // Link a registro
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    '¿No tenés cuenta?',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: AppConstants.textSecondary,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: _submitting
-                        ? null
-                        : () => context.go('/register'),
-                    child: const Text(
-                      'Registrate',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: AppConstants.sageGreenTitle,
-                      ),
-                    ),
-                  ),
-                ],
               ),
             ],
           ),

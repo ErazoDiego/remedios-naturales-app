@@ -19,6 +19,13 @@ class UserProvider extends ChangeNotifier {
   final AuthService _auth;
   StreamSubscription<AuthState>? _authSub;
 
+  // Stream de recuperación de contraseña: un widget raíz lo escucha para
+  // navegar a /reset-password cuando llega el evento passwordRecovery del
+  // deep link (el provider no navega: sin acoplamiento a go_router).
+  final StreamController<void> _passwordRecoveryController =
+      StreamController<void>.broadcast();
+  Stream<void> get onPasswordRecovery => _passwordRecoveryController.stream;
+
   UserProvider({UserService? service, AuthService? auth})
       : _service = service ?? UserService(),
         _auth = auth ?? AuthService();
@@ -122,6 +129,14 @@ class UserProvider extends ChangeNotifier {
     return result;
   }
 
+  /// Envía el email de recuperación de contraseña.
+  Future<AuthResult> resetPassword({required String email}) =>
+      _auth.resetPassword(email: email);
+
+  /// Establece la contraseña nueva (sesión de recovery activa).
+  Future<AuthResult> updatePassword({required String newPassword}) =>
+      _auth.updatePassword(newPassword: newPassword);
+
   /// Lógica post-login/registro:
   /// - Asegura que la sesión esté aplicada al servicio
   /// - Migra los datos anónimos locales a la nube (si había)
@@ -216,6 +231,11 @@ class UserProvider extends ChangeNotifier {
   // ═══════════════════════════════════════════════════════════════════
 
   void _onAuthStateChanged(AuthState state) {
+    // Evento passwordRecovery: el deep link de recuperación se procesó y
+    // hay una sesión de recovery activa → la UI navega a nueva contraseña.
+    if (state.event == AuthChangeEvent.passwordRecovery) {
+      _passwordRecoveryController.add(null);
+    }
     _applySession(state.session?.user);
     loadProfile();
   }
@@ -231,6 +251,7 @@ class UserProvider extends ChangeNotifier {
   @override
   void dispose() {
     _authSub?.cancel();
+    _passwordRecoveryController.close();
     super.dispose();
   }
 }

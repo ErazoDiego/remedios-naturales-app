@@ -108,6 +108,43 @@ class AuthService {
     }
   }
 
+  /// Envía el email de recuperación de contraseña.
+  ///
+  /// El link del email apunta al deep link de la app
+  /// (`com.dae.yuyo://auth-callback`): al tocarlo, el SDK de Supabase
+  /// intercambia el code (PKCE) por una sesión de recovery y emite
+  /// `AuthChangeEvent.passwordRecovery`, que la UI escucha para navegar
+  /// a la pantalla de nueva contraseña.
+  static const String passwordRecoveryRedirect = 'com.dae.yuyo://auth-callback';
+
+  Future<AuthResult> resetPassword({required String email}) async {
+    try {
+      await client.auth.resetPasswordForEmail(
+        email.trim(),
+        redirectTo: passwordRecoveryRedirect,
+      );
+      return const AuthResult(success: true);
+    } on AuthException catch (e) {
+      return AuthResult(success: false, error: _humanizeAuthError(e.message));
+    } catch (e) {
+      return AuthResult(success: false, error: 'Error inesperado: $e');
+    }
+  }
+
+  /// Establece una contraseña nueva (válido con sesión de recovery activa).
+  Future<AuthResult> updatePassword({required String newPassword}) async {
+    try {
+      await client.auth.updateUser(
+        UserAttributes(password: newPassword),
+      );
+      return const AuthResult(success: true);
+    } on AuthException catch (e) {
+      return AuthResult(success: false, error: _humanizeAuthError(e.message));
+    } catch (e) {
+      return AuthResult(success: false, error: 'Error inesperado: $e');
+    }
+  }
+
   /// Traduce mensajes crudos de Supabase a algo legible.
   String _humanizeAuthError(String message) {
     if (message.contains('Invalid login credentials')) {

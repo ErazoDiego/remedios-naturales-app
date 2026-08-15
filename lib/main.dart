@@ -1,4 +1,6 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -62,7 +64,47 @@ class RemediosNaturalesApp extends StatelessWidget {
         theme: AppTheme.lightTheme,
         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
+        // Escucha el deep link de recuperación de contraseña y navega.
+        builder: (context, child) =>
+            PasswordRecoveryListener(child: child ?? const SizedBox()),
       ),
     );
   }
+}
+
+/// Escucha el evento [AuthChangeEvent.passwordRecovery] y navega a la
+/// pantalla de nueva contraseña.
+///
+/// Vive en el `builder` del MaterialApp.router: tiene acceso al contexto
+/// del router y al UserProvider (ambos están por encima en el árbol).
+class PasswordRecoveryListener extends StatefulWidget {
+  const PasswordRecoveryListener({super.key, required this.child});
+
+  final Widget child;
+
+  @override
+  State<PasswordRecoveryListener> createState() =>
+      _PasswordRecoveryListenerState();
+}
+
+class _PasswordRecoveryListenerState extends State<PasswordRecoveryListener> {
+  StreamSubscription<void>? _sub;
+
+  @override
+  void initState() {
+    super.initState();
+    _sub = context.read<UserProvider>().onPasswordRecovery.listen((_) {
+      if (!mounted) return;
+      context.go('/reset-password');
+    });
+  }
+
+  @override
+  void dispose() {
+    _sub?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => widget.child;
 }
