@@ -3,10 +3,13 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/services/payments/premium_rules.dart';
 import '../../../data/models/hierba.dart';
 import '../../providers/hierbas_provider.dart';
+import '../../providers/premium_provider.dart';
 import '../../widgets/ads/banner_ad_widget.dart';
 import '../../widgets/loading_error_empty.dart';
+import '../../widgets/premium/premium_dialog.dart';
 
 /// Pantalla de detalle de una hierba del herbolario
 /// Muestra nombre, propiedades, tags y recetas que la contienen
@@ -93,6 +96,16 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
   }
 
   Widget _buildDetail(dynamic hierba, HierbasProvider provider) {
+    // Gating del plan FREE: las recetas fuera del muestreo gratis (5 por
+    // sistema) muestran candado en la ficha de la hierba y el callout
+    // único de desbloqueo (mismo patrón que search_result_card).
+    final premium = context.watch<PremiumProvider>();
+    final recetas = provider.recetasConHierba;
+    final bloqueadas = recetas
+        .where((item) =>
+            !premium.puedeAccederAReceta((item['receta'] as dynamic).id))
+        .toList();
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -219,7 +232,10 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
           Text(
             provider.recetasConHierba.isEmpty
                 ? 'Esta hierba no aparece en ninguna receta de la app'
-                : '${provider.recetasConHierba.length} recetas disponibles',
+                : _contadorRecetas(
+                    provider.recetasConHierba.length,
+                    bloqueadas.length,
+                  ),
             style: const TextStyle(
               fontSize: 13,
               color: AppConstants.textTertiary,
@@ -249,23 +265,51 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
                 ),
               ),
             )
-          else
-            ...provider.recetasConHierba.map((item) {
+          else ...[
+            ...recetas.map((item) {
               final receta = item['receta'] as dynamic;
               final sistemaId = item['sistemaId'] as String;
-              return _buildRecetaTile(receta, sistemaId);
+              return _buildRecetaTile(receta, sistemaId, premium);
             }),
+            // Callout ÚNICO de desbloqueo (regla de densidad: un solo CTA
+            // de compra por pantalla, en el momento de mayor intención —
+            // el usuario ya está leyendo sobre la hierba que necesita).
+            if (bloqueadas.isNotEmpty) ...[
+              const SizedBox(height: 8),
+              _buildDesbloquearCallout(hierba, bloqueadas, premium),
+            ],
+          ],
         ],
       ),
     );
   }
 
-  Widget _buildRecetaTile(dynamic receta, String sistemaId) {
+  Widget _buildRecetaTile(
+    dynamic receta,
+    String sistemaId,
+    PremiumProvider premium,
+  ) {
+    final bloqueada = !premium.puedeAccederAReceta(receta.id as String);
     return Material(
       color: Colors.white,
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
-        onTap: () => context.push('/remedy/${receta.id}'),
+        onTap: () {
+          if (bloqueada) {
+            // Candado pasivo → el CTA vive en el diálogo (mismo patrón
+            // que search_result_card: no navega, abre el muro).
+            showPremiumDialog(
+              context,
+              title: 'Receta Premium',
+              message: 'Esta receta forma parte de Yuyo Premium. '
+                  'Con el plan gratis tenés acceso a 5 recetas '
+                  'de cada sistema.',
+              sistemaId: sistemaId,
+            );
+            return;
+          }
+          context.push('/remedy/${receta.id}');
+        },
         borderRadius: BorderRadius.circular(12),
         child: Container(
           margin: const EdgeInsets.only(bottom: 10),
@@ -318,10 +362,124 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
                   ],
                 ),
               ),
+              bloqueada
+                  ? const Icon(
+                      TablerIcons.lock,
+                      size: 18,
+                      color: AppConstants.alertAmber,
+                    )
+                  : const Icon(
+                      TablerIcons.chevron_right,
+                      size: 18,
+                      color: AppConstants.textTertiary,
+                    ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// Contador honesto de recetas: "2 recetas, 1 premium" cuando hay
+  /// bloqueadas (no dice "disponibles" si no lo están).
+  String _contadorRecetas(int total, int premium) {
+    final recetasTxt = '$total receta${total == 1 ? '' : 's'}';
+    if (premium == 0) return '$recetasTxt disponible${total == 1 ? '' : 's'}';
+    return '$recetasTxt, $premium premium';
+  }
+
+  /// Callout ÚNICO de desbloqueo al final de la ficha de la hierba.
+  ///
+  /// Ofrece el pack del sistema más representado entre las recetas
+  /// bloqueadas (mismo `showPremiumDialog` que el resto de la app, con
+  /// la compra directa del pack + opción Premium).
+  Widget _buildDesbloquearCallout(
+    dynamic hierba,
+    List<Map<String, dynamic>> bloqueadas,
+    PremiumProvider premium,
+  ) {
+    // Sistema con más recetas bloqueadas (si hay varios, el diálogo
+    // ofrece además Premium completo como alternativa).
+    final conteo = <String, int>{};
+    for (final item in bloqueadas) {
+      final sid = item['sistemaId'] as String;
+      conteo[sid] = (conteo[sid] ?? 0) + 1;
+    }
+    var sistemaPrincipal = conteo.keys.first;
+    var maximo = 0;
+    conteo.forEach((sid, cantidad) {
+      if (cantidad > maximo) {
+        maximo = cantidad;
+        sistemaPrincipal = sid;
+      }
+    });
+
+    final total = bloqueadas.length;
+    final nombreHierba = hierba.nombre as String;
+    final packId = PremiumRules.packIdDeSistema(sistemaPrincipal);
+    final precio = premium.priceFor(packId);
+
+    return Material(
+      color: AppConstants.alertAmberBackground,
+      borderRadius: BorderRadius.circular(12),
+      child: InkWell(
+        onTap: () => showPremiumDialog(
+          context,
+          title: 'Recetas premium',
+          message: 'Hay $total receta${total == 1 ? '' : 's'} premium '
+              'con $nombreHierba. Desbloqueá '
+              '${AppConstants.sistemasNombres[sistemaPrincipal] ?? sistemaPrincipal} '
+              'o sumate a Yuyo Premium.',
+          sistemaId: sistemaPrincipal,
+        ),
+        borderRadius: BorderRadius.circular(12),
+        child: Container(
+          padding: const EdgeInsets.all(14),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: AppConstants.alertAmber.withValues(alpha: 0.3),
+            ),
+          ),
+          child: Row(
+            children: [
+              const Icon(
+                TablerIcons.lock,
+                size: 20,
+                color: AppConstants.alertAmber,
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '$total receta${total == 1 ? '' : 's'} premium '
+                      'con $nombreHierba',
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: AppConstants.textPrimary,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      precio == null
+                          ? 'Desbloquear sistema'
+                          : 'Desbloquear sistema · $precio',
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: AppConstants.alertAmber,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               const Icon(
                 TablerIcons.chevron_right,
                 size: 18,
-                color: AppConstants.textTertiary,
+                color: AppConstants.alertAmber,
               ),
             ],
           ),
