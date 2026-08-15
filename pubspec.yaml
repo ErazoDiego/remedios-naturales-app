@@ -26,6 +26,10 @@ dependencies:
   # Íconos
   tabler_icons: ^2.5.0+1
   supabase_flutter: ^2.16.0
+  # Deep links (recuperación de contraseña). Dependencia directa: el
+  # manejo del deep link vive en main.dart (el observer del SDK se
+  # desactiva para no perder el evento passwordRecovery en cold start).
+  app_links: ^7.0.0
   google_mobile_ads: ^9.0.0
 
   # Pagos (Google Play Billing). Solo se ejercita en release con

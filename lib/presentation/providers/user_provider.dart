@@ -26,6 +26,11 @@ class UserProvider extends ChangeNotifier {
       StreamController<void>.broadcast();
   Stream<void> get onPasswordRecovery => _passwordRecoveryController.stream;
 
+  // Evento passwordRecovery que llegó antes de que la UI esté lista
+  // (deep link en cold start: el canje de código ocurre en main(), antes
+  // de runApp). El listener de navegación lo consume al montarse.
+  bool _pendingPasswordRecovery = false;
+
   UserProvider({UserService? service, AuthService? auth})
       : _service = service ?? UserService(),
         _auth = auth ?? AuthService();
@@ -137,6 +142,16 @@ class UserProvider extends ChangeNotifier {
   Future<AuthResult> updatePassword({required String newPassword}) =>
       _auth.updatePassword(newPassword: newPassword);
 
+  /// Si hubo un evento passwordRecovery antes de que el árbol esté montado
+  /// (deep link en cold start), lo consume quien vaya a navegar.
+  ///
+  /// Idempotente: devuelve true UNA sola vez y limpia el flag.
+  bool consumePendingPasswordRecovery() {
+    final pending = _pendingPasswordRecovery;
+    _pendingPasswordRecovery = false;
+    return pending;
+  }
+
   /// Lógica post-login/registro:
   /// - Asegura que la sesión esté aplicada al servicio
   /// - Migra los datos anónimos locales a la nube (si había)
@@ -234,6 +249,8 @@ class UserProvider extends ChangeNotifier {
     // Evento passwordRecovery: el deep link de recuperación se procesó y
     // hay una sesión de recovery activa → la UI navega a nueva contraseña.
     if (state.event == AuthChangeEvent.passwordRecovery) {
+      debugPrint('[auth] Evento passwordRecovery recibido');
+      _pendingPasswordRecovery = true;
       _passwordRecoveryController.add(null);
     }
     _applySession(state.session?.user);
