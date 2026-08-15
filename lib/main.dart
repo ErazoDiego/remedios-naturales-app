@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'package:app_links/app_links.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'core/config/supabase_config.dart';
+import 'core/constants/app_constants.dart';
 import 'core/router/app_router.dart';
 import 'core/services/ads_service.dart';
 import 'core/theme/app_theme.dart';
@@ -17,6 +17,12 @@ import 'presentation/providers/mis_recetas_provider.dart';
 import 'presentation/providers/premium_provider.dart';
 import 'presentation/providers/biblioteca_provider.dart';
 import 'features/lista_compras/presentation/lista_compras_provider.dart';
+
+/// Key global del ScaffoldMessenger: permite mostrar SnackBars (ej: link
+/// de recuperación vencido) desde fuera del árbol de widgets, como
+/// [main] antes de que la UI esté montada.
+final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
+    GlobalKey<ScaffoldMessengerState>();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -81,6 +87,22 @@ Future<void> _handleAuthDeeplink(Uri uri) async {
     debugPrint('[deeplink] Sesión procesada OK desde $uri');
   } catch (e) {
     debugPrint('[deeplink] Error procesando deep link de auth: $e');
+    // Link vencido/inválido (otp_expired, access_denied...): el usuario
+    // necesita saber por qué no lo mandó a la pantalla de contraseña
+    // nueva (hoy el error se tragaba en silencio y quedaba "logueado"
+    // sin feedback).
+    final messenger = scaffoldMessengerKey.currentState;
+    if (messenger != null) {
+      messenger.showSnackBar(
+        const SnackBar(
+          content: Text(
+            'El link de recuperación es inválido o venció. '
+            'Pedí uno nuevo.',
+          ),
+          backgroundColor: AppConstants.alertRed,
+        ),
+      );
+    }
   }
 }
 
@@ -115,6 +137,7 @@ class RemediosNaturalesApp extends StatelessWidget {
         title: 'Yuyo',
         theme: AppTheme.lightTheme,
         routerConfig: AppRouter.router,
+        scaffoldMessengerKey: scaffoldMessengerKey,
         debugShowCheckedModeBanner: false,
         // Escucha el deep link de recuperación de contraseña y navega.
         builder: (context, child) =>
@@ -142,6 +165,18 @@ class PasswordRecoveryListener extends StatefulWidget {
 class _PasswordRecoveryListenerState extends State<PasswordRecoveryListener> {
   StreamSubscription<void>? _sub;
 
+  /// Navega a la pantalla de contraseña nueva.
+  ///
+  /// Usa [AppRouter.router] (referencia estática) y NO [context.go]: el
+  /// contexto del `builder` de MaterialApp.router está ARRIBA del
+  /// `InheritedGoRouter` que inyecta el GoRouter → GoRouter.of(context)
+  /// crashea con null check ("No GoRouter found in context"). La
+  /// instancia estática navega sin depender del árbol de widgets.
+  void _navigateToResetPassword() {
+    debugPrint('[deeplink] Navegando a /reset-password');
+    AppRouter.router.go('/reset-password');
+  }
+
   @override
   void initState() {
     super.initState();
@@ -154,14 +189,14 @@ class _PasswordRecoveryListenerState extends State<PasswordRecoveryListener> {
     if (userProvider.consumePendingPasswordRecovery()) {
       debugPrint('[deeplink] passwordRecovery pendiente → /reset-password');
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) context.go('/reset-password');
+        if (mounted) _navigateToResetPassword();
       });
     }
 
     _sub = userProvider.onPasswordRecovery.listen((_) {
       debugPrint('[deeplink] passwordRecovery por stream → /reset-password');
       if (!mounted) return;
-      context.go('/reset-password');
+      _navigateToResetPassword();
     });
   }
 
