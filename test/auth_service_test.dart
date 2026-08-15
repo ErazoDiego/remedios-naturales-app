@@ -203,4 +203,102 @@ void main() {
       expect(auth.currentUser, isNull);
     });
   });
+
+  group('resetPassword', () {
+    test('envía el email con redirectTo al deep link de la app', () async {
+      withMock((request) async {
+        expect(request.url.path, '/auth/v1/recover');
+        final body = json.decode(request.body) as Map<String, dynamic>;
+        expect(body['email'], 'olvido@email.com');
+        expect(
+          request.url.queryParameters['redirect_to'],
+          'com.dae.yuyo://auth-callback',
+        );
+        return http.Response('', 200);
+      });
+
+      final result =
+          await auth.resetPassword(email: ' olvido@email.com ');
+
+      expect(result.success, true);
+      expect(result.error, isNull);
+    });
+
+    test('email inexistente no filtra información: success falso genérico',
+        () async {
+      withMock((request) async {
+        return http.Response(
+          json.encode({'msg': 'Email not found'}),
+          400,
+          headers: {'content-type': 'application/json'},
+        );
+      });
+
+      final result = await auth.resetPassword(email: 'noexiste@email.com');
+
+      expect(result.success, false);
+    });
+  });
+
+  group('updatePassword', () {
+    /// updateUser requiere sesión activa (la de recovery): el handler
+    /// responde primero a /auth/v1/token (login) y después a PUT /user.
+    void withSession(Future<http.Response> Function(http.Request) handler) {
+      withMock((request) async {
+        if (request.url.path == '/auth/v1/token') {
+          return http.Response(
+            json.encode(sessionJson()),
+            200,
+            headers: {'content-type': 'application/json'},
+          );
+        }
+        return handler(request);
+      });
+      // La sesión se obtiene con un login previo (igual que en la app:
+      // el deep link deja una sesión de recovery activa).
+    }
+
+    test('actualiza la contraseña con sesión de recovery', () async {
+      withSession((request) async {
+        expect(request.url.path, '/auth/v1/user');
+        expect(request.method, 'PUT');
+        final body = json.decode(request.body) as Map<String, dynamic>;
+        expect(body['password'], 'nueva-12345');
+        return http.Response(
+          json.encode({
+            'id': 'user-123',
+            'email': 'test@email.com',
+            'role': 'authenticated',
+          }),
+          200,
+          headers: {'content-type': 'application/json'},
+        );
+      });
+
+      await auth.signIn(email: 'test@email.com', password: '123456');
+      expect(auth.isLoggedIn, true);
+
+      final result = await auth.updatePassword(newPassword: 'nueva-12345');
+
+      expect(result.success, true);
+      expect(result.error, isNull);
+    });
+
+    test('contraseña corta devuelve error humanizado', () async {
+      withSession((request) async {
+        return http.Response(
+          json.encode({'msg': 'Password should be at least 6 characters'}),
+          400,
+          headers: {'content-type': 'application/json'},
+        );
+      });
+
+      await auth.signIn(email: 'test@email.com', password: '123456');
+
+      final result = await auth.updatePassword(newPassword: '123');
+
+      expect(result.success, false);
+      expect(result.error, 'La contraseña debe tener al menos 6 caracteres');
+    });
+  });
 }
