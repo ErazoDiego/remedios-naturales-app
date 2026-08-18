@@ -23,6 +23,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final userProvider = context.read<UserProvider>();
     final result = await userProvider.signOut();
 
+    // Resetear el estado premium para que el próximo usuario (o el
+    // modo anónimo) vea anuncios si no tiene premium propio.
+    if (mounted) {
+      context.read<PremiumProvider>().reset();
+    }
+
     if (!mounted) return;
 
     if (result.success) {

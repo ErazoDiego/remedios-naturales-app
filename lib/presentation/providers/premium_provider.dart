@@ -265,6 +265,20 @@ class PremiumProvider extends ChangeNotifier {
     }
   }
 
+  /// Resetea el estado premium al cerrar sesión.
+  ///
+  /// Limpia lifetime, membresía y packs, y re-sincroniza los anuncios
+  /// para que el siguiente usuario (o el modo anónimo) vea anuncios
+  /// si no tiene premium propio.
+  void reset() {
+    _isLifetime = false;
+    _premiumUntil = null;
+    _packs.clear();
+    _error = null;
+    _syncAds();
+    notifyListeners();
+  }
+
   // ── Internos ────────────────────────────────────────────────────────
 
   void _syncAds() {

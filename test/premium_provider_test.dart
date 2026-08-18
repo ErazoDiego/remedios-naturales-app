@@ -282,4 +282,55 @@ void main() {
       expect(provider.puedeAccederAReceta('nervioso_01'), isFalse);
     });
   });
+
+  group('reset (cierre de sesión)', () {
+    test('reset: limpia lifetime, premiumUntil y packs, re-activa anuncios',
+        () async {
+      final provider = PremiumProvider(payment: MockPaymentService());
+      await provider.init();
+
+      // Compra lifetime + pack → premium activo, anuncios apagados
+      await provider.purchaseLifetime();
+      await provider.purchasePack('digestivo');
+      expect(provider.isPremium, isTrue);
+      expect(AdsService.instance.isPremium, isTrue);
+      expect(provider.packs, isNotEmpty);
+
+      // Simula cierre de sesión
+      provider.reset();
+
+      expect(provider.isLifetime, isFalse);
+      expect(provider.premiumUntil, isNull);
+      expect(provider.packs, isEmpty);
+      expect(provider.isPremium, isFalse);
+      expect(AdsService.instance.isPremium, isFalse);
+    });
+
+    test('reset: después de membresía activa también limpia', () async {
+      final provider = PremiumProvider(payment: MockPaymentService());
+      await provider.init();
+
+      await provider.purchaseSubscription(MembresiaPlan.mensual);
+      expect(provider.isPremium, isTrue);
+
+      provider.reset();
+
+      expect(provider.premiumUntil, isNull);
+      expect(provider.isPremium, isFalse);
+      expect(AdsService.instance.isPremium, isFalse);
+    });
+
+    test('reset: limpia error previo', () async {
+      final payment = MockPaymentService()..setFailPurchasesForTesting(true);
+      final provider = PremiumProvider(payment: payment);
+      await provider.init();
+
+      await provider.purchaseLifetime(); // falla
+      expect(provider.error, isNotNull);
+
+      provider.reset();
+
+      expect(provider.error, isNull);
+    });
+  });
 }
