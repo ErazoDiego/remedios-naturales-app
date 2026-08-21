@@ -44,13 +44,10 @@ class _RemedyDetailScreenState extends State<RemedyDetailScreen> {
 
       context.read<UserProvider>().addToHistory(widget.recipeId);
 
-      // Intersticial espaciado: registra la apertura y muestra si toca
-      // (la política decide: nunca la 1ª receta, mínimo 5 min entre uno y otro)
-      final ads = AdsService.instance;
-      ads.registerRecipeOpen();
-      Future.delayed(const Duration(milliseconds: 600), () {
-        if (mounted) ads.maybeShowInterstitial();
-      });
+      // Registra la apertura para la política de espaciado del intersticial.
+      // El intersticial se muestra al VOLVER de la receta (back button),
+      // no al abrirla — Google prohíbe intersticiales al inicio de contenido.
+      AdsService.instance.registerRecipeOpen();
     });
   }
 
@@ -68,10 +65,16 @@ class _RemedyDetailScreenState extends State<RemedyDetailScreen> {
 
         return Scaffold(
           backgroundColor: AppConstants.backgroundCream,
-          appBar: AppBar(
+            appBar: AppBar(
             leading: IconButton(
               icon: const Icon(TablerIcons.arrow_left),
-              onPressed: () => context.go('/category/$sistemaId'),
+              onPressed: () {
+                // Intersticial al VOLVER de la receta (punto de quiebre
+                // natural, después de consumir el contenido). Google
+                // prohíbe intersticiales al inicio de contenido.
+                AdsService.instance.maybeShowInterstitial();
+                context.go('/category/$sistemaId');
+              },
             ),
             title: Text(
               receta?.nombre ?? 'Cargando...',
