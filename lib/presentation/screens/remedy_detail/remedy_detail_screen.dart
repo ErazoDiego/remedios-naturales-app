@@ -28,9 +28,14 @@ class RemedyDetailScreen extends StatefulWidget {
 }
 
 class _RemedyDetailScreenState extends State<RemedyDetailScreen> {
+  /// Momento en que el usuario abrió la receta.
+  /// Se usa para filtrar visitas accidentales (< 3s).
+  DateTime? _enteredAt;
+
   @override
   void initState() {
     super.initState();
+    _enteredAt = DateTime.now();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // La receta siempre se carga (si el usuario compra desde el muro,
       // el contenido aparece al instante).
@@ -63,16 +68,32 @@ class _RemedyDetailScreenState extends State<RemedyDetailScreen> {
         final premium = context.watch<PremiumProvider>();
         final accesoPermitido = premium.puedeAccederAReceta(widget.recipeId);
 
-        return Scaffold(
+        return PopScope(
+          canPop: true,
+          onPopInvokedWithResult: (didPop, result) {
+            if (!didPop) return;
+            // System back button — misma lógica que el botón de la UI.
+            final elapsed = _enteredAt != null
+                ? DateTime.now().difference(_enteredAt!).inSeconds
+                : 0;
+            if (elapsed >= 3) {
+              AdsService.instance.maybeShowInterstitial();
+            }
+          },
+          child: Scaffold(
           backgroundColor: AppConstants.backgroundCream,
             appBar: AppBar(
             leading: IconButton(
               icon: const Icon(TablerIcons.arrow_left),
               onPressed: () {
-                // Intersticial al VOLVER de la receta (punto de quiebre
-                // natural, después de consumir el contenido). Google
-                // prohíbe intersticiales al inicio de contenido.
-                AdsService.instance.maybeShowInterstitial();
+                // Solo muestra interstitial si el usuario permaneció ≥ 3s
+                // en la receta — evita interrumpir por taps accidentales.
+                final elapsed = _enteredAt != null
+                    ? DateTime.now().difference(_enteredAt!).inSeconds
+                    : 0;
+                if (elapsed >= 3) {
+                  AdsService.instance.maybeShowInterstitial();
+                }
                 context.go('/category/$sistemaId');
               },
             ),
@@ -133,6 +154,7 @@ class _RemedyDetailScreenState extends State<RemedyDetailScreen> {
               const BannerAdWidget(),
             ],
           ),
+        ),
         );
       },
     );
