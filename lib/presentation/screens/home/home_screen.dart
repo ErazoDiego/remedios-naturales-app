@@ -7,6 +7,7 @@ import '../../../core/theme/app_theme.dart';
 import '../../../features/lista_compras/presentation/lista_compras_provider.dart';
 import '../../providers/recetas_provider.dart';
 import '../../widgets/loading_error_empty.dart';
+import '../../widgets/ads/ads_disclosure_dialog.dart';
 
 /// Pantalla principal - Muestra los 10 sistemas corporales
 class HomeScreen extends StatefulWidget {
@@ -26,6 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<RecetasProvider>().loadSistemas();
+      // Aviso de divulgación de publicidad (Google Play requiere
+      // informar antes de mostrar anuncios personalizados).
+      AdsDisclosureDialog.showIfNeeded(context);
     });
   }
 

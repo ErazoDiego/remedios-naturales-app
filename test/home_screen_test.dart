@@ -16,7 +16,9 @@ void main() {
   late ListaComprasProvider listaProvider;
 
   setUp(() {
-    SharedPreferences.setMockInitialValues({});
+    SharedPreferences.setMockInitialValues({
+      'ads_disclosure_shown': true, // evitar el diálogo de divulgación
+    });
     listaProvider = ListaComprasProvider()..init();
   });
 
