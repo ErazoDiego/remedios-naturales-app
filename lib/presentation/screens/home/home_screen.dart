@@ -5,8 +5,10 @@ import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/theme/app_theme.dart';
 import '../../../features/lista_compras/presentation/lista_compras_provider.dart';
+import '../../../data/services/recetas_service.dart';
 import '../../providers/recetas_provider.dart';
 import '../../widgets/loading_error_empty.dart';
+import '../../widgets/search_result_card.dart';
 import '../../widgets/ads/ads_disclosure_dialog.dart';
 
 /// Pantalla principal - Muestra los 10 sistemas corporales
@@ -20,11 +22,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _searchController = TextEditingController();
   final FocusNode _searchFocusNode = FocusNode();
-  List<Map<String, dynamic>> _searchResults = [];
 
   @override
   void initState() {
     super.initState();
+    // Rebuild cuando cambia el texto: actualiza el suffixIcon (X) del campo.
+    _searchController.addListener(() => setState(() {}));
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<RecetasProvider>().loadSistemas();
       // Aviso de divulgación de publicidad (Google Play requiere
@@ -42,38 +45,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _performSearch(String query) {
     if (query.trim().isEmpty) {
-      setState(() => _searchResults = []);
+      context.read<RecetasProvider>().clearSearch();
       return;
     }
 
-    final sistemas = context.read<RecetasProvider>().sistemas;
-    final queryLower = query.toLowerCase();
-    List<Map<String, dynamic>> matches = [];
-
-    for (final sistema in sistemas) {
-      if (sistema.nombre.toLowerCase().contains(queryLower) ||
-          sistema.id.toLowerCase().contains(queryLower)) {
-        matches.add({
-          'id': sistema.id,
-          'title': sistema.nombre,
-          'subtitle': '${sistema.totalRecetas} recetas',
-          'isSistema': true,
-        });
-      }
-      for (final receta in sistema.recetas) {
-        if (receta.nombre.toLowerCase().contains(queryLower) ||
-            receta.idealPara.any((c) => c.toLowerCase().contains(queryLower))) {
-          matches.add({
-            'id': receta.id,
-            'title': receta.nombre,
-            'subtitle': 'Ideal para: ${receta.idealPara.join(", ")}',
-            'isSistema': false,
-          });
-        }
-      }
-    }
-
-    setState(() => _searchResults = matches.take(10).toList());
+    // El home usa el MISMO motor del buscador global: normaliza tildes,
+    // expande sinónimos, matchea por ingredientes e integra hierbas del
+    // herbolario (nombre + alias + tags + propiedades).
+    context.read<RecetasProvider>().search(query);
   }
 
   @override
@@ -186,7 +165,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 onPressed: () {
                                   _searchController.clear();
-                                  setState(() => _searchResults = []);
+                                  context.read<RecetasProvider>().clearSearch();
+                                  setState(() {});
                                 },
                               )
                             : null,
@@ -238,9 +218,30 @@ class _HomeScreenState extends State<HomeScreen> {
           // CONTENIDO SCROLLEABLE
           // ═══════════════════════════════════════════════════════════
           Expanded(
-            child: _searchResults.isNotEmpty
-                ? _buildSearchResults()
-                : _buildMainContent(),
+            child: Consumer<RecetasProvider>(
+              builder: (context, provider, child) {
+                final hayQuery = _searchController.text.trim().isNotEmpty;
+
+                if (hayQuery && provider.isLoading) {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: AppConstants.sageGreenTitle,
+                      strokeWidth: 2,
+                    ),
+                  );
+                }
+
+                if (hayQuery && provider.searchResults.isEmpty) {
+                  return const _SinResultadosBuscador();
+                }
+
+                if (hayQuery && provider.searchResults.isNotEmpty) {
+                  return _buildSearchResults(provider.searchResults);
+                }
+
+                return _buildMainContent();
+              },
+            ),
           ),
         ],
       ),
@@ -250,50 +251,14 @@ class _HomeScreenState extends State<HomeScreen> {
   // ═══════════════════════════════════════════════════════════════════
   // RESULTADOS DE BÚSQUEDA
   // ═══════════════════════════════════════════════════════════════════
-  Widget _buildSearchResults() {
+  Widget _buildSearchResults(List<RecetaResult> results) {
+    // Misma card que el buscador global: badge por tipo (Sistema/Receta/
+    // Hierba), candado para recetas premium, y navegación con push.
     return ListView.builder(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      itemCount: _searchResults.length,
-      itemBuilder: (context, index) {
-        final result = _searchResults[index];
-        final isSistema = result['isSistema'] as bool;
-        
-        return ListTile(
-          leading: Icon(
-            isSistema ? TablerIcons.category : TablerIcons.pill,
-            size: 20,
-            color: AppConstants.sageGreenTitle,
-          ),
-          title: Text(
-            result['title'],
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              fontSize: 14,
-              color: AppConstants.textPrimary,
-            ),
-          ),
-          subtitle: Text(
-            result['subtitle'],
-            style: const TextStyle(
-              fontSize: 12,
-              color: AppConstants.textSecondary,
-            ),
-          ),
-          trailing: const Icon(
-            TablerIcons.chevron_right,
-            size: 18,
-            color: AppConstants.textTertiary,
-          ),
-          onTap: () {
-            if (isSistema) {
-              context.go('/category/${result['id']}');
-            } else {
-              context.go('/remedy/${result['id']}');
-            }
-          },
-        );
-      },
+      padding: const EdgeInsets.all(20),
+      itemCount: results.length,
+      itemBuilder: (context, index) =>
+          SearchResultCard(result: results[index]),
     );
   }
 
@@ -445,7 +410,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(12),
         child: InkWell(
-          onTap: () => context.go('/category/${sistema.id}'),
+          onTap: () => context.push('/category/${sistema.id}'),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -560,6 +525,49 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Estado vacío del buscador del home: sin resultados para la query actual.
+/// Igual que el buscador global, para que el preview y la pestaña Buscar
+/// se comporten igual.
+class _SinResultadosBuscador extends StatelessWidget {
+  const _SinResultadosBuscador();
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(
+              TablerIcons.search_off,
+              size: 48,
+              color: AppConstants.textTertiary,
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'No se encontraron resultados',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: AppConstants.textPrimary,
+              ),
+            ),
+            const SizedBox(height: 4),
+            const Text(
+              'Probá con otro término',
+              style: TextStyle(
+                fontSize: 13,
+                color: AppConstants.textTertiary,
+              ),
+            ),
+          ],
         ),
       ),
     );

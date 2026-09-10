@@ -54,12 +54,17 @@ class SearchResultCard extends StatelessWidget {
           );
           return;
         }
+        // push (apilar) para DETALLES: mantiene la pila de navegación,
+        // así el back (flecha o gesto del sistema) vuelve al buscador.
+        // go() reemplaza la pila y deja el back muerto (bug reportado
+        // por testers: al abrir una hierba desde la búsqueda no se
+        // podía volver — había que matar la app).
         if (isSistema) {
-          context.go('/category/$sistemaId');
+          context.push('/category/$sistemaId');
         } else if (esHierba) {
-          context.go('/herba/${result.id}');
+          context.push('/herba/${result.id}');
         } else {
-          context.go('/remedy/${result.id}');
+          context.push('/remedy/${result.id}');
         }
       },
       child: Row(
