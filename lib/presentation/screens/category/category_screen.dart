@@ -147,7 +147,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
             );
             return;
           }
-          context.go('/remedy/${receta.id}');
+          context.push('/remedy/${receta.id}');
         },
         borderRadius: BorderRadius.circular(12),
         child: Padding(

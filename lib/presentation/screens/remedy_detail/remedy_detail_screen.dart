@@ -94,7 +94,15 @@ class _RemedyDetailScreenState extends State<RemedyDetailScreen> {
                 if (elapsed >= 3) {
                   AdsService.instance.maybeShowInterstitial();
                 }
-                context.go('/category/$sistemaId');
+                // Volver al ORIGEN real (buscador, favoritos, home...):
+                // pop respeta la pila; go() como fallback si llegaron por
+                // deep link sin pila (mismo bug de "quedarse atrapado"
+                // que tenía la ficha de hierba).
+                if (context.canPop()) {
+                  context.pop();
+                } else {
+                  context.go('/category/$sistemaId');
+                }
               },
             ),
             title: Text(
