@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import '../../core/utils/text_normalizer.dart';
 import '../models/hierba.dart';
 
 /// Abstracción de la fuente de hierbas del herbolario.
@@ -44,19 +45,19 @@ class HierbasRepository implements HierbasDataSource {
     }
   }
 
-  /// Busca hierbas por nombre o por tag (propiedad)
+  /// Busca hierbas por nombre, alias, tag o cualquier campo de texto
+  /// (científico, familia, uso tradicional, precauciones…).
+  /// Normaliza tildes/ñ: buscar "coleretica" encuentra "Colerética".
   Future<List<Hierba>> buscarHierbas(String query) async {
     if (query.trim().isEmpty) return [];
 
     final hierbas = await getHierbas();
-    final queryLower = query.toLowerCase().trim();
+    final queryLower = normalizarTexto(query.trim());
 
     return hierbas.where((h) {
-      final nombreMatch = h.nombre.toLowerCase().contains(queryLower);
-      final tagMatch = h.tags.any((t) => t.toLowerCase().contains(queryLower));
-      final propiedadesMatch =
-          h.propiedades.toLowerCase().contains(queryLower);
-      return nombreMatch || tagMatch || propiedadesMatch;
+      final textoMatch =
+          normalizarTexto(h.textoBusqueda).contains(queryLower);
+      return textoMatch;
     }).toList();
   }
 

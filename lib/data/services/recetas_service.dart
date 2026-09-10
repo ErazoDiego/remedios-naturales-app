@@ -104,7 +104,7 @@ class RecetasService {
         hierbaMatches.add(RecetaResult(
           id: hierba.id,
           title: hierba.nombre,
-          subtitle: hierba.propiedades,
+          subtitle: hierba.usoTradicional,
           type: ResultType.hierba,
           sistemaId: '',
           score: score,
@@ -229,11 +229,12 @@ class RecetasService {
 
   /// Score de coincidencia de una hierba del herbolario con los términos.
   /// Mismo esquema ponderado que las recetas: nombre(10) > tags(8) >
-  /// propiedades(5). Suma por término.
+  /// texto de búsqueda(5) — el texto incluye científico, familia, uso
+  /// tradicional, parte y precauciones. Suma por término.
   int _calculateHierbaScore(Hierba hierba, List<String> terminos) {
     final nombre = normalizarTexto(hierba.nombre);
     final tags = hierba.tags.map(normalizarTexto).toList();
-    final propiedades = normalizarTexto(hierba.propiedades);
+    final texto = normalizarTexto(hierba.textoBusqueda);
 
     int score = 0;
     for (final termino in terminos) {
@@ -244,7 +245,7 @@ class RecetasService {
         if (tags.any((t) => t.contains(variante)) && variante.length > 1) {
           mejorPorTermino = _max(mejorPorTermino, 8);
         }
-        if (propiedades.contains(variante) && variante.length > 1) {
+        if (texto.contains(variante) && variante.length > 1) {
           mejorPorTermino = _max(mejorPorTermino, 5);
         }
       }

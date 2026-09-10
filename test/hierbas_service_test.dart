@@ -1,8 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:remedios_naturales_app/data/models/hierba.dart';
+import 'package:remedios_naturales_app/data/models/preparacion_tradicional.dart';
 import 'package:remedios_naturales_app/data/models/receta.dart';
 import 'package:remedios_naturales_app/data/models/sistema_corporal.dart';
 import 'package:remedios_naturales_app/data/repositories/hierbas_repository.dart';
+import 'package:remedios_naturales_app/data/repositories/preparaciones_repository.dart';
 import 'package:remedios_naturales_app/data/repositories/recetas_repository.dart';
 import 'package:remedios_naturales_app/data/services/hierbas_service.dart';
 import 'package:remedios_naturales_app/data/services/recetas_service.dart';
@@ -32,7 +34,7 @@ class InMemoryHierbasRepository implements HierbasRepository {
     return _hierbas
         .where((h) =>
             h.nombre.toLowerCase().contains(queryLower) ||
-            h.propiedades.toLowerCase().contains(queryLower) ||
+            h.textoBusqueda.toLowerCase().contains(queryLower) ||
             h.tags.any((t) => t.toLowerCase().contains(queryLower)))
         .toList();
   }
@@ -54,6 +56,17 @@ class InMemoryHierbasRepository implements HierbasRepository {
       ..sort((a, b) => b.value.compareTo(a.value));
     return sorted.map((e) => e.key).toList();
   }
+}
+
+/// Implementación de PreparacionesRepository con datos en memoria para tests
+class InMemoryPreparacionesRepo implements PreparacionesRepository {
+  final List<PreparacionTradicional> _preparaciones;
+
+  InMemoryPreparacionesRepo(this._preparaciones);
+
+  @override
+  Future<List<PreparacionTradicional>> getPreparaciones() async =>
+      _preparaciones;
 }
 
 /// Implementación de RecetasRepository con datos en memoria para tests
@@ -136,25 +149,25 @@ void main() {
     const Hierba(
       id: 'manzanilla',
       nombre: 'Manzanilla',
-      propiedades: 'Digestiva, sedante, antiinflamatoria',
+      usoTradicional: 'Digestiva, sedante, antiinflamatoria',
       tags: ['digestivo', 'sedante'],
     ),
     const Hierba(
       id: 'ortiga',
       nombre: 'Ortiga',
-      propiedades: 'Diurética, depurativa',
+      usoTradicional: 'Diurética, depurativa',
       tags: ['diuretico', 'depurativo'],
     ),
     const Hierba(
       id: 'ginkgo',
       nombre: 'Ginkgo',
-      propiedades: 'Estimula la circulación cerebral, memoria',
+      usoTradicional: 'Estimula la circulación cerebral, memoria',
       tags: ['circulacion', 'memoria'],
     ),
     const Hierba(
       id: 'valeriana',
       nombre: 'Valeriana',
-      propiedades: 'Sedante, para el insomnio',
+      usoTradicional: 'Sedante, para el insomnio',
       tags: ['sedante'],
     ),
   ];
@@ -290,6 +303,148 @@ void main() {
     test('tagLabel devuelve etiqueta legible', () {
       expect(service.tagLabel('diuretico'), 'Diurético');
       expect(service.tagLabel('desconocido'), 'desconocido');
+    });
+  });
+
+  group('HierbasService con alias (unificación amargón/diente de león)', () {
+    late HierbasService service;
+
+    setUp(() {
+      // Replica el caso real: hierba unificada con nombre compuesto + alias
+      const hierbaAmargon = Hierba(
+        id: 'amargon',
+        nombre: 'Amargón (Diente de león)',
+        alias: ['Amargón', 'Diente de león'],
+        usoTradicional: 'Pérdida de apetito, hepático, flatulencia, digestivo',
+        tags: ['depurativo', 'digestivo'],
+      );
+
+      final recetaConDiente = Receta(
+        id: 'digestivo_diente',
+        nombre: 'Infusión hepatoprotectora',
+        descripcion: 'Ayuda al hígado',
+        idealPara: ['Hígado'],
+        tipo: 'interno',
+        tipoPreparacion: 'infusión',
+        precaucion: '',
+        ingredientes: [
+          '1 taza de agua',
+          '1 cucharadita de hojas de diente de león',
+        ],
+        preparacion: ['Hervir el agua'],
+        dosis: '1 taza',
+        almacenamiento: '',
+      );
+
+      final recetaConAmargon = Receta(
+        id: 'digestivo_amargon',
+        nombre: 'Amargón digestivo',
+        descripcion: 'Para la digestión',
+        idealPara: ['Digestión'],
+        tipo: 'interno',
+        tipoPreparacion: 'infusión',
+        precaucion: '',
+        ingredientes: ['Amargón', 'Agua'],
+        preparacion: ['Hervir el agua'],
+        dosis: '1 taza',
+        almacenamiento: '',
+      );
+
+      final sistema = SistemaCorporal(
+        id: 'digestivo',
+        nombre: 'Sistema Digestivo',
+        emoji: '🍃',
+        recetas: [recetaConDiente, recetaConAmargon],
+        totalRecetas: 2,
+      );
+
+      service = HierbasService(
+        repository: InMemoryHierbasRepository([hierbaAmargon]),
+        recetasService: RecetasService(
+          repository: InMemoryRecetasRepo([sistema]),
+        ),
+      );
+    });
+
+    test('getRecetasConHierba encuentra recetas por el alias', () async {
+      // Replica el flujo del provider: pasa la Hierba completa (nombre + alias).
+      const hierba = Hierba(
+        id: 'amargon',
+        nombre: 'Amargón (Diente de león)',
+        alias: ['Amargón', 'Diente de león'],
+        usoTradicional: '',
+        tags: [],
+      );
+      final result = await service
+          .getRecetasConHierba(hierba.nombre, aliases: hierba.alias);
+      // Encuentra la receta cuyo ingrediente dice "diente de león" (alias)
+      // y la que dice "Amargón" (alias / nombre corto).
+      expect(result.length, 2);
+      final ids = result.map((r) => (r['receta'] as Receta).id).toSet();
+      expect(ids, containsAll(['digestivo_diente', 'digestivo_amargon']));
+    });
+
+    test('getRecetasConHierba sin aliases no encuentra recetas del alias',
+        () async {
+      // Si alguien llamara sin pasar el alias, solo matchea "amargón (diente
+      // de león)" completo dentro de ingredientes → la receta de "diente de
+      // león" no matchea y la de "Amargón" tampoco (no contiene el nombre
+      // completo). Este test fija el comportamiento: SIEMPRE hay que pasar
+      // la Hierba completa (el provider lo hace).
+      final result = await service.getRecetasConHierba('Amargón (Diente de león)');
+      expect(result, isEmpty);
+    });
+
+    test('buscarHierbas encuentra por el nombre compuesto', () async {
+      final result = await service.buscarHierbas('diente de león');
+      expect(result.length, 1);
+      expect(result.first.id, 'amargon');
+    });
+
+    test('buscarHierbas encuentra por el alias', () async {
+      final result = await service.buscarHierbas('diente');
+      expect(result.length, 1);
+      expect(result.first.id, 'amargon');
+    });
+  });
+
+  group('HierbasService con preparaciones tradicionales', () {
+    late HierbasService service;
+
+    setUp(() {
+      service = HierbasService(
+        repository: InMemoryHierbasRepository(const []),
+        recetasService: RecetasService(
+          repository: InMemoryRecetasRepo(const []),
+        ),
+        preparacionesRepository: InMemoryPreparacionesRepo(const [
+          PreparacionTradicional(
+            id: 'higuera',
+            parte: 'Hojas, brotes',
+            texto: 'Infusión de hojas para uso hipoglucemiante',
+            modos: ['Infusión'],
+          ),
+        ]),
+      );
+    });
+
+    test('getPreparaciones devuelve las preparaciones del repo', () async {
+      final result = await service.getPreparaciones();
+      expect(result.length, 1);
+      expect(result.first.id, 'higuera');
+      expect(result.first.modos, ['Infusión']);
+    });
+
+    test('getPreparaciones con repo vacío devuelve lista vacía', () async {
+      final vacio = HierbasService(
+        repository: InMemoryHierbasRepository(const []),
+        recetasService: RecetasService(
+          repository: InMemoryRecetasRepo(const []),
+        ),
+        preparacionesRepository: InMemoryPreparacionesRepo(const []),
+      );
+      final result = await vacio.getPreparaciones();
+      expect(result, isEmpty);
     });
   });
 }

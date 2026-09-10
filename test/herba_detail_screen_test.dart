@@ -52,13 +52,18 @@ void main() {
     WidgetTester tester, {
     required List<Receta> recetas,
     bool startLifetime = false,
+    Hierba? hierbaOverride,
   }) async {
-    final hierba = Hierba(
-      id: 'menta',
-      nombre: 'Menta',
-      propiedades: 'Alivia la digestión',
-      tags: const ['digestivo'],
-    );
+    // id FICTICIO (no existe en preparaciones_tradicionales.json): las 89
+    // hierbas reales ya tienen preparación, así que un id real haría aparecer
+    // la sección y desplazaría las recetas fuera del viewport (taps fallan).
+    final hierba = hierbaOverride ??
+        Hierba(
+          id: 'hierba_fixture',
+          nombre: 'Menta',
+          usoTradicional: 'Alivia la digestión',
+          tags: const ['digestivo'],
+        );
     final sistema = SistemaCorporal(
       id: 'digestivo',
       nombre: 'Sistema Digestivo',
@@ -89,7 +94,7 @@ void main() {
     );
 
     final router = GoRouter(
-      initialLocation: '/herba/menta',
+      initialLocation: '/herba/${hierba.id}',
       routes: [
         GoRoute(
           path: '/herba/:herbaId',
@@ -236,6 +241,52 @@ void main() {
     expect(find.byIcon(TablerIcons.lock), findsNothing);
     expect(find.textContaining('premium con'), findsNothing);
   });
+
+  testWidgets('hierba con preparación tradicional muestra la sección',
+      (tester) async {
+    // Higuera está en preparaciones_tradicionales.json (asset real) pero no
+    // en recetas: verifica la sección nueva + el mensaje ajustado de
+    // "sin recetas" (ahora que la información tradicional existe arriba).
+    await pumpFicha(tester, recetas: const [], hierbaOverride: const Hierba(
+      id: 'higuera',
+      nombre: 'Higuera',
+      usoTradicional: 'Hipoglucemiante, emoliente',
+      tags: ['metabolico'],
+    ));
+
+    // Sección de preparación tradicional con el texto literal del herbolario
+    expect(find.text('Preparación tradicional'), findsOneWidget);
+    expect(
+      find.text(
+        'Infusión de hojas para uso hipoglucemiante; los frutos secos '
+        '(higos) se usan tradicionalmente como laxante suave.',
+      ),
+      findsOneWidget,
+    );
+
+    // Chip de parte usada
+    expect(find.text('Hojas, brotes'), findsOneWidget);
+    // Chip de modo
+    expect(find.text('Infusión'), findsOneWidget);
+
+    // Mensaje de "sin recetas" ajustado: apunta a la preparación de arriba
+    expect(
+      find.textContaining('su preparación tradicional está arriba'),
+      findsOneWidget,
+    );
+  });
+
+  testWidgets('hierba sin preparación NO muestra la sección', (tester) async {
+    // El fixture por defecto usa id ficticio ('hierba_fixture') sin entrada
+    // en preparaciones_tradicionales.json → la sección no debe aparecer.
+    await pumpFicha(tester, recetas: [
+      receta('digestivo_03', 'Te calmante para la acidez'),
+    ]);
+
+    expect(find.text('Preparación tradicional'), findsNothing);
+    // Sin preparación ni recetas propias → mensaje original del herbolario
+    expect(find.text('Hojas, brotes'), findsNothing);
+  });
 }
 
 /// Repos en memoria (mismo patrón que hierbas_service_test.dart).
@@ -264,7 +315,7 @@ class _InMemoryHierbasRepo implements HierbasRepository {
     return hierbas
         .where((h) =>
             h.nombre.toLowerCase().contains(queryLower) ||
-            h.propiedades.toLowerCase().contains(queryLower) ||
+            h.textoBusqueda.toLowerCase().contains(queryLower) ||
             h.tags.any((t) => t.toLowerCase().contains(queryLower)))
         .toList();
   }

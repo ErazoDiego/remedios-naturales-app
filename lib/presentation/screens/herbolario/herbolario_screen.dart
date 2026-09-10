@@ -5,6 +5,8 @@ import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../providers/hierbas_provider.dart';
 import '../../widgets/ads/banner_ad_widget.dart';
+import '../../widgets/hierba_avatar.dart';
+import '../../widgets/preparacion_tradicional_info_card.dart';
 
 /// Pantalla del Herbolario — directorio de hierbas medicinales A-Z
 /// con buscador y filtro por propiedad
@@ -43,6 +45,11 @@ class _HerbolarioScreenState extends State<HerbolarioScreen> {
   void _onTagSelected(String? tag) {
     context.read<HierbasProvider>().aplicarFiltros(tag: tag);
   }
+
+  /// La tarjeta informativa "Preparación tradicional" solo se muestra sin
+  /// filtros activos: con búsqueda o tag seleccionado, la lista queda limpia.
+  bool _mostrarInfoCard(HierbasProvider provider) =>
+      _currentQuery.isEmpty && provider.tagSeleccionado == null;
 
   @override
   Widget build(BuildContext context) {
@@ -240,10 +247,21 @@ class _HerbolarioScreenState extends State<HerbolarioScreen> {
                     ? _buildEmptyState(provider)
                     : ListView.separated(
                         padding: const EdgeInsets.all(20),
-                        itemCount: provider.resultados.length,
+                        // La tarjeta informativa va como primer ítem SOLO
+                        // sin filtros activos (con búsqueda o tag, la lista
+                        // se mantiene limpia de ruido).
+                        itemCount:
+                            provider.resultados.length +
+                            (_mostrarInfoCard(provider) ? 1 : 0),
                         separatorBuilder: (_, _) =>
                             const SizedBox(height: 10),
                         itemBuilder: (context, index) {
+                          if (_mostrarInfoCard(provider)) {
+                            if (index == 0) {
+                              return const PreparacionTradicionalInfoCard();
+                            }
+                            index -= 1;
+                          }
                           final hierba = provider.resultados[index];
                           return _HerbaCard(
                             hierba: hierba,
@@ -397,18 +415,10 @@ class _HerbaCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Container(
-                    width: 34,
-                    height: 34,
-                    decoration: BoxDecoration(
-                      color: AppConstants.backgroundCream,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: const Icon(
-                      TablerIcons.leaf,
-                      size: 18,
-                      color: AppConstants.sageGreenTitle,
-                    ),
+                  HierbaAvatar(
+                    hierbaId: hierba.id as String,
+                    nombre: hierba.nombre as String,
+                    size: 44,
                   ),
                   const SizedBox(width: 12),
                   Expanded(
@@ -430,7 +440,7 @@ class _HerbaCard extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(
-                hierba.propiedades as String,
+                hierba.usoTradicional,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(

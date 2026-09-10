@@ -1,17 +1,23 @@
 import '../models/hierba.dart';
+import '../models/preparacion_tradicional.dart';
 import '../repositories/hierbas_repository.dart';
+import '../repositories/preparaciones_repository.dart';
 import 'recetas_service.dart';
 
 /// Servicio de lógica de negocio para el herbolario
 class HierbasService {
   final HierbasRepository _repository;
   final RecetasService _recetasService;
+  final PreparacionesRepository _preparacionesRepository;
 
   HierbasService({
     HierbasRepository? repository,
     RecetasService? recetasService,
+    PreparacionesRepository? preparacionesRepository,
   })  : _repository = repository ?? HierbasRepository(),
-        _recetasService = recetasService ?? RecetasService();
+        _recetasService = recetasService ?? RecetasService(),
+        _preparacionesRepository =
+            preparacionesRepository ?? PreparacionesRepository();
 
   /// Obtiene todas las hierbas ordenadas alfabéticamente
   Future<List<Hierba>> getHierbas() async {
@@ -23,6 +29,11 @@ class HierbasService {
   /// Obtiene una hierba por ID
   Future<Hierba?> getHierbaById(String id) async {
     return _repository.getHierbaById(id);
+  }
+
+  /// Obtiene todas las preparaciones tradicionales del herbolario
+  Future<List<PreparacionTradicional>> getPreparaciones() async {
+    return _preparacionesRepository.getPreparaciones();
   }
 
   /// Busca hierbas por texto
@@ -41,48 +52,53 @@ class HierbasService {
     return _repository.getTagsPopulares();
   }
 
-  /// Resuelve los nombres de tags a etiquetas legibles
+  /// Resuelve los nombres de tags a etiquetas legibles.
+  ///
+  /// Solo los tags VISIBLES del schema enriquecido (Fase A). Los tags
+  /// riesgosos/internos de la tabla (precaucion_alta, toxicidad…) no se
+  /// muestran como chips: van a `nivelRiesgo`.
   static const Map<String, String> tagLabels = {
+    'cardiovascular': 'Cardiovascular',
+    'circulacion': 'Circulación',
     'digestivo': 'Digestivo',
     'diuretico': 'Diurético',
-    'respiratorio': 'Respiratorio',
-    'antiinflamatorio': 'Antiinflamatorio',
-    'energizante': 'Energizante',
-    'sedante': 'Sedante',
-    'metabolico': 'Metabólico',
-    'depurativo': 'Depurativo',
-    'hormonal': 'Hormonal',
-    'circulacion': 'Circulación',
-    'diaforetico': 'Diaforético',
-    'antiséptico': 'Antiséptico',
-    'inmunologico': 'Inmunológico',
+    'dolor_articular': 'Dolor articular',
+    'laxante': 'Laxante',
+    'nutricional': 'Nutricional',
     'piel': 'Piel',
-    'antioxidante': 'Antioxidante',
-    'vision': 'Visión',
-    'memoria': 'Memoria',
-    'hemostatico': 'Hemostático',
-    'antialcoholico': 'Antialcohólico',
-    'edulcorante': 'Edulcorante',
+    'relajacion': 'Relajación',
+    'respiratorio': 'Respiratorio',
+    'sueño': 'Sueño',
+    'uso_externo': 'Uso externo',
+    'vias_urinarias': 'Vías urinarias',
   };
 
   /// Convierte un tag interno a su etiqueta legible
   String tagLabel(String tag) => tagLabels[tag] ?? tag;
 
   /// Devuelve (sistemaId, receta) de todas las recetas que contienen
-  /// la hierba en sus ingredientes (matcheo por substring del nombre)
+  /// la hierba en sus ingredientes.
+  ///
+  /// Matchea por substring del nombre + aliases: una hierba con nombre
+  /// "Amargón (Diente de león)" y alias ["Diente de león"] encuentra recetas
+  /// cuyo ingrediente diga "diente de león" (o "amargón").
   Future<List<Map<String, dynamic>>> getRecetasConHierba(
-      String hierbaNombre) async {
+    String hierbaNombre, {
+    List<String> aliases = const [],
+  }) async {
     if (hierbaNombre.trim().isEmpty) return [];
 
     final sistemas = await _recetasService.getSistemas();
-    final nombreLower = hierbaNombre.toLowerCase().trim();
+    final nombres =
+        [hierbaNombre, ...aliases].map((n) => n.toLowerCase().trim()).toList();
     final recetasConHierba = <Map<String, dynamic>>[];
 
     for (final sistema in sistemas) {
       for (final receta in sistema.recetas) {
-        if (receta.ingredientes.any(
-          (ing) => ing.toLowerCase().contains(nombreLower),
-        )) {
+        if (receta.ingredientes.any((ing) {
+          final ingrediente = ing.toLowerCase();
+          return nombres.any((n) => n.isNotEmpty && ingrediente.contains(n));
+        })) {
           recetasConHierba.add({
             'receta': receta,
             'sistemaId': sistema.id,

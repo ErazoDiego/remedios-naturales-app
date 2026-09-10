@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../core/utils/text_normalizer.dart';
 import '../../data/models/hierba.dart';
+import '../../data/models/preparacion_tradicional.dart';
 import '../../data/services/hierbas_service.dart';
 
 /// Provider para manejar el estado del herbolario en la UI
@@ -15,6 +17,7 @@ class HierbasProvider extends ChangeNotifier {
   List<Hierba> _resultados = [];
   List<String> _tagsPopulares = [];
   List<Map<String, dynamic>> _recetasConHierba = [];
+  Map<String, PreparacionTradicional> _preparaciones = {};
   String _busqueda = '';
   String? _tagSeleccionado;
   bool _isLoading = false;
@@ -30,7 +33,10 @@ class HierbasProvider extends ChangeNotifier {
   bool get isLoading => _isLoading;
   String? get error => _error;
 
-  /// Carga todas las hierbas y los tags populares
+  /// Preparación tradicional de una hierba (null si no tiene)
+  PreparacionTradicional? preparacionDe(String id) => _preparaciones[id];
+
+  /// Carga todas las hierbas, tags y preparaciones tradicionales
   Future<void> loadHierbas() async {
     _isLoading = true;
     _error = null;
@@ -40,12 +46,19 @@ class HierbasProvider extends ChangeNotifier {
       _hierbas = await _service.getHierbas();
       _tagsPopulares = await _service.getTagsPopulares();
       _resultados = List.of(_hierbas);
+      await loadPreparaciones();
     } catch (e) {
       _error = 'Error al cargar el herbolario: $e';
     } finally {
       _isLoading = false;
       notifyListeners();
     }
+  }
+
+  /// Carga las preparaciones tradicionales en el mapa por ID de hierba
+  Future<void> loadPreparaciones() async {
+    final lista = await _service.getPreparaciones();
+    _preparaciones = {for (final p in lista) p.id: p};
   }
 
   /// Aplica búsqueda por texto + filtro por tag
@@ -68,11 +81,13 @@ class HierbasProvider extends ChangeNotifier {
 
     // Luego aplicar búsqueda por texto si existe
     if (query.isNotEmpty) {
+      // Mismo criterio que el repo: normaliza tildes/ñ y matchea sobre
+      // textoBusqueda (nombre + alias + tags + científico + familia +
+      // uso tradicional + precauciones…). "diente de león" encuentra
+      // "Amargón (Diente de león)" por alias.
+      final q = normalizarTexto(query);
       base = base.where((h) {
-        final queryLower = query.toLowerCase();
-        return h.nombre.toLowerCase().contains(queryLower) ||
-            h.propiedades.toLowerCase().contains(queryLower) ||
-            h.tags.any((t) => t.toLowerCase().contains(queryLower));
+        return normalizarTexto(h.textoBusqueda).contains(q);
       }).toList();
     }
 
@@ -88,14 +103,15 @@ class HierbasProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Obtiene las recetas que contienen una hierba
-  Future<void> loadRecetasConHierba(String hierbaNombre) async {
+  /// Obtiene las recetas que contienen una hierba (por nombre + alias)
+  Future<void> loadRecetasConHierba(Hierba hierba) async {
     _isLoading = true;
     _error = null;
     notifyListeners();
 
     try {
-      _recetasConHierba = await _service.getRecetasConHierba(hierbaNombre);
+      _recetasConHierba =
+          await _service.getRecetasConHierba(hierba.nombre, aliases: hierba.alias);
     } catch (e) {
       _error = 'Error al cargar recetas con la hierba: $e';
     } finally {

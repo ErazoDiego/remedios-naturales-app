@@ -2,810 +2,1775 @@
   {
     "id": "achicoria",
     "nombre": "Achicoria",
-    "propiedades": "Abre el apetito, baja colesterol",
+    "alias": [],
+    "nombreCientifico": "Cichorium intybus L.",
+    "familia": "Asteraceae",
+    "origenDistribucion": "Europa, Asia occidental; ampliamente naturalizada",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Roseta basal de hojas dentadas; tallos ramificados; flores azul/lila",
+    "parteUtilizada": "Raíz",
+    "usoTradicional": "Molestias digestivas leves y pérdida temporal de apetito",
+    "precauciones": "Evitar atribuir beneficios metabólicos no demostrados",
     "tags": [
-      "digestivo",
-      "metabolico"
-    ]
+      "digestivo"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "alcachofa",
     "nombre": "Alcachofa",
-    "propiedades": "Colerética, mejora el colesterol",
+    "alias": [
+      "Alcaucil"
+    ],
+    "nombreCientifico": "Cynara cardunculus L. (grupo cultivado; sin. C. scolymus)",
+    "familia": "Asteraceae",
+    "origenDistribucion": "Mediterráneo; cultivada mundialmente",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Hojas grandes gris plateadas, profundamente divididas; capítulos florales púrpura",
+    "parteUtilizada": "Hoja",
+    "usoTradicional": "Molestias digestivas leves, plenitud, distensión y flatulencia",
+    "precauciones": "No confundir hoja medicinal con el capítulo comestible",
     "tags": [
-      "depurativo",
-      "metabolico"
-    ]
+      "digestivo"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "alfalfa",
     "nombre": "Alfalfa",
-    "propiedades": "Aporte de vitaminas y minerales, digestivo, laxante, colesterol, menopausia",
+    "alias": [
+      "Lucerna"
+    ],
+    "nombreCientifico": "Medicago sativa L.",
+    "familia": "Fabaceae",
+    "origenDistribucion": "Asia occidental; cultivada mundialmente",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Hojas trifoliadas; flores violeta-azuladas en racimos",
+    "parteUtilizada": "Partes aéreas",
+    "usoTradicional": "Uso tradicional y nutricional; evidencia clínica limitada para muchos usos comerciales",
+    "precauciones": "Puede aportar vitamina K; precaución con anticoagulantes",
     "tags": [
-      "digestivo",
-      "hormonal",
-      "metabolico"
-    ]
+      "nutricional"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "amargon",
-    "nombre": "Amargón",
-    "propiedades": "Pérdida de apetito, hepático, flatulencia, digestivo",
+    "nombre": "Amargón (Diente de león)",
+    "alias": [],
+    "nombreCientifico": "Taraxacum officinale F.H.Wigg.",
+    "familia": "Asteraceae",
+    "origenDistribucion": "Eurasia; naturalizado ampliamente",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Roseta de hojas profundamente dentadas; flor amarilla; vilano blanco esférico",
+    "parteUtilizada": "Raíz; también hojas según tradición",
+    "usoTradicional": "Molestias digestivas leves, pérdida temporal de apetito y aumento de diuresis",
+    "precauciones": "Precaución en obstrucción biliar; no prometer 'depuración'",
     "tags": [
-      "depurativo",
-      "digestivo"
-    ]
+      "digestivo",
+      "diuretico"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "ambay",
     "nombre": "Ambay",
-    "propiedades": "Expectorante, vías respiratorias",
+    "alias": [
+      "Amba'y"
+    ],
+    "nombreCientifico": "Cecropia pachystachya Trécul",
+    "familia": "Urticaceae",
+    "origenDistribucion": "Sudamérica",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Árbol con hojas grandes palmadamente lobadas y envés pálido",
+    "parteUtilizada": "Hojas",
+    "usoTradicional": "Uso tradicional respiratorio, especialmente tos",
+    "precauciones": "Presentar como uso tradicional regional",
     "tags": [
       "respiratorio"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": [
+      "https://sib.gob.ar/"
     ]
   },
   {
     "id": "anacahuita",
     "nombre": "Anacahuita",
-    "propiedades": "Afecciones respiratorias, expectorante",
+    "alias": [],
+    "nombreCientifico": "Blepharocalyx salicifolius (Kunth) O.Berg",
+    "familia": "Myrtaceae",
+    "origenDistribucion": "Sudamérica",
+    "tipoIdentificacion": "variante_regional",
+    "comoReconocerla": "Árbol perenne de hojas aromáticas y pequeños frutos; flores blancas",
+    "parteUtilizada": "Hojas",
+    "usoTradicional": "Uso tradicional para tos y broncoespasmo en el Cono Sur",
+    "precauciones": "El nombre puede referir a otras especies según país",
     "tags": [
       "respiratorio"
-    ]
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "angelica",
     "nombre": "Angélica",
-    "propiedades": "Diurético, diaforético",
+    "alias": [
+      "Angélica europea"
+    ],
+    "nombreCientifico": "Angelica archangelica L.",
+    "familia": "Apiaceae",
+    "origenDistribucion": "Europa septentrional y oriental; cultivada",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Planta alta; tallos huecos; hojas grandes divididas; grandes umbelas",
+    "parteUtilizada": "Raíz",
+    "usoTradicional": "Molestias digestivas y pérdida temporal del apetito",
+    "precauciones": "Evitar tags diurético/diaforético sin contexto",
     "tags": [
-      "diaforetico",
-      "diuretico"
-    ]
+      "digestivo"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "apio_cimarron",
     "nombre": "Apio cimarrón",
-    "propiedades": "Diurético, diaforético, tradicionalmente usado para la reuma, inflamaciones",
+    "alias": [
+      "Apio silvestre"
+    ],
+    "nombreCientifico": "Apium sellowianum H.Wolff",
+    "familia": "Apiaceae",
+    "origenDistribucion": "Sudamérica",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Tallos acanalados; hojas muy divididas; umbelas de flores blancas",
+    "parteUtilizada": "Partes aéreas, flores/frutos según tradición",
+    "usoTradicional": "Uso tradicional regional, principalmente digestivo/diurético",
+    "precauciones": "El nombre también se aplica a Ammi majus y Cyclospermum leptophyllum",
     "tags": [
-      "antiinflamatorio",
-      "diaforetico",
+      "digestivo",
       "diuretico"
-    ]
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "arandano",
     "nombre": "Arándano",
-    "propiedades": "Antiséptico para vías urinarias, hipoglucemiante, mejora la visión nocturna",
-    "tags": [
-      "antiséptico",
-      "diuretico",
-      "inmunologico",
-      "metabolico",
-      "vision"
+    "alias": [
+      "Bilberry",
+      "arándano europeo"
+    ],
+    "nombreCientifico": "Vaccinium myrtillus L. (referencia)",
+    "familia": "Ericaceae",
+    "origenDistribucion": "Europa y Asia septentrional",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Arbusto bajo; hojas pequeñas; bayas azul oscuro",
+    "parteUtilizada": "Frutos; hojas en algunas tradiciones",
+    "usoTradicional": "Los usos dependen de especie y parte; la evidencia no permite mantener todos los tags originales",
+    "precauciones": "'Arándano' incluye múltiples Vaccinium; especificar especie del producto",
+    "tags": [],
+    "nivelRiesgo": null,
+    "fuentes": [
+      "https://www.ema.europa.eu/en/medicines/herbal/myrtilli-fructus-recens"
     ]
   },
   {
     "id": "boldo",
     "nombre": "Boldo",
-    "propiedades": "Colagogo, colerético, para el hígado",
+    "alias": [
+      "Boldo de Chile"
+    ],
+    "nombreCientifico": "Peumus boldus Molina",
+    "familia": "Monimiaceae",
+    "origenDistribucion": "Chile; cultivado/comercializado internacionalmente",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Arbusto/árbol perenne; hojas coriáceas ovales y aromáticas",
+    "parteUtilizada": "Hojas",
+    "usoTradicional": "Molestias digestivas leves",
+    "precauciones": "Evitar 'depurativo' como afirmación terapéutica",
     "tags": [
-      "depurativo"
-    ]
+      "digestivo"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "borraja",
     "nombre": "Borraja",
-    "propiedades": "Depurativo, emoliente",
-    "tags": [
-      "depurativo"
-    ]
+    "alias": [
+      "Borage"
+    ],
+    "nombreCientifico": "Borago officinalis L.",
+    "familia": "Boraginaceae",
+    "origenDistribucion": "Mediterráneo; naturalizada",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Hojas y tallos muy vellosos; flores azules estrelladas",
+    "parteUtilizada": "Flores/partes aéreas",
+    "usoTradicional": "Usos populares sudoríficos y respiratorios",
+    "precauciones": "Advertencia por alcaloides pirrolizidínicos; no promover consumo habitual",
+    "tags": [],
+    "nivelRiesgo": "precaucion",
+    "fuentes": []
   },
   {
     "id": "calendula",
     "nombre": "Caléndula",
-    "propiedades": "Estimulante de la circulación, cicatrizante, enfermedades de la piel, acné",
+    "alias": [
+      "Maravilla"
+    ],
+    "nombreCientifico": "Calendula officinalis L.",
+    "familia": "Asteraceae",
+    "origenDistribucion": "Mediterráneo; cultivada globalmente",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Flores amarillas/naranjas tipo margarita; hojas alargadas",
+    "parteUtilizada": "Flores",
+    "usoTradicional": "Inflamaciones leves de piel, pequeñas heridas y boca/garganta",
+    "precauciones": "Uso externo/bucal según preparado",
     "tags": [
-      "circulacion",
-      "energizante",
       "piel"
-    ]
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "canchalagua",
     "nombre": "Canchalagua",
-    "propiedades": "Gastrointestinal, dolor de estómago, antiácido",
+    "alias": [
+      "Cachanlahue"
+    ],
+    "nombreCientifico": "Schkuhria pinnata / Centaurium cachanlahuen / otras",
+    "familia": "Varias",
+    "origenDistribucion": "América Latina",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Variable según especie",
+    "parteUtilizada": "Variable según especie",
+    "usoTradicional": "Principalmente usos digestivos según región",
+    "precauciones": "Nombre aplicado a numerosas especies; mostrar variantes regionales",
     "tags": [
       "digestivo"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": [
+      "https://mpns.science.kew.org/"
     ]
   },
   {
     "id": "cardo_mariano",
     "nombre": "Cardo mariano",
-    "propiedades": "Hepatoprotector, antioxidante e hipotensor, digestivo",
+    "alias": [
+      "Milk thistle"
+    ],
+    "nombreCientifico": "Silybum marianum (L.) Gaertn.",
+    "familia": "Asteraceae",
+    "origenDistribucion": "Mediterráneo; naturalizado",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Hojas grandes espinosas con marmolado blanco; flor púrpura",
+    "parteUtilizada": "Frutos",
+    "usoTradicional": "Molestias digestivas asociadas tradicionalmente a función hepática",
+    "precauciones": "No afirmar 'protege el hígado' sin contexto clínico",
     "tags": [
-      "antioxidante",
       "digestivo"
-    ]
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "carqueja",
     "nombre": "Carqueja",
-    "propiedades": "Colagogo, diurético, hepático, impotencia masculina",
+    "alias": [],
+    "nombreCientifico": "Baccharis trimera (Less.) DC. (referencia)",
+    "familia": "Asteraceae",
+    "origenDistribucion": "Sudamérica",
+    "tipoIdentificacion": "variante_regional",
+    "comoReconocerla": "Arbusto verde con tallos alados y flores pequeñas",
+    "parteUtilizada": "Partes aéreas",
+    "usoTradicional": "Uso tradicional amargo y digestivo",
+    "precauciones": "El nombre puede abarcar otras Baccharis",
     "tags": [
-      "depurativo",
-      "diuretico"
-    ]
+      "digestivo"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
+  },
+  {
+    "id": "cascara_sagrada",
+    "nombre": "Cáscara sagrada",
+    "alias": [],
+    "nombreCientifico": "Frangula purshiana (DC.) A.Gray ex J.G.Cooper",
+    "familia": "Rhamnaceae",
+    "origenDistribucion": "Oeste de Norteamérica",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Árbol/arbusto de hojas ovales; frutos que oscurecen al madurar",
+    "parteUtilizada": "Corteza",
+    "usoTradicional": "Laxante estimulante para estreñimiento ocasional",
+    "precauciones": "No usar de forma prolongada; riesgo de alteraciones hidroelectrolíticas",
+    "tags": [
+      "laxante"
+    ],
+    "nivelRiesgo": "precaucion",
+    "fuentes": []
   },
   {
     "id": "castano_de_indias",
     "nombre": "Castaño de indias",
-    "propiedades": "Estimula la circulación periférica, enfermedades venosas",
+    "alias": [
+      "Horse chestnut"
+    ],
+    "nombreCientifico": "Aesculus hippocastanum L.",
+    "familia": "Sapindaceae",
+    "origenDistribucion": "Balcanes; cultivado en Europa y América",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Hojas palmadas 5-7 folíolos; panículas florales; fruto verde espinoso",
+    "parteUtilizada": "Semillas; también corteza en otros preparados",
+    "usoTradicional": "Síntomas asociados a insuficiencia venosa crónica en preparados específicos",
+    "precauciones": "No usar semillas crudas ni preparados caseros",
     "tags": [
       "circulacion"
-    ]
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "cedron",
     "nombre": "Cedrón",
-    "propiedades": "Digestivo, sedante, antiflatulento, mareos",
+    "alias": [
+      "Hierba luisa",
+      "lemon verbena"
+    ],
+    "nombreCientifico": "Aloysia citrodora Paláu",
+    "familia": "Verbenaceae",
+    "origenDistribucion": "Sudamérica; cultivado internacionalmente",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Arbusto con hojas lanceoladas, frecuentemente en verticilos de tres, fuerte aroma a limón",
+    "parteUtilizada": "Hojas",
+    "usoTradicional": "Molestias digestivas y relajación tradicional",
+    "precauciones": "Presentar relajación como uso tradicional",
     "tags": [
       "digestivo",
-      "sedante"
-    ]
+      "relajacion"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "centella_asiatica",
     "nombre": "Centella asiática",
-    "propiedades": "Cicatrizante, eutrófico, tradicionalmente usado para la celulitis, regenerador cutáneo",
+    "alias": [
+      "Gotu kola"
+    ],
+    "nombreCientifico": "Centella asiatica (L.) Urb.",
+    "familia": "Apiaceae",
+    "origenDistribucion": "Asia tropical; extendida",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Planta rastrera; hojas redondas/reniformes con bordes crenados",
+    "parteUtilizada": "Partes aéreas",
+    "usoTradicional": "Uso tradicional en heridas menores y piel",
+    "precauciones": "No equiparar todos los suplementos con preparados medicinales",
     "tags": [
       "piel"
-    ]
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "chanar",
     "nombre": "Chañar",
-    "propiedades": "Emoliente de vías aéreas, bronquitis",
+    "alias": [],
+    "nombreCientifico": "Geoffroea decorticans (Gillies ex Hook. & Arn.) Burkart",
+    "familia": "Fabaceae",
+    "origenDistribucion": "Regiones áridas de Sudamérica",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Árbol con corteza descamante, flores amarillas y frutos amarillos/anaranjados",
+    "parteUtilizada": "Fruto principalmente",
+    "usoTradicional": "Uso tradicional respiratorio, tos y garganta",
+    "precauciones": "Presentar como tradición regional",
     "tags": [
       "respiratorio"
-    ]
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "chia",
     "nombre": "Chía",
-    "propiedades": "Aporte de omega 3 y 6, colesterol",
+    "alias": [],
+    "nombreCientifico": "Salvia hispanica L.",
+    "familia": "Lamiaceae",
+    "origenDistribucion": "Mesoamérica; cultivada globalmente",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Herbácea; hojas opuestas serradas; espigas de flores azul/violeta",
+    "parteUtilizada": "Semillas",
+    "usoTradicional": "Uso principalmente nutricional",
+    "precauciones": "No presentar como tratamiento metabólico",
     "tags": [
-      "metabolico"
-    ]
+      "nutricional"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "cimicifuga",
     "nombre": "Cimicífuga",
-    "propiedades": "Trastornos premenstruales, menopausia",
-    "tags": [
-      "hormonal"
-    ]
+    "alias": [
+      "Cohosh negro",
+      "black cohosh"
+    ],
+    "nombreCientifico": "Actaea racemosa L. (sin. Cimicifuga racemosa)",
+    "familia": "Ranunculaceae",
+    "origenDistribucion": "Norteamérica oriental",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Herbácea alta; hojas grandes compuestas; largas inflorescencias blancas",
+    "parteUtilizada": "Rizoma y raíz",
+    "usoTradicional": "Alivio de síntomas menopáusicos como sofocos y sudoración",
+    "precauciones": "Advertencia hepática; preferir preparados estandarizados",
+    "tags": [],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "cola_de_caballo",
     "nombre": "Cola de caballo",
-    "propiedades": "Diurético, antiséptico de vías urinarias, antirreumático",
+    "alias": [
+      "Horsetail"
+    ],
+    "nombreCientifico": "Equisetum arvense L. (referencia europea)",
+    "familia": "Equisetaceae",
+    "origenDistribucion": "Hemisferio norte; otras especies en América Latina",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Tallos verdes articulados con verticilos de ramas finas",
+    "parteUtilizada": "Partes aéreas estériles",
+    "usoTradicional": "Aumento de diuresis en molestias urinarias menores; uso cutáneo tradicional",
+    "precauciones": "En América Latina puede comercializarse Equisetum giganteum; verificar especie",
     "tags": [
-      "antiinflamatorio",
-      "antiséptico",
       "diuretico",
-      "inmunologico"
+      "vias_urinarias"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": [
+      "https://www.ema.europa.eu/en/medicines/herbal/equiseti-herba"
     ]
   },
   {
     "id": "congorosa",
     "nombre": "Congorosa",
-    "propiedades": "Digestiva, antiespasmódica, calma el dolor de la úlcera",
+    "alias": [
+      "Espinheira-santa"
+    ],
+    "nombreCientifico": "Monteverdia ilicifolia (Mart. ex Reissek) Biral (sin. Maytenus ilicifolia)",
+    "familia": "Celastraceae",
+    "origenDistribucion": "Sudamérica",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Arbusto con hojas coriáceas brillantes y margen dentado/espinoso",
+    "parteUtilizada": "Hojas",
+    "usoTradicional": "Uso tradicional gastrointestinal",
+    "precauciones": "No mantener sedante sin respaldo",
     "tags": [
-      "digestivo",
-      "sedante"
-    ]
+      "digestivo"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "crataegus",
     "nombre": "Crataegus",
-    "propiedades": "Sedante, tónico cardíaco, hipertensión",
+    "alias": [
+      "Espino blanco",
+      "hawthorn"
+    ],
+    "nombreCientifico": "Crataegus monogyna / C. laevigata y otras autorizadas",
+    "familia": "Rosaceae",
+    "origenDistribucion": "Europa, Asia occidental; naturalizado",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Arbusto/árbol espinoso; flores blancas; frutos rojos; hojas lobuladas",
+    "parteUtilizada": "Hojas con flores",
+    "usoTradicional": "Síntomas cardíacos transitorios de origen nervioso y estrés leve en usos tradicionales",
+    "precauciones": "Descartar patología cardíaca; no decir 'bueno para el corazón'",
     "tags": [
-      "circulacion",
-      "energizante",
-      "sedante"
-    ]
+      "cardiovascular",
+      "relajacion"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "cuasia",
     "nombre": "Cuasia",
-    "propiedades": "Tónico estomacal, digestivo, parásitos capilares",
-    "tags": [
-      "antiséptico",
-      "digestivo",
-      "energizante",
-      "respiratorio"
-    ]
-  },
-  {
-    "id": "cascara_sagrada",
-    "nombre": "Cáscara sagrada",
-    "propiedades": "Laxante, purgante",
+    "alias": [
+      "Quassia"
+    ],
+    "nombreCientifico": "Quassia amara L. (referencia)",
+    "familia": "Simaroubaceae",
+    "origenDistribucion": "América tropical",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Arbusto/árbol tropical; flores rojas/rosadas alargadas",
+    "parteUtilizada": "Madera",
+    "usoTradicional": "Amargo digestivo y estimulante del apetito tradicional",
+    "precauciones": "Quassia también puede referir a Picrasma excelsa; verificar producto",
     "tags": [
       "digestivo"
-    ]
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "damiana",
     "nombre": "Damiana",
-    "propiedades": "Tradicionalmente usado para la disfunción sexual; afrodisíaco",
-    "tags": [
-      "hormonal"
-    ]
-  },
-  {
-    "id": "diente_de_leon",
-    "nombre": "Diente de león",
-    "propiedades": "Pérdida de apetito, hepático, flatulencia, digestivo",
-    "tags": [
-      "depurativo",
-      "digestivo"
-    ]
+    "alias": [],
+    "nombreCientifico": "Turnera diffusa Willd. ex Schult.",
+    "familia": "Passifloraceae",
+    "origenDistribucion": "México, Centroamérica y Caribe",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Arbusto pequeño; hojas aromáticas dentadas; flores amarillas de cinco pétalos",
+    "parteUtilizada": "Hojas/partes aéreas",
+    "usoTradicional": "Uso tradicional como tónico y relacionado con deseo sexual",
+    "precauciones": "No presentar como afrodisíaco clínicamente demostrado",
+    "tags": [],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "doradilla",
     "nombre": "Doradilla",
-    "propiedades": "Regula menstruación",
-    "tags": [
-      "hormonal"
+    "alias": [],
+    "nombreCientifico": "Cheilanthes glauca (referencia Cono Sur); otras especies",
+    "familia": "Pteridaceae",
+    "origenDistribucion": "Cono Sur y otras regiones según especie",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Helecho; rasgos variables según especie",
+    "parteUtilizada": "Variable",
+    "usoTradicional": "Usos tradicionales variables",
+    "precauciones": "Nombre multiespecie; evitar uso en embarazo por antecedentes emenagogos/abortivos de algunas especies",
+    "tags": [],
+    "nivelRiesgo": "precaucion",
+    "fuentes": [
+      "https://sib.gob.ar/"
     ]
   },
   {
     "id": "equinacea",
     "nombre": "Equinácea",
-    "propiedades": "Energizante natural en enfermedades infecciosas, diaforético, antiséptico, antibiótico",
+    "alias": [
+      "Echinacea"
+    ],
+    "nombreCientifico": "Echinacea purpurea (L.) Moench (referencia principal)",
+    "familia": "Asteraceae",
+    "origenDistribucion": "Norteamérica; cultivada internacionalmente",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Capítulos rosado-violeta con centro prominente y espinoso",
+    "parteUtilizada": "Partes aéreas y/o raíz según preparado",
+    "usoTradicional": "Preparados específicos para síntomas de resfriado común; otros usos según monografía",
+    "precauciones": "Alergia Asteraceae; diferenciar especies y partes",
     "tags": [
-      "antiséptico",
-      "diaforetico",
-      "energizante",
-      "inmunologico"
+      "respiratorio"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": [
+      "https://www.ema.europa.eu/en/medicines/herbal/echinaceae-purpureae-herba"
     ]
   },
   {
     "id": "estigma_de_maiz",
     "nombre": "Estigma de maíz",
-    "propiedades": "Diurético",
+    "alias": [
+      "Barba de choclo",
+      "corn silk"
+    ],
+    "nombreCientifico": "Zea mays L.",
+    "familia": "Poaceae",
+    "origenDistribucion": "Mesoamérica; cultivado mundialmente",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Filamentos sedosos que emergen de la mazorca",
+    "parteUtilizada": "Estilos y estigmas",
+    "usoTradicional": "Uso tradicional diurético y urinario",
+    "precauciones": "No sustituye evaluación de síntomas urinarios persistentes",
     "tags": [
-      "diuretico"
-    ]
+      "diuretico",
+      "vias_urinarias"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "eucaliptus",
     "nombre": "Eucaliptus",
-    "propiedades": "Anticatarral, fluidificante de las vías aéreas, bronquitis, asma",
+    "alias": [
+      "Eucalipto"
+    ],
+    "nombreCientifico": "Eucalyptus globulus Labill.",
+    "familia": "Myrtaceae",
+    "origenDistribucion": "Australia; cultivado mundialmente",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Árbol alto; hojas adultas lanceoladas aromáticas; juveniles más anchas y azuladas",
+    "parteUtilizada": "Hojas",
+    "usoTradicional": "Tos y resfriado",
+    "precauciones": "Aceite esencial no equivale a infusión y requiere precauciones adicionales",
     "tags": [
       "respiratorio"
-    ]
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "fresno",
     "nombre": "Fresno",
-    "propiedades": "Artritis, gota, laxante, diurético, tradicionalmente usado para la reuma",
+    "alias": [
+      "Ash"
+    ],
+    "nombreCientifico": "Fraxinus excelsior L. / Fraxinus angustifolia Vahl",
+    "familia": "Oleaceae",
+    "origenDistribucion": "Europa y región mediterránea",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Árbol grande; hojas compuestas; frutos alados (sámaras)",
+    "parteUtilizada": "Hojas",
+    "usoTradicional": "Molestias articulares leves y aumento de diuresis en usos tradicionales",
+    "precauciones": "No mantener digestivo",
     "tags": [
-      "antiinflamatorio",
-      "digestivo",
-      "diuretico"
-    ]
+      "diuretico",
+      "dolor_articular"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "fucus",
     "nombre": "Fucus",
-    "propiedades": "Depurativo sanguíneo, digestivo",
-    "tags": [
-      "depurativo",
-      "digestivo"
-    ]
+    "alias": [
+      "Bladderwrack"
+    ],
+    "nombreCientifico": "Fucus vesiculosus L.",
+    "familia": "Fucaceae",
+    "origenDistribucion": "Costas del Atlántico norte",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Alga parda de talo aplanado con vesículas de aire",
+    "parteUtilizada": "Talo",
+    "usoTradicional": "Uso tradicional ligado al control de peso por contenido de yodo",
+    "precauciones": "Advertencia tiroidea; contenido de yodo variable",
+    "tags": [],
+    "nivelRiesgo": "precaucion",
+    "fuentes": []
   },
   {
     "id": "fumaria",
     "nombre": "Fumaria",
-    "propiedades": "Antihistamínico, depurativo, reumatismo",
+    "alias": [],
+    "nombreCientifico": "Fumaria officinalis L.",
+    "familia": "Papaveraceae",
+    "origenDistribucion": "Europa, Asia occidental; naturalizada",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Hojas finamente divididas; flores tubulares rosadas con punta oscura",
+    "parteUtilizada": "Partes aéreas",
+    "usoTradicional": "Trastornos gastrointestinales leves",
+    "precauciones": "No usar 'depurativo' como beneficio",
     "tags": [
-      "antiinflamatorio",
-      "depurativo"
-    ]
+      "digestivo"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "garcinia",
     "nombre": "Garcinia",
-    "propiedades": "Quemador de grasas y celulítico",
-    "tags": [
-      "metabolico",
-      "piel"
+    "alias": [
+      "Garcinia cambogia"
+    ],
+    "nombreCientifico": "Garcinia gummi-gutta (L.) N.Robson",
+    "familia": "Clusiaceae",
+    "origenDistribucion": "Asia meridional y sudoriental",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Árbol tropical; fruto verde/amarillo profundamente acanalado",
+    "parteUtilizada": "Cáscara del fruto",
+    "usoTradicional": "Uso comercial para control de peso; eficacia clínica incierta",
+    "precauciones": "Reportes de hepatotoxicidad; no presentarla como adelgazante probado",
+    "tags": [],
+    "nivelRiesgo": "precaucion",
+    "fuentes": [
+      "https://www.nccih.nih.gov/health/garcinia-cambogia"
     ]
   },
   {
     "id": "ginkgo_biloba",
     "nombre": "Ginkgo biloba",
-    "propiedades": "Estimulante de la circulación cerebral y periférica, para la memoria",
+    "alias": [],
+    "nombreCientifico": "Ginkgo biloba L.",
+    "familia": "Ginkgoaceae",
+    "origenDistribucion": "China; cultivado mundialmente",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Árbol con hojas en forma de abanico, a menudo bilobuladas",
+    "parteUtilizada": "Hojas",
+    "usoTradicional": "Preparados estandarizados para determinados trastornos cognitivos/circulatorios",
+    "precauciones": "Interacciones con fármacos que afectan coagulación",
     "tags": [
-      "circulacion",
-      "energizante",
-      "memoria"
-    ]
+      "circulacion"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "ginseng",
     "nombre": "Ginseng",
-    "propiedades": "Energizante, decaimiento, disminución prematura de la potencia sexual",
-    "tags": [
-      "energizante",
-      "hormonal"
-    ]
+    "alias": [
+      "Ginseng asiático"
+    ],
+    "nombreCientifico": "Panax ginseng C.A.Mey.",
+    "familia": "Araliaceae",
+    "origenDistribucion": "Asia oriental",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Hojas compuestas en verticilo; frutos rojos; raíz gruesa ramificada",
+    "parteUtilizada": "Raíz",
+    "usoTradicional": "Fatiga y debilidad en uso tradicional",
+    "precauciones": "No afirmar efectos hormonales generales",
+    "tags": [],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "graviola",
     "nombre": "Graviola",
-    "propiedades": "Antimicrobiano, bioestimulante",
-    "tags": [
-      "energizante",
-      "inmunologico"
+    "alias": [
+      "Guanábana",
+      "soursop"
+    ],
+    "nombreCientifico": "Annona muricata L.",
+    "familia": "Annonaceae",
+    "origenDistribucion": "América tropical; cultivada en trópicos",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Árbol tropical; fruto grande verde con protuberancias blandas",
+    "parteUtilizada": "Fruto como alimento; hojas en usos tradicionales",
+    "usoTradicional": "Usos tradicionales diversos",
+    "precauciones": "No existe evidencia clínica suficiente para afirmar que trate o cure cáncer; posibles preocupaciones neurotóxicas",
+    "tags": [],
+    "nivelRiesgo": "precaucion",
+    "fuentes": [
+      "https://www.nccih.nih.gov/"
     ]
   },
   {
     "id": "hamamelis",
     "nombre": "Hamamelis",
-    "propiedades": "Antiinflamatorio local y de mucosas",
+    "alias": [
+      "Witch hazel"
+    ],
+    "nombreCientifico": "Hamamelis virginiana L.",
+    "familia": "Hamamelidaceae",
+    "origenDistribucion": "Norteamérica oriental",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Arbusto/árbol con flores amarillas de pétalos estrechos tipo cinta",
+    "parteUtilizada": "Hojas y corteza; destilados de ramas/hojas",
+    "usoTradicional": "Trastornos cutáneos menores y molestias circulatorias venosas",
+    "precauciones": "Diferenciar parte y preparado",
     "tags": [
-      "antiinflamatorio"
-    ]
+      "circulacion",
+      "piel"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "harpagofito",
     "nombre": "Harpagofito",
-    "propiedades": "Tradicionalmente usado para la reuma y la gota; antiespasmódico",
+    "alias": [
+      "Garra del diablo"
+    ],
+    "nombreCientifico": "Harpagophytum procumbens / H. zeyheri",
+    "familia": "Pedaliaceae",
+    "origenDistribucion": "África austral",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Planta rastrera; flores rosado-violetas; fruto con ganchos curvos",
+    "parteUtilizada": "Raíces secundarias/tubérculos",
+    "usoTradicional": "Dolor articular leve, molestias digestivas y pérdida de apetito",
+    "precauciones": "No usar fruto como parte medicinal; controlar interacciones/contraindicaciones según preparado",
     "tags": [
-      "antiinflamatorio",
-      "digestivo"
-    ]
+      "digestivo",
+      "dolor_articular"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "higuera",
     "nombre": "Higuera",
-    "propiedades": "Expectorante, anticatarral, laxante, hipoglucemiante, diabetes",
-    "tags": [
-      "digestivo",
-      "metabolico",
-      "respiratorio"
-    ]
+    "alias": [
+      "Higo"
+    ],
+    "nombreCientifico": "Ficus carica L.",
+    "familia": "Moraceae",
+    "origenDistribucion": "Mediterráneo y Asia occidental; cultivada ampliamente",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Hojas grandes palmadas y lobuladas; frutos higos",
+    "parteUtilizada": "Hojas y frutos según uso",
+    "usoTradicional": "Usos tradicionales digestivos/metabólicos diversos",
+    "precauciones": "Látex irritante y fototóxico; no recomendar aplicaciones caseras de látex",
+    "tags": [],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "hinojo",
     "nombre": "Hinojo",
-    "propiedades": "Trastornos digestivos, flatulencias, catarros, afecciones respiratorias",
+    "alias": [
+      "Fennel"
+    ],
+    "nombreCientifico": "Foeniculum vulgare Mill.",
+    "familia": "Apiaceae",
+    "origenDistribucion": "Mediterráneo; naturalizado",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Hojas filiformes; umbelas amarillas; aroma anisado",
+    "parteUtilizada": "Frutos",
+    "usoTradicional": "Distensión, flatulencia y tos asociada al resfriado",
+    "precauciones": "Cautela con aceite esencial y alergias",
     "tags": [
       "digestivo",
       "respiratorio"
-    ]
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "hipericon",
     "nombre": "Hipericón",
-    "propiedades": "Antidepresivo, contra la ansiedad y el insomnio nervioso",
-    "tags": [
-      "sedante"
-    ]
+    "alias": [
+      "Hierba de San Juan"
+    ],
+    "nombreCientifico": "Hypericum perforatum L.",
+    "familia": "Hypericaceae",
+    "origenDistribucion": "Europa, Asia occidental; naturalizado",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Flores amarillas; hojas con puntos translúcidos visibles a contraluz",
+    "parteUtilizada": "Partes aéreas floridas",
+    "usoTradicional": "Determinados trastornos del estado de ánimo/estrés y usos tradicionales de piel/GI según preparado",
+    "precauciones": "Numerosas interacciones medicamentosas; fotosensibilidad posible",
+    "tags": [],
+    "nivelRiesgo": "precaucion",
+    "fuentes": []
   },
   {
     "id": "hisopo",
     "nombre": "Hisopo",
-    "propiedades": "Obesidad, estimulante de la circulación, desórdenes digestivos",
+    "alias": [
+      "Hyssop"
+    ],
+    "nombreCientifico": "Hyssopus officinalis L.",
+    "familia": "Lamiaceae",
+    "origenDistribucion": "Mediterráneo y Asia occidental",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Subarbusto aromático; hojas estrechas; flores azul-violeta en grupos",
+    "parteUtilizada": "Partes aéreas floridas",
+    "usoTradicional": "Usos tradicionales digestivos y respiratorios",
+    "precauciones": "Aceite esencial mucho más concentrado; no equiparar",
     "tags": [
-      "circulacion",
       "digestivo",
-      "energizante",
-      "metabolico"
-    ]
+      "respiratorio"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "lapacho",
     "nombre": "Lapacho",
-    "propiedades": "Reconstituyente general, antianémico, depurativo, tradicionalmente usado para la reuma, diurético",
-    "tags": [
-      "antiinflamatorio",
-      "depurativo",
-      "diuretico",
-      "energizante"
-    ]
+    "alias": [
+      "Pau d'arco"
+    ],
+    "nombreCientifico": "Handroanthus impetiginosus (Mart. ex DC.) Mattos / relacionadas",
+    "familia": "Bignoniaceae",
+    "origenDistribucion": "América tropical y subtropical",
+    "tipoIdentificacion": "variante_regional",
+    "comoReconocerla": "Árbol de gran porte; flores rosadas en trompeta",
+    "parteUtilizada": "Corteza interna",
+    "usoTradicional": "Numerosos usos etnomedicinales latinoamericanos",
+    "precauciones": "No presentarlo como tratamiento oncológico; revisar especie comercial",
+    "tags": [],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "lavanda",
     "nombre": "Lavanda",
-    "propiedades": "Insomnio, angustia, ansiedad",
+    "alias": [
+      "Lavender"
+    ],
+    "nombreCientifico": "Lavandula angustifolia Mill.",
+    "familia": "Lamiaceae",
+    "origenDistribucion": "Mediterráneo; cultivada mundialmente",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Subarbusto; hojas estrechas gris-verdosas; espigas violetas/lilas",
+    "parteUtilizada": "Flores",
+    "usoTradicional": "Estrés leve y ayuda para dormir",
+    "precauciones": "Aceite esencial tiene perfil diferente",
     "tags": [
-      "sedante"
-    ]
+      "relajacion",
+      "sueño"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "llanten",
     "nombre": "Llantén",
-    "propiedades": "Astringente, emoliente de vías aéreas, ronqueras, dolor de garganta",
+    "alias": [
+      "Llantén menor",
+      "ribwort plantain"
+    ],
+    "nombreCientifico": "Plantago lanceolata L.",
+    "familia": "Plantaginaceae",
+    "origenDistribucion": "Eurasia; naturalizado",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Roseta basal; hojas lanceoladas con nervaduras paralelas; espigas en tallos desnudos",
+    "parteUtilizada": "Hojas",
+    "usoTradicional": "Tos y resfriado",
+    "precauciones": "Diferenciar de otros Plantago llamados llantén",
     "tags": [
       "respiratorio"
-    ]
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "maca",
     "nombre": "Maca",
-    "propiedades": "Energizante, afrodisíaco",
+    "alias": [
+      "Maca andina"
+    ],
+    "nombreCientifico": "Lepidium meyenii Walp.",
+    "familia": "Brassicaceae",
+    "origenDistribucion": "Andes centrales",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Roseta baja; órgano subterráneo engrosado tipo nabo",
+    "parteUtilizada": "Hipocótilo/órgano subterráneo",
+    "usoTradicional": "Uso nutricional y tradicional relacionado con vitalidad/sexualidad",
+    "precauciones": "No afirmar 'regulación hormonal'",
     "tags": [
-      "energizante",
-      "hormonal"
-    ]
+      "nutricional"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "malva",
     "nombre": "Malva",
-    "propiedades": "Anticatarral, irrigación de la mucosa de la garganta y boca, antiinflamatorio",
+    "alias": [
+      "Malva común"
+    ],
+    "nombreCientifico": "Malva sylvestris L.",
+    "familia": "Malvaceae",
+    "origenDistribucion": "Europa, norte de África y Asia; naturalizada",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Hojas redondeadas/palmadas; flores rosa-violeta con venas oscuras",
+    "parteUtilizada": "Flores y hojas",
+    "usoTradicional": "Irritación de boca/garganta, tos seca y molestias GI leves",
+    "precauciones": "Alergias poco frecuentes; diferenciar parte usada",
     "tags": [
-      "antiinflamatorio",
+      "digestivo",
       "respiratorio"
-    ]
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "manzanilla",
     "nombre": "Manzanilla",
-    "propiedades": "Antiespasmódico, digestivo, sedante, lavaje de ojos",
+    "alias": [
+      "Manzanilla alemana"
+    ],
+    "nombreCientifico": "Matricaria chamomilla L. (sin. Matricaria recutita)",
+    "familia": "Asteraceae",
+    "origenDistribucion": "Europa/Asia; cultivada",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Flores tipo margarita; centro amarillo cónico hueco; hojas finamente divididas",
+    "parteUtilizada": "Capítulos florales",
+    "usoTradicional": "Molestias digestivas leves; usos en boca/garganta, resfriado y piel según preparación",
+    "precauciones": "Posibles alergias Asteraceae",
     "tags": [
       "digestivo",
-      "sedante",
-      "vision"
-    ]
+      "piel",
+      "respiratorio"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "marcela",
     "nombre": "Marcela",
-    "propiedades": "Digestivo, carminativo",
+    "alias": [
+      "Macela"
+    ],
+    "nombreCientifico": "Achyrocline satureioides (Lam.) DC.",
+    "familia": "Asteraceae",
+    "origenDistribucion": "Sudamérica",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Subarbusto ramificado; hojas estrechas; pequeños capítulos amarillentos agrupados",
+    "parteUtilizada": "Hojas e inflorescencias",
+    "usoTradicional": "Uso tradicional digestivo/eupéptico",
+    "precauciones": "Presentar como tradición regional",
     "tags": [
       "digestivo"
-    ]
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "marrubio",
     "nombre": "Marrubio",
-    "propiedades": "Regula la menstruación, pérdida de apetito, trastornos digestivos, flatulencia, expectorante",
+    "alias": [
+      "White horehound"
+    ],
+    "nombreCientifico": "Marrubium vulgare L.",
+    "familia": "Lamiaceae",
+    "origenDistribucion": "Europa, norte de África, Asia; naturalizado",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Planta grisácea vellosa; hojas rugosas; flores blancas en verticilos",
+    "parteUtilizada": "Partes aéreas",
+    "usoTradicional": "Tos asociada al resfriado, molestias digestivas leves y pérdida de apetito",
+    "precauciones": "No mantener tag hormonal",
     "tags": [
       "digestivo",
-      "hormonal",
       "respiratorio"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
+  },
+  {
+    "id": "matico",
+    "nombre": "Mático",
+    "alias": [],
+    "nombreCientifico": "Piper aduncum L. / Buddleja globosa Hope",
+    "familia": "Piperaceae / Scrophulariaceae",
+    "origenDistribucion": "América tropical y región andina",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Variable según especie",
+    "parteUtilizada": "Hojas principalmente",
+    "usoTradicional": "Uso tradicional astringente y en heridas",
+    "precauciones": "Debe especificarse la especie regional antes de recomendar preparación",
+    "tags": [
+      "piel"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": [
+      "https://powo.science.kew.org/"
     ]
   },
   {
     "id": "meliloto",
     "nombre": "Meliloto",
-    "propiedades": "Tos rebelde, calma la ansiedad, insomnio, calmante",
+    "alias": [
+      "Sweet clover"
+    ],
+    "nombreCientifico": "Melilotus officinalis (L.) Lam.",
+    "familia": "Fabaceae",
+    "origenDistribucion": "Europa y Asia; naturalizado",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Hojas trifoliadas; racimos alargados de flores amarillas",
+    "parteUtilizada": "Partes aéreas",
+    "usoTradicional": "Pesadez de piernas por trastornos venosos menores; uso tópico en inflamaciones menores",
+    "precauciones": "Precaución con anticoagulantes y trastornos hemorrágicos",
     "tags": [
-      "respiratorio",
-      "sedante"
-    ]
+      "circulacion",
+      "piel"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "melisa",
     "nombre": "Melisa",
-    "propiedades": "Desórdenes de sueño, tónico cardíaco, antiespasmo, estimulante nervioso",
+    "alias": [
+      "Toronjil",
+      "lemon balm"
+    ],
+    "nombreCientifico": "Melissa officinalis L.",
+    "familia": "Lamiaceae",
+    "origenDistribucion": "Mediterráneo y Asia occidental; cultivada",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Hojas opuestas rugosas dentadas con aroma a limón; flores pequeñas blancas",
+    "parteUtilizada": "Hojas",
+    "usoTradicional": "Estrés leve, ayuda para dormir, distensión y flatulencia",
+    "precauciones": "No mantener circulación/energizante",
     "tags": [
-      "circulacion",
-      "energizante",
-      "sedante"
-    ]
+      "digestivo",
+      "relajacion",
+      "sueño"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "menta",
     "nombre": "Menta",
-    "propiedades": "Afecciones gastrointestinales, digestivo",
+    "alias": [
+      "Menta piperita",
+      "peppermint"
+    ],
+    "nombreCientifico": "Mentha × piperita L. (referencia)",
+    "familia": "Lamiaceae",
+    "origenDistribucion": "Híbrido cultivado globalmente",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Tallos cuadrados; hojas opuestas dentadas y aromáticas; espigas florales",
+    "parteUtilizada": "Hojas",
+    "usoTradicional": "Indigestión y flatulencia",
+    "precauciones": "'Menta' incluye varias Mentha; aceite esencial no equivale a hoja",
     "tags": [
       "digestivo"
-    ]
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "mil_hombres",
     "nombre": "Mil hombres",
-    "propiedades": "Tradicionalmente usado para la reuma, la gota y la artritis",
-    "tags": [
-      "antiinflamatorio"
+    "alias": [],
+    "nombreCientifico": "Aristolochia triangularis Cham. (referencia regional)",
+    "familia": "Aristolochiaceae",
+    "origenDistribucion": "Sudamérica",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Trepadora; flores tubulares/pipiformes muy características",
+    "parteUtilizada": "Varias históricamente",
+    "usoTradicional": "Usos históricos",
+    "precauciones": "Ácidos aristolóquicos: nefrotoxicidad grave y carcinogenicidad; evitar uso interno",
+    "tags": [],
+    "nivelRiesgo": "critico",
+    "fuentes": [
+      "https://sib.gob.ar/"
     ]
   },
   {
     "id": "muna_muna",
     "nombre": "Muña muña",
-    "propiedades": "Afrodisíaco, digestivo, laxante suave",
+    "alias": [],
+    "nombreCientifico": "Minthostachys verticillata (Griseb.) Epling (referencia argentina)",
+    "familia": "Lamiaceae",
+    "origenDistribucion": "Andes y regiones serranas de Sudamérica",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Arbusto aromático; hojas opuestas; flores pequeñas en verticilos",
+    "parteUtilizada": "Partes aéreas/hojas",
+    "usoTradicional": "Uso tradicional digestivo",
+    "precauciones": "'Muña' corresponde a distintas Minthostachys según región",
     "tags": [
-      "digestivo",
-      "hormonal"
-    ]
-  },
-  {
-    "id": "matico",
-    "nombre": "Mático",
-    "propiedades": "Hemostático",
-    "tags": [
-      "hemostatico"
-    ]
+      "digestivo"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "naranjo_hojas",
     "nombre": "Naranjo hojas",
-    "propiedades": "Depresión, palpitación",
+    "alias": [
+      "Naranjo amargo",
+      "bitter orange"
+    ],
+    "nombreCientifico": "Citrus × aurantium L. (referencia principal)",
+    "familia": "Rutaceae",
+    "origenDistribucion": "Asia; cultivado ampliamente",
+    "tipoIdentificacion": "variante_regional",
+    "comoReconocerla": "Árbol perenne; hojas verdes aromáticas; flores blancas perfumadas",
+    "parteUtilizada": "Hojas",
+    "usoTradicional": "Uso tradicional para relajación y sueño",
+    "precauciones": "Las hojas vendidas como 'naranjo' pueden proceder de otros Citrus; verificar especie",
     "tags": [
-      "circulacion",
-      "sedante"
-    ]
+      "relajacion"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "nogal",
     "nombre": "Nogal",
-    "propiedades": "Sudorífico, oscurece el cabello",
+    "alias": [
+      "Walnut"
+    ],
+    "nombreCientifico": "Juglans regia L.",
+    "familia": "Juglandaceae",
+    "origenDistribucion": "Europa sudoriental/Asia occidental; cultivado",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Árbol grande; hojas compuestas; frutos verdes con nuez",
+    "parteUtilizada": "Hojas",
+    "usoTradicional": "Trastornos cutáneos menores",
+    "precauciones": "Principalmente uso externo según monografía",
     "tags": [
-      "diaforetico",
       "piel"
-    ]
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "ortiga",
     "nombre": "Ortiga",
-    "propiedades": "Antirreumática, hepatoprotector, depurativo, diurético",
+    "alias": [
+      "Stinging nettle"
+    ],
+    "nombreCientifico": "Urtica dioica L.",
+    "familia": "Urticaceae",
+    "origenDistribucion": "Europa, Asia, norte de África; naturalizada",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Hojas opuestas dentadas; pelos urticantes",
+    "parteUtilizada": "Partes aéreas/hojas; raíz tiene usos distintos",
+    "usoTradicional": "Diuresis en molestias urinarias menores; molestias articulares leves",
+    "precauciones": "No promover diuresis si hay indicación de restricción hídrica; diferenciar raíz",
     "tags": [
-      "antiinflamatorio",
-      "depurativo",
-      "diuretico"
-    ]
+      "diuretico",
+      "dolor_articular",
+      "vias_urinarias"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "palo_azul",
     "nombre": "Palo azul",
-    "propiedades": "Diurético, antiséptico de vías urinarias, tradicionalmente usado para la reuma, artritis",
+    "alias": [],
+    "nombreCientifico": "Cyclolepis genistoides D.Don / Eysenhardtia polystachya (Ortega) Sarg.",
+    "familia": "Asteraceae / Fabaceae",
+    "origenDistribucion": "Cono Sur / México",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Variable; en Cono Sur arbusto grisáceo muy ramificado",
+    "parteUtilizada": "Partes leñosas/aéreas según especie",
+    "usoTradicional": "Usos urinarios y diuréticos tradicionales",
+    "precauciones": "Dos plantas distintas comparten el nombre; la app debe mostrar región/especie",
     "tags": [
-      "antiinflamatorio",
-      "antiséptico",
-      "diuretico",
-      "inmunologico"
+      "diuretico"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": [
+      "https://www.utep.edu/herbal-safety/"
     ]
   },
   {
     "id": "palo_pichi",
     "nombre": "Palo pichi",
-    "propiedades": "Diurético",
+    "alias": [
+      "Pichi-pichi"
+    ],
+    "nombreCientifico": "Fabiana imbricata Ruiz & Pav.",
+    "familia": "Solanaceae",
+    "origenDistribucion": "Chile y Argentina",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Arbusto muy ramificado con hojas diminutas y flores tubulares claras",
+    "parteUtilizada": "Partes aéreas",
+    "usoTradicional": "Uso tradicional urinario/diurético",
+    "precauciones": "Presentar como uso tradicional",
     "tags": [
-      "diuretico"
-    ]
+      "diuretico",
+      "vias_urinarias"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "palo_santo",
     "nombre": "Palo santo",
-    "propiedades": "Diurético, digestivo, depurativo, tradicionalmente usado para la gota, reuma, artritis",
-    "tags": [
-      "antiinflamatorio",
-      "depurativo",
-      "digestivo",
-      "diuretico"
+    "alias": [],
+    "nombreCientifico": "Gonopterodendron sarmientoi / Bursera graveolens",
+    "familia": "Zygophyllaceae / Burseraceae",
+    "origenDistribucion": "Gran Chaco / Perú-Ecuador",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Dos árboles botánicamente distintos",
+    "parteUtilizada": "Madera/corteza según especie y uso",
+    "usoTradicional": "Usos tradicionales diversos",
+    "precauciones": "No asumir uso interno ni una especie universal; distinguir sahumado de uso medicinal",
+    "tags": [],
+    "nivelRiesgo": null,
+    "fuentes": [
+      "https://sib.gob.ar/"
     ]
   },
   {
     "id": "pasionaria",
     "nombre": "Pasionaria",
-    "propiedades": "Sedante, palpitaciones",
+    "alias": [
+      "Passionflower"
+    ],
+    "nombreCientifico": "Passiflora incarnata L.",
+    "familia": "Passifloraceae",
+    "origenDistribucion": "Norteamérica; cultivada",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Trepadora con zarcillos, hojas trilobuladas y flor compleja violeta/blanca",
+    "parteUtilizada": "Partes aéreas",
+    "usoTradicional": "Estrés leve y ayuda para dormir",
+    "precauciones": "Puede potenciar sedación con otras sustancias",
     "tags": [
-      "circulacion",
-      "sedante"
-    ]
+      "relajacion",
+      "sueño"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "pezuna_de_vaca",
     "nombre": "Pezuña de vaca",
-    "propiedades": "Hipoglucemiante, diabetes",
-    "tags": [
-      "metabolico"
-    ]
+    "alias": [
+      "Pata de vaca"
+    ],
+    "nombreCientifico": "Bauhinia forficata Link (referencia sudamericana)",
+    "familia": "Fabaceae",
+    "origenDistribucion": "Sudamérica",
+    "tipoIdentificacion": "variante_regional",
+    "comoReconocerla": "Hojas bilobuladas con forma de pezuña; flores blancas",
+    "parteUtilizada": "Hojas",
+    "usoTradicional": "Uso tradicional relacionado con glucemia",
+    "precauciones": "No sustituye antidiabéticos; precaución por posible hipoglucemia",
+    "tags": [],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "poleo",
     "nombre": "Poleo",
-    "propiedades": "Trastornos gastrointestinales",
+    "alias": [
+      "Poleo europeo",
+      "poleo del Cono Sur"
+    ],
+    "nombreCientifico": "Mentha pulegium L. / Lippia turbinata Griseb.",
+    "familia": "Lamiaceae / Verbenaceae",
+    "origenDistribucion": "Europa / Cono Sur",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Variable según especie",
+    "parteUtilizada": "Partes aéreas",
+    "usoTradicional": "Uso digestivo tradicional",
+    "precauciones": "Aceite esencial de Mentha pulegium puede ser gravemente hepatotóxico; especificar especie",
     "tags": [
       "digestivo"
+    ],
+    "nivelRiesgo": "precaucion",
+    "fuentes": [
+      "https://sib.gob.ar/"
     ]
   },
   {
     "id": "regaliz",
     "nombre": "Regaliz",
-    "propiedades": "Anticatarral, y para úlceras gástricas, acidez",
+    "alias": [
+      "Licorice"
+    ],
+    "nombreCientifico": "Glycyrrhiza glabra L. y especies autorizadas",
+    "familia": "Fabaceae",
+    "origenDistribucion": "Mediterráneo y Asia occidental",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Herbácea con hojas compuestas y flores violeta; raíces leñosas",
+    "parteUtilizada": "Raíz y estolones",
+    "usoTradicional": "Molestias digestivas y expectorante en tos/resfriado",
+    "precauciones": "Glicirricina: HTA, edema, hipopotasemia, interacciones; evitar uso prolongado",
     "tags": [
       "digestivo",
       "respiratorio"
-    ]
+    ],
+    "nivelRiesgo": "precaucion",
+    "fuentes": []
   },
   {
     "id": "romerillo",
     "nombre": "Romerillo",
-    "propiedades": "Estimulante, debilidad nerviosa y del cerebro",
-    "tags": [
-      "energizante",
-      "memoria",
-      "sedante"
+    "alias": [],
+    "nombreCientifico": "Senecio subulatus / Heterothalamus alienus / Baccharis spp. y otros",
+    "familia": "Varias",
+    "origenDistribucion": "América Latina",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Variable según especie",
+    "parteUtilizada": "Variable",
+    "usoTradicional": "Usos variables; algunos taxones pueden ser tóxicos",
+    "precauciones": "No asignar beneficios ni preparación sin identificar especie",
+    "tags": [],
+    "nivelRiesgo": "precaucion",
+    "fuentes": [
+      "https://sib.gob.ar/"
     ]
   },
   {
     "id": "romero",
     "nombre": "Romero",
-    "propiedades": "Problemas digestivos",
+    "alias": [
+      "Rosemary"
+    ],
+    "nombreCientifico": "Salvia rosmarinus Spenn. (sin. Rosmarinus officinalis)",
+    "familia": "Lamiaceae",
+    "origenDistribucion": "Mediterráneo; cultivado mundialmente",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Arbusto aromático; hojas lineares verdes arriba y pálidas abajo; flores azuladas",
+    "parteUtilizada": "Hojas",
+    "usoTradicional": "Dispepsia y espasmos GI leves; uso externo en molestias musculares/circulatorias menores",
+    "precauciones": "Aceite esencial no equivale a hoja",
     "tags": [
-      "digestivo"
-    ]
+      "digestivo",
+      "uso_externo"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "rompepiedra",
     "nombre": "Rompepiedra",
-    "propiedades": "Diurético",
+    "alias": [
+      "Chanca piedra",
+      "quebra-pedra"
+    ],
+    "nombreCientifico": "Phyllanthus niruri L. (referencia)",
+    "familia": "Phyllanthaceae",
+    "origenDistribucion": "Regiones tropicales de América",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Hierba pequeña; hojas alineadas; diminutos frutos bajo las ramitas",
+    "parteUtilizada": "Planta entera/partes aéreas",
+    "usoTradicional": "Uso tradicional en vías urinarias y litiasis; evidencia clínica limitada",
+    "precauciones": "No afirmar que 'rompe' o disuelve cálculos; diferenciar especies de Phyllanthus",
     "tags": [
-      "diuretico"
+      "vias_urinarias"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": [
+      "https://pubmed.ncbi.nlm.nih.gov/32333735/"
     ]
   },
   {
     "id": "ruda",
     "nombre": "Ruda",
-    "propiedades": "Parásitos, adelanta la menstruación",
-    "tags": [
-      "antiséptico",
-      "hormonal",
-      "respiratorio"
+    "alias": [
+      "Rue"
+    ],
+    "nombreCientifico": "Ruta graveolens L. (referencia)",
+    "familia": "Rutaceae",
+    "origenDistribucion": "Mediterráneo; cultivada",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Subarbusto aromático; hojas verde-azuladas divididas; flores amarillas",
+    "parteUtilizada": "Partes aéreas históricamente",
+    "usoTradicional": "Usos medicinales históricos",
+    "precauciones": "Toxicidad; especialmente contraindicada en embarazo; no promover uso interno",
+    "tags": [],
+    "nivelRiesgo": "precaucion",
+    "fuentes": [
+      "https://powo.science.kew.org/"
     ]
   },
   {
     "id": "salvia_blanca",
     "nombre": "Salvia blanca",
-    "propiedades": "Afecciones de boca y garganta, resfríos, gripes",
-    "tags": [
-      "respiratorio"
+    "alias": [
+      "White sage"
+    ],
+    "nombreCientifico": "Salvia apiana Jeps. (referencia)",
+    "familia": "Lamiaceae",
+    "origenDistribucion": "Suroeste de Norteamérica",
+    "tipoIdentificacion": "variante_regional",
+    "comoReconocerla": "Arbusto de hojas grandes blanco-grisáceas y tallos florales altos",
+    "parteUtilizada": "Hojas/partes aéreas",
+    "usoTradicional": "Uso tradicional/ceremonial; no hay base para mantener 'respiratorio' de forma general",
+    "precauciones": "'Salvia blanca' puede usarse para otras especies; evitar apropiaciones culturales o afirmaciones terapéuticas no sustentadas",
+    "tags": [],
+    "nivelRiesgo": null,
+    "fuentes": [
+      "https://mpns.science.kew.org/"
     ]
   },
   {
     "id": "sen",
     "nombre": "Sen",
-    "propiedades": "Laxante",
+    "alias": [
+      "Senna"
+    ],
+    "nombreCientifico": "Senna alexandrina Mill.",
+    "familia": "Fabaceae",
+    "origenDistribucion": "Norte de África y Asia; cultivada",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Arbusto; hojas compuestas; flores amarillas; vainas aplanadas",
+    "parteUtilizada": "Hojas y frutos",
+    "usoTradicional": "Tratamiento a corto plazo del estreñimiento ocasional",
+    "precauciones": "No más de una semana sin evaluación; riesgo hidroelectrolítico con abuso",
     "tags": [
-      "digestivo"
-    ]
+      "laxante"
+    ],
+    "nivelRiesgo": "precaucion",
+    "fuentes": []
   },
   {
     "id": "sombra_de_toro",
     "nombre": "Sombra de toro",
-    "propiedades": "Combate el uso del alcohol, antiinflamatorio de vías respiratorias, digestivo",
+    "alias": [],
+    "nombreCientifico": "Jodina rhombifolia (Hook. & Arn.) Reissek",
+    "familia": "Santalaceae",
+    "origenDistribucion": "Sudamérica",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Árbol pequeño; hojas rígidas romboidales; frutos rojizos",
+    "parteUtilizada": "Hojas principalmente",
+    "usoTradicional": "Usos tradicionales digestivos y respiratorios; antecedentes de uso popular relacionado con alcohol",
+    "precauciones": "No presentar como tratamiento de dependencia alcohólica",
     "tags": [
-      "antialcoholico",
-      "antiinflamatorio",
       "digestivo",
       "respiratorio"
-    ]
-  },
-  {
-    "id": "tilo",
-    "nombre": "Tilo",
-    "propiedades": "Diaforético, sedante",
-    "tags": [
-      "diaforetico",
-      "sedante"
-    ]
-  },
-  {
-    "id": "tusca",
-    "nombre": "Tusca",
-    "propiedades": "Tradicionalmente usado para la gota y la reuma",
-    "tags": [
-      "antiinflamatorio"
-    ]
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "te_del_burro",
     "nombre": "Té del burro",
-    "propiedades": "Trastornos gastrointestinales",
+    "alias": [
+      "Burrito"
+    ],
+    "nombreCientifico": "Aloysia polystachya (Griseb.) Moldenke",
+    "familia": "Verbenaceae",
+    "origenDistribucion": "Cono Sur",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Arbusto aromático; hojas alargadas opuestas; inflorescencias claras",
+    "parteUtilizada": "Hojas/partes aéreas",
+    "usoTradicional": "Uso tradicional digestivo",
+    "precauciones": "Presentar como tradición regional",
     "tags": [
       "digestivo"
-    ]
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "te_rojo",
     "nombre": "Té rojo",
-    "propiedades": "Estimulante, antioxidante, adelgazante",
-    "tags": [
-      "antioxidante",
-      "energizante",
-      "metabolico"
-    ]
+    "alias": [
+      "Pu-erh"
+    ],
+    "nombreCientifico": "Camellia sinensis (L.) Kuntze; producto postfermentado",
+    "familia": "Theaceae",
+    "origenDistribucion": "China; cultivada ampliamente",
+    "tipoIdentificacion": "producto_procesado",
+    "comoReconocerla": "La planta es el arbusto de té; el producto es hoja postfermentada",
+    "parteUtilizada": "Hojas procesadas",
+    "usoTradicional": "Bebida con cafeína; usos comerciales diversos",
+    "precauciones": "No prometer adelgazamiento/metabolismo; diferenciar de extractos concentrados",
+    "tags": [],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "te_verde",
     "nombre": "Té verde",
-    "propiedades": "Estimulante, antioxidante, adelgazante",
-    "tags": [
-      "antioxidante",
-      "energizante",
-      "metabolico"
-    ]
+    "alias": [
+      "Green tea"
+    ],
+    "nombreCientifico": "Camellia sinensis (L.) Kuntze",
+    "familia": "Theaceae",
+    "origenDistribucion": "Asia oriental; cultivada mundialmente",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Arbusto perenne; hojas coriáceas dentadas; flores blancas",
+    "parteUtilizada": "Hojas jóvenes y brotes procesados",
+    "usoTradicional": "Bebida con cafeína y polifenoles",
+    "precauciones": "Extractos concentrados no equivalen a bebida; no prometer 'quema grasa'",
+    "tags": [],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
-    "id": "uva_ursi",
-    "nombre": "Uva ursi",
-    "propiedades": "Antiinflamatorio del tracto urinario, diurético, próstata",
+    "id": "tilo",
+    "nombre": "Tilo",
+    "alias": [
+      "Linden"
+    ],
+    "nombreCientifico": "Tilia cordata / T. platyphyllos / T. × vulgaris",
+    "familia": "Malvaceae",
+    "origenDistribucion": "Europa",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Árbol de hojas acorazonadas; flores claras asociadas a bráctea alargada",
+    "parteUtilizada": "Inflorescencias/flores con brácteas",
+    "usoTradicional": "Tos/resfriado y estrés mental leve",
+    "precauciones": "Distinguir de Tilia tomentosa y otras especies",
     "tags": [
-      "antiinflamatorio",
-      "diuretico"
+      "relajacion"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
+  },
+  {
+    "id": "tusca",
+    "nombre": "Tusca",
+    "alias": [],
+    "nombreCientifico": "Vachellia aroma (Gillies ex Hook. & Arn.) Seigler & Ebinger",
+    "familia": "Fabaceae",
+    "origenDistribucion": "Sudamérica",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Árbol/arbusto espinoso; hojas finamente divididas; cabezuelas amarillas globosas",
+    "parteUtilizada": "Varias según tradición",
+    "usoTradicional": "Usos etnobotánicos regionales",
+    "precauciones": "El tag antiinflamatorio requiere especificar parte y uso",
+    "tags": [],
+    "nivelRiesgo": null,
+    "fuentes": [
+      "https://sib.gob.ar/"
     ]
   },
   {
     "id": "una_de_gato",
     "nombre": "Uña de gato",
-    "propiedades": "Mejora el sistema inmunológico, aumenta las defensas",
-    "tags": [
-      "inmunologico"
+    "alias": [
+      "Cat's claw"
+    ],
+    "nombreCientifico": "Uncaria tomentosa (Willd. ex Schult.) DC. (referencia)",
+    "familia": "Rubiaceae",
+    "origenDistribucion": "Amazonia y América tropical",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Liana leñosa con espinas curvas semejantes a uñas",
+    "parteUtilizada": "Corteza y raíz",
+    "usoTradicional": "Usos tradicionales diversos",
+    "precauciones": "Evidencia clínica insuficiente para beneficios específicos; también existe U. guianensis",
+    "tags": [],
+    "nivelRiesgo": null,
+    "fuentes": [
+      "https://www.nccih.nih.gov/health/cats-claw"
     ]
+  },
+  {
+    "id": "uva_ursi",
+    "nombre": "Uva ursi",
+    "alias": [
+      "Gayuba",
+      "bearberry"
+    ],
+    "nombreCientifico": "Arctostaphylos uva-ursi (L.) Spreng.",
+    "familia": "Ericaceae",
+    "origenDistribucion": "Europa, Asia y Norteamérica",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Arbusto rastrero; hojas pequeñas coriáceas; flores campanuladas; frutos rojos",
+    "parteUtilizada": "Hojas",
+    "usoTradicional": "Uso tradicional en molestias urinarias menores",
+    "precauciones": "No usar como sustituto del tratamiento de infección urinaria; uso limitado",
+    "tags": [
+      "vias_urinarias"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "valeriana",
     "nombre": "Valeriana",
-    "propiedades": "Sedante, antiespasmódica",
+    "alias": [],
+    "nombreCientifico": "Valeriana officinalis L.",
+    "familia": "Caprifoliaceae",
+    "origenDistribucion": "Europa y Asia",
+    "tipoIdentificacion": "especie_definida",
+    "comoReconocerla": "Herbácea alta; hojas compuestas; flores blancas/rosadas en inflorescencias",
+    "parteUtilizada": "Raíz, rizoma y estolones",
+    "usoTradicional": "Tensión nerviosa leve y trastornos del sueño",
+    "precauciones": "Puede reducir alerta; cuidado con otros sedantes",
     "tags": [
-      "digestivo",
-      "sedante"
-    ]
+      "relajacion",
+      "sueño"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "vira_vira",
     "nombre": "Vira vira",
-    "propiedades": "Tos, catarro, cansancio",
-    "tags": [
-      "energizante",
-      "respiratorio"
+    "alias": [
+      "Vira-vira"
+    ],
+    "nombreCientifico": "Achyrocline alata / Pseudognaphalium viravira / Gamochaeta filaginea y otras",
+    "familia": "Asteraceae",
+    "origenDistribucion": "América Latina",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Variable según especie",
+    "parteUtilizada": "Variable",
+    "usoTradicional": "Usos tradicionales, a menudo respiratorios según región",
+    "precauciones": "No fijar imagen ni uso sin especie regional",
+    "tags": [],
+    "nivelRiesgo": null,
+    "fuentes": [
+      "https://mpns.science.kew.org/"
     ]
   },
   {
     "id": "yerba_buena",
     "nombre": "Yerba buena",
-    "propiedades": "Digestivo, aperitivo",
+    "alias": [
+      "Hierbabuena",
+      "spearmint"
+    ],
+    "nombreCientifico": "Mentha spicata L. (referencia)",
+    "familia": "Lamiaceae",
+    "origenDistribucion": "Europa/Asia; cultivada y naturalizada",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Tallos cuadrados; hojas opuestas dentadas; espigas florales",
+    "parteUtilizada": "Hojas/partes aéreas",
+    "usoTradicional": "Uso tradicional digestivo y para flatulencia",
+    "precauciones": "El nombre puede aplicarse a otras Mentha según región",
     "tags": [
       "digestivo"
-    ]
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "yerba_carnicera",
     "nombre": "Yerba carnicera",
-    "propiedades": "Antirreumático, diurético",
-    "tags": [
-      "antiinflamatorio",
-      "diuretico"
+    "alias": [],
+    "nombreCientifico": "Erigeron bonariensis L. (sin. Conyza bonariensis)",
+    "familia": "Asteraceae",
+    "origenDistribucion": "Sudamérica; naturalizada ampliamente",
+    "tipoIdentificacion": "variante_regional",
+    "comoReconocerla": "Herbácea erecta, ramificada, capítulos pequeños",
+    "parteUtilizada": "Planta completa/partes aéreas según tradición",
+    "usoTradicional": "Usos tradicionales vinculados con heridas/inflamación",
+    "precauciones": "Validar parte/preparación por región antes de publicar",
+    "tags": [],
+    "nivelRiesgo": null,
+    "fuentes": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC3163512/"
     ]
   },
   {
     "id": "yerba_del_pollo",
     "nombre": "Yerba del pollo",
-    "propiedades": "Digestivo, diurético, empachos",
+    "alias": [],
+    "nombreCientifico": "Alternanthera pungens Kunth (referencia regional)",
+    "familia": "Amaranthaceae",
+    "origenDistribucion": "América tropical y subtropical",
+    "tipoIdentificacion": "variante_regional",
+    "comoReconocerla": "Planta rastrera; hojas opuestas; inflorescencias blanquecinas compactas y espinosas",
+    "parteUtilizada": "Partes aéreas",
+    "usoTradicional": "Uso tradicional digestivo",
+    "precauciones": "El nombre puede variar regionalmente; revisar tag diurético",
     "tags": [
-      "digestivo",
-      "diuretico"
-    ]
+      "digestivo"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": []
   },
   {
     "id": "yerba_dulce",
     "nombre": "Yerba dulce",
-    "propiedades": "Edulcorante",
-    "tags": [
-      "edulcorante"
+    "alias": [
+      "Aztec sweet herb",
+      "Hierba dulce"
+    ],
+    "nombreCientifico": "Lippia dulcis Trevir. (sinónimos históricos Phyla dulcis/Phyla scaberrima)",
+    "familia": "Verbenaceae",
+    "origenDistribucion": "Mesoamérica y América tropical",
+    "tipoIdentificacion": "variante_regional",
+    "comoReconocerla": "Planta rastrera/aromática; hojas opuestas dentadas; inflorescencias compactas claras",
+    "parteUtilizada": "Hojas/partes aéreas",
+    "usoTradicional": "Uso tradicional como endulzante",
+    "precauciones": "'Hierba dulce' puede denominar otras especies regionales",
+    "tags": [],
+    "nivelRiesgo": null,
+    "fuentes": [
+      "https://mpns.science.kew.org/"
     ]
   },
   {
     "id": "zarzaparrilla",
     "nombre": "Zarzaparrilla",
-    "propiedades": "Enfermedades hepáticas del riñón y diaforéticas",
+    "alias": [
+      "Sarsaparilla"
+    ],
+    "nombreCientifico": "Smilax spp.; Smilax campestris Griseb. como referencia Cono Sur",
+    "familia": "Smilacaceae",
+    "origenDistribucion": "América, Europa y Asia según especie",
+    "tipoIdentificacion": "nombre_comun_multiespecie",
+    "comoReconocerla": "Trepadoras con zarcillos, a veces espinas; hojas firmes con nervaduras marcadas; bayas agrupadas",
+    "parteUtilizada": "Raíz/rizoma",
+    "usoTradicional": "Usos tradicionales diaforéticos/diuréticos según especie y región",
+    "precauciones": "Numerosas especies comparten el nombre; especificar procedencia",
     "tags": [
-      "diaforetico",
       "diuretico"
+    ],
+    "nivelRiesgo": null,
+    "fuentes": [
+      "https://mpns.science.kew.org/"
     ]
   }
 ]

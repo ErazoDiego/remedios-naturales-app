@@ -118,13 +118,13 @@ class FakeHierbasDataSource implements HierbasDataSource {
 Hierba _createHierba({
   required String id,
   required String nombre,
-  String? propiedades,
+  String? usoTradicional,
   List<String>? tags,
 }) {
   return Hierba(
     id: id,
     nombre: nombre,
-    propiedades: propiedades ?? '',
+    usoTradicional: usoTradicional ?? '',
     tags: tags ?? [],
   );
 }
@@ -451,13 +451,13 @@ void main() {
         _createHierba(
           id: 'menta',
           nombre: 'Menta',
-          propiedades: 'Alivia la digestión',
+          usoTradicional: 'Alivia la digestión',
           tags: ['digestivo'],
         ),
         _createHierba(
           id: 'valeriana',
           nombre: 'Valeriana',
-          propiedades: 'Calma la ansiedad y el insomnio',
+          usoTradicional: 'Calma la ansiedad y el insomnio',
           tags: ['sedante', 'nervioso'],
         ),
         // 35 hierbas con tag genérico para validar el cap del top 10
@@ -466,7 +466,7 @@ void main() {
           (i) => _createHierba(
             id: 'generica_$i',
             nombre: 'Hierba genérica $i',
-            propiedades: 'Propiedades varias',
+            usoTradicional: 'Propiedades varias',
             tags: ['digestivo'],
           ),
         ),

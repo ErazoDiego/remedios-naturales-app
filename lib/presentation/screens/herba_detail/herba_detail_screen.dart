@@ -5,14 +5,19 @@ import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/services/payments/premium_rules.dart';
 import '../../../data/models/hierba.dart';
+import '../../../data/models/preparacion_tradicional.dart';
 import '../../providers/hierbas_provider.dart';
 import '../../providers/premium_provider.dart';
 import '../../widgets/ads/banner_ad_widget.dart';
+import '../../widgets/hierba_avatar.dart';
 import '../../widgets/loading_error_empty.dart';
 import '../../widgets/premium/premium_dialog.dart';
 
-/// Pantalla de detalle de una hierba del herbolario
-/// Muestra nombre, propiedades, tags y recetas que la contienen
+/// Pantalla de detalle de una hierba del herbolario.
+///
+/// Ficha enriquecida (Fase A del herbolario): identificación botánica,
+/// uso tradicional (sin claims terapéuticos), precauciones, aviso de
+/// multiespecie, preparación tradicional y recetas que la contienen.
 class HerbaDetailScreen extends StatefulWidget {
   final String herbaId;
 
@@ -41,7 +46,7 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
         .toList();
 
     if (hierba.isNotEmpty) {
-      await provider.loadRecetasConHierba(hierba.first.nombre);
+      await provider.loadRecetasConHierba(hierba.first);
     }
   }
 
@@ -63,7 +68,16 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
           appBar: AppBar(
             leading: IconButton(
               icon: const Icon(TablerIcons.arrow_left),
-              onPressed: () => context.pop(),
+              onPressed: () {
+                // Defensivo: si llegaron por go()/deep link sin pila,
+                // pop() haría nada y la pantalla quedaría pegada (bug de
+                // testers). Con pila → pop; sin pila → herbolario.
+                if (context.canPop()) {
+                  context.pop();
+                } else {
+                  context.go('/herbolario');
+                }
+              },
             ),
             title: Text(
               hierba?.nombre ?? 'Hierba',
@@ -95,7 +109,7 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
     );
   }
 
-  Widget _buildDetail(dynamic hierba, HierbasProvider provider) {
+  Widget _buildDetail(Hierba hierba, HierbasProvider provider) {
     // Gating del plan FREE: las recetas fuera del muestreo gratis (5 por
     // sistema) muestran candado en la ficha de la hierba y el callout
     // único de desbloqueo (mismo patrón que search_result_card).
@@ -114,106 +128,48 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
           // ═══════════════════════════════════════════════════════════
           // CABECERA: icono + nombre + tags
           // ═══════════════════════════════════════════════════════════
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
-              border: Border.all(
-                color: AppConstants.borderLight,
-                width: 0.5,
-              ),
-            ),
-            child: Column(
-              children: [
-                Container(
-                  width: 64,
-                  height: 64,
-                  decoration: BoxDecoration(
-                    color: AppConstants.backgroundCream,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    TablerIcons.leaf,
-                    size: 30,
-                    color: AppConstants.sageGreenTitle,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  hierba.nombre as String,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                    color: AppConstants.textPrimary,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Wrap(
-                  spacing: 6,
-                  runSpacing: 6,
-                  alignment: WrapAlignment.center,
-                  children: (hierba.tags as List).map((tag) {
-                    return Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: AppConstants.sageGreenCard,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        provider.tagLabel(tag as String),
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          color: AppConstants.sageGreenTitle,
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ],
-            ),
-          ),
+          _buildCabecera(hierba, provider),
 
           const SizedBox(height: 16),
 
           // ═══════════════════════════════════════════════════════════
-          // PROPIEDADES
+          // IDENTIFICACIÓN (dato botánico, educativo)
           // ═══════════════════════════════════════════════════════════
-          const Text(
-            'Propiedades medicinales',
-            style: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w700,
-              color: AppConstants.textPrimary,
+          _buildIdentificacion(hierba),
+
+          // ═══════════════════════════════════════════════════════════
+          // AVISO DE NOMBRE COMÚN AMBIGUO (honestidad taxonómica)
+          // ═══════════════════════════════════════════════════════════
+          if (hierba.esMultiespecie) ...[
+            const SizedBox(height: 16),
+            _buildAvisoIdentificacion(hierba),
+          ],
+
+          const SizedBox(height: 16),
+
+          // ═══════════════════════════════════════════════════════════
+          // USO TRADICIONAL (ex "Propiedades medicinales")
+          // ═══════════════════════════════════════════════════════════
+          _buildUsoTradicional(hierba),
+
+          // ═══════════════════════════════════════════════════════════
+          // PREPARACIÓN TRADICIONAL (si existe para esta hierba)
+          // ═══════════════════════════════════════════════════════════
+          if (provider.preparacionDe(hierba.id) != null) ...[
+            const SizedBox(height: 20),
+            _buildPreparacionTradicional(
+              provider.preparacionDe(hierba.id)!,
             ),
-          ),
-          const SizedBox(height: 10),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                color: AppConstants.borderLight,
-                width: 0.5,
-              ),
-            ),
-            child: Text(
-              hierba.propiedades as String,
-              style: const TextStyle(
-                fontSize: 14,
-                color: AppConstants.textSecondary,
-                height: 1.5,
-              ),
-            ),
-          ),
+          ],
+
+          // ═══════════════════════════════════════════════════════════
+          // PRECAUCIÓN (contraindicaciones / advertencias)
+          // ═══════════════════════════════════════════════════════════
+          if (hierba.precauciones != null &&
+              hierba.precauciones!.isNotEmpty) ...[
+            const SizedBox(height: 20),
+            _buildPrecaucion(hierba),
+          ],
 
           const SizedBox(height: 20),
 
@@ -229,18 +185,17 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
             ),
           ),
           const SizedBox(height: 4),
-          Text(
-            provider.recetasConHierba.isEmpty
-                ? 'Esta hierba no aparece en ninguna receta de la app'
-                : _contadorRecetas(
-                    provider.recetasConHierba.length,
-                    bloqueadas.length,
-                  ),
-            style: const TextStyle(
-              fontSize: 13,
-              color: AppConstants.textTertiary,
+          if (provider.recetasConHierba.isNotEmpty)
+            Text(
+              _contadorRecetas(
+                provider.recetasConHierba.length,
+                bloqueadas.length,
+              ),
+              style: const TextStyle(
+                fontSize: 13,
+                color: AppConstants.textTertiary,
+              ),
             ),
-          ),
           const SizedBox(height: 10),
           if (provider.recetasConHierba.isEmpty)
             Container(
@@ -254,11 +209,14 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
                   width: 0.5,
                 ),
               ),
-              child: const Text(
-                'Consultá en el herbolario tradicional. '
-                'Esta hierba es parte del conocimiento popular '
-                'y aún no está integrada en nuestras recetas.',
-                style: TextStyle(
+              child: Text(
+                provider.preparacionDe(hierba.id) != null
+                    ? 'Esta hierba no aparece en las recetas de la app — '
+                        'su preparación tradicional está arriba.'
+                    : 'Consultá en el herbolario tradicional. '
+                        'Esta hierba es parte del conocimiento popular '
+                        'y aún no está integrada en nuestras recetas.',
+                style: const TextStyle(
                   fontSize: 13,
                   color: AppConstants.textSecondary,
                   height: 1.4,
@@ -279,8 +237,509 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
               _buildDesbloquearCallout(hierba, bloqueadas, premium),
             ],
           ],
+
+          // ═══════════════════════════════════════════════════════════
+          // FUENTES + disclaimer educativo
+          // ═══════════════════════════════════════════════════════════
+          const SizedBox(height: 24),
+          _buildFuentes(hierba),
         ],
       ),
+    );
+  }
+
+  /// Cabecera: avatar + nombre + chips de tags visibles.
+  Widget _buildCabecera(Hierba hierba, HierbasProvider provider) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: AppConstants.borderLight,
+          width: 0.5,
+        ),
+      ),
+      child: Column(
+        children: [
+          HierbaAvatar(
+            hierbaId: hierba.id,
+            nombre: hierba.nombre,
+            size: 96,
+          ),
+          const SizedBox(height: 12),
+          Text(
+            hierba.nombre,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              color: AppConstants.textPrimary,
+            ),
+          ),
+          const SizedBox(height: 12),
+          Wrap(
+            spacing: 6,
+            runSpacing: 6,
+            alignment: WrapAlignment.center,
+            children: hierba.tags.map((tag) {
+              return Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 4,
+                ),
+                decoration: BoxDecoration(
+                  color: AppConstants.sageGreenCard,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(
+                  provider.tagLabel(tag),
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: AppConstants.sageGreenTitle,
+                  ),
+                ),
+              );
+            }).toList(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Sección "Identificación": nombre científico, familia, origen y
+  /// rasgos visuales. Puro dato botánico — sin claims terapéuticos.
+  Widget _buildIdentificacion(Hierba hierba) {
+    final cientifico = hierba.nombreCientifico;
+    final familia = hierba.familia;
+    final origen = hierba.origenDistribucion;
+    final reconocer = hierba.comoReconocerla;
+
+    if (cientifico == null &&
+        familia == null &&
+        origen == null &&
+        reconocer == null) {
+      return const SizedBox.shrink();
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            const Icon(
+              TablerIcons.flower,
+              size: 18,
+              color: AppConstants.sageGreenTitle,
+            ),
+            const SizedBox(width: 8),
+            const Text(
+              'Identificación',
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w700,
+                color: AppConstants.textPrimary,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: AppConstants.borderLight,
+              width: 0.5,
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (cientifico != null) ...[
+                Text(
+                  cientifico,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w600,
+                    color: AppConstants.textPrimary,
+                  ),
+                ),
+                const SizedBox(height: 8),
+              ],
+              if (familia != null) ...[
+                _buildInfoFila(
+                  icono: TablerIcons.leaf,
+                  texto: 'Familia: $familia',
+                ),
+                const SizedBox(height: 6),
+              ],
+              if (origen != null) ...[
+                _buildInfoFila(
+                  icono: TablerIcons.point,
+                  texto: origen,
+                ),
+                const SizedBox(height: 6),
+              ],
+              if (reconocer != null) ...[
+                _buildInfoFila(
+                  icono: TablerIcons.eye,
+                  texto: reconocer,
+                ),
+              ],
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// Aviso cuando el nombre común agrupa varias especies según la región.
+  /// Honestidad taxonómica: no afirmamos una especie que no es.
+  Widget _buildAvisoIdentificacion(Hierba hierba) {
+    final mensaje = switch (hierba.tipoIdentificacion) {
+      TipoIdentificacion.nombreComunMultiespecie =>
+        'Este nombre agrupa varias especies según la región. '
+            'Verificá qué especie corresponde en tu país.',
+      TipoIdentificacion.varianteRegional =>
+        'Variante regional: el nombre comercial puede referir '
+            'a otra especie según el país.',
+      TipoIdentificacion.productoProcesado =>
+        'Producto procesado: la presentación comercial '
+            'difiere de la planta fresca.',
+      TipoIdentificacion.especieDefinida => '',
+    };
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: AppConstants.alertAmberBackground,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: AppConstants.alertAmber.withValues(alpha: 0.3),
+        ),
+      ),
+      child: _buildInfoFila(
+        icono: TablerIcons.info_circle,
+        color: AppConstants.alertAmber,
+        texto: mensaje,
+      ),
+    );
+  }
+
+  /// Sección "Uso tradicional": el texto revisado de la tabla maestra.
+  /// Se presenta como tradición, nunca como eficacia clínica.
+  Widget _buildUsoTradicional(Hierba hierba) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            const Icon(
+              TablerIcons.history,
+              size: 18,
+              color: AppConstants.sageGreenTitle,
+            ),
+            const SizedBox(width: 8),
+            const Text(
+              'Uso tradicional',
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w700,
+                color: AppConstants.textPrimary,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: AppConstants.borderLight,
+              width: 0.5,
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (hierba.parteUtilizada != null &&
+                  hierba.parteUtilizada!.isNotEmpty) ...[
+                _buildModoChip(hierba.parteUtilizada!, icono: TablerIcons.leaf),
+                const SizedBox(height: 10),
+              ],
+              Text(
+                hierba.usoTradicional,
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: AppConstants.textSecondary,
+                  height: 1.5,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// Sección "Precaución": contraindicaciones o advertencias.
+  /// Ámbar para precauciones; rojo para riesgo crítico.
+  Widget _buildPrecaucion(Hierba hierba) {
+    final esCritico = hierba.nivelRiesgo == RiesgoHerba.critico;
+    final color = esCritico ? AppConstants.alertRed : AppConstants.alertAmber;
+    final fondo = esCritico
+        ? AppConstants.alertRed.withValues(alpha: 0.06)
+        : AppConstants.alertAmberBackground;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Icon(
+              TablerIcons.alert_triangle,
+              size: 18,
+              color: color,
+            ),
+            const SizedBox(width: 8),
+            Text(
+              esCritico ? 'Advertencia importante' : 'Precaución',
+              style: const TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w700,
+                color: AppConstants.textPrimary,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: fondo,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: color.withValues(alpha: 0.3)),
+          ),
+          child: _buildInfoFila(
+            icono: TablerIcons.alert_triangle,
+            color: color,
+            texto: hierba.precauciones!,
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// Pie de ficha: fuentes institucionales + disclaimer educativo.
+  Widget _buildFuentes(Hierba hierba) {
+    final dominios = hierba.fuentes
+        .map((url) {
+          try {
+            final uri = Uri.parse(url);
+            return uri.host.replaceFirst('www.', '');
+          } catch (_) {
+            return url;
+          }
+        })
+        .toSet()
+        .toList();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (dominios.isNotEmpty) ...[
+          Row(
+            children: [
+              const Icon(
+                TablerIcons.book,
+                size: 16,
+                color: AppConstants.textTertiary,
+              ),
+              const SizedBox(width: 6),
+              Text(
+                'Fuentes: ${dominios.join(' · ')}',
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: AppConstants.textTertiary,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+        ],
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: AppConstants.warmGrayCard,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Text(
+            'Contenido educativo. La información de esta ficha no '
+            'reemplaza la consulta con un profesional de la salud.',
+            style: const TextStyle(
+              fontSize: 12,
+              color: AppConstants.textTertiary,
+              height: 1.4,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// Sección "Preparación tradicional" de la ficha de hierba: modos como
+  /// etiquetas, texto literal del herbolario, dosis y advertencia específica.
+  Widget _buildPreparacionTradicional(PreparacionTradicional preparacion) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            const Icon(
+              TablerIcons.teapot,
+              size: 18,
+              color: AppConstants.sageGreenTitle,
+            ),
+            const SizedBox(width: 8),
+            const Text(
+              'Preparación tradicional',
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w700,
+                color: AppConstants.textPrimary,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 10),
+        // Parte usada + modos como etiquetas
+        if (preparacion.modos.isNotEmpty) ...[
+          Wrap(
+            spacing: 6,
+            runSpacing: 6,
+            children: [
+              if (preparacion.parte.isNotEmpty)
+                _buildModoChip(preparacion.parte, icono: TablerIcons.leaf),
+              ...preparacion.modos.map(
+                (modo) => _buildModoChip(modo, icono: TablerIcons.flask),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+        ],
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: AppConstants.borderLight,
+              width: 0.5,
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                preparacion.texto,
+                style: const TextStyle(
+                  fontSize: 14,
+                  color: AppConstants.textSecondary,
+                  height: 1.5,
+                ),
+              ),
+              if (preparacion.dosis.isNotEmpty) ...[
+                const SizedBox(height: 10),
+                _buildInfoFila(
+                  icono: TablerIcons.clock,
+                  texto: 'Tomar ${preparacion.dosis.toLowerCase()}',
+                ),
+              ],
+            ],
+          ),
+        ),
+        if (preparacion.advertencia.isNotEmpty) ...[
+          const SizedBox(height: 10),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: AppConstants.alertAmberBackground,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                color: AppConstants.alertAmber.withValues(alpha: 0.3),
+              ),
+            ),
+            child: _buildInfoFila(
+              icono: TablerIcons.alert_triangle,
+              color: AppConstants.alertAmber,
+              texto: preparacion.advertencia,
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+
+  Widget _buildModoChip(String etiqueta, {required IconData icono}) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      decoration: BoxDecoration(
+        color: AppConstants.sageGreenCard,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icono, size: 13, color: AppConstants.sageGreenTitle),
+          const SizedBox(width: 4),
+          Text(
+            etiqueta,
+            style: const TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: AppConstants.sageGreenTitle,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildInfoFila({
+    required IconData icono,
+    required String texto,
+    Color color = AppConstants.textSecondary,
+  }) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(icono, size: 15, color: color),
+        const SizedBox(width: 8),
+        Expanded(
+          child: Text(
+            texto,
+            style: TextStyle(
+              fontSize: 13,
+              color: color,
+              height: 1.4,
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -394,7 +853,7 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
   /// bloqueadas (mismo `showPremiumDialog` que el resto de la app, con
   /// la compra directa del pack + opción Premium).
   Widget _buildDesbloquearCallout(
-    dynamic hierba,
+    Hierba hierba,
     List<Map<String, dynamic>> bloqueadas,
     PremiumProvider premium,
   ) {
@@ -415,7 +874,7 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
     });
 
     final total = bloqueadas.length;
-    final nombreHierba = hierba.nombre as String;
+    final nombreHierba = hierba.nombre;
     final packId = PremiumRules.packIdDeSistema(sistemaPrincipal);
     final precio = premium.priceFor(packId);
 
