@@ -45,4 +45,14 @@ void main() {
 
     expect(provider.resultados.length, 89);
   });
+
+  test('toda ficha tiene nombre de archivo de imagen registrado', () async {
+    await provider.aplicarFiltros(busqueda: '');
+
+    expect(provider.resultados, isNotEmpty);
+    for (final h in provider.resultados) {
+      expect(h.imagen, isNotNull, reason: '${h.nombre} sin imagen');
+      expect(h.imagen, endsWith('.webp'), reason: '${h.nombre}: ${h.imagen}');
+    }
+  });
 }

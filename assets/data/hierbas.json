@@ -11,6 +11,7 @@
     "parteUtilizada": "Raíz",
     "usoTradicional": "Molestias digestivas leves y pérdida temporal de apetito",
     "precauciones": "Evitar atribuir beneficios metabólicos no demostrados",
+    "imagen": "achicoria.webp",
     "tags": [
       "digestivo"
     ],
@@ -31,6 +32,7 @@
     "parteUtilizada": "Hoja",
     "usoTradicional": "Molestias digestivas leves, plenitud, distensión y flatulencia",
     "precauciones": "No confundir hoja medicinal con el capítulo comestible",
+    "imagen": "alcachofa.webp",
     "tags": [
       "digestivo"
     ],
@@ -51,6 +53,7 @@
     "parteUtilizada": "Partes aéreas",
     "usoTradicional": "Uso tradicional y nutricional; evidencia clínica limitada para muchos usos comerciales",
     "precauciones": "Puede aportar vitamina K; precaución con anticoagulantes",
+    "imagen": "alfalfa.webp",
     "tags": [
       "nutricional"
     ],
@@ -69,6 +72,7 @@
     "parteUtilizada": "Raíz; también hojas según tradición",
     "usoTradicional": "Molestias digestivas leves, pérdida temporal de apetito y aumento de diuresis",
     "precauciones": "Precaución en obstrucción biliar; no prometer 'depuración'",
+    "imagen": "amargon.webp",
     "tags": [
       "digestivo",
       "diuretico"
@@ -90,6 +94,7 @@
     "parteUtilizada": "Hojas",
     "usoTradicional": "Uso tradicional respiratorio, especialmente tos",
     "precauciones": "Presentar como uso tradicional regional",
+    "imagen": "ambay.webp",
     "tags": [
       "respiratorio"
     ],
@@ -110,6 +115,7 @@
     "parteUtilizada": "Hojas",
     "usoTradicional": "Uso tradicional para tos y broncoespasmo en el Cono Sur",
     "precauciones": "El nombre puede referir a otras especies según país",
+    "imagen": "anacahuita.webp",
     "tags": [
       "respiratorio"
     ],
@@ -130,6 +136,7 @@
     "parteUtilizada": "Raíz",
     "usoTradicional": "Molestias digestivas y pérdida temporal del apetito",
     "precauciones": "Evitar tags diurético/diaforético sin contexto",
+    "imagen": "angelica.webp",
     "tags": [
       "digestivo"
     ],
@@ -150,6 +157,7 @@
     "parteUtilizada": "Partes aéreas, flores/frutos según tradición",
     "usoTradicional": "Uso tradicional regional, principalmente digestivo/diurético",
     "precauciones": "El nombre también se aplica a Ammi majus y Cyclospermum leptophyllum",
+    "imagen": "apio_cimarron.webp",
     "tags": [
       "digestivo",
       "diuretico"
@@ -172,6 +180,7 @@
     "parteUtilizada": "Frutos; hojas en algunas tradiciones",
     "usoTradicional": "Los usos dependen de especie y parte; la evidencia no permite mantener todos los tags originales",
     "precauciones": "'Arándano' incluye múltiples Vaccinium; especificar especie del producto",
+    "imagen": "arandano.webp",
     "tags": [],
     "nivelRiesgo": null,
     "fuentes": [
@@ -192,6 +201,7 @@
     "parteUtilizada": "Hojas",
     "usoTradicional": "Molestias digestivas leves",
     "precauciones": "Evitar 'depurativo' como afirmación terapéutica",
+    "imagen": "boldo.webp",
     "tags": [
       "digestivo"
     ],
@@ -212,6 +222,7 @@
     "parteUtilizada": "Flores/partes aéreas",
     "usoTradicional": "Usos populares sudoríficos y respiratorios",
     "precauciones": "Advertencia por alcaloides pirrolizidínicos; no promover consumo habitual",
+    "imagen": "borraja.webp",
     "tags": [],
     "nivelRiesgo": "precaucion",
     "fuentes": []
@@ -230,6 +241,7 @@
     "parteUtilizada": "Flores",
     "usoTradicional": "Inflamaciones leves de piel, pequeñas heridas y boca/garganta",
     "precauciones": "Uso externo/bucal según preparado",
+    "imagen": "calendula.webp",
     "tags": [
       "piel"
     ],
@@ -250,6 +262,7 @@
     "parteUtilizada": "Variable según especie",
     "usoTradicional": "Principalmente usos digestivos según región",
     "precauciones": "Nombre aplicado a numerosas especies; mostrar variantes regionales",
+    "imagen": "canchalagua.webp",
     "tags": [
       "digestivo"
     ],
@@ -272,6 +285,7 @@
     "parteUtilizada": "Frutos",
     "usoTradicional": "Molestias digestivas asociadas tradicionalmente a función hepática",
     "precauciones": "No afirmar 'protege el hígado' sin contexto clínico",
+    "imagen": "cardo_mariano.webp",
     "tags": [
       "digestivo"
     ],
@@ -290,6 +304,7 @@
     "parteUtilizada": "Partes aéreas",
     "usoTradicional": "Uso tradicional amargo y digestivo",
     "precauciones": "El nombre puede abarcar otras Baccharis",
+    "imagen": "carqueja.webp",
     "tags": [
       "digestivo"
     ],
@@ -308,6 +323,7 @@
     "parteUtilizada": "Corteza",
     "usoTradicional": "Laxante estimulante para estreñimiento ocasional",
     "precauciones": "No usar de forma prolongada; riesgo de alteraciones hidroelectrolíticas",
+    "imagen": "cascara_sagrada.webp",
     "tags": [
       "laxante"
     ],
@@ -328,6 +344,7 @@
     "parteUtilizada": "Semillas; también corteza en otros preparados",
     "usoTradicional": "Síntomas asociados a insuficiencia venosa crónica en preparados específicos",
     "precauciones": "No usar semillas crudas ni preparados caseros",
+    "imagen": "castano_de_indias.webp",
     "tags": [
       "circulacion"
     ],
@@ -349,6 +366,7 @@
     "parteUtilizada": "Hojas",
     "usoTradicional": "Molestias digestivas y relajación tradicional",
     "precauciones": "Presentar relajación como uso tradicional",
+    "imagen": "cedron.webp",
     "tags": [
       "digestivo",
       "relajacion"
@@ -370,6 +388,7 @@
     "parteUtilizada": "Partes aéreas",
     "usoTradicional": "Uso tradicional en heridas menores y piel",
     "precauciones": "No equiparar todos los suplementos con preparados medicinales",
+    "imagen": "centella_asiatica.webp",
     "tags": [
       "piel"
     ],
@@ -388,6 +407,7 @@
     "parteUtilizada": "Fruto principalmente",
     "usoTradicional": "Uso tradicional respiratorio, tos y garganta",
     "precauciones": "Presentar como tradición regional",
+    "imagen": "chanar.webp",
     "tags": [
       "respiratorio"
     ],
@@ -406,6 +426,7 @@
     "parteUtilizada": "Semillas",
     "usoTradicional": "Uso principalmente nutricional",
     "precauciones": "No presentar como tratamiento metabólico",
+    "imagen": "chia.webp",
     "tags": [
       "nutricional"
     ],
@@ -427,6 +448,7 @@
     "parteUtilizada": "Rizoma y raíz",
     "usoTradicional": "Alivio de síntomas menopáusicos como sofocos y sudoración",
     "precauciones": "Advertencia hepática; preferir preparados estandarizados",
+    "imagen": "cimicifuga.webp",
     "tags": [],
     "nivelRiesgo": null,
     "fuentes": []
@@ -445,6 +467,7 @@
     "parteUtilizada": "Partes aéreas estériles",
     "usoTradicional": "Aumento de diuresis en molestias urinarias menores; uso cutáneo tradicional",
     "precauciones": "En América Latina puede comercializarse Equisetum giganteum; verificar especie",
+    "imagen": "cola_de_caballo.webp",
     "tags": [
       "diuretico",
       "vias_urinarias"
@@ -468,6 +491,7 @@
     "parteUtilizada": "Hojas",
     "usoTradicional": "Uso tradicional gastrointestinal",
     "precauciones": "No mantener sedante sin respaldo",
+    "imagen": "congorosa.webp",
     "tags": [
       "digestivo"
     ],
@@ -489,6 +513,7 @@
     "parteUtilizada": "Hojas con flores",
     "usoTradicional": "Síntomas cardíacos transitorios de origen nervioso y estrés leve en usos tradicionales",
     "precauciones": "Descartar patología cardíaca; no decir 'bueno para el corazón'",
+    "imagen": "crataegus.webp",
     "tags": [
       "cardiovascular",
       "relajacion"
@@ -510,6 +535,7 @@
     "parteUtilizada": "Madera",
     "usoTradicional": "Amargo digestivo y estimulante del apetito tradicional",
     "precauciones": "Quassia también puede referir a Picrasma excelsa; verificar producto",
+    "imagen": "cuasia.webp",
     "tags": [
       "digestivo"
     ],
@@ -528,6 +554,7 @@
     "parteUtilizada": "Hojas/partes aéreas",
     "usoTradicional": "Uso tradicional como tónico y relacionado con deseo sexual",
     "precauciones": "No presentar como afrodisíaco clínicamente demostrado",
+    "imagen": "damiana.webp",
     "tags": [],
     "nivelRiesgo": null,
     "fuentes": []
@@ -544,6 +571,7 @@
     "parteUtilizada": "Variable",
     "usoTradicional": "Usos tradicionales variables",
     "precauciones": "Nombre multiespecie; evitar uso en embarazo por antecedentes emenagogos/abortivos de algunas especies",
+    "imagen": "doradilla.webp",
     "tags": [],
     "nivelRiesgo": "precaucion",
     "fuentes": [
@@ -564,6 +592,7 @@
     "parteUtilizada": "Partes aéreas y/o raíz según preparado",
     "usoTradicional": "Preparados específicos para síntomas de resfriado común; otros usos según monografía",
     "precauciones": "Alergia Asteraceae; diferenciar especies y partes",
+    "imagen": "equinacea.webp",
     "tags": [
       "respiratorio"
     ],
@@ -587,6 +616,7 @@
     "parteUtilizada": "Estilos y estigmas",
     "usoTradicional": "Uso tradicional diurético y urinario",
     "precauciones": "No sustituye evaluación de síntomas urinarios persistentes",
+    "imagen": "estigma_de_maiz.webp",
     "tags": [
       "diuretico",
       "vias_urinarias"
@@ -608,6 +638,7 @@
     "parteUtilizada": "Hojas",
     "usoTradicional": "Tos y resfriado",
     "precauciones": "Aceite esencial no equivale a infusión y requiere precauciones adicionales",
+    "imagen": "eucaliptus.webp",
     "tags": [
       "respiratorio"
     ],
@@ -628,6 +659,7 @@
     "parteUtilizada": "Hojas",
     "usoTradicional": "Molestias articulares leves y aumento de diuresis en usos tradicionales",
     "precauciones": "No mantener digestivo",
+    "imagen": "fresno.webp",
     "tags": [
       "diuretico",
       "dolor_articular"
@@ -649,6 +681,7 @@
     "parteUtilizada": "Talo",
     "usoTradicional": "Uso tradicional ligado al control de peso por contenido de yodo",
     "precauciones": "Advertencia tiroidea; contenido de yodo variable",
+    "imagen": "fucus.webp",
     "tags": [],
     "nivelRiesgo": "precaucion",
     "fuentes": []
@@ -665,6 +698,7 @@
     "parteUtilizada": "Partes aéreas",
     "usoTradicional": "Trastornos gastrointestinales leves",
     "precauciones": "No usar 'depurativo' como beneficio",
+    "imagen": "fumaria.webp",
     "tags": [
       "digestivo"
     ],
@@ -685,6 +719,7 @@
     "parteUtilizada": "Cáscara del fruto",
     "usoTradicional": "Uso comercial para control de peso; eficacia clínica incierta",
     "precauciones": "Reportes de hepatotoxicidad; no presentarla como adelgazante probado",
+    "imagen": "garcinia.webp",
     "tags": [],
     "nivelRiesgo": "precaucion",
     "fuentes": [
@@ -703,6 +738,7 @@
     "parteUtilizada": "Hojas",
     "usoTradicional": "Preparados estandarizados para determinados trastornos cognitivos/circulatorios",
     "precauciones": "Interacciones con fármacos que afectan coagulación",
+    "imagen": "ginkgo_biloba.webp",
     "tags": [
       "circulacion"
     ],
@@ -723,6 +759,7 @@
     "parteUtilizada": "Raíz",
     "usoTradicional": "Fatiga y debilidad en uso tradicional",
     "precauciones": "No afirmar efectos hormonales generales",
+    "imagen": "ginseng.webp",
     "tags": [],
     "nivelRiesgo": null,
     "fuentes": []
@@ -742,6 +779,7 @@
     "parteUtilizada": "Fruto como alimento; hojas en usos tradicionales",
     "usoTradicional": "Usos tradicionales diversos",
     "precauciones": "No existe evidencia clínica suficiente para afirmar que trate o cure cáncer; posibles preocupaciones neurotóxicas",
+    "imagen": "graviola.webp",
     "tags": [],
     "nivelRiesgo": "precaucion",
     "fuentes": [
@@ -762,6 +800,7 @@
     "parteUtilizada": "Hojas y corteza; destilados de ramas/hojas",
     "usoTradicional": "Trastornos cutáneos menores y molestias circulatorias venosas",
     "precauciones": "Diferenciar parte y preparado",
+    "imagen": "hamamelis.webp",
     "tags": [
       "circulacion",
       "piel"
@@ -783,6 +822,7 @@
     "parteUtilizada": "Raíces secundarias/tubérculos",
     "usoTradicional": "Dolor articular leve, molestias digestivas y pérdida de apetito",
     "precauciones": "No usar fruto como parte medicinal; controlar interacciones/contraindicaciones según preparado",
+    "imagen": "harpagofito.webp",
     "tags": [
       "digestivo",
       "dolor_articular"
@@ -804,6 +844,7 @@
     "parteUtilizada": "Hojas y frutos según uso",
     "usoTradicional": "Usos tradicionales digestivos/metabólicos diversos",
     "precauciones": "Látex irritante y fototóxico; no recomendar aplicaciones caseras de látex",
+    "imagen": "higuera.webp",
     "tags": [],
     "nivelRiesgo": null,
     "fuentes": []
@@ -822,6 +863,7 @@
     "parteUtilizada": "Frutos",
     "usoTradicional": "Distensión, flatulencia y tos asociada al resfriado",
     "precauciones": "Cautela con aceite esencial y alergias",
+    "imagen": "hinojo.webp",
     "tags": [
       "digestivo",
       "respiratorio"
@@ -843,6 +885,7 @@
     "parteUtilizada": "Partes aéreas floridas",
     "usoTradicional": "Determinados trastornos del estado de ánimo/estrés y usos tradicionales de piel/GI según preparado",
     "precauciones": "Numerosas interacciones medicamentosas; fotosensibilidad posible",
+    "imagen": "hipericon.webp",
     "tags": [],
     "nivelRiesgo": "precaucion",
     "fuentes": []
@@ -861,6 +904,7 @@
     "parteUtilizada": "Partes aéreas floridas",
     "usoTradicional": "Usos tradicionales digestivos y respiratorios",
     "precauciones": "Aceite esencial mucho más concentrado; no equiparar",
+    "imagen": "hisopo.webp",
     "tags": [
       "digestivo",
       "respiratorio"
@@ -882,6 +926,7 @@
     "parteUtilizada": "Corteza interna",
     "usoTradicional": "Numerosos usos etnomedicinales latinoamericanos",
     "precauciones": "No presentarlo como tratamiento oncológico; revisar especie comercial",
+    "imagen": "lapacho.webp",
     "tags": [],
     "nivelRiesgo": null,
     "fuentes": []
@@ -900,6 +945,7 @@
     "parteUtilizada": "Flores",
     "usoTradicional": "Estrés leve y ayuda para dormir",
     "precauciones": "Aceite esencial tiene perfil diferente",
+    "imagen": "lavanda.webp",
     "tags": [
       "relajacion",
       "sueño"
@@ -922,6 +968,7 @@
     "parteUtilizada": "Hojas",
     "usoTradicional": "Tos y resfriado",
     "precauciones": "Diferenciar de otros Plantago llamados llantén",
+    "imagen": "llanten.webp",
     "tags": [
       "respiratorio"
     ],
@@ -942,6 +989,7 @@
     "parteUtilizada": "Hipocótilo/órgano subterráneo",
     "usoTradicional": "Uso nutricional y tradicional relacionado con vitalidad/sexualidad",
     "precauciones": "No afirmar 'regulación hormonal'",
+    "imagen": "maca.webp",
     "tags": [
       "nutricional"
     ],
@@ -962,6 +1010,7 @@
     "parteUtilizada": "Flores y hojas",
     "usoTradicional": "Irritación de boca/garganta, tos seca y molestias GI leves",
     "precauciones": "Alergias poco frecuentes; diferenciar parte usada",
+    "imagen": "malva.webp",
     "tags": [
       "digestivo",
       "respiratorio"
@@ -983,6 +1032,7 @@
     "parteUtilizada": "Capítulos florales",
     "usoTradicional": "Molestias digestivas leves; usos en boca/garganta, resfriado y piel según preparación",
     "precauciones": "Posibles alergias Asteraceae",
+    "imagen": "manzanilla.webp",
     "tags": [
       "digestivo",
       "piel",
@@ -1005,6 +1055,7 @@
     "parteUtilizada": "Hojas e inflorescencias",
     "usoTradicional": "Uso tradicional digestivo/eupéptico",
     "precauciones": "Presentar como tradición regional",
+    "imagen": "marcela.webp",
     "tags": [
       "digestivo"
     ],
@@ -1025,6 +1076,7 @@
     "parteUtilizada": "Partes aéreas",
     "usoTradicional": "Tos asociada al resfriado, molestias digestivas leves y pérdida de apetito",
     "precauciones": "No mantener tag hormonal",
+    "imagen": "marrubio.webp",
     "tags": [
       "digestivo",
       "respiratorio"
@@ -1044,6 +1096,7 @@
     "parteUtilizada": "Hojas principalmente",
     "usoTradicional": "Uso tradicional astringente y en heridas",
     "precauciones": "Debe especificarse la especie regional antes de recomendar preparación",
+    "imagen": "matico.webp",
     "tags": [
       "piel"
     ],
@@ -1066,6 +1119,7 @@
     "parteUtilizada": "Partes aéreas",
     "usoTradicional": "Pesadez de piernas por trastornos venosos menores; uso tópico en inflamaciones menores",
     "precauciones": "Precaución con anticoagulantes y trastornos hemorrágicos",
+    "imagen": "meliloto.webp",
     "tags": [
       "circulacion",
       "piel"
@@ -1088,6 +1142,7 @@
     "parteUtilizada": "Hojas",
     "usoTradicional": "Estrés leve, ayuda para dormir, distensión y flatulencia",
     "precauciones": "No mantener circulación/energizante",
+    "imagen": "melisa.webp",
     "tags": [
       "digestivo",
       "relajacion",
@@ -1111,6 +1166,7 @@
     "parteUtilizada": "Hojas",
     "usoTradicional": "Indigestión y flatulencia",
     "precauciones": "'Menta' incluye varias Mentha; aceite esencial no equivale a hoja",
+    "imagen": "menta.webp",
     "tags": [
       "digestivo"
     ],
@@ -1129,6 +1185,7 @@
     "parteUtilizada": "Varias históricamente",
     "usoTradicional": "Usos históricos",
     "precauciones": "Ácidos aristolóquicos: nefrotoxicidad grave y carcinogenicidad; evitar uso interno",
+    "imagen": "mil_hombres.webp",
     "tags": [],
     "nivelRiesgo": "critico",
     "fuentes": [
@@ -1147,6 +1204,7 @@
     "parteUtilizada": "Partes aéreas/hojas",
     "usoTradicional": "Uso tradicional digestivo",
     "precauciones": "'Muña' corresponde a distintas Minthostachys según región",
+    "imagen": "muna_muna.webp",
     "tags": [
       "digestivo"
     ],
@@ -1168,6 +1226,7 @@
     "parteUtilizada": "Hojas",
     "usoTradicional": "Uso tradicional para relajación y sueño",
     "precauciones": "Las hojas vendidas como 'naranjo' pueden proceder de otros Citrus; verificar especie",
+    "imagen": "naranjo_hojas.webp",
     "tags": [
       "relajacion"
     ],
@@ -1188,6 +1247,7 @@
     "parteUtilizada": "Hojas",
     "usoTradicional": "Trastornos cutáneos menores",
     "precauciones": "Principalmente uso externo según monografía",
+    "imagen": "nogal.webp",
     "tags": [
       "piel"
     ],
@@ -1208,6 +1268,7 @@
     "parteUtilizada": "Partes aéreas/hojas; raíz tiene usos distintos",
     "usoTradicional": "Diuresis en molestias urinarias menores; molestias articulares leves",
     "precauciones": "No promover diuresis si hay indicación de restricción hídrica; diferenciar raíz",
+    "imagen": "ortiga.webp",
     "tags": [
       "diuretico",
       "dolor_articular",
@@ -1228,6 +1289,7 @@
     "parteUtilizada": "Partes leñosas/aéreas según especie",
     "usoTradicional": "Usos urinarios y diuréticos tradicionales",
     "precauciones": "Dos plantas distintas comparten el nombre; la app debe mostrar región/especie",
+    "imagen": "palo_azul.webp",
     "tags": [
       "diuretico"
     ],
@@ -1250,6 +1312,7 @@
     "parteUtilizada": "Partes aéreas",
     "usoTradicional": "Uso tradicional urinario/diurético",
     "precauciones": "Presentar como uso tradicional",
+    "imagen": "palo_pichi.webp",
     "tags": [
       "diuretico",
       "vias_urinarias"
@@ -1269,6 +1332,7 @@
     "parteUtilizada": "Madera/corteza según especie y uso",
     "usoTradicional": "Usos tradicionales diversos",
     "precauciones": "No asumir uso interno ni una especie universal; distinguir sahumado de uso medicinal",
+    "imagen": "palo_santo.webp",
     "tags": [],
     "nivelRiesgo": null,
     "fuentes": [
@@ -1289,6 +1353,7 @@
     "parteUtilizada": "Partes aéreas",
     "usoTradicional": "Estrés leve y ayuda para dormir",
     "precauciones": "Puede potenciar sedación con otras sustancias",
+    "imagen": "pasionaria.webp",
     "tags": [
       "relajacion",
       "sueño"
@@ -1310,6 +1375,7 @@
     "parteUtilizada": "Hojas",
     "usoTradicional": "Uso tradicional relacionado con glucemia",
     "precauciones": "No sustituye antidiabéticos; precaución por posible hipoglucemia",
+    "imagen": "pezuna_de_vaca.webp",
     "tags": [],
     "nivelRiesgo": null,
     "fuentes": []
@@ -1329,6 +1395,7 @@
     "parteUtilizada": "Partes aéreas",
     "usoTradicional": "Uso digestivo tradicional",
     "precauciones": "Aceite esencial de Mentha pulegium puede ser gravemente hepatotóxico; especificar especie",
+    "imagen": "poleo.webp",
     "tags": [
       "digestivo"
     ],
@@ -1351,6 +1418,7 @@
     "parteUtilizada": "Raíz y estolones",
     "usoTradicional": "Molestias digestivas y expectorante en tos/resfriado",
     "precauciones": "Glicirricina: HTA, edema, hipopotasemia, interacciones; evitar uso prolongado",
+    "imagen": "regaliz.webp",
     "tags": [
       "digestivo",
       "respiratorio"
@@ -1370,6 +1438,7 @@
     "parteUtilizada": "Variable",
     "usoTradicional": "Usos variables; algunos taxones pueden ser tóxicos",
     "precauciones": "No asignar beneficios ni preparación sin identificar especie",
+    "imagen": "romerillo.webp",
     "tags": [],
     "nivelRiesgo": "precaucion",
     "fuentes": [
@@ -1390,6 +1459,7 @@
     "parteUtilizada": "Hojas",
     "usoTradicional": "Dispepsia y espasmos GI leves; uso externo en molestias musculares/circulatorias menores",
     "precauciones": "Aceite esencial no equivale a hoja",
+    "imagen": "romero.webp",
     "tags": [
       "digestivo",
       "uso_externo"
@@ -1412,6 +1482,7 @@
     "parteUtilizada": "Planta entera/partes aéreas",
     "usoTradicional": "Uso tradicional en vías urinarias y litiasis; evidencia clínica limitada",
     "precauciones": "No afirmar que 'rompe' o disuelve cálculos; diferenciar especies de Phyllanthus",
+    "imagen": "rompepiedra.webp",
     "tags": [
       "vias_urinarias"
     ],
@@ -1434,6 +1505,7 @@
     "parteUtilizada": "Partes aéreas históricamente",
     "usoTradicional": "Usos medicinales históricos",
     "precauciones": "Toxicidad; especialmente contraindicada en embarazo; no promover uso interno",
+    "imagen": "ruda.webp",
     "tags": [],
     "nivelRiesgo": "precaucion",
     "fuentes": [
@@ -1454,6 +1526,7 @@
     "parteUtilizada": "Hojas/partes aéreas",
     "usoTradicional": "Uso tradicional/ceremonial; no hay base para mantener 'respiratorio' de forma general",
     "precauciones": "'Salvia blanca' puede usarse para otras especies; evitar apropiaciones culturales o afirmaciones terapéuticas no sustentadas",
+    "imagen": "salvia_blanca.webp",
     "tags": [],
     "nivelRiesgo": null,
     "fuentes": [
@@ -1474,6 +1547,7 @@
     "parteUtilizada": "Hojas y frutos",
     "usoTradicional": "Tratamiento a corto plazo del estreñimiento ocasional",
     "precauciones": "No más de una semana sin evaluación; riesgo hidroelectrolítico con abuso",
+    "imagen": "sen.webp",
     "tags": [
       "laxante"
     ],
@@ -1492,6 +1566,7 @@
     "parteUtilizada": "Hojas principalmente",
     "usoTradicional": "Usos tradicionales digestivos y respiratorios; antecedentes de uso popular relacionado con alcohol",
     "precauciones": "No presentar como tratamiento de dependencia alcohólica",
+    "imagen": "sombra_de_toro.webp",
     "tags": [
       "digestivo",
       "respiratorio"
@@ -1513,6 +1588,7 @@
     "parteUtilizada": "Hojas/partes aéreas",
     "usoTradicional": "Uso tradicional digestivo",
     "precauciones": "Presentar como tradición regional",
+    "imagen": "te_del_burro.webp",
     "tags": [
       "digestivo"
     ],
@@ -1533,6 +1609,7 @@
     "parteUtilizada": "Hojas procesadas",
     "usoTradicional": "Bebida con cafeína; usos comerciales diversos",
     "precauciones": "No prometer adelgazamiento/metabolismo; diferenciar de extractos concentrados",
+    "imagen": "te_rojo.webp",
     "tags": [],
     "nivelRiesgo": null,
     "fuentes": []
@@ -1551,6 +1628,7 @@
     "parteUtilizada": "Hojas jóvenes y brotes procesados",
     "usoTradicional": "Bebida con cafeína y polifenoles",
     "precauciones": "Extractos concentrados no equivalen a bebida; no prometer 'quema grasa'",
+    "imagen": "te_verde.webp",
     "tags": [],
     "nivelRiesgo": null,
     "fuentes": []
@@ -1569,6 +1647,7 @@
     "parteUtilizada": "Inflorescencias/flores con brácteas",
     "usoTradicional": "Tos/resfriado y estrés mental leve",
     "precauciones": "Distinguir de Tilia tomentosa y otras especies",
+    "imagen": "tilo.webp",
     "tags": [
       "relajacion"
     ],
@@ -1587,6 +1666,7 @@
     "parteUtilizada": "Varias según tradición",
     "usoTradicional": "Usos etnobotánicos regionales",
     "precauciones": "El tag antiinflamatorio requiere especificar parte y uso",
+    "imagen": "tusca.webp",
     "tags": [],
     "nivelRiesgo": null,
     "fuentes": [
@@ -1607,6 +1687,7 @@
     "parteUtilizada": "Corteza y raíz",
     "usoTradicional": "Usos tradicionales diversos",
     "precauciones": "Evidencia clínica insuficiente para beneficios específicos; también existe U. guianensis",
+    "imagen": "una_de_gato.webp",
     "tags": [],
     "nivelRiesgo": null,
     "fuentes": [
@@ -1628,6 +1709,7 @@
     "parteUtilizada": "Hojas",
     "usoTradicional": "Uso tradicional en molestias urinarias menores",
     "precauciones": "No usar como sustituto del tratamiento de infección urinaria; uso limitado",
+    "imagen": "uva_ursi.webp",
     "tags": [
       "vias_urinarias"
     ],
@@ -1646,6 +1728,7 @@
     "parteUtilizada": "Raíz, rizoma y estolones",
     "usoTradicional": "Tensión nerviosa leve y trastornos del sueño",
     "precauciones": "Puede reducir alerta; cuidado con otros sedantes",
+    "imagen": "valeriana.webp",
     "tags": [
       "relajacion",
       "sueño"
@@ -1667,6 +1750,7 @@
     "parteUtilizada": "Variable",
     "usoTradicional": "Usos tradicionales, a menudo respiratorios según región",
     "precauciones": "No fijar imagen ni uso sin especie regional",
+    "imagen": "vira_vira.webp",
     "tags": [],
     "nivelRiesgo": null,
     "fuentes": [
@@ -1688,6 +1772,7 @@
     "parteUtilizada": "Hojas/partes aéreas",
     "usoTradicional": "Uso tradicional digestivo y para flatulencia",
     "precauciones": "El nombre puede aplicarse a otras Mentha según región",
+    "imagen": "yerba_buena.webp",
     "tags": [
       "digestivo"
     ],
@@ -1706,6 +1791,7 @@
     "parteUtilizada": "Planta completa/partes aéreas según tradición",
     "usoTradicional": "Usos tradicionales vinculados con heridas/inflamación",
     "precauciones": "Validar parte/preparación por región antes de publicar",
+    "imagen": "yerba_carnicera.webp",
     "tags": [],
     "nivelRiesgo": null,
     "fuentes": [
@@ -1724,6 +1810,7 @@
     "parteUtilizada": "Partes aéreas",
     "usoTradicional": "Uso tradicional digestivo",
     "precauciones": "El nombre puede variar regionalmente; revisar tag diurético",
+    "imagen": "yerba_del_pollo.webp",
     "tags": [
       "digestivo"
     ],
@@ -1745,6 +1832,7 @@
     "parteUtilizada": "Hojas/partes aéreas",
     "usoTradicional": "Uso tradicional como endulzante",
     "precauciones": "'Hierba dulce' puede denominar otras especies regionales",
+    "imagen": "yerba_dulce.webp",
     "tags": [],
     "nivelRiesgo": null,
     "fuentes": [
@@ -1765,6 +1853,7 @@
     "parteUtilizada": "Raíz/rizoma",
     "usoTradicional": "Usos tradicionales diaforéticos/diuréticos según especie y región",
     "precauciones": "Numerosas especies comparten el nombre; especificar procedencia",
+    "imagen": "zarzaparrilla.webp",
     "tags": [
       "diuretico"
     ],

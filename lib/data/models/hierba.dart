@@ -133,6 +133,15 @@ class Hierba {
   /// Nivel de riesgo derivado de la tabla maestra.
   final RiesgoHerba nivelRiesgo;
 
+  /// Nombre de archivo de la imagen de la ficha (ej: 'achicoria.webp').
+  ///
+  /// Solo el nombre: el directorio de assets se resuelve en la capa de
+  /// presentación cuando existan las imágenes verificadas. Hasta entonces
+  /// este campo queda null en memoria o con el nombre registrado en la
+  /// tabla maestra, pero NUNCA se usa para renderizar (no hay UI de
+  /// imagen todavía).
+  final String? imagen;
+
   /// URLs de fuentes institucionales (EMA, NCCIH, SIB, Kew…).
   final List<String> fuentes;
 
@@ -150,6 +159,7 @@ class Hierba {
     this.precauciones,
     this.tags = const [],
     this.nivelRiesgo = RiesgoHerba.ninguno,
+    this.imagen,
     this.fuentes = const [],
   });
 
@@ -169,6 +179,7 @@ class Hierba {
       precauciones: json['precauciones'] as String?,
       tags: List<String>.from(json['tags'] ?? []),
       nivelRiesgo: RiesgoHerba.fromString(json['nivelRiesgo'] as String?),
+      imagen: json['imagen'] as String?,
       fuentes: List<String>.from(json['fuentes'] ?? []),
     );
   }
@@ -188,6 +199,7 @@ class Hierba {
       'precauciones': precauciones,
       'tags': tags,
       'nivelRiesgo': nivelRiesgo.valorJson,
+      'imagen': imagen,
       'fuentes': fuentes,
     };
   }

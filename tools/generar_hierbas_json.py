@@ -177,6 +177,7 @@ def main() -> None:
             'parteUtilizada': (r[7] or '').strip() or None,
             'usoTradicional': (r[9] or '').strip(),
             'precauciones': (r[10] or '').strip() or None,
+            'imagen': (r[12] or '').strip() or None,
             'tags': tags_visibles,
             'nivelRiesgo': nivel_riesgo,
             'fuentes': dividir_fuentes(r[16]),
