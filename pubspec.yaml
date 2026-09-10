@@ -63,5 +63,6 @@ flutter:
     - assets/data/sintomas_cruzados.json
     - assets/data/todas_las_recetas.json
     - assets/data/hierbas.json
+    - assets/data/preparaciones_tradicionales.json
     - assets/images/recetas/
     - assets/images/sistemas/

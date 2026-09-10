@@ -1,0 +1,1023 @@
+[
+ {
+  "id": "achicoria",
+  "nombre": "Achicoria",
+  "parte": "Raíz y hoja",
+  "texto": "Infusión de hoja o decocción de raíz (hervir 5 min, reposar 10). La raíz tostada se usa también como sucedáneo de café.",
+  "modos": [
+   "Infusión",
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "alcachofa",
+  "nombre": "Alcachofa",
+  "parte": "Hojas",
+  "texto": "Decocción: hervir 5-10 min, reposar 10 min. Se toma antes de las comidas.",
+  "modos": [
+   "Decocción"
+  ],
+  "dosis": "Antes de las comidas",
+  "advertencia": ""
+ },
+ {
+  "id": "alfalfa",
+  "nombre": "Alfalfa",
+  "parte": "Hojas, brotes",
+  "texto": "Infusión de hojas secas, 10 min de reposo. Los brotes también se consumen frescos.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "amargon",
+  "nombre": "Amargón (Diente de león)",
+  "parte": "Raíz y hoja",
+  "texto": "Decocción de raíz (10 min) para uso hepático; infusión de hoja para uso digestivo.",
+  "modos": [
+   "Infusión",
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "ambay",
+  "nombre": "Ambay",
+  "parte": "Hojas",
+  "texto": "Infusión o decocción breve, a veces combinada con miel para la tos.",
+  "modos": [
+   "Infusión",
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "anacahuita",
+  "nombre": "Anacahuita",
+  "parte": "Hojas, corteza",
+  "texto": "Decocción breve; también en jarabes caseros.",
+  "modos": [
+   "Decocción",
+   "Jarabe casero"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "angelica",
+  "nombre": "Angélica",
+  "parte": "Raíz",
+  "texto": "Infusión de raíz: hervir una taza de agua con 1 o 2 raíces durante 10 minutos. La raíz también se usa en licores.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "1 o 2 raíces por taza de agua",
+  "advertencia": ""
+ },
+ {
+  "id": "apio_cimarron",
+  "nombre": "Apio cimarrón",
+  "parte": "Hojas y semillas",
+  "texto": "Infusión de hojas o decocción de semillas machacadas.",
+  "modos": [
+   "Infusión",
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "arandano",
+  "nombre": "Arándano",
+  "parte": "Hojas, bayas",
+  "texto": "Infusión de hojas o bayas: dejar reposar de 10 a 15 minutos después de verter el agua caliente.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "2 cucharaditas de hojas (unos 10 g) o bayas frescas o secas por taza",
+  "advertencia": ""
+ },
+ {
+  "id": "boldo",
+  "nombre": "Boldo",
+  "parte": "Hojas",
+  "texto": "Infusión de hojas secas: verter el agua hirviendo, tapar y dejar reposar 5 minutos antes de colar.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "2 cucharaditas (unos 8 g) de hojas secas por cada 400 ml de agua",
+  "advertencia": ""
+ },
+ {
+  "id": "borraja",
+  "nombre": "Borraja",
+  "parte": "Flores y hojas",
+  "texto": "Infusión breve (5-8 min), no hervir para no perder propiedades.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": "No hervir: pierde propiedades"
+ },
+ {
+  "id": "calendula",
+  "nombre": "Caléndula",
+  "parte": "Flores",
+  "texto": "Infusión para uso tópico: verter el agua hirviendo, tapar y dejar reposar 20 minutos. Se usa fría, en atomizador, para el cuero cabelludo o la piel.",
+  "modos": [
+   "Infusión",
+   "Uso externo"
+  ],
+  "dosis": "3 cucharadas de flores (30 g) por taza de agua",
+  "advertencia": ""
+ },
+ {
+  "id": "canchalagua",
+  "nombre": "Canchalagua",
+  "parte": "Planta entera",
+  "texto": "Infusión amarga, 10 min de reposo, antes de las comidas.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "Antes de las comidas",
+  "advertencia": ""
+ },
+ {
+  "id": "cardo_mariano",
+  "nombre": "Cardo mariano",
+  "parte": "Semillas",
+  "texto": "Semillas machacadas o molidas en decocción breve o infusión; también en polvo con agua o jugo.",
+  "modos": [
+   "Infusión",
+   "Decocción",
+   "En polvo"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "carqueja",
+  "nombre": "Carqueja",
+  "parte": "Tallos y hojas",
+  "texto": "Infusión o decocción breve (muy amarga); se usa antes de las comidas.",
+  "modos": [
+   "Infusión",
+   "Decocción"
+  ],
+  "dosis": "Antes de las comidas",
+  "advertencia": ""
+ },
+ {
+  "id": "castano_de_indias",
+  "nombre": "Castaño de indias",
+  "parte": "Semillas, corteza",
+  "texto": "Decocción de corteza o semilla partida (10 min). También en uso externo (compresas) para varices.",
+  "modos": [
+   "Decocción",
+   "Uso externo"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "cedron",
+  "nombre": "Cedrón",
+  "parte": "Hojas",
+  "texto": "Infusión simple después de las comidas.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "Después de las comidas",
+  "advertencia": ""
+ },
+ {
+  "id": "centella_asiatica",
+  "nombre": "Centella asiática",
+  "parte": "Hojas",
+  "texto": "Infusión de hojas secas; de uso interno. Uso externo tradicional en cremas/maceraciones oleosas para cicatrización.",
+  "modos": [
+   "Infusión",
+   "Uso externo"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "chanar",
+  "nombre": "Chañar",
+  "parte": "Corteza, arrope de fruto",
+  "texto": "Decocción de corteza para vías respiratorias. El fruto se usa tradicionalmente para hacer arrope (jarabe) contra la tos.",
+  "modos": [
+   "Decocción",
+   "Jarabe casero",
+   "Arrope"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "chia",
+  "nombre": "Chía",
+  "parte": "Semillas",
+  "texto": "Infusión de semillas: remover y dejar reposar 10 minutos para que las semillas liberen su mucílago.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "1 cucharada sopera de semillas por taza de agua hirviendo",
+  "advertencia": ""
+ },
+ {
+  "id": "cimicifuga",
+  "nombre": "Cimicífuga",
+  "parte": "Rizoma",
+  "texto": "Decocción breve del rizoma seco.",
+  "modos": [
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "cola_de_caballo",
+  "nombre": "Cola de caballo",
+  "parte": "Tallos y ramas",
+  "texto": "Cocimiento de tallos y ramas: dejar reposar 10 minutos después de hervir.",
+  "modos": [
+   "Decocción"
+  ],
+  "dosis": "10 g de la planta en ¼ litro de agua hervida; una taza 3 veces al día",
+  "advertencia": ""
+ },
+ {
+  "id": "congorosa",
+  "nombre": "Congorosa",
+  "parte": "Hojas",
+  "texto": "Infusión o decocción breve después de las comidas.",
+  "modos": [
+   "Infusión",
+   "Decocción"
+  ],
+  "dosis": "Después de las comidas",
+  "advertencia": ""
+ },
+ {
+  "id": "crataegus",
+  "nombre": "Crataegus",
+  "parte": "Flores y hojas",
+  "texto": "Infusión de flores/hojas, 10 min de reposo.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "cuasia",
+  "nombre": "Cuasia",
+  "parte": "Madera/corteza",
+  "texto": "Decocción o maceración en frío de astillas de madera (tradicionalmente en \"vaso de cuasia\").",
+  "modos": [
+   "Decocción",
+   "Maceración"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "cascara_sagrada",
+  "nombre": "Cáscara sagrada",
+  "parte": "Corteza",
+  "texto": "Decocción breve de corteza seca y añejada (nunca fresca, es irritante). Se toma por la noche.",
+  "modos": [
+   "Decocción"
+  ],
+  "dosis": "Por la noche",
+  "advertencia": "Usar corteza seca y añejada (la fresca es irritante)"
+ },
+ {
+  "id": "damiana",
+  "nombre": "Damiana",
+  "parte": "Hojas",
+  "texto": "Infusión de hojas, 10 min de reposo.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "doradilla",
+  "nombre": "Doradilla",
+  "parte": "Planta entera",
+  "texto": "Infusión o decocción breve.",
+  "modos": [
+   "Infusión",
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "equinacea",
+  "nombre": "Equinácea",
+  "parte": "Hojas, raíz",
+  "texto": "Infusión en mezcla: verter 250 ml de agua recién hervida sobre la bolsita y dejar reposar de 5 a 6 minutos para un sabor más intenso.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "estigma_de_maiz",
+  "nombre": "Estigma de maíz",
+  "parte": "Estigmas",
+  "texto": "Infusión o decocción breve de los estigmas secos.",
+  "modos": [
+   "Infusión",
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "eucaliptus",
+  "nombre": "Eucaliptus",
+  "parte": "Hojas",
+  "texto": "Infusión o decocción; también en vahos/inhalaciones para vías respiratorias.",
+  "modos": [
+   "Infusión",
+   "Decocción",
+   "Uso externo"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "fresno",
+  "nombre": "Fresno",
+  "parte": "Hojas",
+  "texto": "Infusión de hojas secas.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "fucus",
+  "nombre": "Fucus",
+  "parte": "Talo",
+  "texto": "Infusión o decocción breve del alga seca.",
+  "modos": [
+   "Infusión",
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "fumaria",
+  "nombre": "Fumaria",
+  "parte": "Planta entera",
+  "texto": "Infusión de la planta seca.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "garcinia",
+  "nombre": "Garcinia",
+  "parte": "Cáscara del fruto",
+  "texto": "Tradicionalmente en decocción de la cáscara seca; hoy más frecuente en cápsulas/extracto.",
+  "modos": [
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "ginkgo_biloba",
+  "nombre": "Ginkgo biloba",
+  "parte": "Hojas",
+  "texto": "Infusión de hojas secas (el uso más estudiado es en extracto estandarizado, no tanto infusión casera).",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": "El uso más estudiado es el extracto estandarizado"
+ },
+ {
+  "id": "ginseng",
+  "nombre": "Ginseng",
+  "parte": "Raíz",
+  "texto": "Decocción de raíz troceada; también masticada o en polvo.",
+  "modos": [
+   "Decocción",
+   "Masticación",
+   "En polvo"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "graviola",
+  "nombre": "Graviola",
+  "parte": "Hojas",
+  "texto": "Infusión o decocción de hojas.",
+  "modos": [
+   "Infusión",
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "hamamelis",
+  "nombre": "Hamamelis",
+  "parte": "Hojas",
+  "texto": "Infusión para uso tópico: hervir ½ litro de agua, agregar las hojas y dejar reposar hasta que enfríe. Se cuela y se usa como tónico o loción.",
+  "modos": [
+   "Infusión",
+   "Uso externo"
+  ],
+  "dosis": "15 g de hojas por ½ litro de agua",
+  "advertencia": ""
+ },
+ {
+  "id": "harpagofito",
+  "nombre": "Harpagofito",
+  "parte": "Raíz tuberosa",
+  "texto": "Decocción de raíz seca (10-15 min).",
+  "modos": [
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "higuera",
+  "nombre": "Higuera",
+  "parte": "Hojas, brotes",
+  "texto": "Infusión de hojas para uso hipoglucemiante; los frutos secos (higos) se usan tradicionalmente como laxante suave.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "hinojo",
+  "nombre": "Hinojo",
+  "parte": "Hojas",
+  "texto": "Infusión de hojas: preparar como una infusión normal y dejar reposar unos 5 minutos.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "Unos 30 g de hojas por litro de agua",
+  "advertencia": ""
+ },
+ {
+  "id": "hipericon",
+  "nombre": "Hipericón",
+  "parte": "Sumidades floridas",
+  "texto": "Infusión de flores y hojas, 10 min de reposo.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "hisopo",
+  "nombre": "Hisopo",
+  "parte": "Sumidades floridas",
+  "texto": "Infusión breve después de las comidas.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "Después de las comidas",
+  "advertencia": ""
+ },
+ {
+  "id": "lapacho",
+  "nombre": "Lapacho",
+  "parte": "Corteza interna",
+  "texto": "Decocción de corteza (hervir 10-15 min).",
+  "modos": [
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "lavanda",
+  "nombre": "Lavanda",
+  "parte": "Flores, sumidades floridas",
+  "texto": "Flores secas + agua caliente, dejar infusionar y filtrar. Tradicionalmente asociada a estrés leve y sueño; también se usa en baños.",
+  "modos": [
+   "Infusión",
+   "Uso externo"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "llanten",
+  "nombre": "Llantén",
+  "parte": "Hojas",
+  "texto": "Infusión para uso interno; para garganta también se usan gárgaras con la infusión.",
+  "modos": [
+   "Infusión",
+   "Uso externo"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "maca",
+  "nombre": "Maca",
+  "parte": "Raíz en polvo",
+  "texto": "Bebida: mezclar la maca en polvo con media taza de agua y, aparte, hacer una infusión con canela y clavo; se puede completar con leche.",
+  "modos": [
+   "En polvo",
+   "Infusión"
+  ],
+  "dosis": "2 cucharadas de maca en polvo con media taza de agua",
+  "advertencia": ""
+ },
+ {
+  "id": "malva",
+  "nombre": "Malva",
+  "parte": "Flores y/o hojas",
+  "texto": "La EMA contempla 1–2 g en 250 mL de agua, como infusión o decocción. Sus mucílagos explican su uso como demulcente.",
+  "modos": [
+   "Infusión",
+   "Decocción"
+  ],
+  "dosis": "1–2 g en 250 mL de agua",
+  "advertencia": ""
+ },
+ {
+  "id": "manzanilla",
+  "nombre": "Manzanilla",
+  "parte": "Capítulos florales",
+  "texto": "Flores secas + agua caliente; reposar y filtrar. También existen preparaciones para inhalación, enjuagues, compresas y baños.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "marcela",
+  "nombre": "Marcela",
+  "parte": "Flores",
+  "texto": "Infusión de flores, después de las comidas.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "Después de las comidas",
+  "advertencia": ""
+ },
+ {
+  "id": "marrubio",
+  "nombre": "Marrubio",
+  "parte": "Sumidades floridas",
+  "texto": "Infusión, algo amarga; también en jarabe casero para tos.",
+  "modos": [
+   "Infusión",
+   "Jarabe casero"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "meliloto",
+  "nombre": "Meliloto",
+  "parte": "Sumidades floridas",
+  "texto": "Infusión de flores y hojas.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "mil_hombres",
+  "nombre": "Mil hombres",
+  "parte": "Raíz/planta",
+  "texto": "Decocción o infusión según la especie local (verificar identificación, hay especies del género *Aristolochia* con restricciones sanitarias).",
+  "modos": [
+   "Infusión",
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": "Verificar identificación botánica (hay especies con restricciones)"
+ },
+ {
+  "id": "muna_muna",
+  "nombre": "Muña muña",
+  "parte": "Hojas",
+  "texto": "Infusión después de las comidas.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "Después de las comidas",
+  "advertencia": ""
+ },
+ {
+  "id": "matico",
+  "nombre": "Mático",
+  "parte": "Hojas",
+  "texto": "Infusión para uso interno; en uso externo se aplican las hojas machacadas sobre heridas (hemostático tópico tradicional).",
+  "modos": [
+   "Infusión",
+   "Uso externo"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "melisa",
+  "nombre": "Melisa",
+  "parte": "Hojas",
+  "texto": "Hojas secas + agua caliente; reposar y filtrar. Uso tradicional para estrés leve, sueño y molestias digestivas leves.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "menta",
+  "nombre": "Menta",
+  "parte": "Hojas",
+  "texto": "Hojas secas + agua caliente; reposar y filtrar. Uso tradicional principalmente digestivo: dispepsia y flatulencia.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "naranjo_hojas",
+  "nombre": "Naranjo hojas",
+  "parte": "Hojas y flores",
+  "texto": "Infusión de hojas o flores (azahar), como sedante suave.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "nogal",
+  "nombre": "Nogal",
+  "parte": "Hojas",
+  "texto": "Decocción de hojas; también se usa como enjuague capilar.",
+  "modos": [
+   "Decocción",
+   "Uso externo"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "ortiga",
+  "nombre": "Ortiga",
+  "parte": "Hojas",
+  "texto": "Hojas secas + agua caliente; reposar y filtrar. La EMA reconoce preparados de hoja de ortiga dentro del área urinaria.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "palo_azul",
+  "nombre": "Palo azul",
+  "parte": "Tallos",
+  "texto": "Decocción de tallos, dejando reposar el agua (a veces se deja macerar y toma el agua \"azulada\").",
+  "modos": [
+   "Decocción",
+   "Maceración"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "palo_pichi",
+  "nombre": "Palo pichi",
+  "parte": "Ramas",
+  "texto": "Decocción de ramas.",
+  "modos": [
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "palo_santo",
+  "nombre": "Palo santo",
+  "parte": "Madera",
+  "texto": "Decocción de astillas de madera.",
+  "modos": [
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "pasionaria",
+  "nombre": "Pasionaria",
+  "parte": "Sumidades floridas",
+  "texto": "Infusión antes de dormir.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "Antes de dormir",
+  "advertencia": ""
+ },
+ {
+  "id": "pezuna_de_vaca",
+  "nombre": "Pezuña de vaca",
+  "parte": "Hojas",
+  "texto": "Infusión o decocción breve de hojas, tradicionalmente para regular la glucemia.",
+  "modos": [
+   "Infusión",
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "poleo",
+  "nombre": "Poleo",
+  "parte": "Hojas",
+  "texto": "Infusión después de las comidas.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "Después de las comidas",
+  "advertencia": ""
+ },
+ {
+  "id": "regaliz",
+  "nombre": "Regaliz",
+  "parte": "Raíz",
+  "texto": "Al tratarse de una raíz, tradicionalmente se hierve suavemente en agua y luego se filtra. Se emplea tradicionalmente en preparados digestivos y respiratorios.",
+  "modos": [
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "romerillo",
+  "nombre": "Romerillo",
+  "parte": "Sumidades",
+  "texto": "Infusión de la planta seca.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": "El nombre popular varía de especie según la región de Argentina/Latinoamérica — confirmá la especie botánica exacta antes de preparar, especialmente con embarazo, lactancia o tratamiento médico en curso"
+ },
+ {
+  "id": "romero",
+  "nombre": "Romero",
+  "parte": "Hojas",
+  "texto": "Hojas secas + agua caliente; reposar y filtrar. La monografía europea reconoce usos tradicionales gastrointestinales y circulatorios; también se usa en preparados externos y baños.",
+  "modos": [
+   "Infusión",
+   "Uso externo"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "rompepiedra",
+  "nombre": "Rompepiedra",
+  "parte": "Planta entera",
+  "texto": "Infusión o decocción breve.",
+  "modos": [
+   "Infusión",
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "ruda",
+  "nombre": "Ruda",
+  "parte": "Hojas",
+  "texto": "Infusión en cantidades muy pequeñas (planta potente; tradicionalmente unas pocas hojas por litro). *Contraindicada en embarazo.*",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": "Contraindicada en embarazo"
+ },
+ {
+  "id": "salvia_blanca",
+  "nombre": "Salvia blanca",
+  "parte": "Hojas",
+  "texto": "Infusión; para boca y garganta se usan gárgaras/enjuagues con la infusión tibia.",
+  "modos": [
+   "Infusión",
+   "Uso externo"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "sen",
+  "nombre": "Sen",
+  "parte": "Hojas, frutos",
+  "texto": "Se prepara con la droga vegetal seca. Los preparados deben estar estandarizados por contenido de derivados hidroxiantracénicos.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": "Laxante para estreñimiento ocasional y de uso corto, generalmente ≤1 semana. No improvisar gramos: usar preparados estandarizados."
+ },
+ {
+  "id": "sombra_de_toro",
+  "nombre": "Sombra de toro",
+  "parte": "Hojas, corteza",
+  "texto": "Decocción o infusión.",
+  "modos": [
+   "Infusión",
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "tusca",
+  "nombre": "Tusca",
+  "parte": "Corteza, flores",
+  "texto": "Decocción de corteza o infusión de flores.",
+  "modos": [
+   "Infusión",
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "te_del_burro",
+  "nombre": "Té del burro",
+  "parte": "Planta entera",
+  "texto": "Infusión simple.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": "El nombre popular varía de especie según la región de Argentina/Latinoamérica — confirmá la especie botánica exacta antes de preparar, especialmente con embarazo, lactancia o tratamiento médico en curso"
+ },
+ {
+  "id": "te_rojo",
+  "nombre": "Té rojo",
+  "parte": "Hojas",
+  "texto": "Infusión breve (3-5 min) con agua caliente, no hirviendo si es té fermentado clásico.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": "Usar agua caliente, no hirviendo"
+ },
+ {
+  "id": "te_verde",
+  "nombre": "Té verde",
+  "parte": "Hojas no fermentadas",
+  "texto": "Hojas + agua caliente, con infusión breve. La EMA dispone de monografía para hoja no fermentada y reconoce su uso tradicional frente a fatiga o debilidad.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "tilo",
+  "nombre": "Tilo",
+  "parte": "Flores con brácteas",
+  "texto": "Flores secas + agua caliente; reposar y filtrar. Uso tradicional asociado a síntomas leves de estrés y resfriado.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "uva_ursi",
+  "nombre": "Uva ursi",
+  "parte": "Hojas",
+  "texto": "Infusión o maceración en frío (para reducir taninos); se recomienda no prolongar el uso más de días.",
+  "modos": [
+   "Infusión",
+   "Maceración"
+  ],
+  "dosis": "",
+  "advertencia": "No prolongar el uso más de unos días"
+ },
+ {
+  "id": "una_de_gato",
+  "nombre": "Uña de gato",
+  "parte": "Corteza",
+  "texto": "Decocción de corteza (hervir 10-15 min).",
+  "modos": [
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "valeriana",
+  "nombre": "Valeriana",
+  "parte": "Raíz, rizoma",
+  "texto": "La monografía contempla 0,3–3 g en 150 mL de agua hirviendo como infusión. Tradicionalmente se utiliza para estrés leve y como ayuda para dormir.",
+  "modos": [
+   "Infusión",
+   "Decocción"
+  ],
+  "dosis": "0,3–3 g en 150 mL de agua hirviendo",
+  "advertencia": ""
+ },
+ {
+  "id": "vira_vira",
+  "nombre": "Vira vira",
+  "parte": "Flores",
+  "texto": "Infusión de flores.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "yerba_buena",
+  "nombre": "Yerba buena",
+  "parte": "Hojas",
+  "texto": "Infusión después de las comidas.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "Después de las comidas",
+  "advertencia": ""
+ },
+ {
+  "id": "yerba_carnicera",
+  "nombre": "Yerba carnicera",
+  "parte": "Planta entera",
+  "texto": "Infusión o decocción según tradición local.",
+  "modos": [
+   "Infusión",
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": "El nombre popular varía de especie según la región de Argentina/Latinoamérica — confirmá la especie botánica exacta antes de preparar, especialmente con embarazo, lactancia o tratamiento médico en curso"
+ },
+ {
+  "id": "yerba_del_pollo",
+  "nombre": "Yerba del pollo",
+  "parte": "Planta entera",
+  "texto": "Infusión simple.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": "El nombre popular varía de especie según la región de Argentina/Latinoamérica — confirmá la especie botánica exacta antes de preparar, especialmente con embarazo, lactancia o tratamiento médico en curso"
+ },
+ {
+  "id": "yerba_dulce",
+  "nombre": "Yerba dulce",
+  "parte": "Hojas",
+  "texto": "Infusión de hojas frescas o secas; también se mastican hojas frescas como edulcorante natural.",
+  "modos": [
+   "Infusión"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ },
+ {
+  "id": "zarzaparrilla",
+  "nombre": "Zarzaparrilla",
+  "parte": "Raíz",
+  "texto": "Decocción de raíz (hervir 10-15 min).",
+  "modos": [
+   "Decocción"
+  ],
+  "dosis": "",
+  "advertencia": ""
+ }
+]
