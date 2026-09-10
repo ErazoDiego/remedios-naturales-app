@@ -1,7 +1,7 @@
 name: remedios_naturales_app
 description: "Remedios Naturales - Tu guía de bienestar"
 publish_to: 'none'
-version: 1.0.1+2
+version: 1.0.2+3
 
 environment:
   sdk: ^3.11.5
