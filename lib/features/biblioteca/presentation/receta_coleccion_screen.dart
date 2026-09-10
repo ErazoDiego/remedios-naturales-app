@@ -3,20 +3,26 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:tabler_icons/tabler_icons.dart';
 import '../../../core/constants/app_constants.dart';
+import '../../../core/services/payments/premium_rules.dart';
 import '../../../presentation/providers/biblioteca_provider.dart';
+import '../../../presentation/providers/premium_provider.dart';
+import '../../../presentation/providers/user_provider.dart';
 import '../../../presentation/widgets/ads/banner_ad_widget.dart';
 import '../../../presentation/widgets/premium/premium_dialog.dart';
 import '../../../presentation/widgets/recipe_detail_body.dart';
 import '../../biblioteca/domain/coleccion.dart';
+import '../../biblioteca/domain/favorito_coleccion.dart';
 import 'widgets/coleccion_visual.dart';
 
 /// Detalle de una receta de colección.
 ///
 /// Reusa [RecipeDetailBody] (el mismo cuerpo del núcleo). Gating propio
 /// de colección: premium o pack 'yuyo_pack_<coleccionId>'. SIN
-/// historial, sin favoritos y sin intersticiales — la biblioteca queda
-/// como isla limpia (decisión de producto); el banner sí aparece para
-/// no-premium, consistente con el resto de la app.
+/// historial ni intersticiales — la biblioteca queda como isla limpia;
+/// el banner sí aparece para no-premium, consistente con el resto de la
+/// app. SÍ tiene favoritos: los usuarios quieren TODAS sus recetas (del
+/// catálogo, de colecciones y propias) mezcladas en el tab Favoritos;
+/// el ID guardado usa el prefijo `col:` (ver [FavoritoColeccion]).
 class RecetaColeccionScreen extends StatelessWidget {
   final String coleccionId;
   final String recetaId;
@@ -56,6 +62,38 @@ class RecetaColeccionScreen extends StatelessWidget {
         ),
         backgroundColor: AppConstants.headerBeige,
         foregroundColor: AppConstants.textPrimary,
+        actions: [
+          // Corazón de favorito (mismo patrón que RemedyDetailScreen).
+          // El favorito guarda el ID compuesto `col:<coleccionId>:<recetaId>`
+          // para que el tab Favoritos lo resuelva contra la colección.
+          if (rc != null)
+            Consumer<UserProvider>(
+              builder: (context, userProvider, child) {
+                final favId = FavoritoColeccion.idDe(coleccionId, recetaId);
+                return FutureBuilder<bool>(
+                  future: userProvider.isFavorite(favId),
+                  builder: (context, snapshot) {
+                    final isFavorite = snapshot.data ?? false;
+                    return IconButton(
+                      icon: Icon(
+                        isFavorite ? Icons.favorite : TablerIcons.heart,
+                        color: isFavorite
+                            ? AppConstants.alertAmber
+                            : AppConstants.textTertiary,
+                      ),
+                      onPressed: () {
+                        if (isFavorite) {
+                          userProvider.removeFavorite(favId);
+                        } else {
+                          _toggleFavorito(context, userProvider, favId);
+                        }
+                      },
+                    );
+                  },
+                );
+              },
+            ),
+        ],
       ),
       body: Column(
         children: [
@@ -74,6 +112,35 @@ class RecetaColeccionScreen extends StatelessWidget {
           const BannerAdWidget(),
         ],
       ),
+    );
+  }
+
+  /// Agrega un favorito respetando el límite del plan FREE (5).
+  /// Premium: sin límite. Al llegar al tope muestra el CTA de compra.
+  /// (Mismo comportamiento que RemedyDetailScreen.)
+  Future<void> _toggleFavorito(
+    BuildContext context,
+    UserProvider userProvider,
+    String favId,
+  ) async {
+    final premium = context.read<PremiumProvider>();
+    final favoritosActuales = userProvider.profile?.favoritos.length ?? 0;
+
+    if (PremiumRules.canAddFavorite(
+      isPremium: premium.isPremium,
+      currentFavorites: favoritosActuales,
+    )) {
+      await userProvider.addFavorite(favId);
+      return;
+    }
+
+    if (!context.mounted) return;
+    await showPremiumDialog(
+      context,
+      title: 'Llegaste al límite de favoritos',
+      message: 'En el plan gratis podés guardar '
+          '${AppConstants.freeFavoritosLimit} recetas. Con Premium '
+          'guardás todas las que quieras.',
     );
   }
 

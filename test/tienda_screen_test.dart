@@ -2,57 +2,55 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:provider/provider.dart';
 import 'package:remedios_naturales_app/core/services/payments/mock_payment_service.dart';
 import 'package:remedios_naturales_app/data/services/user_service.dart';
 import 'package:remedios_naturales_app/features/biblioteca/data/biblioteca_repository.dart';
-import 'package:remedios_naturales_app/features/biblioteca/presentation/coleccion_screen.dart';
 import 'package:remedios_naturales_app/features/biblioteca/presentation/tienda_screen.dart';
 import 'package:remedios_naturales_app/presentation/providers/biblioteca_provider.dart';
 import 'package:remedios_naturales_app/presentation/providers/premium_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:tabler_icons/tabler_icons.dart';
 
-/// TiendaScreen: catálogo con precios + compra + navegación al índice.
+/// TiendaScreen: solo muestra colecciones NO adquiridas.
+///
+/// La tienda deja de listar lo que ya se posee (pack comprado, gratis
+/// reclamada o cubierto por Premium) y, cuando no queda nada nuevo,
+/// muestra un estado vacío con el motivo.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   late PremiumProvider premium;
-  late BibliotecaProvider biblioteca;
   late BibliotecaRepository repo;
 
-  /// Filas del catálogo, leídas LAZY por el MockClient en cada request.
-  /// null = filaJugos() sin portada (fallback al ícono).
-  List<Map<String, dynamic>>? filasCatalogo;
-
-  Map<String, dynamic> filaJugos({String? imagen}) => {
-        'id': 'jugos',
-        'nombre': 'Jugos naturales',
-        'descripcion': 'Jugos de prueba',
+  Map<String, dynamic> fila(String id, String nombre,
+          {bool gratis = false}) =>
+      {
+        'id': id,
+        'nombre': nombre,
+        'descripcion': 'Descripción de $nombre',
         'icono': 'glass-full',
         'color': 'verde',
         'activa': true,
         'orden': 1,
         'version': 1,
-        'imagen': imagen,
+        'gratis': gratis,
         'recetas': [
           {
-            'id': 'jugos_01',
-            'nombre': 'Jugo verde matinal',
-            'descripcion': 'Apio y manzana',
-            'idealPara': ['Energía'],
+            'id': '${id}_01',
+            'nombre': 'Receta 1 de $nombre',
+            'descripcion': 'desc',
+            'idealPara': ['X'],
             'tipo': 'interno',
             'tipoPreparacion': 'bebida',
             'precaucion': 'cuidado',
-            'ingredientes': ['apio'],
-            'preparacion': ['licuar'],
+            'ingredientes': ['a'],
+            'preparacion': ['b'],
             'dosis': '1 vaso',
             'almacenamiento': 'frasco',
-            'keywords': ['jugo', 'verde'],
+            'keywords': ['${id}_kw'],
           },
         ],
       };
@@ -72,7 +70,11 @@ void main() {
       'fake-publishable-key',
       httpClient: MockClient((request) async {
         if (request.url.path == '/rest/v1/colecciones') {
-          return jsonResp(request, filasCatalogo ?? [filaJugos()], 200);
+          return jsonResp(request, [
+            fila('jugos', 'Jugos naturales'),
+            fila('sin_tacc', 'Sin TACC'),
+            fila('kefir', 'Recetas con kéfir', gratis: true),
+          ], 200);
         }
         return http.Response('Not found: ${request.url.path}', 404,
             request: request);
@@ -83,130 +85,109 @@ void main() {
 
   setUp(() async {
     SharedPreferences.setMockInitialValues({});
-    await UserService().clearAll();
-    filasCatalogo = null; // default: sin portada (ícono)
+    // UserService es SINGLETON: su cache en memoria sobrevive a
+    // setMockInitialValues y contamina tests posteriores; setSession sin
+    // argumentos invalida el cache (mecanismo oficial).
+    UserService().setSession();
     premium = PremiumProvider(payment: MockPaymentService());
     await premium.init();
     repo = BibliotecaRepository();
     repo.testClient = fakeClient();
-    biblioteca = BibliotecaProvider(premium: premium, repo: repo);
-    await biblioteca.init();
   });
 
   tearDown(() {
-    repo.testClient?.dispose();
     repo.testClient = null;
   });
 
-  Future<void> pumpTienda(WidgetTester tester) async {
-    // Mismo patrón que pumpBiblioteca: provider NUEVO con init() acá,
-    // así el MockClient lee filasCatalogo YA seteada (re-fetch real).
-    final biblioteca = BibliotecaProvider(premium: premium, repo: repo);
-    await biblioteca.init();
-    final router = GoRouter(
-      initialLocation: '/tienda',
-      routes: [
-        GoRoute(
-          path: '/tienda',
-          builder: (context, state) => const TiendaScreen(),
-        ),
-        GoRoute(
-          path: '/biblioteca/:coleccionId',
-          builder: (context, state) => ColeccionScreen(
-            coleccionId: state.pathParameters['coleccionId']!,
-          ),
-        ),
-      ],
-    );
+  Future<void> pumpTienda(
+    WidgetTester tester, {
+    required BibliotecaProvider biblioteca,
+  }) async {
     await tester.pumpWidget(
-      ChangeNotifierProvider<BibliotecaProvider>.value(
-        value: biblioteca,
-        child: MaterialApp.router(routerConfig: router),
+      ChangeNotifierProvider<PremiumProvider>.value(
+        value: premium,
+        child: ChangeNotifierProvider<BibliotecaProvider>.value(
+          value: biblioteca,
+          child: const MaterialApp(home: TiendaScreen()),
+        ),
       ),
     );
     await tester.pumpAndSettle();
   }
 
-  testWidgets('muestra catálogo con precio de la tienda', (tester) async {
-    await pumpTienda(tester);
+  testWidgets('sin adquiridas: la tienda lista todo el catálogo',
+      (tester) async {
+    final biblioteca = BibliotecaProvider(premium: premium, repo: repo);
+    await biblioteca.init();
+    await pumpTienda(tester, biblioteca: biblioteca);
 
+    expect(find.text('Tienda'), findsOneWidget);
     expect(find.text('Jugos naturales'), findsOneWidget);
-    expect(find.text('1 recetas'), findsOneWidget);
-    expect(find.text('USD 1.99'), findsOneWidget);
-    expect(find.text('Comprar · USD 1.99'), findsOneWidget);
-    expect(find.text('Descargada'), findsNothing);
+    expect(find.text('Sin TACC'), findsOneWidget);
+    expect(find.text('Recetas con kéfir'), findsOneWidget);
+    // Los que no compró todavía: siguen comprables.
+    expect(find.text('Comprar · USD 1.99'), findsNWidgets(2));
+    // La gratis sin reclamar se ofrece.
+    expect(find.text('Recetas gratis'), findsOneWidget);
   });
 
-  testWidgets('comprar: adquiere la colección y muestra Descargada',
+  testWidgets('con pack comprado: esa colección desaparece de la tienda',
       (tester) async {
-    await pumpTienda(tester);
+    final biblioteca = BibliotecaProvider(premium: premium, repo: repo);
+    await biblioteca.init();
+    await biblioteca.comprar('jugos');
 
-    await tester.tap(find.text('Comprar · USD 1.99'));
-    await tester.pumpAndSettle();
+    await pumpTienda(tester, biblioteca: biblioteca);
 
-    expect(premium.packs, contains('yuyo_pack_jugos'));
-    expect(find.text('Descargada'), findsOneWidget);
-    expect(find.text('Comprar · USD 1.99'), findsNothing);
-    // Snackbar de confirmación
-    expect(
-      find.text('Jugos naturales descargada en tu biblioteca'),
-      findsOneWidget,
-    );
+    expect(find.text('Jugos naturales'), findsNothing);
+    expect(find.text('Sin TACC'), findsOneWidget);
+    expect(find.text('Recetas con kéfir'), findsOneWidget);
   });
 
-  testWidgets('colección ya comprada: estado Descargada sin botón de compra',
+  testWidgets('gratis reclamada: ya no se ofrece en la tienda', (tester) async {
+    final biblioteca = BibliotecaProvider(premium: premium, repo: repo);
+    await biblioteca.init();
+    await biblioteca.reclamarGratis('kefir');
+
+    await pumpTienda(tester, biblioteca: biblioteca);
+
+    expect(find.text('Recetas con kéfir'), findsNothing);
+    expect(find.text('Recetas gratis'), findsNothing);
+    // Las de pago siguen comprables.
+    expect(find.text('Comprar · USD 1.99'), findsNWidgets(2));
+  });
+
+  testWidgets('con premium: tienda vacía con mensaje de todo incluido',
       (tester) async {
-    await premium.purchasePack('jugos');
-    await pumpTienda(tester);
-
-    expect(find.text('Descargada'), findsOneWidget);
-    expect(find.text('Comprar · USD 1.99'), findsNothing);
-  });
-
-  testWidgets('premium: colección como Incluida en Premium', (tester) async {
     await premium.purchaseLifetime();
-    await pumpTienda(tester);
+    final biblioteca = BibliotecaProvider(premium: premium, repo: repo);
+    await biblioteca.init();
 
-    expect(find.text('Incluida en Premium'), findsOneWidget);
-    expect(find.text('Comprar · USD 1.99'), findsNothing);
-  });
+    await pumpTienda(tester, biblioteca: biblioteca);
 
-  testWidgets('portada: la tarjeta de la tienda muestra la imagen',
-      (tester) async {
-    filasCatalogo = [
-      filaJugos(imagen: 'assets/images/recetas/portada_jugos.webp'),
-    ];
-    await pumpTienda(tester);
-
-    expect(find.text('Jugos naturales'), findsOneWidget);
-    expect(find.byType(Image), findsOneWidget);
-    expect(find.byIcon(TablerIcons.glass_full), findsNothing);
-  });
-
-  testWidgets('sin portada: la tarjeta muestra el ícono de la familia visual',
-      (tester) async {
-    await pumpTienda(tester);
-
-    expect(find.text('Jugos naturales'), findsOneWidget);
-    expect(find.byIcon(TablerIcons.glass_full), findsOneWidget);
-    expect(find.byType(Image), findsNothing);
-  });
-
-  testWidgets('tocar la tarjeta navega a la vista previa con candados',
-      (tester) async {
-    await pumpTienda(tester);
-
-    // El tap en la tarjeta (no en el botón) abre el índice de la
-    // colección: vista previa con recetas candadas sin acceso.
-    await tester.tap(find.text('Jugos naturales'));
-    await tester.pumpAndSettle();
-
+    expect(find.text('Jugos naturales'), findsNothing);
+    expect(find.text('Sin TACC'), findsNothing);
+    expect(find.text('Recetas con kéfir'), findsNothing);
     expect(
-      find.text('Esta colección no está desbloqueada. Comprá el pack '
-          'para descargarla, o con Premium ya la tenés.'),
+      find.text('Ya tenés todas las colecciones con Premium.'),
       findsOneWidget,
     );
-    expect(find.text('Jugo verde matinal'), findsOneWidget);
-    expect(find.byIcon(TablerIcons.lock), findsOneWidget);
+  });
+
+  testWidgets('sin premium y todo adquirido: mensaje de compra completa',
+      (tester) async {
+    final biblioteca = BibliotecaProvider(premium: premium, repo: repo);
+    await biblioteca.init();
+    await biblioteca.comprar('jugos');
+    await biblioteca.comprar('sin_tacc');
+    await biblioteca.reclamarGratis('kefir');
+
+    await pumpTienda(tester, biblioteca: biblioteca);
+
+    expect(find.text('Jugos naturales'), findsNothing);
+    expect(
+      find.text('Compraste todas las colecciones disponibles.'),
+      findsOneWidget,
+    );
   });
 }

@@ -37,6 +37,7 @@ class Coleccion {
   final int orden;
   final int version;
   final String? imagen; // portada de la colección (asset local, ej: assets/images/recetas/portada_jugos.webp)
+  final bool gratis; // colección gratuita (sin pack IAP): acceso abierto
   final List<RecetaColeccion> recetas;
 
   const Coleccion({
@@ -49,6 +50,7 @@ class Coleccion {
     required this.orden,
     required this.version,
     this.imagen,
+    this.gratis = false,
     required this.recetas,
   });
 
@@ -63,6 +65,7 @@ class Coleccion {
       orden: json['orden'] ?? 0,
       version: json['version'] ?? 1,
       imagen: json['imagen'],
+      gratis: json['gratis'] ?? false,
       recetas: [
         for (final receta in json['recetas'] ?? const [])
           RecetaColeccion.fromJson(
@@ -82,6 +85,7 @@ class Coleccion {
         'orden': orden,
         'version': version,
         'imagen': imagen,
+        'gratis': gratis,
         'recetas': [for (final r in recetas) r.toJson()],
       };
 

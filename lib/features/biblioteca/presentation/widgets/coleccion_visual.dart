@@ -17,6 +17,8 @@ IconData iconoDeColeccion(String icono) {
       return TablerIcons.salad;
     case 'bottle':
       return TablerIcons.bottle;
+    case 'milk':
+      return TablerIcons.milk;
     default:
       return TablerIcons.leaf;
   }

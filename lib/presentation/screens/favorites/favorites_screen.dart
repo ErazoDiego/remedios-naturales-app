@@ -6,14 +6,19 @@ import '../../../core/constants/app_constants.dart';
 import '../../../data/models/receta.dart';
 import '../../../data/models/receta_usuario.dart';
 import '../../../data/services/recetas_usuario_service.dart';
+import '../../../features/biblioteca/domain/coleccion.dart';
+import '../../../features/biblioteca/domain/favorito_coleccion.dart';
+import '../../providers/biblioteca_provider.dart';
 import '../../providers/recetas_provider.dart';
 import '../../providers/user_provider.dart';
 import '../../widgets/ads/banner_ad_widget.dart';
 
 /// Pantalla de favoritos — Muestra las recetas guardadas con el mismo layout que CategoryScreen.
 ///
-/// Soporta dos fuentes:
+/// Soporta tres fuentes (todas conviven mezcladas, en el orden en que
+/// el usuario las marcó):
 /// - Recetas del catálogo (IDs legibles tipo "digestivo_remedio_x")
+/// - Recetas de colecciones (IDs con prefijo "col:", ver [FavoritoColeccion])
 /// - Recetas propias del usuario (IDs UUID) — requieren sesión
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({super.key});
@@ -22,8 +27,10 @@ class FavoritesScreen extends StatefulWidget {
   State<FavoritesScreen> createState() => _FavoritesScreenState();
 }
 
-/// Item unificado de favoritos: envuelve una receta del catálogo o una
-/// propia para que la card sea agnóstica del origen.
+/// Item unificado de favoritos: envuelve una receta del catálogo, de
+/// colección o propia para que la card sea agnóstica del origen.
+/// `grupo` es el header de agrupación (nombre de colección, sistema
+/// corporal o "Mis recetas").
 class _FavoriteItem {
   final String id;
   final String nombre;
@@ -32,6 +39,9 @@ class _FavoriteItem {
   final List<String> idealPara;
   final bool esPropia;
   final RecetaUsuario? recetaPropia;
+  final bool esColeccion;
+  final String? coleccionId;
+  final String grupo;
 
   _FavoriteItem.fromCatalogo(Receta r)
       : id = r.id,
@@ -40,7 +50,10 @@ class _FavoriteItem {
         imagen = r.imagen,
         idealPara = r.idealPara,
         esPropia = false,
-        recetaPropia = null;
+        recetaPropia = null,
+        esColeccion = false,
+        coleccionId = null,
+        grupo = _grupoDeSistema(r.id);
 
   _FavoriteItem.fromPropia(RecetaUsuario r)
       : id = r.id,
@@ -49,7 +62,31 @@ class _FavoriteItem {
         imagen = r.imagen,
         idealPara = r.idealPara,
         esPropia = true,
-        recetaPropia = r;
+        recetaPropia = r,
+        esColeccion = false,
+        coleccionId = null,
+        grupo = 'Mis recetas';
+
+  _FavoriteItem.fromColeccion(
+    RecetaColeccion rc,
+    this.coleccionId,
+    String nombreColeccion,
+  )   : id = rc.receta.id,
+        nombre = rc.receta.nombre,
+        tipoPreparacion = rc.receta.tipoPreparacion,
+        imagen = rc.receta.imagen,
+        idealPara = rc.receta.idealPara,
+        esPropia = false,
+        recetaPropia = null,
+        esColeccion = true,
+        grupo = nombreColeccion;
+
+  /// Sistema corporal de un ID de catálogo ("digestivo_remedio_x" →
+  /// "Sistema Digestivo"). Fallback para IDs desconocidos.
+  static String _grupoDeSistema(String id) {
+    final prefijo = id.split('_').first;
+    return AppConstants.sistemasNombres[prefijo] ?? 'Recetas';
+  }
 }
 
 class _FavoritesScreenState extends State<FavoritesScreen> {
@@ -63,12 +100,14 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   /// desmontar (lo destapa el remount que causa el interstitial de AdMob).
   late final UserProvider _userProvider;
   late final RecetasProvider _recetasProvider;
+  late final BibliotecaProvider _bibliotecaProvider;
 
   @override
   void initState() {
     super.initState();
     _userProvider = context.read<UserProvider>();
     _recetasProvider = context.read<RecetasProvider>();
+    _bibliotecaProvider = context.read<BibliotecaProvider>();
     _loadFavorites();
     // El tab vive en un indexedStack: initState NO vuelve a correr al
     // volver, así que escuchamos al UserProvider y recargamos SOLO si
@@ -107,12 +146,18 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
       return;
     }
 
-    // Separar por origen: UUID = receta propia, resto = catálogo
-    final catalogIds = favorites
-        .where((id) => !RecetasUsuarioService.isRecetaPropiaId(id))
-        .toList();
+    // Separar por origen: UUID = receta propia, "col:" = colección,
+    // resto = catálogo
     final propiaIds = favorites
         .where(RecetasUsuarioService.isRecetaPropiaId)
+        .toList();
+    final coleccionIds = favorites
+        .where(FavoritoColeccion.esDeColeccion)
+        .toList();
+    final catalogIds = favorites
+        .where((id) =>
+            !RecetasUsuarioService.isRecetaPropiaId(id) &&
+            !FavoritoColeccion.esDeColeccion(id))
         .toList();
 
     final itemsById = <String, _FavoriteItem>{};
@@ -126,6 +171,29 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         }
       } catch (_) {
         // IDs de catálogo que no resuelven se omiten
+      }
+    }
+
+    // ── Colecciones (biblioteca descargada) ──
+    if (coleccionIds.isNotEmpty) {
+      for (final favId in coleccionIds) {
+        final descompuesto = FavoritoColeccion.descomponer(favId);
+        if (descompuesto == null) continue;
+        final (coleccionId, recetaId) = descompuesto;
+        Coleccion? coleccion;
+        for (final c in _bibliotecaProvider.catalogo) {
+          if (c.id == coleccionId) {
+            coleccion = c;
+            break;
+          }
+        }
+        final rc = coleccion?.recetaPorId(recetaId);
+        if (rc == null) continue;
+        itemsById[favId] = _FavoriteItem.fromColeccion(
+          rc,
+          coleccionId,
+          coleccion!.nombre,
+        );
       }
     }
 
@@ -219,15 +287,51 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   }
 
   // ═══════════════════════════════════════════════════════════════════
+  // AGRUPACIÓN — Favoritos agrupados por origen (colecciones, sistemas
+  // corporales, recetas propias). El orden de los grupos sigue la
+  // PRIMERA aparición de cada uno en la lista de marcado del usuario;
+  // dentro de cada grupo se mantiene ese mismo orden.
+  // ═══════════════════════════════════════════════════════════════════
+  List<({String grupo, List<_FavoriteItem> items})> get _secciones {
+    final secciones = <({String grupo, List<_FavoriteItem> items})>[];
+    final indice = <String, int>{};
+
+    for (final item in _favoriteItems) {
+      final i = indice[item.grupo];
+      if (i == null) {
+        indice[item.grupo] = secciones.length;
+        secciones.add((grupo: item.grupo, items: [item]));
+      } else {
+        secciones[i].items.add(item);
+      }
+    }
+    return secciones;
+  }
+
+  // ═══════════════════════════════════════════════════════════════════
   // LISTA DE RECETAS — Mismo layout que CategoryScreen
   // ═══════════════════════════════════════════════════════════════════
   Widget _buildRecipeList() {
-    return ListView.builder(
+    final secciones = _secciones;
+    return ListView(
       padding: const EdgeInsets.all(20),
-      itemCount: _favoriteItems.length,
-      itemBuilder: (context, index) {
-        return _buildRecipeCard(_favoriteItems[index]);
-      },
+      children: [
+        for (final seccion in secciones) ...[
+          Padding(
+            padding: const EdgeInsets.only(top: 4, bottom: 8),
+            child: Text(
+              seccion.grupo.toUpperCase(),
+              style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w700,
+                color: AppConstants.textSecondary,
+                letterSpacing: 0.4,
+              ),
+            ),
+          ),
+          for (final item in seccion.items) _buildRecipeCard(item),
+        ],
+      ],
     );
   }
 
@@ -249,10 +353,12 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
       ),
       child: InkWell(
         onTap: () {
-          if (item.esPropia) {
+          if (item.esColeccion) {
+            context.push('/biblioteca/${item.coleccionId}/${item.id}');
+          } else if (item.esPropia) {
             context.push('/mis-recetas/${item.id}', extra: item.recetaPropia);
           } else {
-            context.go('/remedy/${item.id}');
+            context.push('/remedy/${item.id}');
           }
         },
         borderRadius: BorderRadius.circular(12),
@@ -328,9 +434,30 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                               ),
                             ),
                           ),
+                        if (item.esColeccion)
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 3,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppConstants.warmGrayCard,
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            child: const Text(
+                              'Colección',
+                              style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w500,
+                                color: AppConstants.warmGraySubtitle,
+                              ),
+                            ),
+                          ),
                       ],
                     ),
-                    if (item.tipoPreparacion.isNotEmpty || item.esPropia)
+                    if (item.tipoPreparacion.isNotEmpty ||
+                        item.esPropia ||
+                        item.esColeccion)
                       const SizedBox(height: 8),
 
                     // Título de la receta
