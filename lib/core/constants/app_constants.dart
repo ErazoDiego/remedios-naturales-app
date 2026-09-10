@@ -274,6 +274,24 @@ class AppConstants {
       bg: Color(0xFFEDEEFE), fg: Color(0xFF2D3580), icon: TablerIcons.droplet),
     'aplicación aromática': PreparacionStyle(
       bg: Color(0xFFEDEEFE), fg: Color(0xFF2D3580), icon: TablerIcons.leaf),
+
+    // ─── Cocina con kéfir (colección gratis, colaboración Mr. Bulgarito) ───
+    'batido':           PreparacionStyle(
+      bg: Color(0xFFE7F3FB), fg: Color(0xFF1D5E8F), icon: TablerIcons.milkshake),
+    'postre':           PreparacionStyle(
+      bg: Color(0xFFFBEAF0), fg: Color(0xFF72243E), icon: TablerIcons.cake),
+    'helado':           PreparacionStyle(
+      bg: Color(0xFFEDF2FA), fg: Color(0xFF334E84), icon: TablerIcons.ice_cream),
+    'panadería':        PreparacionStyle(
+      bg: Color(0xFFFAEEDA), fg: Color(0xFF633806), icon: TablerIcons.bread),
+    'queso':            PreparacionStyle(
+      bg: Color(0xFFFFF8E1), fg: Color(0xFFBA7517), icon: TablerIcons.cheese),
+    'salsa':            PreparacionStyle(
+      bg: Color(0xFFEFF7E9), fg: Color(0xFF446B23), icon: TablerIcons.soup),
+    'ensalada':         PreparacionStyle(
+      bg: Color(0xFFE1F5EE), fg: Color(0xFF085041), icon: TablerIcons.salad),
+    'guarnición':       PreparacionStyle(
+      bg: Color(0xFFFFF8E1), fg: Color(0xFFBA7517), icon: TablerIcons.soup),
   };
 
   // Fallback por defecto (si aparece un tipo no mapeado)

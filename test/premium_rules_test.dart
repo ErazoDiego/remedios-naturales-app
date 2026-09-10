@@ -284,6 +284,43 @@ void main() {
         isFalse,
       );
     });
+
+    test('colección GRATIS: acceso sin premium ni pack', () {
+      expect(
+        PremiumRules.puedeAccederRecetaColeccion(
+          coleccionId: 'kefir',
+          isPremium: false,
+          packs: const [],
+          gratis: true,
+        ),
+        isTrue,
+      );
+    });
+
+    test('colección GRATIS: el pack no hace falta, pero si se tiene igual',
+        () {
+      expect(
+        PremiumRules.puedeAccederRecetaColeccion(
+          coleccionId: 'kefir',
+          isPremium: false,
+          packs: const ['yuyo_pack_kefir'],
+          gratis: true,
+        ),
+        isTrue,
+      );
+    });
+
+    test('sin flag gratis (default false): colección normal sigue bloqueada',
+        () {
+      expect(
+        PremiumRules.puedeAccederRecetaColeccion(
+          coleccionId: 'kefir',
+          isPremium: false,
+          packs: const [],
+        ),
+        isFalse,
+      );
+    });
   });
 
   group('PremiumRules.recetasGratisPorSistema', () {

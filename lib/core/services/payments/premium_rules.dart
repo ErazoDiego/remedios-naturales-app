@@ -73,14 +73,17 @@ class PremiumRules {
   ///
   /// Premium incluye TODAS las colecciones, presentes y futuras
   /// (decisión de producto 2026-08-11). Sin premium, se necesita el
-  /// pack de la colección ('yuyo_pack_' + [coleccionId], mismo formato que
-  /// los packs por sistema).
+  /// pack de la colección ('yuyo_pack_' + [coleccionId], mismo formato
+  /// que los packs por sistema) — salvo que la colección sea GRATIS
+  /// ([gratis] = true, ej: la librería de kéfir de la colaboración con
+  /// Mr. Bulgarito): abierta para todos, sin compra ni pack.
   static bool puedeAccederRecetaColeccion({
     required String coleccionId,
     required bool isPremium,
     required List<String> packs,
+    bool gratis = false,
   }) =>
-      isPremium || packs.contains(packIdDeSistema(coleccionId));
+      isPremium || gratis || packs.contains(packIdDeSistema(coleccionId));
 
   /// IDs de recetas gratis por sistema (muestreo visible del plan FREE).
   ///
