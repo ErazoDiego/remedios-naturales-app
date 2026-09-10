@@ -60,7 +60,14 @@ class _PremiumScreenState extends State<PremiumScreen> {
         backgroundColor: AppConstants.headerBeige,
         foregroundColor: AppConstants.textPrimary,
       ),
-      body: ListView(
+      // SafeArea inferior: con Android 15+ (edge-to-edge obligatorio) el
+      // body corre bajo la barra gestual y el último item del scroll queda
+      // tapado (bug reportado: "Restaurar compras" no se leía en vertical,
+      // sí en horizontal donde la barra está al costado). SafeArea suma el
+      // inset inferior sin romper nada en dispositivos sin edge-to-edge.
+      body: SafeArea(
+        top: false,
+        child: ListView(
         padding: const EdgeInsets.all(20),
         children: [
           // ═══════════════════════════════════════════════════════
@@ -182,6 +189,7 @@ class _PremiumScreenState extends State<PremiumScreen> {
               ),
             ),
         ],
+      ),
       ),
     );
   }
