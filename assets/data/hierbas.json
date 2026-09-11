@@ -62,8 +62,10 @@
   },
   {
     "id": "amargon",
-    "nombre": "Amargón (Diente de león)",
-    "alias": [],
+    "nombre": "Amargón",
+    "alias": [
+      "Diente de león"
+    ],
     "nombreCientifico": "Taraxacum officinale F.H.Wigg.",
     "familia": "Asteraceae",
     "origenDistribucion": "Eurasia; naturalizado ampliamente",
