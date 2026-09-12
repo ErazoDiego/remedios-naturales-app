@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../core/constants/app_constants.dart';
 
-/// Avatar de hierba medicinal.
+/// Avatar de hierba medicinal (rectangular, como recetas y sistemas).
 ///
 /// Carga la imagen `assets/images/hierbas/<id>.webp` (mismo patrón que
 /// recetas y sistemas). Si el asset no existe todavía (hierba sin imagen),
-/// muestra un círculo con la inicial del nombre — el layout NUNCA se rompe.
+/// muestra un rectángulo con la inicial del nombre — el layout NUNCA se rompe.
 class HierbaAvatar extends StatelessWidget {
   const HierbaAvatar({
     super.key,
@@ -20,7 +20,7 @@ class HierbaAvatar extends StatelessWidget {
   /// Nombre de la hierba (inicial del fallback).
   final String nombre;
 
-  /// Diámetro del avatar. Lista: 44 (~48 con padding); ficha: 96.
+  /// Lado del recuadro. Lista/grid: 44.
   final double size;
 
   /// Ruta canónica del asset: `assets/images/hierbas/<id>.webp`.
@@ -32,9 +32,9 @@ class HierbaAvatar extends StatelessWidget {
     final Widget fallback = Container(
       width: size,
       height: size,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: AppConstants.backgroundCream,
-        shape: BoxShape.circle,
+        borderRadius: BorderRadius.circular(10),
       ),
       alignment: Alignment.center,
       child: Text(
@@ -48,7 +48,7 @@ class HierbaAvatar extends StatelessWidget {
     );
 
     return ClipRRect(
-      borderRadius: BorderRadius.circular(size / 2),
+      borderRadius: BorderRadius.circular(10),
       child: SizedBox(
         width: size,
         height: size,

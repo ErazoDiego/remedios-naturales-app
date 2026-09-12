@@ -159,15 +159,26 @@ class SearchResultCard extends StatelessWidget {
     required Color titleColor,
     required IconData icon,
   }) {
-    // Solo mostrar imagen si es receta (sistemas y hierbas usan ícono)
+    // Imagen rectangular si el resultado la tiene: recetas usan
+    // recetas/, hierbas usan hierbas/ (mismo patrón de assets).
+    // Sistemas siguen con ícono.
+    final String? asset;
     if (!isSistema && !esHierba && showImage) {
+      asset = 'assets/images/recetas/${result.id}.webp';
+    } else if (esHierba && showImage) {
+      asset = 'assets/images/hierbas/${result.id}.webp';
+    } else {
+      asset = null;
+    }
+
+    if (asset != null) {
       return ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: SizedBox(
           width: 44,
           height: 44,
           child: Image.asset(
-            'assets/images/recetas/${result.id}.webp',
+            asset,
             fit: BoxFit.cover,
             errorBuilder: (context, error, stackTrace) {
               return _buildIconAvatar(cardBg, titleColor, icon);

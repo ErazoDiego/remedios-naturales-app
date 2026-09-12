@@ -80,7 +80,7 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
               },
             ),
             title: Text(
-              hierba?.nombre ?? 'Hierba',
+              hierba?.tituloVisible ?? 'Hierba',
               style: const TextStyle(
                 color: AppConstants.textPrimary,
                 fontWeight: FontWeight.w600,
@@ -125,6 +125,25 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // ═══════════════════════════════════════════════════════════
+          // HERO IMAGE: banner panorámico si la hierba tiene imagen.
+          // Mismo patrón que las recetas; si el asset no existe aún,
+          // no pinta nada y la cabecera queda como siempre.
+          // ═══════════════════════════════════════════════════════════
+          if (hierba.imagen != null)
+            ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: SizedBox(
+                width: double.infinity,
+                height: 200,
+                child: Image.asset(
+                  HierbaAvatar.assetDe(hierba.id),
+                  fit: BoxFit.cover,
+                  errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                ),
+              ),
+            ),
+          const SizedBox(height: 12),
           // ═══════════════════════════════════════════════════════════
           // CABECERA: icono + nombre + tags
           // ═══════════════════════════════════════════════════════════
@@ -248,7 +267,9 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
     );
   }
 
-  /// Cabecera: avatar + nombre + chips de tags visibles.
+  /// Cabecera: chips de tags visibles.
+  /// (El nombre ya vive en el AppBar y el hero image; el círculo y el
+  /// texto repetido se quitaron por pedido del usuario.)
   Widget _buildCabecera(Hierba hierba, HierbasProvider provider) {
     return Container(
       width: double.infinity,
@@ -263,22 +284,6 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
       ),
       child: Column(
         children: [
-          HierbaAvatar(
-            hierbaId: hierba.id,
-            nombre: hierba.nombre,
-            size: 96,
-          ),
-          const SizedBox(height: 12),
-          Text(
-            hierba.nombre,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w700,
-              color: AppConstants.textPrimary,
-            ),
-          ),
-          const SizedBox(height: 12),
           Wrap(
             spacing: 6,
             runSpacing: 6,

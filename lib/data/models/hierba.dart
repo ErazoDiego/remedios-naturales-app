@@ -204,6 +204,15 @@ class Hierba {
     };
   }
 
+  /// Título visible de la hierba: nombre + alias cuando existen.
+  ///
+  /// Sin alias: "Amargón". Con alias: "Amargón - Diente de león".
+  /// El alias NO debe quedar oculto: el usuario que solo conoce
+  /// "diente de león" vería un resultado de búsqueda que parece
+  /// un error si la ficha nunca muestra esa relación.
+  String get tituloVisible =>
+      alias.isEmpty ? nombre : '$nombre - ${alias.join(', ')}';
+
   /// Texto plano con todos los campos usados por los buscadores del
   /// herbolario: nombre, alias, científico, familia, origen, rasgos,
   /// parte, uso tradicional, precauciones y tags.

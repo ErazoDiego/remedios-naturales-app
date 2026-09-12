@@ -423,7 +423,7 @@ class _HerbaCard extends StatelessWidget {
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(
-                      hierba.nombre as String,
+                      hierba.tituloVisible,
                       style: const TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
