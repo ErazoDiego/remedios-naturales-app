@@ -157,6 +157,8 @@ void main() {
 
     expect(find.text('Receta Premium'), findsOneWidget);
     expect(find.text('Ahora no'), findsOneWidget);
+    // El recipeId llega al diálogo → se ofrece el unlock por 2 ads.
+    expect(find.text('Mirar 2 anuncios · 24 h'), findsOneWidget);
     // No navegó al detalle de la receta.
     expect(find.text('DETALLE RECETA'), findsNothing);
   });
@@ -176,6 +178,8 @@ void main() {
 
     expect(find.text('Recetas premium'), findsOneWidget);
     expect(find.text('Ahora no'), findsOneWidget);
+    // El callout es MULTI-receta: sigue siendo solo pack/premium.
+    expect(find.text('Mirar 2 anuncios · 24 h'), findsNothing);
   });
 
   testWidgets('free con todas las recetas gratis: sin candados ni callout',

@@ -144,6 +144,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   'Con el plan gratis tenés acceso a 5 recetas '
                   'de cada sistema.',
               sistemaId: receta.id.split('_').first,
+              recipeId: receta.id as String,
             );
             return;
           }

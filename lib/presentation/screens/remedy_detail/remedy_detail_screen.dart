@@ -147,7 +147,7 @@ class _RemedyDetailScreenState extends State<RemedyDetailScreen> {
             children: [
               Expanded(
                 child: !accesoPermitido
-                    ? _buildPremiumWall()
+                    ? _buildPremiumWall(premium)
                     : LoadingErrorEmpty(
                         isLoading: provider.isLoading,
                         error: provider.error,
@@ -197,8 +197,12 @@ class _RemedyDetailScreenState extends State<RemedyDetailScreen> {
   }
 
   /// Muro de receta premium: la receta no está en el muestreo gratis
-  /// y el usuario no tiene Premium. CTA directo a la pantalla de compra.
-  Widget _buildPremiumWall() {
+  /// y el usuario no tiene Premium. CTA directo a la pantalla de compra
+  /// + alternativa de 2 anuncios rewarded para esta receta (24 h).
+  Widget _buildPremiumWall(PremiumProvider premium) {
+    final ofreceUnlock = premium.rewardedDisponible &&
+        premium.esElegibleParaUnlockPorAnuncio(widget.recipeId);
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(32),
       child: Column(
@@ -239,6 +243,17 @@ class _RemedyDetailScreenState extends State<RemedyDetailScreen> {
             ),
           ),
           const SizedBox(height: 24),
+          if (ofreceUnlock)
+            TextButton.icon(
+              onPressed: () =>
+                  desbloquearRecetaConAnuncios(context, premium, widget.recipeId),
+              icon: const Icon(Icons.play_circle_outline, size: 18),
+              label: const Text('Mirar 2 anuncios · 24 h'),
+              style: TextButton.styleFrom(
+                foregroundColor: AppConstants.sageGreenTitle,
+              ),
+            ),
+          if (ofreceUnlock) const SizedBox(height: 12),
           FilledButton.icon(
             onPressed: () => context.push('/premium'),
             icon: const Icon(TablerIcons.crown, size: 18),

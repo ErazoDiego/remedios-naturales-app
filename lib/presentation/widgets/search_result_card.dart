@@ -51,6 +51,7 @@ class SearchResultCard extends StatelessWidget {
                 'Con el plan gratis tenés acceso a 5 recetas '
                 'de cada sistema.',
             sistemaId: sistemaId,
+            recipeId: result.id,
           );
           return;
         }

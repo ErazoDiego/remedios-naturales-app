@@ -769,6 +769,7 @@ class _HerbaDetailScreenState extends State<HerbaDetailScreen> {
                   'Con el plan gratis tenés acceso a 5 recetas '
                   'de cada sistema.',
               sistemaId: sistemaId,
+              recipeId: receta.id as String,
             );
             return;
           }
