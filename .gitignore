@@ -50,3 +50,7 @@ app.*.map.json
 
 # Supabase credentials (NUNCA subir keys al repo)
 /lib/core/config/supabase_config.dart
+
+# AdMob rewarded IDs de producción (NUNCA subirlos al repo)
+/env/*.json
+!/env/rewarded_ads.example.json
