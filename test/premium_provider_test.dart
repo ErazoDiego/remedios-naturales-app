@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
+import 'package:remedios_naturales_app/core/services/ads/rewarded_ad_gateway.dart';
 import 'package:remedios_naturales_app/core/services/ads_service.dart';
 import 'package:remedios_naturales_app/core/services/payments/mock_payment_service.dart';
+import 'package:remedios_naturales_app/core/services/payments/temporary_unlock.dart';
 import 'package:remedios_naturales_app/core/services/payments/payment_service.dart';
 import 'package:remedios_naturales_app/data/services/user_service.dart';
 import 'package:remedios_naturales_app/presentation/providers/premium_provider.dart';
@@ -297,7 +301,7 @@ void main() {
       expect(provider.packs, isNotEmpty);
 
       // Simula cierre de sesión
-      provider.reset();
+      await provider.reset();
 
       expect(provider.isLifetime, isFalse);
       expect(provider.premiumUntil, isNull);
@@ -313,7 +317,7 @@ void main() {
       await provider.purchaseSubscription(MembresiaPlan.mensual);
       expect(provider.isPremium, isTrue);
 
-      provider.reset();
+      await provider.reset();
 
       expect(provider.premiumUntil, isNull);
       expect(provider.isPremium, isFalse);
@@ -328,9 +332,170 @@ void main() {
       await provider.purchaseLifetime(); // falla
       expect(provider.error, isNotNull);
 
-      provider.reset();
+      await provider.reset();
 
       expect(provider.error, isNull);
     });
   });
+
+  group('unlock por anuncios', () {
+    late DateTime ahora;
+    late TemporaryUnlockStore store;
+    late _FakeRewardedAdGateway adsGateway;
+    late AdsService ads;
+    late PremiumProvider provider;
+
+    setUp(() {
+      ahora = DateTime.utc(2026, 11, 19, 12);
+    });
+
+    PremiumProvider buildProvider({
+      List<bool> outcomes = const [true, true],
+      TemporaryUnlockStore? existingStore,
+    }) {
+      adsGateway = _FakeRewardedAdGateway(outcomes);
+      ads = AdsService.test(
+        InterstitialPolicy(now: () => ahora),
+        rewardedAdGateway: adsGateway,
+      );
+      store = existingStore ?? TemporaryUnlockStore(now: () => ahora);
+      provider = PremiumProvider(
+        payment: MockPaymentService(),
+        unlockStore: store,
+        adsService: ads,
+      );
+      return provider;
+    }
+
+    test('init: restaura unlocks persistidos del store local', () async {
+      SharedPreferences.setMockInitialValues({
+        TemporaryUnlockStore.key: json.encode({
+          'digestivo_01': ahora.add(const Duration(hours: 1)).toIso8601String(),
+        }),
+      });
+      final p = buildProvider();
+
+      await p.init();
+
+      expect(p.unlocksTemporalesActivos, contains('digestivo_01'));
+      expect(p.puedeAccederAReceta('digestivo_01'), isTrue);
+    });
+
+    test('desbloquearConAnuncios: éxito, forwarding del disclosure y acceso',
+        () async {
+      final p = buildProvider();
+      await p.init();
+      final confirms = <int>[];
+      final progress = <int>[];
+
+      final result = await p.desbloquearConAnuncios(
+        'digestivo_01',
+        onConfirmAd: (n, total) async {
+          confirms.add(n);
+          return true;
+        },
+        onProgress: (n, total) => progress.add(n),
+      );
+
+      expect(result, UnlockResult.exito);
+      expect(adsGateway.calls, 2);
+      expect(confirms, [1, 2]);
+      expect(progress, [1, 2]);
+      expect(p.unlocksTemporalesActivos, contains('digestivo_01'));
+      expect(p.puedeAccederAReceta('digestivo_01'), isTrue);
+      expect(p.esElegibleParaUnlockPorAnuncio('digestivo_01'), isFalse);
+    });
+
+    test('noDisponible: muestreo, colección y premium no ofrecen unlock',
+        () async {
+      final p = buildProvider();
+      await p.init();
+
+      expect(await p.desbloquearConAnuncios('digestivo_03'),
+          UnlockResult.noDisponible);
+      expect(await p.desbloquearConAnuncios('col:jugos:01'),
+          UnlockResult.noDisponible);
+      expect(adsGateway.calls, 0);
+
+      await p.purchaseLifetime();
+      expect(await p.desbloquearConAnuncios('digestivo_01'),
+          UnlockResult.noDisponible);
+      expect(adsGateway.calls, 0);
+    });
+
+    test('cancelado: un anuncio falló y no se registra acceso', () async {
+      final p = buildProvider(outcomes: [true, false]);
+      await p.init();
+
+      final result = await p.desbloquearConAnuncios('digestivo_01');
+
+      expect(result, UnlockResult.cancelado);
+      expect(adsGateway.calls, 2);
+      expect(p.unlocksTemporalesActivos, isEmpty);
+      expect(p.esElegibleParaUnlockPorAnuncio('digestivo_01'), isTrue);
+    });
+
+    test('limiteAlcanzado: el cap se chequea ANTES de mostrar anuncios',
+        () async {
+      final lleno = TemporaryUnlockStore(now: () => ahora);
+      await lleno.init();
+      await lleno.registrar('digestivo_01');
+      await lleno.registrar('digestivo_02');
+      await lleno.registrar('digestivo_03');
+      final p = buildProvider(existingStore: lleno);
+      await p.init();
+
+      final result = await p.desbloquearConAnuncios('digestivo_04');
+
+      expect(result, UnlockResult.limiteAlcanzado);
+      expect(adsGateway.calls, 0);
+    });
+
+    test('reset: limpia los unlocks y no resurrecen tras reinicio', () async {
+      final p = buildProvider();
+      await p.init();
+      expect(await p.desbloquearConAnuncios('digestivo_01'),
+          UnlockResult.exito);
+
+      await p.reset();
+
+      expect(p.unlocksTemporalesActivos, isEmpty);
+      expect(p.puedeAccederAReceta('digestivo_01'), isFalse);
+
+      final recheck = PremiumProvider(
+        payment: MockPaymentService(),
+        unlockStore: store,
+        adsService: ads,
+      );
+      await recheck.init();
+      expect(recheck.unlocksTemporalesActivos, isEmpty);
+    });
+
+    test('el unlock NO activa premium ni escribe en el perfil de pago',
+        () async {
+      final p = buildProvider();
+      await p.init();
+
+      await p.desbloquearConAnuncios('digestivo_01');
+
+      expect(ads.isPremium, isFalse);
+      final profile = await UserService().getCurrentProfile();
+      expect(profile!.lifetime, isFalse);
+      expect(profile.packs, isEmpty);
+    });
+  });
+}
+
+class _FakeRewardedAdGateway implements RewardedAdGateway {
+  _FakeRewardedAdGateway(this._outcomes);
+
+  final List<bool> _outcomes;
+  int calls = 0;
+
+  @override
+  Future<bool> show() async {
+    final result = _outcomes[calls];
+    calls++;
+    return result;
+  }
 }

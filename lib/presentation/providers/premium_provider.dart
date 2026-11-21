@@ -4,6 +4,10 @@ import '../../core/services/ads_service.dart';
 import '../../core/services/payments/payment_service.dart';
 import '../../core/services/payments/payment_service_factory.dart';
 import '../../core/services/payments/premium_rules.dart';
+import '../../core/services/payments/temporary_unlock.dart';
+
+/// Resultado de intentar desbloquear una receta con anuncios rewarded.
+enum UnlockResult { exito, noDisponible, cancelado, limiteAlcanzado }
 
 /// Provider del estado premium (membresías + lifetime) y packs por
 /// sistema/colección (compras únicas).
@@ -21,13 +25,24 @@ import '../../core/services/payments/premium_rules.dart';
 /// Al cambiar el estado, sincroniza [AdsService.setPremium] en un solo
 /// lugar: la membresía (mensual/anual) y el lifetime apagan anuncios.
 /// Los packs NO apagan anuncios (regla de producto).
+///
+/// También gestiona los desbloqueos temporales por anuncios rewarded:
+/// estado local, NO compra, nunca se persiste al perfil de pago.
 class PremiumProvider extends ChangeNotifier {
   final PaymentService _payment;
   final UserService _userService;
+  final TemporaryUnlockStore _unlockStore;
+  final AdsService _adsService;
 
-  PremiumProvider({PaymentService? payment, UserService? userService})
-      : _payment = payment ?? PaymentServiceFactory.create(),
-        _userService = userService ?? UserService();
+  PremiumProvider({
+    PaymentService? payment,
+    UserService? userService,
+    TemporaryUnlockStore? unlockStore,
+    AdsService? adsService,
+  })  : _payment = payment ?? PaymentServiceFactory.create(),
+        _userService = userService ?? UserService(),
+        _unlockStore = unlockStore ?? TemporaryUnlockStore(),
+        _adsService = adsService ?? AdsService.instance;
 
   bool _isLifetime = false;
   DateTime? _premiumUntil;
@@ -35,6 +50,9 @@ class PremiumProvider extends ChangeNotifier {
   String? _error;
   final List<String> _packs = [];
   Map<String, String> _productPrices = {};
+
+  /// IDs desbloqueados por anuncios con acceso vigente (purga incluida).
+  Set<String> _unlocksTemporalesActivos = const {};
 
   /// ¿Acceso total activo? DERIVADO: lifetime o membresía vigente.
   bool get isPremium =>
@@ -55,6 +73,10 @@ class PremiumProvider extends ChangeNotifier {
 
   /// Packs poseídos (device + perfil), ej: ['yuyo_pack_digestivo'].
   List<String> get packs => List.unmodifiable(_packs);
+
+  /// Recetas con desbloqueo temporal vigente (solo lectura).
+  Set<String> get unlocksTemporalesActivos =>
+      Set.unmodifiable(_unlocksTemporalesActivos);
 
   /// Precios de la tienda: productId → precio formateado (ej: 'USD 4.99').
   /// Vacío si la tienda no tiene configurados los productos.
@@ -78,13 +100,59 @@ class PremiumProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// ¿Tiene acceso a la receta? (premium, muestreo gratis o pack del sistema)
+  /// ¿Tiene acceso a la receta?
+  /// Premium, muestreo gratis, pack del sistema o unlock temporal vigente.
   bool puedeAccederAReceta(String recipeId) =>
       PremiumRules.puedeAccederAReceta(
         isPremium: isPremium,
         recipeId: recipeId,
         packs: _packs,
+        unlocksTemporalesActivos: _unlocksTemporalesActivos,
       );
+
+  /// ¿Está configurado el rewarded en esta plataforma? Si falta el ad unit
+  /// de producción o el flag está apagado, el CTA NO se ofrece.
+  bool get rewardedDisponible => _adsService.rewardedDisponible;
+
+  /// ¿Se debe ofrecer el botón "desbloquear con anuncios"?
+  bool esElegibleParaUnlockPorAnuncio(String recipeId) =>
+      PremiumRules.esElegibleParaUnlockPorAnuncio(
+        isPremium: isPremium,
+        recipeId: recipeId,
+        packs: _packs,
+        unlocksTemporalesActivos: _unlocksTemporalesActivos,
+      );
+
+  /// Muestra los 2 anuncios y, si se completan, registra 24 h de acceso
+  /// a [recipeId]. Nunca toca el estado de pago ni el perfil.
+  ///
+  /// El cap se chequea ANTES de mostrar anuncios para no quemar ads
+  /// cuando el usuario ya tiene 3 desbloqueos vigentes.
+  Future<UnlockResult> desbloquearConAnuncios(
+    String recipeId, {
+    Future<bool> Function(int adNumber, int total)? onConfirmAd,
+    void Function(int adNumber, int total)? onProgress,
+  }) async {
+    if (!esElegibleParaUnlockPorAnuncio(recipeId)) {
+      return UnlockResult.noDisponible;
+    }
+    if (!_unlockStore.puedeRegistrar(recipeId)) {
+      return UnlockResult.limiteAlcanzado;
+    }
+
+    final adsCompletos = await _adsService.mostrarAnunciosParaDesbloqueo(
+      onConfirmAd: onConfirmAd,
+      onProgress: onProgress,
+    );
+    if (!adsCompletos) return UnlockResult.cancelado;
+
+    final registrado = await _unlockStore.registrar(recipeId);
+    if (!registrado) return UnlockResult.limiteAlcanzado;
+
+    _syncUnlocks();
+    notifyListeners();
+    return UnlockResult.exito;
+  }
 
   /// Inicializa: restaura compras del dispositivo + perfil persistido
   /// y sincroniza anuncios. Se llama desde main.dart.
@@ -93,6 +161,9 @@ class PremiumProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
+      // Unlock por ads es estado local: se carga igual que las compras.
+      await _unlockStore.init();
+      _syncUnlocks();
       await _payment.init();
       final devicePacks = _payment.purchasedPacks;
       final profile = await _userService.getCurrentProfile();
@@ -267,22 +338,29 @@ class PremiumProvider extends ChangeNotifier {
 
   /// Resetea el estado premium al cerrar sesión.
   ///
-  /// Limpia lifetime, membresía y packs, y re-sincroniza los anuncios
-  /// para que el siguiente usuario (o el modo anónimo) vea anuncios
-  /// si no tiene premium propio.
-  void reset() {
+  /// Limpia lifetime, membresía, packs y los desbloqueos por anuncios,
+  /// y re-sincroniza los anuncios para que el siguiente usuario (o el
+  /// modo anónimo) vea anuncios si no tiene premium propio.
+  Future<void> reset() async {
     _isLifetime = false;
     _premiumUntil = null;
     _packs.clear();
+    _unlocksTemporalesActivos = const {};
     _error = null;
     _syncAds();
-    notifyListeners();
+    notifyListeners(); // La UI se actualiza ya; la persistencia va detrás.
+    await _unlockStore.clear();
   }
 
   // ── Internos ────────────────────────────────────────────────────────
 
   void _syncAds() {
-    AdsService.instance.setPremium(isPremium);
+    _adsService.setPremium(isPremium);
+  }
+
+  /// Refresca el set de unlocks vigentes (y purga vencidos).
+  void _syncUnlocks() {
+    _unlocksTemporalesActivos = _unlockStore.activos;
   }
 
   /// Máxima de dos fechas (null-safe).

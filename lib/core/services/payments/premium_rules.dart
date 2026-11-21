@@ -60,14 +60,35 @@ class PremiumRules {
   ///
   /// FREE: solo las [recetasGratisPorSistema]. Premium: todas.
   /// Con packs: todas las recetas del sistema comprado.
+  /// Con [unlocksTemporalesActivos]: también la receta desbloqueada por
+  /// anuncios rewarded (el store ya filtró los vencidos).
   static bool puedeAccederAReceta({
     required bool isPremium,
     required String recipeId,
     List<String> packs = const [],
+    Set<String> unlocksTemporalesActivos = const {},
   }) =>
       isPremium ||
       esRecetaGratuita(recipeId) ||
-      tienePackDeSistema(packs, sistemaDeReceta(recipeId));
+      tienePackDeSistema(packs, sistemaDeReceta(recipeId)) ||
+      unlocksTemporalesActivos.contains(recipeId);
+
+  /// ¿Tiene sentido ofrecer el desbloqueo por anuncios en esta receta?
+  ///
+  /// Solo se muestra el CTA cuando la receta está REALMENTE bloqueada:
+  /// nunca para premium, muestreo gratis, pack del sistema, un unlock
+  /// temporal ya vigente, ni recetas de colección (prefijo `col:`).
+  static bool esElegibleParaUnlockPorAnuncio({
+    required bool isPremium,
+    required String recipeId,
+    List<String> packs = const [],
+    Set<String> unlocksTemporalesActivos = const {},
+  }) =>
+      !isPremium &&
+      !recipeId.startsWith('col:') &&
+      !esRecetaGratuita(recipeId) &&
+      !tienePackDeSistema(packs, sistemaDeReceta(recipeId)) &&
+      !unlocksTemporalesActivos.contains(recipeId);
 
   /// ¿Puede el usuario abrir una receta de una colección de la biblioteca?
   ///

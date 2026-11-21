@@ -1,6 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import 'ads/rewarded_ads_config.dart';
+import 'ads/rewarded_ad_gateway.dart';
+
 /// Servicio central de decisión publicitaria.
 ///
 /// Las pantallas NO interactúan con el SDK de AdMob directamente:
@@ -10,17 +13,44 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 /// Cuando exista el pago (Google Play Billing), el wrapper de compras
 /// llamará [setPremium] y los anuncios se apagarán en un solo lugar.
 class AdsService {
-  AdsService._() : interstitialPolicy = InterstitialPolicy();
+  static final RewardedAdsConfig _defaultRewardedConfig =
+      RewardedAdsConfig.fromEnvironment();
+
+  AdsService._()
+      : rewardedConfig = _defaultRewardedConfig,
+        interstitialPolicy = InterstitialPolicy(),
+        rewardedAdGateway =
+            AdMobRewardedAdGateway.fromConfig(_defaultRewardedConfig);
 
   /// Instancia aislada para tests: permite inyectar la política con reloj
-  /// controlado. No usar en producción.
+  /// controlado, la config y un gateway de rewarded falso. No usar en
+  /// producción.
   @visibleForTesting
-  AdsService.test(this.interstitialPolicy);
+  AdsService.test(
+    this.interstitialPolicy, {
+    RewardedAdGateway? rewardedAdGateway,
+    RewardedAdsConfig? rewardedConfig,
+  })  : rewardedConfig = rewardedConfig ?? RewardedAdsConfig.test(),
+        rewardedAdGateway = rewardedAdGateway ?? const NoOpRewardedAdGateway();
 
   static final AdsService instance = AdsService._();
 
+  /// Cantidad de anuncios requeridos para un desbloqueo temporal.
+  static const int rewardedAdsPorUnlock = 2;
+
   /// Política de espaciado del intersticial (lógica pura, sin SDK).
   final InterstitialPolicy interstitialPolicy;
+
+  /// Configuración de rewarded (IDs de plataforma + flag compile-time).
+  final RewardedAdsConfig rewardedConfig;
+
+  /// Gateway de rewarded inyectable (NoOp en tests).
+  final RewardedAdGateway rewardedAdGateway;
+
+  /// ¿Se puede ofrecer el CTA de anuncios? Depende SOLO de la config y
+  /// del flag, no del switch de tests ni del estado premium: el muro ya
+  /// se muestra únicamente a usuarios sin acceso.
+  bool get rewardedDisponible => rewardedConfig.estaDisponible;
 
   // ── Estado ──────────────────────────────────────────────────────────
 
@@ -36,12 +66,19 @@ class AdsService {
   /// El intersticial cargado (o null si no hay o ya se mostró).
   InterstitialAd? _interstitial;
 
+  /// Después de un rewarded exitoso se salta el intersticial de salida.
+  bool _suppressNextInterstitial = false;
+
   // ── Consultas ───────────────────────────────────────────────────────
 
   /// ¿Deben mostrarse anuncios (banner) en este momento?
   bool get shouldShowAds => _enabled && !_premium;
 
   bool get isPremium => _premium;
+
+  /// Solo para assertions en tests.
+  @visibleForTesting
+  bool get pendingInterstitialSuppression => _suppressNextInterstitial;
 
   /// ¿Debe mostrarse el intersticial ahora?
   /// Requiere: no premium, ads habilitados, un ad cargado y la política
@@ -63,6 +100,38 @@ class AdsService {
   /// Solo para tests unitarios (el SDK no corre en `flutter test`).
   @visibleForTesting
   void setInterstitialReadyForTesting(bool value) => _interstitialReady = value;
+
+  @visibleForTesting
+  void clearInterstitialSuppressionForTesting() =>
+      _suppressNextInterstitial = false;
+
+  // ── Rewarded ────────────────────────────────────────────────────────
+
+  /// Muestra [rewardedAdsPorUnlock] anuncios para desbloquear una receta.
+  ///
+  /// [onConfirmAd] debe mostrar el disclosure ANTES de cada anuncio y
+  /// devolver `false` si el usuario cancela. No hay recompensa parcial:
+  /// si cualquiera falla, devuelve `false` y no se otorga acceso.
+  Future<bool> mostrarAnunciosParaDesbloqueo({
+    Future<bool> Function(int adNumber, int total)? onConfirmAd,
+    void Function(int adNumber, int total)? onProgress,
+  }) async {
+    final total = rewardedAdsPorUnlock;
+    for (var adNumber = 1; adNumber <= total; adNumber++) {
+      if (!shouldShowAds) return false;
+      if (onConfirmAd != null && !await onConfirmAd(adNumber, total)) {
+        return false;
+      }
+      final rewardEarned = await rewardedAdGateway.show();
+      if (!rewardEarned) return false;
+      onProgress?.call(adNumber, total);
+    }
+    _suppressNextInterstitial = true;
+    return true;
+  }
+
+  /// Fuerza saltear el próximo intersticial (lo consume [maybeShowInterstitial]).
+  void suppressInterstitialOnce() => _suppressNextInterstitial = true;
 
   // ── Intersticial ────────────────────────────────────────────────────
 
@@ -93,6 +162,10 @@ class AdsService {
   /// Muestra el intersticial SI la política lo permite.
   /// Al mostrarlo, libera el ad y precarga el siguiente.
   Future<void> maybeShowInterstitial() async {
+    if (_suppressNextInterstitial) {
+      _suppressNextInterstitial = false;
+      return;
+    }
     if (!shouldShowInterstitial) return;
 
     final ad = _interstitial;

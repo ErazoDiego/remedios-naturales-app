@@ -361,4 +361,102 @@ void main() {
       }
     });
   });
+
+  group('PremiumRules.puedeAccederAReceta con unlock temporal', () {
+    test('un unlock vigente abre una receta bloqueada', () {
+      expect(
+        PremiumRules.puedeAccederAReceta(
+          isPremium: false,
+          recipeId: 'digestivo_01',
+          unlocksTemporalesActivos: const {'digestivo_01'},
+        ),
+        isTrue,
+      );
+    });
+
+    test('un unlock de OTRA receta no abre esta', () {
+      expect(
+        PremiumRules.puedeAccederAReceta(
+          isPremium: false,
+          recipeId: 'digestivo_01',
+          unlocksTemporalesActivos: const {'digestivo_02'},
+        ),
+        isFalse,
+      );
+    });
+
+    test('sin unlock, la receta sigue bloqueada', () {
+      expect(
+        PremiumRules.puedeAccederAReceta(
+          isPremium: false,
+          recipeId: 'digestivo_01',
+        ),
+        isFalse,
+      );
+    });
+  });
+
+  group('PremiumRules.esElegibleParaUnlockPorAnuncio', () {
+    test('receta bloqueada de sistema: SÍ se ofrece', () {
+      expect(
+        PremiumRules.esElegibleParaUnlockPorAnuncio(
+          isPremium: false,
+          recipeId: 'digestivo_01',
+        ),
+        isTrue,
+      );
+    });
+
+    test('premium: NO se ofrece', () {
+      expect(
+        PremiumRules.esElegibleParaUnlockPorAnuncio(
+          isPremium: true,
+          recipeId: 'digestivo_01',
+        ),
+        isFalse,
+      );
+    });
+
+    test('receta del muestreo gratis: NO se ofrece', () {
+      expect(
+        PremiumRules.esElegibleParaUnlockPorAnuncio(
+          isPremium: false,
+          recipeId: 'digestivo_03',
+        ),
+        isFalse,
+      );
+    });
+
+    test('con pack del sistema: NO se ofrece', () {
+      expect(
+        PremiumRules.esElegibleParaUnlockPorAnuncio(
+          isPremium: false,
+          recipeId: 'digestivo_01',
+          packs: const ['yuyo_pack_digestivo'],
+        ),
+        isFalse,
+      );
+    });
+
+    test('ya desbloqueada temporalmente: NO se ofrece', () {
+      expect(
+        PremiumRules.esElegibleParaUnlockPorAnuncio(
+          isPremium: false,
+          recipeId: 'digestivo_01',
+          unlocksTemporalesActivos: const {'digestivo_01'},
+        ),
+        isFalse,
+      );
+    });
+
+    test('receta de colección (col:): NO se ofrece', () {
+      expect(
+        PremiumRules.esElegibleParaUnlockPorAnuncio(
+          isPremium: false,
+          recipeId: 'col:jugos:receta_01',
+        ),
+        isFalse,
+      );
+    });
+  });
 }
